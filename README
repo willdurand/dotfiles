@@ -1,0 +1,14 @@
+My VIM Config
+=============
+
+This is my VIM config for PHP development based on @vjousse's config.
+
+. Autocompletion
+. Syntax hightlighting
+. Snippets
+. xdebug debugger integration
+. GIT integration
+. etc
+
+
+Will.
