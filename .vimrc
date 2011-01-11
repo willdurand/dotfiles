@@ -98,6 +98,10 @@ iab xname William DURAND
 iab xsigp William DURAND <william.durand1@gmail.com>
 iab xsigw William DURAND <william.durand1@gmail.com>
 
+" Markdown
+au! BufRead,BufNewFile *.markdown setfiletype mkd
+au! BufRead,BufNewFile *.mdsetfiletype mkd
+
 " PHP/HTML
 let php_htmlInStrings = 1
 let php_sql_query = 1                                                                                        
