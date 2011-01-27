@@ -48,7 +48,6 @@ nnoremap ` '
 set history=1000
 
 set undolevels=1000             " use many levels of undo
-set noundofile                  " Don't keep a persistent undofile
 
 " Redifinition of map leader
 let mapleader = ","
