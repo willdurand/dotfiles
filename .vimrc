@@ -10,6 +10,10 @@ set hidden ruler wmnu             " Hide buffer instead of abandoning when unloa
 
 set wildmenu                      " Enhanced command line completion.
 set wildmode=list:longest         " Complete files like a shell.
+set wildignore=*/cache`/**,*/logs/**  " Ignore certain files
+
+set showcmd                       " Display incomplete commands.
+set showmode                      " Display the mode you're in.
 
 set number                        " Show line numbers.
 set ruler                         " Show cursor position.
@@ -26,9 +30,11 @@ set visualbell                    " No beeping.
 set backupdir=~/.vim/tmp/,~/.tmp,~/tmp,/var/tmp,/tmp   " Keep swap files in one location
 set directory=~/.vim/tmp/,~/.tmp,~/tmp,/var/tmp,/tmp   " Keep swap files in one location
 
-set laststatus=2                  " Show the status line all the time
+set nobackup                      " Don't make a backup before overwriting a file.
+set nowritebackup                 " And again.
+set noswapfile                    " Use an SCM instead of swap files
 
-set wildmode=list:longest         " Make command completion behave like a shell
+set laststatus=2                  " Show the status line all the time
 
 " Make the view port scroll faster
 nnoremap <C-e> 3<C-e>
@@ -41,6 +47,9 @@ nnoremap ` '
 " Command and search pattern history
 set history=1000
 
+set undolevels=1000             " use many levels of undo
+set noundofile                  " Don't keep a persistent undofile
+
 " Redifinition of map leader
 let mapleader = ","
 
@@ -50,6 +59,10 @@ set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{fugitive#statusline()}%{exists('*Cap
 " Tabs and indentation. Yes, I like 2-space tabs.
 set tabstop=2
 set shiftwidth=2
+
+nmap <leader>4 :set tabstop=2<cr>:set shiftwidth=2<cr>
+nmap <leader>2 :set tabstop=4<cr>:set shiftwidth=4<cr>
+
 set expandtab
 set copyindent    " copy the previous indentation on autoindenting
 set shiftround    " use multiple of shiftwidth when indenting with '<' and '>'
@@ -89,9 +102,12 @@ set encoding=utf-8
 
 " Enable folding by indentation
 " Use: zc, zo, zC, zO, zR, zM
+set foldmethod=indent
 highlight Folded ctermfg=red
 highlight FoldColumn ctermfg=white
 set fillchars=fold:⋯
+map zz zjzo
+set nofoldenable
 
 " My information
 iab xdate <c-r>=strftime("%d/%m/%Y %H:%M:%S")
