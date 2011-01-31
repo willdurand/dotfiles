@@ -1,1 +1,2 @@
-map <F5> :!markdown --html4tags "%"<CR>
+command Mkd :!~/.scripts/markdown % > /tmp/mkdprev.html && open /tmp/mkdprev.html
+map <F5> :Mkd<CR>

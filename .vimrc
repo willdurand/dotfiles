@@ -116,7 +116,10 @@ iab xsigw William DURAND <william.durand1@gmail.com>
 
 " Markdown
 au! BufRead,BufNewFile *.markdown setfiletype mkd
-au! BufRead,BufNewFile *.mdsetfiletype mkd
+au! BufRead,BufNewFile *.md setfiletype mkd
+
+" reStructuredText
+command Rst :!~/.scripts/rst2html.py % > /tmp/rstprev.html && open /tmp/rstprev.html
 
 " PHP/HTML
 let php_htmlInStrings = 1
