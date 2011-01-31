@@ -59,8 +59,8 @@ set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{fugitive#statusline()}%{exists('*Cap
 set tabstop=2
 set shiftwidth=2
 
-nmap <leader>4 :set tabstop=2<cr>:set shiftwidth=2<cr>
-nmap <leader>2 :set tabstop=4<cr>:set shiftwidth=4<cr>
+nmap <leader>2 :set tabstop=2<cr>:set shiftwidth=2<cr>
+nmap <leader>4 :set tabstop=4<cr>:set shiftwidth=4<cr>
 
 set expandtab
 set copyindent    " copy the previous indentation on autoindenting
@@ -119,7 +119,7 @@ au! BufRead,BufNewFile *.markdown setfiletype mkd
 au! BufRead,BufNewFile *.md setfiletype mkd
 
 " reStructuredText
-command Rst :!~/.scripts/rst2html.py % > /tmp/rstprev.html && open /tmp/rstprev.html
+au! BufRead,BufNewFile *.rst setfiletype rst
 
 " PHP/HTML
 let php_htmlInStrings = 1
@@ -127,7 +127,7 @@ let php_sql_query = 1
 
 " Symfony plugin
 let g:symfony_fuf = 1
-map <C-F8> :SfSwitchView<cr>
+map <c-F3> :SfSwitchView<cr>
 
 " Snippet
 autocmd FileType php set ft=php.symfony
