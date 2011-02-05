@@ -9,11 +9,11 @@ Including :
 
 This set of files comes with an installer:
 
-    $ git clone https://github.com/willdurand/dotfiles.git
+  > git clone https://github.com/willdurand/dotfiles.git
 
-    $  cd dotfiles
+  > cd dotfiles
 
-    $ ./install.sh
+  > ./install.sh
 
 
 Will
