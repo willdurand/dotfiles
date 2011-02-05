@@ -1,0 +1,2 @@
+*.png diff=exif
+*.pbxproj -crlf -diff
