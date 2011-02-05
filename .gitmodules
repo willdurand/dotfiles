@@ -1,6 +1,6 @@
 [submodule "vim-config"]
-	path = vim-config
+  path = vim-config
   url = https://github.com/willdurand/vim-config.git
 [submodule "zsh-config"]
-	path = zsh-config
-	url = https://github.com/willdurand/zsh-config.git
+  path = zsh-config
+  url = https://github.com/willdurand/zsh-config.git
