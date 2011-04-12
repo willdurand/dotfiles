@@ -6,35 +6,35 @@
 set title
 
 " Global
-set hidden ruler wmnu             " Hide buffer instead of abandoning when unloading
+set hidden ruler wmnu               " Hide buffer instead of abandoning when unloading
 
-set wildmenu                      " Enhanced command line completion.
-set wildmode=list:longest         " Complete files like a shell.
-set wildignore=*/cache`/**,*/logs/**  " Ignore certain files
+set wildmenu                        " Enhanced command line completion.
+set wildmode=list:longest           " Complete files like a shell.
+set wildignore=*/cache/**,*/logs/** " Ignore certain files
 
-set showcmd                       " Display incomplete commands.
-set showmode                      " Display the mode you're in.
+set showcmd                         " Display incomplete commands.
+set showmode                        " Display the mode you're in.
 
-set number                        " Show line numbers.
-set ruler                         " Show cursor position.
-set cursorline                    " Highlight current line.
+set number                          " Show line numbers.
+set ruler                           " Show cursor position.
+set cursorline                      " Highlight current line.
 
-set incsearch                     " Highlight matches as you type.
-set hlsearch                      " Highlight matches.
+set incsearch                       " Highlight matches as you type.
+set hlsearch                        " Highlight matches.
 
-set wrap                          " Turn on line wrapping.
-set scrolloff=3                   " Show 3 lines of context around the cursor.
+set wrap                            " Turn on line wrapping.
+set scrolloff=3                     " Show 3 lines of context around the cursor.
 
-set visualbell                    " No beeping.
+set visualbell                      " No beeping.
 
 set backupdir=~/.vim/tmp/,~/.tmp,~/tmp,/var/tmp,/tmp   " Keep swap files in one location
 set directory=~/.vim/tmp/,~/.tmp,~/tmp,/var/tmp,/tmp   " Keep swap files in one location
 
-set nobackup                      " Don't make a backup before overwriting a file.
-set nowritebackup                 " And again.
-set noswapfile                    " Use an SCM instead of swap files
+set nobackup                        " Don't make a backup before overwriting a file.
+set nowritebackup                   " And again.
+set noswapfile                      " Use an SCM instead of swap files
 
-set laststatus=2                  " Show the status line all the time
+set laststatus=2                    " Show the status line all the time
 
 " Make the view port scroll faster
 nnoremap <C-e> 3<C-e>
@@ -55,9 +55,9 @@ let mapleader = ","
 " Useful status information at bottom of screen
 set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{fugitive#statusline()}%{exists('*CapsLockStatusline')?CapsLockStatusline():''}%=%-16(\ %l,%c-%v\ %)%P
 
-" Tabs and indentation. Yes, I like 2-space tabs.
-set tabstop=2
-set shiftwidth=2
+" Tabs and indentation. Yes, I like 4-space tabs (Symfony2 here we go !)
+set tabstop=4
+set shiftwidth=4
 
 nmap <leader>2 :set tabstop=2<cr>:set shiftwidth=2<cr>
 nmap <leader>4 :set tabstop=4<cr>:set shiftwidth=4<cr>
@@ -110,9 +110,9 @@ set nofoldenable
 
 " My information
 iab xdate <c-r>=strftime("%d/%m/%Y %H:%M:%S")
-iab xname William DURAND
-iab xsigp William DURAND <william.durand1@gmail.com>
-iab xsigw William DURAND <william.durand1@gmail.com>
+iab xname William DURAND<cr>
+iab xsigp William DURAND <william.durand1@gmail.com><cr>
+iab xsigw William DURAND <william.durand1@gmail.com><cr>
 
 " Markdown
 au! BufRead,BufNewFile *.markdown setfiletype mkd
@@ -120,6 +120,9 @@ au! BufRead,BufNewFile *.md setfiletype mkd
 
 " reStructuredText
 au! BufRead,BufNewFile *.rst setfiletype rst
+
+" Twig
+au BufNewFile,BufRead *.twig set filetype=twig
 
 " PHP/HTML
 let php_htmlInStrings = 1
