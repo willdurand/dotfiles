@@ -3,12 +3,12 @@ map <F2> :python debugger_command('step_into')<cr>
 map <F3> :python debugger_command('step_over')<cr>
 map <F4> :python debugger_command('step_out')<cr>
 
-map <Leader>dr :python debugger_resize()<cr>
-map <Leader>di :python debugger_command('step_into')<cr>
-map <Leader>do :python debugger_command('step_over')<cr>
-map <Leader>dt :python debugger_command('step_out')<cr>
+map <leader>dr :python debugger_resize()<cr>
+map <leader>di :python debugger_command('step_into')<cr>
+map <leader>do :python debugger_command('step_over')<cr>
+map <leader>dt :python debugger_command('step_out')<cr>
 
-nnoremap ,e :python debugger_watch_input("eval")<cr>A
+nnoremap ,e :python debugger_watch_input("eval")<cr>A<cr>
 
 map <F5> :python debugger_run()<cr>
 map <F6> :python debugger_quit()<cr>
@@ -21,3 +21,6 @@ map <F11> :python debugger_context()<cr>
 map <F12> :python debugger_property()<cr>
 map <F11> :python debugger_watch_input("context_get")<cr>A<cr>
 map <F12> :python debugger_watch_input("property_get", '<cword>')<cr>A<cr>
+
+" Open word under cursor with php.net
+nmap <buffer> <silent> <leader>doc :!elinks http://fr.php.net/<C-R><C-W>\#function.<C-R><C-W><CR>
