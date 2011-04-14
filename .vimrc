@@ -77,6 +77,7 @@ filetype indent on
 " Ctags
 set nocp
 set tags+=~/.vim/tags/symfony
+set tags+=tags
 
 "OmniCppComplete
 let OmniCpp_NamespaceSearch = 1
