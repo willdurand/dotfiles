@@ -124,10 +124,12 @@ au! BufRead,BufNewFile *.rst setfiletype rst
 
 " Twig
 au BufNewFile,BufRead *.twig set filetype=twig
+" Twig surrounding
+let g:surround_{char2nr('-')} = "{% \r %}"
 
 " PHP/HTML
 let php_htmlInStrings = 1
-let php_sql_query = 1                                                                                        
+let php_sql_query = 1
 
 " Symfony plugin
 let g:symfony_fuf = 1
@@ -151,7 +153,28 @@ match ExtraWhitespace /\s\+$/
 autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
 autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-autocmd BufWinLeave * call clearmatches()
+
+" Does not work under version 7.1.6
+if version >= 716
+    autocmd BufWinLeave * call clearmatches()
+endif
+
+" Remove trailing whitespaces and ^M chars
+autocmd FileType c,cpp,java,php,js,css,html,xml,yml,vim autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
+
+" Syntastic
+let g:syntastic_enable_signs = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_quiet_warnings=0
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+" Change statusbar color
+au InsertEnter * hi StatusLine ctermfg=16 ctermbg=214
+au InsertEnter * hi LineNr ctermfg=214 ctermbg=16
+au InsertLeave * hi StatusLine ctermfg=242 ctermbg=233
+au InsertLeave * hi LineNr ctermfg=238 ctermbg=233
 
 " Tab mappings.
 map <leader>tt :tabnew<cr>
@@ -164,8 +187,8 @@ map <leader>tf :tabfirst<cr>
 map <leader>tl :tablast<cr>
 map <leader>tm :tabmove<cr>
 
-" C++
-map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<cr>
+" ctags
+nnoremap <silent> <C-F12> :silent !ctags -h ".php" --PHP-kinds=+cf --recurse --exclude=*/cache/* --exclude=*/logs/* --exclude=*/data/* --exclude="\.git" --exclude="\.svn" --languages=PHP &<cr>
 
 " Vmail
 let g:vmail_flagged_color = "ctermfg=yellow ctermbg=black cterm=bold"
