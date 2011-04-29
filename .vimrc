@@ -59,6 +59,9 @@ set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{fugitive#statusline()}%{exists('*Cap
 set tabstop=4
 set shiftwidth=4
 
+" Sudo to write
+command W w !sudo tee % > /dev/null
+
 nmap <leader>2 :set tabstop=2<cr>:set shiftwidth=2<cr>
 nmap <leader>4 :set tabstop=4<cr>:set shiftwidth=4<cr>
 
