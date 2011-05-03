@@ -87,6 +87,9 @@ set tags=tags
 map <silent><leader><Left> <C-T>
 map <silent><leader><Right> <C-]>
 
+" Tlist
+let Tlist_Auto_Open=1
+
 "OmniCppComplete
 let OmniCpp_NamespaceSearch = 1
 let OmniCpp_GlobalScopeSearch = 1
