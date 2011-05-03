@@ -142,6 +142,9 @@ map <C-F3> :SfSwitchView<cr>
 " Snippet
 autocmd FileType php set ft=php.symfony
 
+" Symfony2
+au BufRead,BufNewFile *.php.cache set ft=php
+
 " Encoding
 set statusline+=%<%f\ %h%m%r%=%{\"[\".(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\").\"]\ \"}%k\ %-14.(%l,%c%V%)\ %P
 
