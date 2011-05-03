@@ -80,6 +80,8 @@ filetype indent on
 " Ctags
 set nocp
 set tags=tags
+map <silent><leader><Left> <C-T>
+map <silent><leader><Right> <C-]>
 
 "OmniCppComplete
 let OmniCpp_NamespaceSearch = 1

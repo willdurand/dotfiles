@@ -23,7 +23,7 @@ nmap <buffer> <F11> :python debugger_watch_input("context_get")<cr>A<cr>
 "nmap <buffer> <F12> :python debugger_watch_input("property_get", '<cword>')<cr>A<cr>
 
 " ctags
-nmap <buffer> <silent> <F12> :silent !ctags -h ".php" --PHP-kinds=+cf --recurse --exclude=*/cache/* --exclude=*/logs/* --exclude=*/data/* --exclude="\.git" --exclude="\.svn" --languages=PHP &<cr>
+nmap <buffer> <silent> <F12> :silent !exec ~/.vim/ftplugin/php_ctags.sh &> /dev/null<cr>
 set tags+=~/.vim/tags/symfony
 
 " Open word under cursor with php.net
