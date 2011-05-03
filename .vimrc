@@ -79,8 +79,7 @@ filetype indent on
 
 " Ctags
 set nocp
-set tags+=~/.vim/tags/symfony
-set tags+=tags
+set tags=tags
 
 "OmniCppComplete
 let OmniCpp_NamespaceSearch = 1
@@ -189,9 +188,6 @@ map <leader>tp :tabprevious<cr>
 map <leader>tf :tabfirst<cr>
 map <leader>tl :tablast<cr>
 map <leader>tm :tabmove<cr>
-
-" ctags
-nnoremap <silent> <C-F12> :silent !ctags -h ".php" --PHP-kinds=+cf --recurse --exclude=*/cache/* --exclude=*/logs/* --exclude=*/data/* --exclude="\.git" --exclude="\.svn" --languages=PHP &<cr>
 
 " Vmail
 let g:vmail_flagged_color = "ctermfg=yellow ctermbg=black cterm=bold"
