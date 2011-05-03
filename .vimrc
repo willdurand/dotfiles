@@ -40,6 +40,10 @@ set laststatus=2                    " Show the status line all the time
 nnoremap <C-e> 3<C-e>
 nnoremap <C-y> 3<C-y>
 
+" Resize splitted views faster
+nnoremap <C-w>< 5<C-w><
+nnoremap <C-w>> 5<C-w>>
+
 " Remap the marker char
 nnoremap ' `
 nnoremap ` '
@@ -140,10 +144,11 @@ let g:symfony_fuf = 1
 map <C-F3> :SfSwitchView<cr>
 
 " Snippet
-autocmd FileType php set ft=php.symfony
+au BufRead,BufNewFile *.class.php set ft=php.symfony
 
-" Symfony2
-au BufRead,BufNewFile *.php.cache set ft=php
+" Symfony2 (default)
+autocmd FileType php set ft=php.symfony2
+au BufRead,BufNewFile *.php.* set ft=php.symfony2
 
 " Encoding
 set statusline+=%<%f\ %h%m%r%=%{\"[\".(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\").\"]\ \"}%k\ %-14.(%l,%c%V%)\ %P
