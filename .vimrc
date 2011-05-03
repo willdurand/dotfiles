@@ -136,7 +136,7 @@ let php_sql_query = 1
 
 " Symfony plugin
 let g:symfony_fuf = 1
-map <c-F3> :SfSwitchView<cr>
+map <C-F3> :SfSwitchView<cr>
 
 " Snippet
 autocmd FileType php set ft=php.symfony
