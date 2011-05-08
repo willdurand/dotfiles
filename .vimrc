@@ -150,9 +150,9 @@ map <C-F3> :SfSwitchView<cr>
 au BufRead,BufNewFile *.class.php set ft=php.symfony
 
 " Symfony2 (default)
-autocmd FileType php set ft=php.symfony2
 au BufRead,BufNewFile *.php.* set ft=php.symfony2
 au BufRead,BufNewFile *Resources/config/*.xml set ft=xml.sf2xml
+au BufRead,BufNewFile *Controller.php set ft=php.sf2class
 
 " Encoding
 set statusline+=%<%f\ %h%m%r%=%{\"[\".(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\").\"]\ \"}%k\ %-14.(%l,%c%V%)\ %P
