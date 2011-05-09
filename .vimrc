@@ -193,7 +193,6 @@ au InsertLeave * hi StatusLine ctermfg=242 ctermbg=233
 au InsertLeave * hi LineNr ctermfg=238 ctermbg=233
 
 " Tab mappings.
-map <leader>tt :tabnew<cr>
 map <leader>te :tabedit
 map <leader>tc :tabclose<cr>
 map <leader>to :tabonly<cr>
