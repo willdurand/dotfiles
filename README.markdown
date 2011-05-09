@@ -1,5 +1,5 @@
 My VIM Config
-============================
+=============
 
 This is my VIM config for PHP/Ruby development based on @vjousse's config.
 
@@ -7,7 +7,7 @@ This is my VIM config for PHP/Ruby development based on @vjousse's config.
 * Syntax hightlighting
 * Snippets (comes from [vim-symfony-snipmate](https://github.com/themouette/vim-symfony-snipmate))
 * xdebug debugger integration
-* GIT integration
+* Git integration
 * reStructuredText syntax + preview in browser
 * Markdown syntax + preview in browser
 * Ready for symfony/Symfony2
@@ -15,8 +15,22 @@ This is my VIM config for PHP/Ruby development based on @vjousse's config.
 
 There is a shell script to symlink all files.
 
+
+Plugins
+=======
+
+This config comes with the following plugins:
+
+* Fugitive (Git)
+* Solarized
+* snipMate
+* Command-T
+* Gitv
+* Ack
+
+
 Troubleshooting
-============================
+===============
 
 You may have to install `python-markdown` :
 
