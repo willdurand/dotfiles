@@ -123,6 +123,9 @@ iab xname <C-R> William DURAND
 iab xsigp <C-R> William DURAND <william.durand1@gmail.com>
 iab xsigw <C-R> William DURAND <william.durand1@gmail.com>
 
+" snipMate
+let g:snips_author = 'William DURAND <william.durand1@gmail.com>'
+
 " Markdown
 au! BufRead,BufNewFile *.markdown setfiletype mkd
 au! BufRead,BufNewFile *.md setfiletype mkd
@@ -142,8 +145,6 @@ let php_sql_query = 1
 " Symfony plugin
 let g:symfony_fuf = 1
 map <C-F3> :SfSwitchView<cr>
-
-" Snippet
 au BufRead,BufNewFile *.class.php set ft=php.symfony
 
 " Symfony2 (default)
