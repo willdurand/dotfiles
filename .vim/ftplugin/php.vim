@@ -23,5 +23,5 @@ nmap <buffer> <silent> <F7> :call GenerateCtags()<cr>
 " Open word under cursor with php.net
 nmap <buffer> <silent> <leader>doc :!elinks http://fr.php.net/<C-R><C-W>\#function.<C-R><C-W><CR>
 
-" Insert current namespace and opens php and create empty class
-nmap <buffer> <leader>pc ggO<?php<CR><CR><ESC>"%PdF/r;:s#/#\\#<CR>Inamespace  <ESC>d/[A-Z]<CR>Goclass <C-R>=expand("%:t:r")<CR><CR>{<CR>
+" Insert current namespace (based on ornicar work: http://github.com/ornicar)
+nmap <buffer> <leader>cns "%PdF/r;:s#/#\\#g<CR>Inamespace  <ESC>d/[A-Z]<CR>
