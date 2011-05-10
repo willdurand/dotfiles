@@ -75,11 +75,25 @@ set shiftround    " use multiple of shiftwidth when indenting with '<' and '>'
 set showmatch     " set show matching parenthesis
 set autoindent
 
+" make plugins smoother
+set lazyredraw
+
+" Clear search highlight
+map <silent> <leader>/ :let @/=""<CR>:echo "Cleared search register."<cr>
+
 syntax on
 
 filetype on
 filetype plugin on
 filetype indent on
+
+" Solarized
+let g:solarized_termcolors=16
+let g:solarized_termtrans=0
+let g:solarized_menu=0
+let g:solarized_italic=0
+set background=dark
+colorscheme solarized
 
 " Ctags
 set nocp
