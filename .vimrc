@@ -63,6 +63,9 @@ set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{fugitive#statusline()}%{exists('*Cap
 set tabstop=4
 set shiftwidth=4
 
+" Avoid paste problem
+set paste
+
 " Sudo to write
 command W w !sudo tee % > /dev/null
 
@@ -88,10 +91,6 @@ filetype plugin on
 filetype indent on
 
 " Solarized
-let g:solarized_termcolors=16
-let g:solarized_termtrans=0
-let g:solarized_menu=0
-let g:solarized_italic=0
 set background=dark
 colorscheme solarized
 
@@ -196,12 +195,6 @@ let g:syntastic_quiet_warnings=0
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-
-" Change statusbar color
-au InsertEnter * hi StatusLine ctermfg=16 ctermbg=214
-au InsertEnter * hi LineNr ctermfg=214 ctermbg=16
-au InsertLeave * hi StatusLine ctermfg=242 ctermbg=233
-au InsertLeave * hi LineNr ctermfg=238 ctermbg=233
 
 " Tab mappings.
 map <leader>te :tabedit
