@@ -5,4 +5,17 @@ snippet action
 	public function ${2:$1}Action(${3:params})
 	{${4}
 	}
+snippet cl
+	<?php
 
+	namespace ${1:ns};
+
+	/**
+	 * ${2:`Filename()`} class
+	 *${3}
+	 * @author `g:snips_author`
+	 */
+	 class ${4:$2}
+	 {
+		${5}
+	 }
