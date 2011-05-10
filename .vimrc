@@ -87,9 +87,6 @@ set tags=tags
 map <silent><leader><Left> <C-T>
 map <silent><leader><Right> <C-]>
 
-" Tlist
-let Tlist_Auto_Open=1
-
 "OmniCppComplete
 let OmniCpp_NamespaceSearch = 1
 let OmniCpp_GlobalScopeSearch = 1
@@ -152,7 +149,7 @@ au BufRead,BufNewFile *.class.php set ft=php.symfony
 " Symfony2 (default)
 au BufRead,BufNewFile *.php.* set ft=php.symfony2
 au BufRead,BufNewFile *Resources/config/*.xml set ft=xml.sf2xml
-au BufRead,BufNewFile *Controller.php set ft=php.sf2class
+au BufRead,BufNewFile *Bundle/*.php set ft=php.sf2class
 
 " Encoding
 set statusline+=%<%f\ %h%m%r%=%{\"[\".(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\").\"]\ \"}%k\ %-14.(%l,%c%V%)\ %P
@@ -201,6 +198,7 @@ map <leader>tp :tabprevious<cr>
 map <leader>tf :tabfirst<cr>
 map <leader>tl :tablast<cr>
 map <leader>tm :tabmove<cr>
+map <leader>tr :tabrewind<cr>
 
 " Vmail
 let g:vmail_flagged_color = "ctermfg=yellow ctermbg=black cterm=bold"
