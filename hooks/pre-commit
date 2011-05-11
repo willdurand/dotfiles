@@ -24,7 +24,7 @@ for f in $files ; do
         fi
 
         # Check JavaScript, abort commit if syntax error
-        if builtin type -p "$JS_LINTER" &> /dev/null && [[ "$f" =~ .+\.js ]] ; then
+        if builtin type -p "$JS_LINTER" &> /dev/null && [[ "$f" =~ .+\.js$ ]] ; then
             $JS_LINTER --strict "$f" > /dev/null || error '[pre-commit] JavaScript syntax error detected, abort !'
         fi
 
