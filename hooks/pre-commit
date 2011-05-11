@@ -17,6 +17,3 @@ for f in $files ; do
     # Re-add the file to the git index
     git add $f
 done
-
-# Fix directories permissions
-find . -type d -exec chmod 755 {} \;
