@@ -1,13 +1,33 @@
 #!/bin/bash
+# pre-commit script
 # William DURAND <william.durand1@gmail.com>
+
+# Configuration
+JS_LINTER=gjslint
+
+# Error function
+function error() {
+    echo $1
+    exit 1
+}
 
 # Get the files that will be committed
 files=`git diff --cached --name-status | awk '$1 != "R" { print $2 }'`
 
-echo '[pre-commit] Fixing permissions and cleaning the code.'
+echo '[pre-commit] Check the syntax, fix permissions and clean files.'
 
 for f in $files ; do
     if [ -f $f ] ; then
+        # Check PHP, abort commit if syntax error
+        if [[ "$f" =~ .+\.php$ ]] ; then
+            php -l "$f" > /dev/null || error '[pre-commit] PHP syntax error detected, abort !'
+        fi
+
+        # Check JavaScript, abort commit if syntax error
+        if builtin type -p "$JS_LINTER" &> /dev/null && [[ "$f" =~ .+\.js ]] ; then
+            $JS_LINTER --strict "$f" > /dev/null || error '[pre-commit] JavaScript syntax error detected, abort !'
+        fi
+
         # Fix permissions
         chmod 644 $f
         # Remove trailing whitespaces
