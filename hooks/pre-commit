@@ -33,7 +33,7 @@ for f in $files ; do
 
         # Check JavaScript, abort commit if syntax error
         if builtin type -p "$JS_LINTER" &> /dev/null && [[ "$f" =~ .+\.js$ ]] ; then
-            $JS_LINTER --strict "$f" > /dev/null || error "JavaScript syntax error detected in '$f', abort !"
+            $JS_LINTER --strict "$f" | grep --color=never -e '^[Line|Found]' && error "JavaScript syntax error detected in '$f', abort !"
         fi
 
         # Fix permissions
