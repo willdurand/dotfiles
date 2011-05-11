@@ -10,8 +10,6 @@ nmap <buffer> <F6> :python debugger_quit()<cr>
 
 nmap <buffer> <F11> :python debugger_context()<cr>
 nmap <buffer> <F12> :python debugger_property()<cr>
-nmap <buffer> <F11> :python debugger_watch_input("context_get")<cr>A<cr>
-nmap <buffer> <F12> :python debugger_watch_input("property_get", '<cword>')<cr>A<cr>
 
 " ctags
 func! GenerateCtags()

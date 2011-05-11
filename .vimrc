@@ -63,6 +63,9 @@ set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{fugitive#statusline()}%{exists('*Cap
 set tabstop=4
 set shiftwidth=4
 
+" Avoid paste problem
+set paste
+
 " Sudo to write
 command W w !sudo tee % > /dev/null
 
@@ -75,11 +78,21 @@ set shiftround    " use multiple of shiftwidth when indenting with '<' and '>'
 set showmatch     " set show matching parenthesis
 set autoindent
 
+" make plugins smoother
+set lazyredraw
+
+" Clear search highlight
+map <silent> <leader>/ :let @/=""<CR>:echo "Cleared search register."<cr>
+
 syntax on
 
 filetype on
 filetype plugin on
 filetype indent on
+
+" Solarized
+set background=dark
+colorscheme solarized
 
 " Ctags
 set nocp
@@ -150,7 +163,7 @@ au BufRead,BufNewFile *.class.php set ft=php.symfony
 " Symfony2 (default)
 au BufRead,BufNewFile *.php.* set ft=php.symfony2
 au BufRead,BufNewFile *Resources/config/*.xml set ft=xml.sf2xml
-au BufRead,BufNewFile *Controller.php set ft=php.sf2class
+au BufRead,BufNewFile *Bundle/*.php set ft=php.sf2class
 
 " Encoding
 set statusline+=%<%f\ %h%m%r%=%{\"[\".(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\").\"]\ \"}%k\ %-14.(%l,%c%V%)\ %P
@@ -184,12 +197,6 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
-" Change statusbar color
-au InsertEnter * hi StatusLine ctermfg=16 ctermbg=214
-au InsertEnter * hi LineNr ctermfg=214 ctermbg=16
-au InsertLeave * hi StatusLine ctermfg=242 ctermbg=233
-au InsertLeave * hi LineNr ctermfg=238 ctermbg=233
-
 " Tab mappings.
 map <leader>te :tabedit
 map <leader>tc :tabclose<cr>
@@ -199,6 +206,7 @@ map <leader>tp :tabprevious<cr>
 map <leader>tf :tabfirst<cr>
 map <leader>tl :tablast<cr>
 map <leader>tm :tabmove<cr>
+map <leader>tr :tabrewind<cr>
 
 " Vmail
 let g:vmail_flagged_color = "ctermfg=yellow ctermbg=black cterm=bold"
