@@ -23,3 +23,6 @@ nmap <buffer> <silent> <leader>doc :!elinks http://fr.php.net/<C-R><C-W>\#functi
 
 " Insert current namespace (based on ornicar work: http://github.com/ornicar)
 nmap <buffer> <leader>cns "%PdF/r;:s#/#\\#g<CR>Inamespace  <ESC>d/[A-Z]<CR><ESC>:let @/=""<CR>
+
+" PHP linter
+nmap <buffer> <C-L> :!/usr/bin/php -l %<CR>
