@@ -12,7 +12,7 @@ function error() {
 }
 
 # Get the files that will be committed
-files=`git diff --cached --name-status | awk '$1 != "R" { print $2 }'`
+files=`git diff --cached --name-only --diff-filter=ACM`
 
 echo '[pre-commit] Check the syntax, fix permissions and clean files.'
 
