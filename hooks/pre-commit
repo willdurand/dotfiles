@@ -3,39 +3,49 @@
 # William DURAND <william.durand1@gmail.com>
 
 # Configuration
+PHP=php
 JS_LINTER=gjslint
 
-# Error function
+# Exit the script if any statement returns a non-true return value
+set -e
+
+# Functions
+function msg() {
+    echo "[pre-commit] $1"
+}
 function error() {
-    echo $1
+    echo -e "[pre-commit] \\033[1;31m$1"
+    tput sgr0
     exit 1
 }
 
 # Get the files that will be committed
 files=`git diff --cached --name-only --diff-filter=ACM`
 
-echo '[pre-commit] Check the syntax, fix permissions and clean files.'
+msg 'Check the syntax, fix permissions and clean files.'
 
 for f in $files ; do
-    if [ -f $f ] ; then
+    if [ -f "$f" ] ; then
         # Check PHP, abort commit if syntax error
-        if [[ "$f" =~ .+\.php$ ]] ; then
-            php -l "$f" > /dev/null || error '[pre-commit] PHP syntax error detected, abort !'
+        if builtin type -p $PHP &> /dev/null && [[ "$f" =~ .+\.php$ ]] ; then
+            $PHP -l "$f" > /dev/null || error "PHP syntax error detected in '$f', abort !"
         fi
 
         # Check JavaScript, abort commit if syntax error
         if builtin type -p "$JS_LINTER" &> /dev/null && [[ "$f" =~ .+\.js$ ]] ; then
-            $JS_LINTER --strict "$f" > /dev/null || error '[pre-commit] JavaScript syntax error detected, abort !'
+            $JS_LINTER --strict "$f" > /dev/null || error "JavaScript syntax error detected in '$f', abort !"
         fi
 
         # Fix permissions
-        chmod 644 $f
+        chmod 644 "$f"
         # Remove trailing whitespaces
         sed -i 's/[[:space:]]*$//' "$f"
         # Remove ^M
         sed -i -e '//d' "$f"
 
         # Re-add the file to the git index
-        git add $f
+        git add "$f"
     fi
 done
+
+msg 'Success.'
