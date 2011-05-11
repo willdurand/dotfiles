@@ -1,0 +1,22 @@
+#!/bin/bash
+# William DURAND <william.durand1@gmail.com>
+
+# Get the files that will be committed
+files=`git diff --cached --name-status | awk '$1 != "R" { print $2 }'`
+
+echo '[pre-commit] Fixing permissions and cleaning the code.'
+
+for f in $files ; do
+    # Fix permissions
+    chmod 644 $f
+    # Remove trailing whitespaces
+    sed -i 's/[[:space:]]*$//' "$f"
+    # Remove ^M
+    sed -i -e '//d' "$f"
+
+    # Re-add the file to the git index
+    git add $f
+done
+
+# Fix directories permissions
+find . -type d -exec chmod 755 {} \;
