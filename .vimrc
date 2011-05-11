@@ -63,9 +63,6 @@ set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{fugitive#statusline()}%{exists('*Cap
 set tabstop=4
 set shiftwidth=4
 
-" Avoid paste problem
-set paste
-
 " Sudo to write
 command W w !sudo tee % > /dev/null
 
