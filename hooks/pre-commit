@@ -38,10 +38,14 @@ for f in $files ; do
 
         # Fix permissions
         chmod 644 "$f"
-        # Remove trailing whitespaces
-        sed -i 's/[[:space:]]*$//' "$f"
-        # Remove ^M
-        sed -i -e '//d' "$f"
+
+        # Don't clean images, it could break them
+        if [[ ! "$f" =~ .+\.(ico|png|gif|jpg|jpeg)$ ]] ; then
+            # Remove trailing whitespaces
+            sed -i 's/[[:space:]]*$//' "$f"
+            # Remove ^M
+            sed -i -e '//d' "$f"
+        fi
 
         # Re-add the file to the git index
         git add "$f"
