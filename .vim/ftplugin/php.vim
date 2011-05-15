@@ -1,15 +1,19 @@
-nmap <buffer> <F1> :python debugger_resize()<cr>
-nmap <buffer> <F2> :python debugger_command('step_into')<cr>
-nmap <buffer> <F3> :python debugger_command('step_over')<cr>
-nmap <buffer> <F4> :python debugger_command('step_out')<cr>
+func! DebugMode()
+    nmap <buffer> <F1> :python debugger_resize()<cr>
+    nmap <buffer> <F2> :python debugger_command('step_into')<cr>
+    nmap <buffer> <F3> :python debugger_command('step_over')<cr>
+    nmap <buffer> <F4> :python debugger_command('step_out')<cr>
 
-nmap <buffer> <leader>e :python debugger_watch_input("eval")<cr>A<cr>
+    nmap <buffer> <leader>e :python debugger_watch_input("eval")<cr>A<cr>
 
-nmap <buffer> <F5> :python debugger_run()<cr>
-nmap <buffer> <F6> :python debugger_quit()<cr>
+    nmap <buffer> <F5> :python debugger_run()<cr>
+    nmap <buffer> <F6> :python debugger_quit()<cr>
 
-nmap <buffer> <F11> :python debugger_context()<cr>
-nmap <buffer> <F12> :python debugger_property()<cr>
+    nmap <buffer> <F11> :python debugger_context()<cr>
+    nmap <buffer> <F12> :python debugger_property()<cr>
+endfunc
+
+nmap <buffer> <silent> <F9> :call DebugMode()<cr>
 
 " ctags
 func! GenerateCtags()
