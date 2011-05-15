@@ -18,7 +18,7 @@ fi
 
 ln -s $CURRENT/gitattributes ~/.gitattributes
 
-git submodule init && git submodule update
+git submodule update --init
 
 cd $CURRENT/vim-config
 ./install.sh
