@@ -10,7 +10,7 @@ set hidden ruler wmnu               " Hide buffer instead of abandoning when unl
 
 set wildmenu                        " Enhanced command line completion.
 set wildmode=list:longest           " Complete files like a shell.
-set wildignore=*/cache/**,*/logs/** " Ignore certain files
+set wildignore=.svn,CVS,.git,.hg,*.o,*.a,*.class,*.mo,*.la,*.so,*.obj,*.swp,*.jpg,*.png,*.xpm,*.gif,*.pyc,*.pyo,*/cache/**,*/logs/**,*/zend/**,*/bootstrap.* " Ignore certain files
 
 set showcmd                         " Display incomplete commands.
 set showmode                        " Display the mode you're in.
@@ -26,9 +26,7 @@ set wrap                            " Turn on line wrapping.
 set scrolloff=3                     " Show 3 lines of context around the cursor.
 
 set visualbell                      " No beeping.
-
-set backupdir=~/.vim/tmp/,~/.tmp,~/tmp,/var/tmp,/tmp   " Keep swap files in one location
-set directory=~/.vim/tmp/,~/.tmp,~/tmp,/var/tmp,/tmp   " Keep swap files in one location
+set shortmess+=filmnrxoOtT          " abbrev. of messages (avoids 'hit enter')
 
 set nobackup                        " Don't make a backup before overwriting a file.
 set nowritebackup                   " And again.
@@ -45,6 +43,7 @@ set showmatch                       " set show matching parenthesis
 set autoindent
 
 set undolevels=1000                 " use many levels of undo
+set noundofile                      " Don't keep a persistent undofile
 
 " http://vim.wikia.com/wiki/Toggle_auto-indenting_for_code_paste
 " F2 = toggle paste mode
@@ -70,20 +69,37 @@ set history=1000
 " Redifinition of map leader
 let mapleader = ","
 
+" make plugins smoother
+set lazyredraw
+
+" Always replace all occurences of a line
+set gdefault
+
 " Useful status information at bottom of screen
-set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{fugitive#statusline()}%{exists('*CapsLockStatusline')?CapsLockStatusline():''}%=%-16(\ %l,%c-%v\ %)%P
+set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\(%{getcwd()})%{fugitive#statusline()}%=%-16(\ %l,%c-%v\ %)%P
 
 " Tabs and indentation. Yes, I like 4-space tabs (Symfony2 here we go !)
 set tabstop=4
 set shiftwidth=4
+set softtabstop=4
+
 nmap <leader>2 :set tabstop=2<cr>:set shiftwidth=2<cr>
 nmap <leader>4 :set tabstop=4<cr>:set shiftwidth=4<cr>
 
 " Sudo to write
 command W w !sudo tee % > /dev/null
 
-" make plugins smoother
-set lazyredraw
+" Pull word under cursor into LHS of a substitute (for quick search and replace)
+nmap <leader>zs :%s/<C-r>=expand("<cword>")<CR>/
+
+" Pull word under cursor into Ack for a global search
+map <leader>za :Ack "<C-r>=expand("<cword>")<CR>"
+
+" Start a substitute
+map <leader>s :%s/
+
+" Ack
+nmap <leader>a :Ack<space>
 
 " Clear search highlight
 map <silent> <leader>/ :let @/=""<CR>:echo "Cleared search register."<cr>
