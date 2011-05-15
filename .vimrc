@@ -36,6 +36,22 @@ set noswapfile                      " Use an SCM instead of swap files
 
 set laststatus=2                    " Show the status line all the time
 
+set backspace=indent,eol,start      " http://vim.wikia.com/wiki/Backspace_and_delete_problems
+
+set expandtab
+set copyindent                      " copy the previous indentation on autoindenting
+set shiftround                      " use multiple of shiftwidth when indenting with '<' and '>'
+set showmatch                       " set show matching parenthesis
+set autoindent
+
+set undolevels=1000                 " use many levels of undo
+
+" http://vim.wikia.com/wiki/Toggle_auto-indenting_for_code_paste
+" F2 = toggle paste mode
+nnoremap <F2> :set invpaste paste?<Enter>
+imap <F2> <C-O><F2>
+set pastetoggle=<F2>
+
 " Make the view port scroll faster
 nnoremap <C-e> 3<C-e>
 nnoremap <C-y> 3<C-y>
@@ -51,8 +67,6 @@ nnoremap ` '
 " Command and search pattern history
 set history=1000
 
-set undolevels=1000             " use many levels of undo
-
 " Redifinition of map leader
 let mapleader = ","
 
@@ -62,18 +76,11 @@ set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\ %{fugitive#statusline()}%{exists('*Cap
 " Tabs and indentation. Yes, I like 4-space tabs (Symfony2 here we go !)
 set tabstop=4
 set shiftwidth=4
-
-" Sudo to write
-command W w !sudo tee % > /dev/null
-
 nmap <leader>2 :set tabstop=2<cr>:set shiftwidth=2<cr>
 nmap <leader>4 :set tabstop=4<cr>:set shiftwidth=4<cr>
 
-set expandtab
-set copyindent    " copy the previous indentation on autoindenting
-set shiftround    " use multiple of shiftwidth when indenting with '<' and '>'
-set showmatch     " set show matching parenthesis
-set autoindent
+" Sudo to write
+command W w !sudo tee % > /dev/null
 
 " make plugins smoother
 set lazyredraw
