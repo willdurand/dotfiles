@@ -5,15 +5,16 @@ Including :
 
   * My vim config
   * My zsh config
-  * My git config
+  * My Git config
 
-This set of files comes with an installer:
+Installation
+------------
 
-  > git clone https://github.com/willdurand/dotfiles.git
+    git clone https://github.com/willdurand/dotfiles.git
+    
+    cd dotfiles
+    
+    ./install.sh
 
-  > cd dotfiles
 
-  > ./install.sh
-
-
-Will
+Will.
