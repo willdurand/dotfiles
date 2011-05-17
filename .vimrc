@@ -43,7 +43,10 @@ set showmatch                       " set show matching parenthesis
 set autoindent
 
 set undolevels=1000                 " use many levels of undo
-set noundofile                      " Don't keep a persistent undofile
+
+if version >= 730
+    set noundofile                  " Don't keep a persistent undofile
+endif
 
 " http://vim.wikia.com/wiki/Toggle_auto-indenting_for_code_paste
 " F2 = toggle paste mode
@@ -76,12 +79,12 @@ set lazyredraw
 set gdefault
 
 " Useful status information at bottom of screen
-set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\(%{getcwd()})%{fugitive#statusline()}%=%-16(\ %l,%c-%v\ %)%P
+" set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\(%{getcwd()})%{fugitive#statusline()}%=%-16(\ %l,%c-%v\ %)%P
+set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\(%{fugitive#statusline()}%=%-16(\ %l,%c-%v\ %)%P
 
 " Tabs and indentation. Yes, I like 4-space tabs (Symfony2 here we go !)
 set tabstop=4
 set shiftwidth=4
-set softtabstop=4
 
 nmap <leader>2 :set tabstop=2<cr>:set shiftwidth=2<cr>
 nmap <leader>4 :set tabstop=4<cr>:set shiftwidth=4<cr>
@@ -141,13 +144,7 @@ set completeopt=menuone,menu,longest,preview
 " Allow extended digraphs
 set encoding=utf-8
 
-" Enable folding by indentation
-" Use: zc, zo, zC, zO, zR, zM
-set foldmethod=indent
-highlight Folded ctermfg=red
-highlight FoldColumn ctermfg=white
-set fillchars=fold:⋯
-map zz zjzo
+" Disable folding
 set nofoldenable
 
 " My information
@@ -220,7 +217,6 @@ set statusline+=%*
 " Tab mappings.
 map <leader>te :tabedit
 map <leader>tc :tabclose<cr>
-map <leader>to :tabonly<cr>
 map <leader>tn :tabnext<cr>
 map <leader>tp :tabprevious<cr>
 map <leader>tf :tabfirst<cr>

@@ -1,2 +1,2 @@
 " JavaScript linter
-nmap <buffer> <C-L> :!/usr/local/bin/gjslint --strict %<CR>
+nmap <buffer> <C-L> :!/usr/bin/gjslint --strict %<CR>
