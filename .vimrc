@@ -80,7 +80,8 @@ set gdefault
 
 " Useful status information at bottom of screen
 " set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\(%{getcwd()})%{fugitive#statusline()}%=%-16(\ %l,%c-%v\ %)%P
-set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\(%{fugitive#statusline()}%=%-16(\ %l,%c-%v\ %)%P
+set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\%{fugitive#statusline()}
+set statusline+=%{\"[\".(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\").\"]\ \"}%=%-16(\ %l,%c-%v\ %)%P
 
 " Tabs and indentation. Yes, I like 4-space tabs (Symfony2 here we go !)
 set tabstop=4
@@ -122,6 +123,7 @@ set nocp
 set tags=tags
 map <silent><leader><Left> <C-T>
 map <silent><leader><Right> <C-]>
+map <silent><leader><Up> <C-W>]
 
 "OmniCppComplete
 let OmniCpp_NamespaceSearch = 1
@@ -181,9 +183,6 @@ au BufRead,BufNewFile *.class.php set ft=php.symfony
 au BufRead,BufNewFile *.php.* set ft=php.symfony2
 au BufRead,BufNewFile *Resources/config/*.xml set ft=xml.sf2xml
 au BufRead,BufNewFile *Bundle/*.php set ft=php.sf2class
-
-" Encoding
-set statusline+=%<%f\ %h%m%r%=%{\"[\".(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\").\"]\ \"}%k\ %-14.(%l,%c%V%)\ %P
 
 " caractères invisibles
 set listchars=nbsp:¤,tab:>-,trail:¤,extends:>,precedes:<,eol:¶,trail:·
