@@ -184,8 +184,9 @@ au BufRead,BufNewFile *.php.* set ft=php.symfony2
 au BufRead,BufNewFile *Resources/config/*.xml set ft=xml.sf2xml
 au BufRead,BufNewFile *Bundle/*.php set ft=php.sf2class
 
-" caractères invisibles
-set listchars=nbsp:¤,tab:>-,trail:¤,extends:>,precedes:<,eol:¶,trail:·
+"Invisible character
+nmap <leader>l :set list!<CR>
+set listchars=nbsp:¤,tab:>-,trail:¤,extends:>,precedes:<,eol:¬,trail:·
 
 "jquery color
 au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
