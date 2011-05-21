@@ -159,11 +159,11 @@ iab xsigw <C-R> William DURAND <william.durand1@gmail.com>
 let g:snips_author = 'William DURAND <william.durand1@gmail.com>'
 
 " Markdown
-au! BufRead,BufNewFile *.markdown setfiletype mkd
-au! BufRead,BufNewFile *.md setfiletype mkd
+au! BufRead,BufNewFile *.markdown,*.md set filetype=mkd
+au! BufRead,BufNewFile *.md set filetype=mkd
 
 " reStructuredText
-au! BufRead,BufNewFile *.rst setfiletype rst
+au! BufRead,BufNewFile *.rst set filetype=rst
 
 " Twig
 au BufNewFile,BufRead *.twig set filetype=twig
