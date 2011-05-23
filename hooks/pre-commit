@@ -5,6 +5,8 @@
 # Configuration
 PHP=php
 JS_LINTER=gjslint
+JS_LINTER_ARGS="--strict --custom_jsdoc_tags 'api,memberOf'"
+DISABLE_JS_LINTER=$(git config hooks.disablejslint)
 
 # Exit the script if any statement returns a non-true return value
 set -e
@@ -32,8 +34,8 @@ for f in $files ; do
         fi
 
         # Check JavaScript, abort commit if syntax error
-        if builtin type -p "$JS_LINTER" &> /dev/null && [[ "$f" =~ .+\.js$ ]] ; then
-            $JS_LINTER --strict "$f" | grep --color=never -e '^[Line|Found]' && error "JavaScript syntax error detected in '$f', abort !"
+        if [ !$DISABLE_JS_LINTER ] &&  builtin type -p "$JS_LINTER" &> /dev/null && [[ "$f" =~ .+\.js$ ]] ; then
+            $JS_LINTER $JS_LINTER_ARGS "$f" | grep --color=never -e '^[Line|Found]' && error "JavaScript syntax error detected in '$f', abort !"
         fi
 
         # Fix permissions
