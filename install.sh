@@ -2,7 +2,12 @@
 
 CURRENT=`pwd`
 
-ln -s $CURRENT/scripts ~/.scripts
-ln -s $CURRENT/zshrc ~/.zshrc
+git submodule init && git submodule update
+
+ln -s $CURRENT/.oh-my-zsh ~/.oh-my-zsh
+ln -s $CURRENT/.scripts ~/.scripts
+ln -s $CURRENT/.zshrc ~/.zshrc
+
+wget --no-check-certificate https://github.com/ornicar/dotfiles/raw/master/zsh/theme.zsh -O ~/.oh-my-zsh/themes/ornicar.zsh-theme
 
 echo "Installed !"
