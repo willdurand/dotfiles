@@ -17,7 +17,7 @@ nmap <buffer> <silent> <F9> :call DebugMode()<cr>
 
 " ctags
 func! GenerateCtags()
-    exec "!ctags -h \".php\" -R --PHP-kinds=+cf --recurse --exclude=\"*/cache/*\" --exclude=\"*/logs/*\" --exclude=\"*/data/*\" --exclude=\"\.git\" --exclude=\.svn --totals=yes --languages=PHP --regex-PHP=\"/abstract class ([^ ]*)/\1/c/\" --regex-PHP=\"/interface ([^ ]*)/\1/c/\" --regex-PHP=\"/(public |static |abstract |protected |private )+function ([^ (]*)/\2/f/\" &"
+    exec "!ctags -h \".php\" -R --PHP-kinds=+cf --recurse --exclude=\"*/cache/*\" --exclude=\"*/logs/*\" --exclude=\"*/data/*\" --exclude=\"\.git\" --exclude=\.svn --totals=yes --languages=PHP  --regex-PHP=\"/interface ([^ ]*)/\1/c/\" --regex-PHP=\"/(public |static |abstract |protected |private )+function ([^ (]*)/\2/f/\" &"
 endfunc
 
 nmap <buffer> <silent> <F7> :call GenerateCtags()<cr>
@@ -26,7 +26,18 @@ nmap <buffer> <silent> <F7> :call GenerateCtags()<cr>
 nmap <buffer> <silent> <leader>doc :!elinks http://fr.php.net/<C-R><C-W>\#function.<C-R><C-W><CR>
 
 " Insert current namespace (based on ornicar work: http://github.com/ornicar)
-nmap <buffer> <leader>cns "%PdF/r;:s#/#\\#g<CR>Inamespace  <ESC>d/[A-Z]<CR><ESC>:let @/=""<CR>
+nmap <buffer> <leader>cns "%PdF/r;:s#/#\\#<CR>Inamespace  <ESC>d/[A-Z]<CR><ESC>:let @/=""<CR>
 
 " PHP linter
 nmap <buffer> <C-L> :!/usr/bin/php -l %<CR>
+
+let g:pdv_cfg_Author = "William DURAND <william.durand1@gmail.com>"
+let g:pdv_cfg_License = "MIT {@link http://opensource.org/licenses/mit-license.html}"
+let g:pdv_cfg_php4always = 0 " Ignore PHP4 tags
+" Wether to create @uses tags for implementation of interfaces and inheritance
+let g:pdv_cfg_Uses = 0
+" Wether for PHP5 code PHP4 tags should be set, like @access,... (1|0)?
+let g:pdv_cfg_php4always = 0
+" Wether to guess scopes after PEAR coding standards:
+" $_foo/_bar() == <private|protected> (1|0)?
+let g:pdv_cfg_php4guess = 0
