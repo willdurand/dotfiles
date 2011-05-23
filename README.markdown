@@ -11,6 +11,7 @@ This is my VIM config for PHP/Ruby development based on @vjousse's config.
 * reStructuredText syntax + preview in browser
 * Markdown syntax + preview in browser
 * Ready for symfony/Symfony2
+* JavaScript ready
 * etc
 
 There is a shell script to symlink all files.
@@ -27,6 +28,8 @@ This config comes with the following plugins:
 * Command-T
 * Gitv
 * Ack
+* surround
+* taglist-plus
 * ...
 
 
@@ -64,6 +67,7 @@ Important: The map **leader** is `,`.
 * `,doc`    on a PHP function will open the [php.net](http://fr.php.net) doc.
 * `F7`      will generate a _tags_ file using **ctags**.
 * `,cns`    will insert the **c**urent **n**ame**s**pace based on the filename.
+* `<ctrl>L` will run the PHP linter to detect syntax errors.
 
 See also the **Xdebug** section above.
 
@@ -93,6 +97,9 @@ This mapping only works with the _php_ filetype.
 
 * `C-F3`    will switch from the action to the view and from the view to the action.
 
+### JavaScript
+
+* `<ctrl>l` will run `gjslint` (if available) to detect JS errors.
 
 Snippets
 ========
