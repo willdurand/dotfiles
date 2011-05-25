@@ -17,13 +17,13 @@ nmap <buffer> <silent> <F9> :call DebugMode()<cr>
 
 " ctags
 func! GenerateCtags()
-    exec "!ctags -h \".php\" -R --PHP-kinds=+cf --recurse --exclude=\"*/cache/*\" --exclude=\"*/logs/*\" --exclude=\"*/data/*\" --exclude=\"\.git\" --exclude=\.svn --totals=yes --languages=PHP  --regex-PHP=\"/interface ([^ ]*)/\1/c/\" --regex-PHP=\"/(public |static |abstract |protected |private )+function ([^ (]*)/\2/f/\" &"
+    exec "!ctags -h \".php\" --extra=+q --fields=+afiKmnSt --PHP-kinds=cifvj --recurse=yes --exclude=\"*/cache/*\" --exclude=\"*/logs/*\" --exclude=\"*/data/*\" --exclude=\"\.git\" --exclude=\.svn --totals=yes --languages=PHP --regex-PHP=\"/interface ([^ ]*)/\1/c/\" --regex-PHP=\"/(public |static |abstract |protected |private )+function ([^ (]*)/\2/f/\" &"
 endfunc
 
 nmap <buffer> <silent> <F7> :call GenerateCtags()<cr>
 
 " Open word under cursor with php.net
-nmap <buffer> <silent> <leader>doc :!elinks http://fr.php.net/<C-R><C-W>\#function.<C-R><C-W><CR>
+nmap <buffer> <silent> <leader>doc :!elinks http://fr.php.net/<C-R><C-W>\#function.<C-R>=substitute('<C-R><C-W>', '_', '-', 'g')<CR><CR>
 
 " Insert current namespace (based on ornicar work: http://github.com/ornicar)
 nmap <buffer> <leader>cns "%PdF/r;:s#/#\\#<CR>Inamespace  <ESC>d/[A-Z]<CR><ESC>:let @/=""<CR>
