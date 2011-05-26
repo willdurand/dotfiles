@@ -33,6 +33,13 @@ for f in $files ; do
             $PHP -l "$f" > /dev/null || error "PHP syntax error detected in '$f', abort !"
         fi
 
+        # Check PHP code
+        if [[ "$f" =~ .+\.php$ ]] ; then
+            if [ `egrep -i "die\(|var_dump\(|print_r\(" $f | wc -l` -gt 0 ] ; then
+                error "PHP possibility error detected in '$f', abort !"
+            fi
+        fi
+
         # Check JavaScript, abort commit if syntax error
         if [ !$DISABLE_JS_LINTER ] &&  builtin type -p "$JS_LINTER" &> /dev/null && [[ "$f" =~ .+\.js$ ]] ; then
             $JS_LINTER $JS_LINTER_ARGS "$f" | grep --color=never -e '^[Line|Found]' && error "JavaScript syntax error detected in '$f', abort !"
