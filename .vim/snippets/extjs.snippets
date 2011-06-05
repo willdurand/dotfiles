@@ -1,0 +1,163 @@
+snippet apply
+	Ext.apply(${1:config}, {
+		${2:// code...}
+	});
+
+snippet aifc
+	config = config || {};
+
+	Ext.applyIf(config, {
+		${2:// code...}
+	});
+
+snippet aif
+	Ext.applyIf(${1:config}, {
+		${2:// code...}
+	});
+
+snippet each
+	Ext.each(${1:Array}, ${2:function(${3}) {
+		${5}
+	}${4:, this});
+
+snippet extend
+	(function() {
+	/**
+	* ${1:MyNamespace}.${2:MyClass}
+	* @extends ${3:extendsClass}
+	* ${4:description}
+	*/
+	$1.$2 = Ext.extend($3, {
+
+		initComponent: function() {
+			Ext.apply(this, {
+				${6:// code...}
+			});
+
+			$1.$2.superclass.initComponent.apply(this, arguments);
+		}
+	});
+
+	Ext.reg('${5:xtype}', $1.$2);
+	})();
+
+snippet button
+	new Ext.Button({
+		ui: '${1:round}',
+		text: '${2:Button}',
+		handler: function (button, event) {
+			${3:// code...}
+		}
+	});
+
+snippet carousel
+	new Ext.Carousel({
+		direction: '${1:horizontal}',
+		ui: '${2:dark}',
+		indicator: '${3:true}',
+		defaults: {
+			cls: 'card'
+		},
+		items: [
+			${4:// items...}
+		]
+	});
+
+snippet datepicker
+	new Ext.DatePicker($1:{
+		yearFrom: ${2:2000},
+		yearTo: ${3:2015}
+	\}});
+
+snippet list
+	new Ext.List({
+		fullscreen: ${1:true},
+
+		itemTpl: '${2}',
+		grouped: '${3:true}',
+		indexBar: '${4:true}',
+
+		${5:data: [],}
+		${6:store: store}
+	});
+
+snippet map
+	new Ext.Panel({
+		fullscreen: ${1:true},
+		items: [
+			{
+				xtype: 'map',
+				useCurrentLocation: ${2:true}
+			}
+		]
+	});
+
+snippet panel
+	new Ext.Panel({
+		fullscreen: ${1:true},
+		${2:dockedItems: []}
+		${3}
+	});
+
+snippet picker
+	new Ext.Picker({
+		slots: [
+			${1}
+		]
+	});
+
+snippet tabpanel
+	new Ext.TabPanel({
+		fullscreen: ${1:true},
+		ui: '${2:dark}',
+		sortable: ${3:true},
+		items: [
+			${4:// items...}
+		]
+	});
+
+snippet toolbar
+	new Ext.Toolbar({
+		dock: '${1:top}',
+		title: '${2:My toolbar}',
+		items: [
+			${3:// items...}
+		]
+	});
+
+snippet setup
+	(function() {
+		Ext.setup({
+			tabletStartupScreen: '${1:tablet_startup.png}',
+			phoneStartupScreen: '${2:phone_startup.png}',
+			icon: '${3:icon.png}',
+			glossOnIcon: ${4:false},
+
+			onReady: function() {
+				${5:// code...}
+			}
+		});
+	})();
+
+snippet reg
+	Ext.reg('${1:xtype}', ${2:MyClass});
+
+snippet item
+	{
+		${1}
+	}
+
+snippet actionsheet
+	var actionSheet = new Ext.ActionSheet({
+		items: [
+			${1:// items...}
+		]
+	});
+	${2:actionSheet.show();}
+
+snippet marker
+	var ${1:marker} = new google.maps.Marker({
+		title: '${2:title}',
+		map: '${3:map}',
+		icon: '${4:icon.png}'
+	});
