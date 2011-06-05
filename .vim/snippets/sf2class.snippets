@@ -19,3 +19,15 @@ snippet cl
 	 {
 		${5}
 	 }
+snippet get
+	public function get${1:Property}()
+	{
+		return ${2$this->};
+	}
+	${3}
+snippet set
+	public function set${1:Property}(${2})
+	{
+		${3} = ${4:$2};
+	}
+	${5}
