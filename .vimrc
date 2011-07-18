@@ -115,9 +115,10 @@ filetype on
 filetype plugin on
 filetype indent on
 
-" Solarized
-set background=dark
-colorscheme solarized
+" Color scheme
+let &t_Co=256         " force the 256-color mode
+set background=light
+colorscheme mustang
 
 " Ctags
 set nocp
@@ -127,14 +128,14 @@ map <silent><leader><Right> <C-]>
 map <silent><leader><Up> <C-W>]
 
 "OmniCppComplete
-let OmniCpp_NamespaceSearch = 1
-let OmniCpp_GlobalScopeSearch = 1
-let OmniCpp_ShowAccess = 1
+let OmniCpp_NamespaceSearch     = 1
+let OmniCpp_GlobalScopeSearch   = 1
+let OmniCpp_ShowAccess          = 1
 let OmniCpp_ShowPrototypeInAbbr = 1 " show function parameters
-let OmniCpp_MayCompleteDot = 1 " autocomplete after .
-let OmniCpp_MayCompleteArrow = 1 " autocomplete after ->
-let OmniCpp_MayCompleteScope = 1 " autocomplete after ::
-let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
+let OmniCpp_MayCompleteDot      = 1 " autocomplete after .
+let OmniCpp_MayCompleteArrow    = 1 " autocomplete after ->
+let OmniCpp_MayCompleteScope    = 1 " autocomplete after ::
+let OmniCpp_DefaultNamespaces   = ["std", "_GLIBCXX_STD"]
 
 " Completion
 set complete=.,w,b,u,t,i,k~/.vim/syntax/php.api
@@ -152,12 +153,12 @@ set nofoldenable
 
 " My information
 iab xdate <C-R>=strftime("%d/%m/%Y %H:%M:%S")
-iab xname <C-R> William DURAND
-iab xsigp <C-R> William DURAND <william.durand1@gmail.com>
-iab xsigw <C-R> William DURAND <william.durand1@gmail.com>
+iab xname <C-R> William Durand
+iab xsigp <C-R> William Durand <william.durand1@gmail.com>
+iab xsigw <C-R> William Durand <william.durand1@gmail.com>
 
 " snipMate
-let g:snips_author = 'William DURAND <william.durand1@gmail.com>'
+let g:snips_author = 'William Durand <william.durand1@gmail.com>'
 
 " Markdown
 au! BufRead,BufNewFile *.markdown,*.md set filetype=mkd
@@ -182,7 +183,7 @@ au BufRead,BufNewFile *.class.php set ft=php.symfony
 
 " Symfony2 (default)
 au BufRead,BufNewFile *.php.* set ft=php.symfony2
-au BufRead,BufNewFile *Resources/config/*.xml set ft=xml.sf2xml
+au BufRead,BufNewFile */config/*.xml set ft=xml.sf2xml
 au BufRead,BufNewFile *Bundle/*.php set ft=php.sf2class
 
 "Invisible character
@@ -224,6 +225,13 @@ map <leader>tf :tabfirst<cr>
 map <leader>tl :tablast<cr>
 map <leader>tm :tabmove<cr>
 map <leader>tr :tabrewind<cr>
+
+" Tagbar
+let g:tagbar_left = 1           " display the tagbar on the left side
+set updatetime=500              " show tags' prototype after 500 milliseconds
+let g:tagbar_width = 25         " width in characters of the tagbar
+let g:tagbar_autoshowtag = 1    " always show the current tag in the tagbar
+nnoremap <silent> <F10> :TagbarToggle<CR>
 
 " Vmail
 let g:vmail_flagged_color = "ctermfg=yellow ctermbg=black cterm=bold"
