@@ -22,10 +22,12 @@
   untracked = cyan
 
 [core]
-  editor = vim -X
+    editor = vim -X
 
 [diff "exif"]
 	textconv = exiftool
 
 [merge]
   tool = vimdiff
+[help]
+	autocorrect = 1
