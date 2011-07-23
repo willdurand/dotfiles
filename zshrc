@@ -29,11 +29,8 @@ fpath=($fpath $HOME/.zsh/func)
 typeset -U fpath
 
 setopt promptsubst
-
 # Load the prompt theme system
 autoload -U promptinit
-promptinit
-
 prompt wunjo
 
 if [ "$TERM" != "dumb" ]; then
@@ -86,8 +83,10 @@ define() {
   rm -f "$tmp"
 }
 
-export PATH=$PATH:/opt/local/libexec/gnubin:/opt/local/bin:/opt/local/sbin:/usr/local/bin:/opt/local/libexec/gnubin:/opt/local/bin:/opt/local/sbin:/usr/local/mysql/bin:/sw/bin:/sw/sbin:/opt/local/bin:/opt/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/local/git/bin
+# PATH
+export PATH=/usr/local/bin:/opt/local/libexec/gnubin:/opt/local/bin:/opt/local/sbin:/usr/local/mysql/bin:/sw/bin:/sw/sbin:/opt/local/bin:/opt/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/local/git/bin
 
+# RVM
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 
 export NODE_PATH=/usr/local/lib/node
@@ -97,6 +96,3 @@ export PATH=$PATH:/Applications/eclipse/android-sdk-mac_86/tools/:/Applications/
 
 # Scala
 export PATH=$PATH:/usr/local/scala/bin
-
-# PEAR
-export PATH=$PATH:/usr/local/Cellar/php/5.3.10/bin
