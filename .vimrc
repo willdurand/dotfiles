@@ -186,6 +186,9 @@ au BufRead,BufNewFile *.php.* set ft=php.symfony2
 au BufRead,BufNewFile */config/*.xml set ft=xml.sf2xml
 au BufRead,BufNewFile *Bundle/*.php set ft=php.sf2class
 
+" Behat
+au BufRead,BufNewFile *.feature set ft=yaml.behat
+
 "Invisible character
 nmap <leader>l :set list!<CR>
 set listchars=nbsp:¤,tab:>-,trail:¤,extends:>,precedes:<,eol:¬,trail:·
