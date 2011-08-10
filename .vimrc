@@ -229,12 +229,5 @@ map <leader>tl :tablast<cr>
 map <leader>tm :tabmove<cr>
 map <leader>tr :tabrewind<cr>
 
-" Tagbar
-let g:tagbar_left = 1           " display the tagbar on the left side
-set updatetime=500              " show tags' prototype after 500 milliseconds
-let g:tagbar_width = 25         " width in characters of the tagbar
-let g:tagbar_autoshowtag = 1    " always show the current tag in the tagbar
-nnoremap <silent> <F10> :TagbarToggle<CR>
-
 " Vmail
 let g:vmail_flagged_color = "ctermfg=yellow ctermbg=black cterm=bold"
