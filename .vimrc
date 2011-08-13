@@ -186,6 +186,10 @@ au BufRead,BufNewFile *.php.* set ft=php.symfony2
 au BufRead,BufNewFile */config/*.xml set ft=xml.sf2xml
 au BufRead,BufNewFile *Bundle/*.php set ft=php.sf2class
 
+" Propel
+au BufRead,BufNewFile */runtime/*.php set noexpandtab
+au BufRead,BufNewFile */generator/*.php set noexpandtab
+
 " Behat
 au BufRead,BufNewFile *.feature set ft=yaml.behat
 
