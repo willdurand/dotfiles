@@ -193,24 +193,12 @@ au BufRead,BufNewFile */generator/*.php set noexpandtab
 " Behat
 au BufRead,BufNewFile *.feature set ft=yaml.behat
 
-"Invisible character
-nmap <leader>l :set list!<CR>
-set listchars=nbsp:¤,tab:>-,trail:¤,extends:>,precedes:<,eol:¬,trail:·
-
 "jquery color
 au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
 
-" Highlight unwanted spaces
-highlight ExtraWhitespace ctermbg=red guibg=red
-match ExtraWhitespace /\s\+$/
-autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-
-" Does not work under version 7.1.6
-if version >= 716
-    autocmd BufWinLeave * call clearmatches()
-endif
+"Invisible character
+nmap <leader>l :set list!<CR>
+set listchars=nbsp:¤,tab:>-,trail:¤,extends:>,precedes:<,eol:¬,trail:·
 
 " Highlight trailing whitespaces
 highlight ExtraWhitespace ctermbg=red guibg=red
@@ -219,6 +207,11 @@ autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
 autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
+
+" Does not work under version 7.1.6
+if version >= 716
+    autocmd BufWinLeave * call clearmatches()
+endif
 
 " automatically remove trailing whitespace before write
 function! StripTrailingWhitespace()
@@ -232,12 +225,12 @@ endfunction
 autocmd BufWritePre *.php,*.yml,*.xml,*.js,*.html,*.css,*.java,*.c,*.cpp,*.vim :call StripTrailingWhitespace()
 
 " Syntastic
-let g:syntastic_enable_signs = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_quiet_warnings=0
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+"let g:syntastic_enable_signs = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_quiet_warnings=0
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
 
 " Tab mappings.
 map <leader>te :tabedit
@@ -248,6 +241,3 @@ map <leader>tf :tabfirst<cr>
 map <leader>tl :tablast<cr>
 map <leader>tm :tabmove<cr>
 map <leader>tr :tabrewind<cr>
-
-" Vmail
-let g:vmail_flagged_color = "ctermfg=yellow ctermbg=black cterm=bold"
