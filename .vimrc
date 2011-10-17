@@ -115,9 +115,10 @@ filetype on
 filetype plugin on
 filetype indent on
 
-" Solarized
-set background=dark
-colorscheme solarized
+" Color scheme
+let &t_Co=256         " force the 256-color mode
+set background=light
+colorscheme mustang
 
 " Ctags
 set nocp
@@ -127,14 +128,14 @@ map <silent><leader><Right> <C-]>
 map <silent><leader><Up> <C-W>]
 
 "OmniCppComplete
-let OmniCpp_NamespaceSearch = 1
-let OmniCpp_GlobalScopeSearch = 1
-let OmniCpp_ShowAccess = 1
+let OmniCpp_NamespaceSearch     = 1
+let OmniCpp_GlobalScopeSearch   = 1
+let OmniCpp_ShowAccess          = 1
 let OmniCpp_ShowPrototypeInAbbr = 1 " show function parameters
-let OmniCpp_MayCompleteDot = 1 " autocomplete after .
-let OmniCpp_MayCompleteArrow = 1 " autocomplete after ->
-let OmniCpp_MayCompleteScope = 1 " autocomplete after ::
-let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
+let OmniCpp_MayCompleteDot      = 1 " autocomplete after .
+let OmniCpp_MayCompleteArrow    = 1 " autocomplete after ->
+let OmniCpp_MayCompleteScope    = 1 " autocomplete after ::
+let OmniCpp_DefaultNamespaces   = ["std", "_GLIBCXX_STD"]
 
 " automatically open and close the popup menu / preview window
 au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
@@ -181,38 +182,54 @@ au BufRead,BufNewFile *.class.php set ft=php.symfony
 
 " Symfony2 (default)
 au BufRead,BufNewFile *.php.* set ft=php.symfony2
-au BufRead,BufNewFile *Resources/config/*.xml set ft=xml.sf2xml
+au BufRead,BufNewFile */config/*.xml set ft=xml.sf2xml
 au BufRead,BufNewFile *Bundle/*.php set ft=php.sf2class
+
+" Propel
+au BufRead,BufNewFile */runtime/*.php set noexpandtab
+au BufRead,BufNewFile */generator/*.php set noexpandtab
+
+" Behat
+au BufRead,BufNewFile *.feature set ft=yaml.behat
+
+"jquery color
+au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
 
 "Invisible character
 nmap <leader>l :set list!<CR>
 set listchars=nbsp:¤,tab:>-,trail:¤,extends:>,precedes:<,eol:¬,trail:·
 
-"jquery color
-au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
-
-" Highlight unwanted spaces
+" Highlight trailing whitespaces
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
 autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
 autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
 
 " Does not work under version 7.1.6
 if version >= 716
     autocmd BufWinLeave * call clearmatches()
 endif
 
-" Remove trailing whitespaces and ^M chars
-autocmd FileType c,cpp,java,php,js,css,html,xml,yml,vim autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
+" automatically remove trailing whitespace before write
+function! StripTrailingWhitespace()
+    normal mZ
+    %s/\s\+$//e
+    if line("'Z") != line(".")
+        echo "Stripped whitespace\n"
+    endif
+    normal `Z
+endfunction
+autocmd BufWritePre *.php,*.yml,*.xml,*.js,*.html,*.css,*.java,*.c,*.cpp,*.vim :call StripTrailingWhitespace()
 
 " Syntastic
-let g:syntastic_enable_signs = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_quiet_warnings=0
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+"let g:syntastic_enable_signs = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_quiet_warnings=0
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
 
 " Tab mappings.
 map <leader>te :tabedit
@@ -223,6 +240,3 @@ map <leader>tf :tabfirst<cr>
 map <leader>tl :tablast<cr>
 map <leader>tm :tabmove<cr>
 map <leader>tr :tabrewind<cr>
-
-" Vmail
-let g:vmail_flagged_color = "ctermfg=yellow ctermbg=black cterm=bold"

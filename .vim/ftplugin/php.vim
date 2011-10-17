@@ -42,9 +42,9 @@ let g:pdv_cfg_php4always = 0
 " $_foo/_bar() == <private|protected> (1|0)?
 let g:pdv_cfg_php4guess = 0
 
-imap <buffer> <F5> <C-O>:call PhpInsertUse()<CR>
-map <buffer> <F5> :call PhpInsertUse()<CR>
-
 " Completion
 set complete=.,w,b,u,t,i,k~/.vim/syntax/php.api
 au FileType php set omnifunc=phpcomplete#CompletePHP
+
+" PHP Namespace autocomplete:w
+nmap <buffer> <F5> :call PhpInsertUse()<CR>
