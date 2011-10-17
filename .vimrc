@@ -136,10 +136,6 @@ let OmniCpp_MayCompleteArrow = 1 " autocomplete after ->
 let OmniCpp_MayCompleteScope = 1 " autocomplete after ::
 let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
 
-" Completion
-set complete=.,w,b,u,t,i,k~/.vim/syntax/php.api
-au FileType php set omnifunc=phpcomplete#CompletePHP
-
 " automatically open and close the popup menu / preview window
 au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
 set completeopt=menuone,menu,longest,preview
@@ -152,12 +148,15 @@ set nofoldenable
 
 " My information
 iab xdate <C-R>=strftime("%d/%m/%Y %H:%M:%S")
-iab xname <C-R> William DURAND
-iab xsigp <C-R> William DURAND <william.durand1@gmail.com>
-iab xsigw <C-R> William DURAND <william.durand1@gmail.com>
+iab xname <C-R> William Durand
+iab xsigp <C-R> William Durand <william.durand1@gmail.com>
+iab xsigw <C-R> William Durand <william.durand1@gmail.com>
 
 " snipMate
-let g:snips_author = 'William DURAND <william.durand1@gmail.com>'
+let g:snips_author = 'William Durand <william.durand1@gmail.com>'
+
+" C++
+au BufNewFile,BufRead,BufEnter *.cpp,*.hpp set ft=cpp
 
 " Markdown
 au! BufRead,BufNewFile *.markdown,*.md set filetype=mkd
