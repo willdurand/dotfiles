@@ -1,0 +1,66 @@
+[submodule "vim/bundle/fugitive"]
+	path = vim/bundle/fugitive
+	url = git://github.com/tpope/vim-fugitive.git
+[submodule "vim/bundle/lusty"]
+	path = vim/bundle/lusty
+	url = git://github.com/sjbach/lusty.git
+[submodule "vim/bundle/phpfolding"]
+	path = vim/bundle/phpfolding
+	url = git://github.com/vim-scripts/phpfolding.vim.git
+[submodule "vim/bundle/ack"]
+	path = vim/bundle/ack
+	url = git://github.com/mileszs/ack.vim.git
+[submodule "vim/bundle/commandt"]
+	path = vim/bundle/commandt
+	url = git://github.com/wincent/Command-T.git
+[submodule "vim/bundle/markdown"]
+	path = vim/bundle/markdown
+	url = git://github.com/tpope/vim-markdown.git
+[submodule "vim/bundle/surround"]
+	path = vim/bundle/surround
+	url = git://github.com/tpope/vim-surround.git
+[submodule "vim/bundle/taglist"]
+	path = vim/bundle/taglist
+	url = git://github.com/chrismetcalf/vim-taglist.git
+[submodule "vim/bundle/syntastic"]
+	path = vim/bundle/syntastic
+	url = https://github.com/scrooloose/syntastic.git
+[submodule "vim/bundle/gitv"]
+	path = vim/bundle/gitv
+	url = git://github.com/gregsexton/gitv.git
+[submodule "vim/bundle/vim-colors-solarized"]
+	path = vim/bundle/vim-colors-solarized
+	url = https://github.com/altercation/vim-colors-solarized.git
+[submodule "vim/bundle/vim-aldmeris"]
+	path = vim/bundle/vim-aldmeris
+	url = git://github.com/veloce/vim-aldmeris.git
+[submodule "vim/bundle/vim-php-namespace"]
+	path = vim/bundle/vim-php-namespace
+	url = git://github.com/arnaud-lb/vim-php-namespace.git
+[submodule "vim/bundle/tabular"]
+	path = vim/bundle/tabular
+	url = https://github.com/godlygeek/tabular.git
+[submodule "vim/bundle/pdv"]
+	path = vim/bundle/pdv
+	url = https://github.com/vim-scripts/PDV--phpDocumentor-for-Vim.git
+[submodule "vim/bundle/autoclose"]
+	path = vim/bundle/autoclose
+	url = https://github.com/vim-scripts/AutoClose.git
+[submodule "vim/bundle/ragtag"]
+	path = vim/bundle/ragtag
+	url = https://github.com/tpope/vim-ragtag.git
+[submodule "vim/bundle/snipMate"]
+	path = vim/bundle/snipMate
+	url = https://github.com/msanders/snipmate.vim.git
+[submodule "vim/bundle/matchit"]
+	path = vim/bundle/matchit
+	url = https://github.com/vim-scripts/matchit.zip.git
+[submodule "vim/bundle/php-getter-setter"]
+	path = vim/bundle/php-getter-setter
+	url = git@github.com:docteurklein/php-getter-setter.vim.git
+[submodule "vim/bundle/phpunit"]
+	path = vim/bundle/phpunit
+	url = git@github.com:docteurklein/vim-phpunit.git
+[submodule "vim/bundle/vim-symfony"]
+	path = vim/bundle/vim-symfony
+	url = git@github.com:docteurklein/vim-symfony.git
