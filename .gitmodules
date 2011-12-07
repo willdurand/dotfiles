@@ -52,9 +52,6 @@
 [submodule "vim/bundle/php-getter-setter"]
 	path = vim/bundle/php-getter-setter
 	url = http://github.com/docteurklein/php-getter-setter.vim.git
-[submodule "vim/bundle/phpunit"]
-	path = vim/bundle/phpunit
-	url = http://github.com/docteurklein/vim-phpunit.git
 [submodule "vim/bundle/vim-symfony"]
 	path = vim/bundle/vim-symfony
 	url = http://github.com/docteurklein/vim-symfony.git
