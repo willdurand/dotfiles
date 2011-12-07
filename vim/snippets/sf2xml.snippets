@@ -1,0 +1,27 @@
+snippet services
+	<?xml version="1.0" ?>
+	<container xmlns="http://symfony.com/schema/dic/services"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+		<parameters>
+			${1}
+		</parameters>
+
+		<services>
+
+		</services>
+
+	</container>
+snippet serv
+	<service id="${1:id}" class="${2:class}">
+		${3}
+	</service>
+snippet param
+	<parameter key="${1}">${2}</parameter>
+snippet tag
+	<tag name="${1:name}" />
+snippet arg
+	<argument>${1}</argument>
+snippet args
+	<argument type="service" id="${1}" />
