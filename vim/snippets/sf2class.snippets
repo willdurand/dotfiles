@@ -8,17 +8,17 @@ snippet action
 snippet cl
 	<?php
 
-	namespace ${1:ns};
+	namespace ${3:`substitute(substitute(expand("%:h"), '\v^\w+\/(\u)', '\1', ''), '\/', '\\\', 'g')`};
 
 	/**
-	 * ${2:`Filename()`} class
-	 *${3}
-	 * @author `g:snips_author`
-	 */
-	 class ${4:$2}
-	 {
-		${5}
-	 }
+	* ${4:Class documentation}
+	*
+	* @author     `g:snips_author`
+	*/
+	class ${2:`Filename('', 'myClass')`}
+	{
+		${1}
+	}
 snippet get
 	public function get${1:Property}()
 	{
