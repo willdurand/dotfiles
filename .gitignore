@@ -1,7 +1,4 @@
-.vim/ruby/command-t/*.o
-.vim/ruby/command-t/Makefile
-.vim/ruby/command-t/ext.bundle
-.vim/plugin/syntastic.vim
-.vim/syntax_checkers/
-.vim/doc/syntastic.txt
-.vim/ruby/command-t/ext.so
+vim/bundle/matchit/
+vim/bundle/ragtag/
+vim/bundle/snipMate/
+vim/bundle/taglist/
