@@ -2,6 +2,8 @@
 
 CURRENT=`pwd`
 
+git submodule update --init
+
 # Remove old installations
 if [ -d ~/.vim ] ; then
     rm -rf ~/.vim
