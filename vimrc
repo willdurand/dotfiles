@@ -279,3 +279,24 @@ endfunction
 
 " do not auto insert comment chars on newline
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
+" jump to a twig view in symfony
+set path+=**
+function! s:SfJumpToView()
+    mark C
+    normal! ]M
+    let end = line(".")
+    normal! [m
+    try
+        call search('\v[^.:]+\.html\.twig', '', end)
+        normal! gf
+    catch
+        normal! g`C
+        echohl WarningMsg | echomsg "Template file not found" | echohl None
+    endtry
+endfunction
+com! SfJumpToView call s:SfJumpToView()
+
+" create a mapping only in a Controller file
+autocmd BufEnter *Controller.php nmap <buffer><leader>v :SfJumpToView<CR>
+autocmd BufEnter *.html.twig nmap <buffer><leader>c :bf<CR>
