@@ -120,8 +120,9 @@ filetype indent on
 
 " Color scheme
 let &t_Co=256         " force the 256-color mode
-set background=light
-colorscheme mustang
+let g:solarized_termcolors=256
+set background=dark
+colorscheme solarized
 
 " Change line numbers color
 au InsertEnter * hi LineNr      ctermfg=16 ctermbg=214 guifg=Orange guibg=#151515
