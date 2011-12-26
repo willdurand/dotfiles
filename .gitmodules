@@ -1,9 +1,6 @@
 [submodule "vim/bundle/fugitive"]
 	path = vim/bundle/fugitive
 	url = http://github.com/tpope/vim-fugitive.git
-[submodule "vim/bundle/phpfolding"]
-	path = vim/bundle/phpfolding
-	url = http://github.com/vim-scripts/phpfolding.vim.git
 [submodule "vim/bundle/ack"]
 	path = vim/bundle/ack
 	url = http://github.com/mileszs/ack.vim.git
@@ -19,9 +16,6 @@
 [submodule "vim/bundle/taglist"]
 	path = vim/bundle/taglist
 	url = http://github.com/chrismetcalf/vim-taglist.git
-[submodule "vim/bundle/syntastic"]
-	path = vim/bundle/syntastic
-	url = http://github.com/scrooloose/syntastic.git
 [submodule "vim/bundle/gitv"]
 	path = vim/bundle/gitv
 	url = http://github.com/gregsexton/gitv.git
