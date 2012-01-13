@@ -36,11 +36,6 @@ set nowritebackup                   " And again.
 set noswapfile                      " Use an SCM instead of swap files
 
 set laststatus=2                    " Show the status line all the time
-set statusline=[%n]\ %<%.99f\ %h%w%m%r%y\%{fugitive#statusline()}
-set statusline+=%{\"[\".(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\").\"]\ \"}\[%04l,%04v][%p%%]\ [LEN=%L]
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%{fugitive#statusline()}
-"set statusline+=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [ENC=%{&enc}]\ [FENC=%{&fenc}]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
 
 set backspace=indent,eol,start      " http://vim.wikia.com/wiki/Backspace_and_delete_problems
 
@@ -127,10 +122,6 @@ colorscheme solarized
 " Change line numbers color
 au InsertEnter * hi LineNr      ctermfg=16 ctermbg=214 guifg=Orange guibg=#151515
 au InsertLeave * hi LineNr      term=underline ctermfg=59 ctermbg=232 guifg=#605958 guibg=#151515
-
-" Change statusline color
-au InsertEnter * hi StatusLine  ctermfg=16 ctermbg=214 guifg=Orange guibg=#151515
-au InsertLeave * hi StatusLine  term=bold,reverse ctermfg=16 ctermbg=252 gui=italic guifg=#000000 guibg=#dddddd
 
 au BufEnter    * hi SpellCap    guisp=Orange
 au BufEnter    * hi Comment     gui=NONE
