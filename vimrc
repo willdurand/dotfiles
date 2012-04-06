@@ -119,12 +119,8 @@ let g:solarized_termcolors=256
 set background=dark
 colorscheme solarized
 
-" Change line numbers color
-au InsertEnter * hi LineNr      ctermfg=16 ctermbg=214 guifg=Orange guibg=#151515
-au InsertLeave * hi LineNr      term=underline ctermfg=59 ctermbg=232 guifg=#605958 guibg=#151515
-
-au BufEnter    * hi SpellCap    guisp=Orange
-au BufEnter    * hi Comment     gui=NONE
+" Powerline
+let g:Powerline_symbols = 'fancy'
 
 " Ctags
 set nocp
@@ -142,9 +138,6 @@ autocmd BufReadPost *
   \ if line("'\"") > 1 && line("'\"") <= line("$") |
   \   exe "normal! g`\"" |
   \ endif
-
-" Restore cursor position
-au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
 
 " Allow extended digraphs
 set encoding=utf-8
@@ -239,10 +232,10 @@ map <leader>tm :tabmove<cr>
 map <leader>tr :tabrewind<cr>
 
 " Syntastic
-let g:syntastic_enable_signs = 1
-let g:syntastic_auto_loc_list = 2
-let g:syntastic_quiet_warnings = 0
-let g:syntastic_enable_balloons = 1
+"let g:syntastic_enable_signs = 1
+"let g:syntastic_auto_loc_list = 2
+"let g:syntastic_quiet_warnings = 0
+"let g:syntastic_enable_balloons = 1
 
 " Change cursor color depending on the mode
 if &term =~ "xterm"
@@ -251,16 +244,16 @@ if &term =~ "xterm"
 endif
 
 " TagList
-let g:Tlist_Ctags_Cmd = 'ctags'
-let Tlist_Show_One_File = 1
-let Tlist_Sort_Type = "name"
-nnoremap <silent> <C-F8> :TlistToggle<CR>
+"let g:Tlist_Ctags_Cmd = 'ctags'
+"let Tlist_Show_One_File = 1
+"let Tlist_Sort_Type = "name"
+"nnoremap <silent> <C-F8> :TlistToggle<CR>
 
 " Command-T
 " Increase cache size
-let g:CommandTMaxFiles=30000
-map <leader>t :CommandT<cr>
-au BufCreate,BufFilePost * CommandTFlush
+"let g:CommandTMaxFiles=30000
+"map <leader>t :CommandT<cr>
+"au BufCreate,BufFilePost * CommandTFlush
 
 au BufWrite * :call <SID>MkdirsIfNotExists(expand('<afile>:h'))
 
