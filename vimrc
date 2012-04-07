@@ -20,11 +20,12 @@ set showmode                        " Display the mode you're in.
 
 set number                          " Show line numbers.
 set ruler                           " Show cursor position.
-set cursorline                      " Highlight current line.
+"set cursorline                      " Highlight current line.
 
 set incsearch                       " Highlight matches as you type.
 set hlsearch                        " Highlight matches.
-
+set ignorecase                      " set case insensitivity
+set smartcase                       " unless there's a capital letter
 set wrap                            " Turn on line wrapping.
 set scrolloff=3                     " Show 3 lines of context around the cursor.
 
@@ -236,12 +237,6 @@ map <leader>tr :tabrewind<cr>
 "let g:syntastic_auto_loc_list = 2
 "let g:syntastic_quiet_warnings = 0
 "let g:syntastic_enable_balloons = 1
-
-" Change cursor color depending on the mode
-if &term =~ "xterm"
-    let &t_SI = "\<Esc>]12;orange\x7"
-    let &t_EI = "\<Esc>]12;white\x7"
-endif
 
 " TagList
 "let g:Tlist_Ctags_Cmd = 'ctags'
