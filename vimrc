@@ -182,6 +182,7 @@ au BufRead,BufNewFile *.class.php set ft=php.symfony
 " Symfony2 (default)
 au BufRead,BufNewFile *.php.* set ft=php.symfony2
 au BufRead,BufNewFile */config/*.xml set ft=xml.sf2xml
+au BufRead,BufNewFile */config/*schema.xml set ft=xml.propelxml
 au BufRead,BufNewFile *Bundle/*.php set ft=php.sf2class
 
 " Propel
@@ -281,3 +282,8 @@ com! SfJumpToView call s:SfJumpToView()
 " create a mapping only in a Controller file
 autocmd BufEnter *Controller.php nmap <buffer><leader>v :SfJumpToView<CR>
 autocmd BufEnter *.html.twig nmap <buffer><leader>c :bf<CR>
+
+" Gist
+let g:gist_clip_command     = 'pbcopy'
+let g:gist_detect_filetype  = 1
+let g:gist_post_private     = 1
