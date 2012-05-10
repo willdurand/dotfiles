@@ -14,7 +14,7 @@ snippet services
 
 	</container>
 snippet serv
-	<service id="${1:id}" class="${2:class}">
+	<service id="${1:id}" class="${2:%$1.class%}">
 		${3}
 	</service>
 snippet param

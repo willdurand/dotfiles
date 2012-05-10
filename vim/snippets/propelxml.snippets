@@ -1,17 +1,17 @@
-snippet table
+snippet db
+	<?xml version="1.0" encoding="utf-8"?>
+	<database name="${1:name}" defaultIdMethod="native" namespace="${2:namespace}">
+		${3}
+	</database>
+snippet tab
 	<table name="${1:name}" phpName="${2:phpName}" description="${4:no description given}">
 		<column name="${3:id}" type="integer" required="true" primaryKey="true" autoIncrement="true" />
 		${5}
 	</table>
-snippet column
+snippet col
 	<column name="${1:name}" type="${2:varchar}" required="${3:true}" />
 	${4}
 snippet fk
-	<foreign-key foreignTable="${1:foreign-table}" onDelete="cascade">
-		<reference local="${2:$1_id}" foreign="${3:id}" />
-	</foreign-key>
-	${4}
-snippet foreign-key
 	<foreign-key foreignTable="${1:foreign-table}" onDelete="cascade">
 		<reference local="${2:$1_id}" foreign="${3:id}" />
 	</foreign-key>
@@ -20,13 +20,16 @@ snippet index
 	<index>
 		${1:type i-col to add an index column}
 	</index>
-snippet i-col
+snippet icol
 	<index-column name="${1:column name}" ${2:size="10"} />
 	${3}
 snippet unique
 	<unique>
 		${1:type u-col to add an unique column}
 	</unique>
-snippet u-col
+snippet ucol
 	<unique-column name="${1:column name}" ${2:size="10"} />
 	${3}
+snippet behav
+	<behavior name="${1:name}" />
+	${2}
