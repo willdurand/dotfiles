@@ -158,10 +158,6 @@ let g:snips_author = 'William Durand <william.durand1@gmail.com>'
 " C++
 au BufNewFile,BufRead,BufEnter *.cpp,*.hpp set ft=cpp
 
-" Markdown
-au! BufRead,BufNewFile *.markdown,*.md set filetype=mkd
-au! BufRead,BufNewFile *.md set filetype=mkd
-
 " reStructuredText
 au! BufRead,BufNewFile *.rst set filetype=rst
 
