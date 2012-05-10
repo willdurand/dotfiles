@@ -1,5 +1,4 @@
-command Mkd :!~/.scripts/markdown % > /tmp/mkdprev.html && open /tmp/mkdprev.html
-nmap <buffer> <F5> :Mkd<CR>
+nmap <buffer> <F5> open %<CR>
 
 " Github
 " So Github is using Redcarpet (https://github.com/blog/832-rolling-out-the-redcarpet)
