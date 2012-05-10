@@ -74,6 +74,8 @@ syntax region mkdCode       start=/\s*``[^`]*/  end=/[^`]*``\s*/
 syntax region mkdBlockquote start=/^\s*>/       end=/$/           contains=mkdLineBreak,mkdLineContinue,@Spell
 syntax region mkdCode       start="<pre[^>]*>"  end="</pre>"
 syntax region mkdCode       start="<code[^>]*>" end="</code>"
+syntax region mkdCode       start="```" end="```"
+syntax region mkdCode       start="{% highlight" end="{% endhighlight %}"
 
 " HTML headings
 syntax region htmlH1       start="^\s*#"                   end="\($\|#\+\)" contains=@Spell
