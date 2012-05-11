@@ -11,9 +11,9 @@ Installation
 ------------
 
     git clone https://github.com/willdurand/dotfiles.git
-    
+
     cd dotfiles
-    
+
     ./install.sh
 
 
