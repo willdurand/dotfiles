@@ -210,6 +210,9 @@ let g:gist_clip_command     = 'pbcopy'
 let g:gist_detect_filetype  = 1
 let g:gist_post_private     = 1
 
+" ctrlp
+let g:ctrlp_map = '<leader>t'
+
 " c++
 au BufNewFile,BufRead,BufEnter *.cpp,*.hpp set ft=cpp
 
