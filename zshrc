@@ -2,6 +2,11 @@ export BROWSER="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 export EDITOR='vim'
 export GIT_EDITOR='vim -X'
 
+export HISTSIZE=10000
+export HISTFILE="$HOME/.history"
+export SAVEHIST=$HISTSIZE
+setopt hist_ignore_all_dups
+
 # case-insensitive (uppercase from lowercase) completion
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
@@ -33,13 +38,15 @@ prompt wunjo
 
 if [ "$TERM" != "dumb" ]; then
   export LS_OPTIONS='-G'
-  eval `gdircolors ~/.dir_colors`
 fi
 
 # alias
 alias ls='ls $LS_OPTIONS -hF'
 alias ll='ls $LS_OPTIONS -lAhF'
 alias cd..="cd .."
+
+# tmux
+alias tmux="TERM=screen-256color-bce tmux"
 
 # vim
 alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"
@@ -84,3 +91,12 @@ export PATH=$PATH:/opt/local/libexec/gnubin:/opt/local/bin:/opt/local/sbin:/usr/
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 
 export NODE_PATH=/usr/local/lib/node
+
+# Android tools
+export PATH=$PATH:/Applications/eclipse/android-sdk-mac_86/tools/:/Applications/eclipse/android-sdk-mac_86/platform-tools/
+
+# Scala
+export PATH=$PATH:/usr/local/scala/bin
+
+# PEAR
+export PATH=$PATH:/usr/local/Cellar/php/5.3.10/bin
