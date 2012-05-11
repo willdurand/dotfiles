@@ -25,12 +25,13 @@ zstyle ':completion:*:descriptions' format '%U%F{yellow}%d%f%u'
 bindkey -e
 
 # Prompt
-fpath=($fpath $HOME/.zsh/func)
-typeset -U fpath
+setopt PROMPT_SUBST
 
-setopt promptsubst
-# Load the prompt theme system
+fpath=($fpath $HOME/.zsh/func)
+typeset  -U fpath
+
 autoload -U promptinit
+promptinit
 prompt wunjo
 
 if [ "$TERM" != "dumb" ]; then
