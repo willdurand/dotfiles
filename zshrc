@@ -2,10 +2,33 @@ export BROWSER="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 export EDITOR='vim'
 export GIT_EDITOR='vim -X'
 
-export HISTSIZE=10000
+export HISTSIZE=500000
 export HISTFILE="$HOME/.history"
 export SAVEHIST=$HISTSIZE
-setopt hist_ignore_all_dups
+
+setopt histignorealldups
+setopt autocd
+setopt autopushd pushdminus pushdsilent pushdtohome pushdignoredups
+setopt pushdignoredups
+setopt nohup
+setopt extendedglob
+setopt completeinword
+setopt vi
+setopt promptsubst
+setopt globdots
+setopt histreduceblanks
+setopt histignorespace
+setopt histignorealldups
+setopt SH_WORD_SPLIT
+setopt automenu
+setopt cdablevars
+setopt nohup
+setopt listpacked
+setopt nolisttypes
+setopt extendedglob
+setopt completeinword
+setopt alwaystoend
+setopt correct
 
 # case-insensitive (uppercase from lowercase) completion
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
