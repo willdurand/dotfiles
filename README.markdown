@@ -1,7 +1,10 @@
 My ZSH config
-=============================
+=============
 
-This is my ZSH config.
-There is a shell script to symlink all files.
+This is my ZSH config. There is a shell script to symlink all files, just run
+it:
 
-Will.
+    ./install.sh
+
+
+Will
