@@ -36,6 +36,15 @@ fi
 
 ln -s $CURRENT/elinks/elinks.conf ~/.elinks/elinks.conf
 
+# Tmux
+if [ -f ~/.tmux.conf ] ; then
+    mv ~/.tmux.conf ~/tmux.conf.backup
+    echo "Existing tmux.conf        >>> tmux.conf.backup"
+fi
+
+ln -s $CURRENT/tmux.conf ~/.tmux.conf
+
+# Vim/Zsh
 if [ '1' -eq "$#" ] && [ '--config-only' == "$1" ] ; then
     echo "Skipped submodules installation"
 else
