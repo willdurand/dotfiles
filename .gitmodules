@@ -64,3 +64,9 @@
 [submodule "vim/bundle/ctrlp"]
 	path = vim/bundle/ctrlp
 	url = git://github.com/kien/ctrlp.vim.git
+[submodule "vim/bundle/vim-behat"]
+	path = vim/bundle/vim-behat
+	url = git://github.com/veloce/vim-behat.git
+[submodule "vim/bundle/vim-phpunit"]
+	path = vim/bundle/vim-phpunit
+	url = git://github.com/docteurklein/vim-phpunit.git

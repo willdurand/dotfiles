@@ -13,7 +13,7 @@ set hidden ruler wmnu               " Hide buffer instead of abandoning when unl
 
 set wildmenu                        " Enhanced command line completion.
 set wildmode=list:longest           " Complete files like a shell.
-set wildignore=.svn,CVS,.git,.hg,*.o,*.a,*.class,*.mo,*.la,*.so,*.obj,*.swp,*.jpg,*.png,*.xpm,*.gif,*.pyc,*.pyo,*/cache/**,*/logs/**,*/zend/**,*/bootstrap.* " Ignore certain files
+set wildignore=.svn,CVS,.git,.hg,*.o,*.a,*.class,*.mo,*.la,*.so,*.obj,*.swp,*.jpg,*.png,*.xpm,*.gif,*.pyc,*.pyo,*app/cache/**,*app/logs/**,*/zend/**,*/bootstrap.*.*" Ignore certain files
 
 set showcmd                         " Display incomplete commands.
 set showmode                        " Display the mode you're in.
@@ -61,6 +61,7 @@ set pastetoggle=<F2>
 " make the view port scroll faster
 nnoremap <C-e> 3<C-e>
 nnoremap <C-y> 3<C-y>
+nnoremap <C-p> 3<C-p>
 
 " resize splitted views faster
 nnoremap <C-w>< 5<C-w><
@@ -223,8 +224,11 @@ au! BufRead,BufNewFile *.rst set filetype=rst
 au BufNewFile,BufRead *.twig set filetype=twig
 autocmd BufEnter *.html.twig nmap <buffer><leader>c :bf<CR>
 
-" Behat
-au BufRead,BufNewFile *.feature set ft=yaml.behat
-
 " jquery color
 au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
+
+" behat
+let feature_filetype='behat'
+
+" make
+map <leader>m :make<cr>
