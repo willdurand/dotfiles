@@ -4,9 +4,6 @@
 [submodule "vim/bundle/ack"]
 	path = vim/bundle/ack
 	url = http://github.com/mileszs/ack.vim.git
-[submodule "vim/bundle/commandt"]
-	path = vim/bundle/commandt
-	url = http://github.com/wincent/Command-T.git
 [submodule "vim/bundle/markdown"]
 	path = vim/bundle/markdown
 	url = http://github.com/tpope/vim-markdown.git
@@ -43,9 +40,6 @@
 [submodule "vim/bundle/matchit"]
 	path = vim/bundle/matchit
 	url = http://github.com/vim-scripts/matchit.zip.git
-[submodule "vim/bundle/php-getter-setter"]
-	path = vim/bundle/php-getter-setter
-	url = http://github.com/docteurklein/php-getter-setter.vim.git
 [submodule "vim/bundle/vim-symfony"]
 	path = vim/bundle/vim-symfony
 	url = http://github.com/docteurklein/vim-symfony.git
@@ -55,8 +49,8 @@
 [submodule "vim/bundle/vim-scala"]
 	path = vim/bundle/vim-scala
 	url = git://github.com/ornicar/vim-scala.git
-[submodule "vim/bundle/gist-vim"]
-	path = vim/bundle/gist-vim
+[submodule "vim/bundle/gist"]
+	path = vim/bundle/gist
 	url = https://github.com/mattn/gist-vim
 [submodule "vim/bundle/webapi-vim"]
 	path = vim/bundle/webapi-vim
