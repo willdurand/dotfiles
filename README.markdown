@@ -1,52 +1,31 @@
 My VIM Config
 =============
 
-This is my VIM config for PHP/Ruby development based on @vjousse's config.
+This is my VIM config for development based (a long time ago) on @vjousse's
+config. Now, I dropped a lot of useless stuffs, and I try to keep a minimal
+configuration to be close to the original **vim**, and to be efficient with it
+even without my configuration.
 
-* Autocompletion
-* Syntax hightlighting
-* Snippets (comes from [vim-symfony-snipmate](https://github.com/themouette/vim-symfony-snipmate))
-* Xdebug debugger integration
-* Git integration
-* reStructuredText syntax + preview in browser
-* Markdown syntax + preview in browser
-* Ready for symfony/Symfony2
-* JavaScript ready
-* etc
+Installation
+------------
 
-There is a shell script to symlink all files.
-
-
-Plugins
-=======
-
-This config comes with the following plugins:
-
-* Fugitive (Git)
-* Solarized
-* snipMate
-* Command-T
-* Gitv
-* Ack
-* surround
-* taglist-plus
-* ...
+Just run: `./install.sh`
 
 
 Commands
-========
+--------
 
 * `:W`      will save the current file with **sudo**.
 
 
 Mapping
-=======
+-------
 
 ### General
 
-Important: The map **leader** is `,`.
+Important: The **leader** key is `,`.
 
-* `,t`      will activate Command-T to fast search files.
+* `,t`      will activate CtrlP to fast search files.
 * `,2`      will set a two-spaces indentation.
 * `,4`      will set a four-spaces indentation.
 * `,<Right>` is a shortcut for `C-]` (go to the declaration of a class, variable, ...).
@@ -64,14 +43,17 @@ Important: The map **leader** is `,`.
 
 ### PHP
 
-* `,doc`    on a PHP function will open the [php.net](http://fr.php.net) doc.
+* `,doc`    on a PHP function will open the [php.net](http://en.php.net) doc.
 * `F7`      will generate a _tags_ file using **ctags**.
-* `,cns`    will insert the **c**urent **n**ame**s**pace based on the filename.
-* `<ctrl>L` will run the PHP linter to detect syntax errors.
+* `,cns`    will insert the current namespace based on the filename.
+* `<ctrl>l` will run the PHP linter to detect syntax errors.
+* `,m`      will run PHPUnit (actually it's mapped to `:make`)
 
 See also the **Xdebug** section above.
 
 ### Xdebug
+
+To enable the Xdebug mapping, use `F9`.
 
 * `F1`      Resize the debugger window.
 * `F2`      Step into.
@@ -83,7 +65,7 @@ See also the **Xdebug** section above.
 * `F11`
 * `F12`
 
-This mapping only works with the _php_ filetype.
+**Note:** This mapping only works with the _php_ filetype.
 
 ### Markdown
 
@@ -97,14 +79,30 @@ This mapping only works with the _php_ filetype.
 
 * `C-F3`    will switch from the action to the view and from the view to the action.
 
+### Symfony2
+
+* `,v`      in a controller, will switch to the view related to the current
+action.
+* `,c`      in a view, will switch to the related action, in the right
+controller.
+
 ### JavaScript
 
 * `<ctrl>l` will run `gjslint` (if available) to detect JS errors.
 
-Snippets
-========
 
-snipMate adds a lot of snippets but I also wrote mine.
+Snippets
+--------
+
+**snipMate** adds a lot of snippets but I also wrote mine.
+
+### symfony 1.x
+
+Too many snippets, please read these files:
+
+* `vim/snippets/symfony.snippets`
+* `vim/snippets/sfform.snippets`
+* `vim/snippets/sftemplate.snippets`
 
 ### Symfony2
 
@@ -121,16 +119,9 @@ snipMate adds a lot of snippets but I also wrote mine.
 
 * `action`      will add an action method.
 
-### symfony 1.x
-
-Too many snippets, please read these files:
-
-* _symfony.snippets_
-* _sfform.snippets_
-* _sftemplate.snippets_
-
 ### Propel
 
+* `db`          will add a new _database_ block definition.
 * `table`       will add a new _table_ block definition.
 * `column`      will add a new _column_ declaration.
 * `fk`, `foreign-key`   will generate a new _foreign-key_ declaration.
@@ -138,18 +129,35 @@ Too many snippets, please read these files:
 * `i-col`       will add a new _column index_ declaration.
 * `unique`      will add a new _unique_ block definition.
 * `u-col`       will add a new _unique column_ declaration.
+* `behav`       will add a new _behavior_ declaration.
+
+### ExtJS
+
+See: `vim/snippets/extjs.snippets`.
+
+### Markdown
+
+See: `vim/snippets/markdown.snippets`.
+
+### Twig
+
+* `bcss`        will add a new block named `stylesheets`.
+* `bjs`         will add a new block named `javascripts`.
+* `bbody`       will add a new block named `body`.
+* `bcontent`    will add a new block named `content`.
+* `extend`      will add a new `extend` declaration.
 
 
 Helpers
-=======
+-------
 
-* `xdate`   will insert the current date.
-* `xsigp`   will insert the configured personal signature.
-* `xsigw`   will insert the configured work signature.
+* `xdate`       will insert the current date.
+* `xsigp`       will insert the configured personal signature.
+* `xsigw`       will insert the configured work signature.
 
 
 Troubleshooting
-===============
+---------------
 
 You may have to install `python-markdown` :
 
@@ -162,4 +170,4 @@ You may have to install `python-markdown` :
   > sudo python setup.py install
 
 
-Will.
+Will

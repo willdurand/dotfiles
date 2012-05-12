@@ -1,18 +1,16 @@
-#/bin/sh
+#!/usr/bin/env bash
 
 CURRENT=`pwd`
 
-git submodule update --init
-
-# Remove old installations
-if [ -d ~/.vim ] ; then
-    rm -rf ~/.vim
+if [ -L ~/.vimrc ] ; then
     rm -rf ~/.vimrc
 fi
 
-# Vim
+if [ -L ~/.vim ] ; then
+    rm -rf ~/.vim
+fi
+
+git submodule update --init
+
 ln -s $CURRENT/vim ~/.vim
 ln -s $CURRENT/vimrc ~/.vimrc
-
-# Here we go :)
-echo "Installed !"
