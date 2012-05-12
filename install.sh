@@ -14,3 +14,5 @@ git submodule update --init
 
 ln -s $CURRENT/vim ~/.vim
 ln -s $CURRENT/vimrc ~/.vimrc
+
+echo "vim-config successfully installed"
