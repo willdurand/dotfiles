@@ -10,3 +10,5 @@ nmap <buffer> <F5> open %<CR>
 map <buffer> <leader>gh :%s/^\`\`\` \(.*\)/{% highlight \1 %}/g<cr>:%s/^\`\`\`/{% endhighlight %}/g<cr>
 " Pygments to Redcarpet
 map <buffer> <leader>hg :%s/^{% highlight \(.*\) %}/\`\`\` \1/g<cr>:%s/^{% endhighlight %}/\`\`\`/g<cr>
+
+set textwidth=80
