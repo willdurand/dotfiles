@@ -15,7 +15,7 @@ TERM con80x50
 TERM con80x60
 TERM xterm
 TERM xterm-color
-TERM xterm-debian      
+TERM xterm-debian
 
 # Below are the color init strings for the basic file types. A color init
 # string consists of one or more of the following numeric codes:
