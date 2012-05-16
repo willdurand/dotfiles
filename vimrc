@@ -186,9 +186,6 @@ endfunction
 autocmd BufWritePre *.md,*.markdown,*.mkd,*.php,*.yml,*.xml,*.js,*.html,*.css,*.java,*.c,*.cpp,*.vim :call StripTrailingWhitespace()
 
 " tab mappings
-map <leader>te :tabedit
-map <leader>tc :tabclose<cr>
-map <leader>tn :tabnext<cr>
 map <leader>tp :tabprevious<cr>
 map <leader>tf :tabfirst<cr>
 map <leader>tl :tablast<cr>
@@ -212,7 +209,8 @@ let g:gist_detect_filetype  = 1
 let g:gist_post_private     = 1
 
 " ctrlp
-let g:ctrlp_map = '<leader>t'
+let g:ctrlp_map                 = '<leader>t'
+let g:ctrlp_clear_cache_on_exit = 0
 
 " c++
 au BufNewFile,BufRead,BufEnter *.cpp,*.hpp set ft=cpp
