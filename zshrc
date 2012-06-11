@@ -1,4 +1,4 @@
-export BROWSER="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+export BROWSER=
 export EDITOR='vim'
 export GIT_EDITOR='vim -X'
 
@@ -65,6 +65,7 @@ fi
 alias ls='ls $LS_OPTIONS -hF'
 alias ll='ls $LS_OPTIONS -lAhF'
 alias cd..="cd .."
+alias ..="cd .."
 
 # tmux
 alias tmux="TERM=screen-256color-bce tmux"
@@ -107,16 +108,23 @@ define() {
   rm -f "$tmp"
 }
 
-# PATH
-export PATH=/usr/local/bin:/opt/local/libexec/gnubin:/opt/local/bin:/opt/local/sbin:/usr/local/mysql/bin:/sw/bin:/sw/sbin:/opt/local/bin:/opt/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/local/git/bin:/Developer/usr/bin
-
-# RVM
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
-
+# Node
 export NODE_PATH=/usr/local/lib/node
+
+# PATH
+export PATH=/usr/local/bin:/usr/sbin:/sbin:/usr/bin:/bin:/usr/X11/bin:/Developer/usr/bin
+
+# Git
+export PATH=$PATH:/usr/local/git/bin
+
+# GNU
+export PATH=$PATH:/opt/local/libexec/gnubin
 
 # Android tools
 export PATH=$PATH:/Applications/eclipse/android-sdk-mac_86/tools/:/Applications/eclipse/android-sdk-mac_86/platform-tools/
 
 # Scala
 export PATH=$PATH:/usr/local/scala/bin
+
+# PHP
+export PATH=$PATH:/usr/local/php5/bin
