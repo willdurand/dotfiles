@@ -14,12 +14,6 @@ func! DebugMode()
     nmap <buffer> <F12> :python debugger_property()<cr>
 endfunc
 
-" ctags
-nmap <buffer> <silent> <F7> :call GenerateCtags()<cr>
-func! GenerateCtags()
-    exec "!ctags -h \".php\" --extra=+q --fields=+afiKmnSt --PHP-kinds=cifvj --recurse=yes --exclude=\"*/cache/*\" --exclude=\"*/logs/*\" --exclude=\"*/data/*\" --exclude=\"\.git\" --exclude=\.svn --totals=yes --languages=PHP --regex-PHP=\"/interface ([^ ]*)/\1/c/\" --regex-PHP=\"/(public |static |abstract |protected |private )+function ([^ (]*)/\2/f/\" &"
-endfunc
-
 " open word under cursor with php.net
 nmap <buffer> <silent> <leader>doc :!elinks http://fr.php.net/<C-R><C-W>\#function.<C-R>=substitute('<C-R><C-W>', '_', '-', 'g')<CR><CR>
 
