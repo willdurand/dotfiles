@@ -127,7 +127,7 @@ let g:Powerline_symbols = 'fancy'
 
 " Ctags
 set nocp
-set tags=tags
+set tags=tags,vendor.tags
 map <silent><leader><Left> <C-T>
 map <silent><leader><Right> <C-]>
 map <silent><leader><Up> <C-W>]
