@@ -27,7 +27,7 @@
 	url = http://github.com/arnaud-lb/vim-php-namespace.git
 [submodule "vim/bundle/tabular"]
 	path = vim/bundle/tabular
-	url = http://github.com/godlygeek/tabular.git
+	url = git://github.com/godlygeek/tabular.git
 [submodule "vim/bundle/pdv"]
 	path = vim/bundle/pdv
 	url = http://github.com/vim-scripts/PDV--phpDocumentor-for-Vim.git
@@ -64,3 +64,6 @@
 [submodule "vim/bundle/vim-phpunit"]
 	path = vim/bundle/vim-phpunit
 	url = git://github.com/docteurklein/vim-phpunit.git
+[submodule "vim/bundle/puppet"]
+	path = vim/bundle/puppet
+	url = git://github.com/nvogel/vim-puppet.git
