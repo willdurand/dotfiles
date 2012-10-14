@@ -66,4 +66,4 @@
 	url = git://github.com/docteurklein/vim-phpunit.git
 [submodule "vim/bundle/puppet"]
 	path = vim/bundle/puppet
-	url = git://github.com/nvogel/vim-puppet.git
+    url = git://github.com/willdurand/vim-puppet.git
