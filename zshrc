@@ -108,11 +108,12 @@ define() {
   rm -f "$tmp"
 }
 
-# Node
-export NODE_PATH=/usr/local/lib/node
-
 # PATH
 export PATH=/usr/local/bin:/usr/sbin:/sbin:/usr/bin:/bin:/usr/X11/bin:/Developer/usr/bin
+
+# Node
+export NODE_PATH=/usr/local/lib/node
+export PATH=$PATH:/usr/local/share/npm/bin
 
 # Git
 export PATH=$PATH:/usr/local/git/bin
