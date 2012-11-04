@@ -1,6 +1,22 @@
 #!/usr/bin/env bash
 
 CURRENT=`pwd`
+INSTALL_ZSH=true
+INSTALL_VIM=true
+CONFIG_ONLY=false
+
+# Parsing options
+if [ $# > 0 ] ; then
+    for arg in $@ ; do
+        if [ $arg = '--no-zsh' ] ; then
+            INSTALL_ZSH=false
+        elif [ $arg = '--no-vim' ] ; then
+            INSTALL_VIM=false
+        elif [ $arg = '--config-only' ] ; then
+	    CONFIG_ONLY=true
+	fi
+    done
+fi
 
 # Git config
 if [ -f ~/.gitconfig ] ; then
@@ -50,15 +66,20 @@ fi
 ln -s $CURRENT/tmux.conf ~/.tmux.conf
 
 # Vim/Zsh
-if [ '1' -eq "$#" ] && [ '--config-only' == "$1" ] ; then
+
+if $CONFIG_ONLY ; then
     echo "Skipped submodules installation"
 else
     # Submodules
     git submodule update --init
 
-    cd $CURRENT/vim-config
-    ./install.sh
+    if $INSTALL_VIM ; then
+        cd $CURRENT/vim-config
+        ./install.sh
+    fi
 
-    cd $CURRENT/zsh-config
-    ./install.sh
+    if $INSTALL_ZSH ; then
+        cd $CURRENT/zsh-config
+        ./install.sh
+    fi
 fi
