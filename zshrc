@@ -67,6 +67,7 @@ alias ls='ls $LS_OPTIONS -hF'
 alias ll='ls $LS_OPTIONS -lAhF'
 alias cd..="cd .."
 alias ..="cd .."
+alias dstat='dstat -dcgilmsy'
 
 # tmux
 alias tmux="TERM=screen-256color-bce tmux"
