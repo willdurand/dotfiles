@@ -1,69 +1,66 @@
 [submodule "vim/bundle/fugitive"]
 	path = vim/bundle/fugitive
-	url = http://github.com/tpope/vim-fugitive.git
+	url = git://github.com/tpope/vim-fugitive.git
 [submodule "vim/bundle/ack"]
 	path = vim/bundle/ack
-	url = http://github.com/mileszs/ack.vim.git
+	url = git://github.com/mileszs/ack.vim.git
 [submodule "vim/bundle/markdown"]
 	path = vim/bundle/markdown
-	url = http://github.com/tpope/vim-markdown.git
+	url = git://github.com/tpope/vim-markdown.git
 [submodule "vim/bundle/surround"]
 	path = vim/bundle/surround
-	url = http://github.com/tpope/vim-surround.git
+	url = git://github.com/tpope/vim-surround.git
 [submodule "vim/bundle/taglist"]
 	path = vim/bundle/taglist
-	url = http://github.com/chrismetcalf/vim-taglist.git
+	url = git://github.com/chrismetcalf/vim-taglist.git
 [submodule "vim/bundle/gitv"]
 	path = vim/bundle/gitv
-	url = http://github.com/gregsexton/gitv.git
-[submodule "vim/bundle/vim-colors-solarized"]
-	path = vim/bundle/vim-colors-solarized
-	url = http://github.com/altercation/vim-colors-solarized.git
-[submodule "vim/bundle/vim-aldmeris"]
-	path = vim/bundle/vim-aldmeris
-	url = http://github.com/veloce/vim-aldmeris.git
-[submodule "vim/bundle/vim-php-namespace"]
-	path = vim/bundle/vim-php-namespace
-	url = http://github.com/arnaud-lb/vim-php-namespace.git
+	url = git://github.com/gregsexton/gitv.git
+[submodule "vim/bundle/php-namespace"]
+	path = vim/bundle/php-namespace
+	url = git://github.com/arnaud-lb/vim-php-namespace.git
 [submodule "vim/bundle/tabular"]
 	path = vim/bundle/tabular
 	url = git://github.com/godlygeek/tabular.git
-[submodule "vim/bundle/pdv"]
-	path = vim/bundle/pdv
-	url = http://github.com/vim-scripts/PDV--phpDocumentor-for-Vim.git
 [submodule "vim/bundle/ragtag"]
 	path = vim/bundle/ragtag
-	url = http://github.com/tpope/vim-ragtag.git
-[submodule "vim/bundle/snipMate"]
-	path = vim/bundle/snipMate
-	url = http://github.com/msanders/snipmate.vim.git
+	url = git://github.com/tpope/vim-ragtag.git
 [submodule "vim/bundle/matchit"]
 	path = vim/bundle/matchit
-	url = http://github.com/vim-scripts/matchit.zip.git
-[submodule "vim/bundle/vim-symfony"]
-	path = vim/bundle/vim-symfony
-	url = http://github.com/docteurklein/vim-symfony.git
+	url = git://github.com/vim-scripts/matchit.zip.git
+[submodule "vim/bundle/symfony"]
+	path = vim/bundle/symfony
+	url = git://github.com/docteurklein/vim-symfony.git
 [submodule "vim/bundle/powerline"]
 	path = vim/bundle/powerline
-	url = http://github.com/Lokaltog/vim-powerline.git
-[submodule "vim/bundle/vim-scala"]
-	path = vim/bundle/vim-scala
+	url = git://github.com/Lokaltog/vim-powerline.git
+[submodule "vim/bundle/scala"]
+	path = vim/bundle/scala
 	url = git://github.com/ornicar/vim-scala.git
 [submodule "vim/bundle/gist"]
 	path = vim/bundle/gist
-	url = https://github.com/mattn/gist-vim
-[submodule "vim/bundle/webapi-vim"]
-	path = vim/bundle/webapi-vim
-	url = https://github.com/mattn/webapi-vim
+	url = git://github.com/mattn/gist-vim
+[submodule "vim/bundle/webapi"]
+	path = vim/bundle/webapi
+	url = git://github.com/mattn/webapi-vim
 [submodule "vim/bundle/ctrlp"]
 	path = vim/bundle/ctrlp
 	url = git://github.com/kien/ctrlp.vim.git
-[submodule "vim/bundle/vim-behat"]
-	path = vim/bundle/vim-behat
+[submodule "vim/bundle/behat"]
+	path = vim/bundle/behat
 	url = git://github.com/veloce/vim-behat.git
-[submodule "vim/bundle/vim-phpunit"]
-	path = vim/bundle/vim-phpunit
-	url = git://github.com/docteurklein/vim-phpunit.git
 [submodule "vim/bundle/puppet"]
 	path = vim/bundle/puppet
-    url = git://github.com/willdurand/vim-puppet.git
+	url = git://github.com/willdurand/vim-puppet.git
+[submodule "vim/bundle/solarized"]
+	path = vim/bundle/solarized
+	url = git://github.com/altercation/vim-colors-solarized.git
+[submodule "vim/bundle/php-documentor"]
+	path = vim/bundle/php-documentor
+	url = git://github.com/vim-scripts/PDV--phpDocumentor-for-Vim.git
+[submodule "vim/bundle/snipmate"]
+	path = vim/bundle/snipmate
+	url = git://github.com/msanders/snipmate.vim.git
+[submodule "vim/bundle/xmledit"]
+	path = vim/bundle/xmledit
+	url = git://github.com/sukima/xmledit.git

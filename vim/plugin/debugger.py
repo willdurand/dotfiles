@@ -1,1 +1,0 @@
-../bundle/DBGp-client/plugin/debugger.py
