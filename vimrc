@@ -222,9 +222,6 @@ au! BufRead,BufNewFile *.rst set filetype=rst
 au BufNewFile,BufRead *.twig set filetype=twig
 autocmd BufEnter *.html.twig nmap <buffer><leader>c :bf<CR>
 
-" jquery color
-au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
-
 " behat
 let feature_filetype='behat'
 
