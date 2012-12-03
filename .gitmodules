@@ -64,3 +64,6 @@
 [submodule "vim/bundle/xmledit"]
 	path = vim/bundle/xmledit
 	url = git://github.com/sukima/xmledit.git
+[submodule "vim/bundle/jshint"]
+	path = vim/bundle/jshint
+	url = git://github.com/walm/jshint.vim.git
