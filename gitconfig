@@ -44,3 +44,9 @@
 
 [github]
     user = willdurand
+
+[sendemail]
+    smtpserver = smtp.gmail.com
+    smtpuser = william.durand1@gmail.com
+    smtpserverport = 587
+    smtpencryption = tls
