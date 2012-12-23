@@ -8,10 +8,16 @@ This repository contains:
 * My Git config;
 * And some other useful dotfiles.
 
+![](https://raw.github.com/willdurand/dotfiles/master/doc/screenshot.png)
+
+
 Installation
 ------------
 
-    git clone https://github.com/willdurand/dotfiles.git
-    cd dotfiles && ./install.sh
+Clone the repository:
 
-William
+    git clone https://github.com/willdurand/dotfiles.git
+
+And run the following command:
+
+    cd dotfiles && ./install.sh
