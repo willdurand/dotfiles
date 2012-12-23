@@ -1,7 +1,5 @@
-export BROWSER=
 export EDITOR='/Applications/MacVim.app/Contents/MacOS/Vim'
 export GIT_EDITOR='/Applications/MacVim.app/Contents/MacOS/Vim'
-
 
 export HISTSIZE=500000
 export HISTFILE="$HOME/.history"
@@ -82,59 +80,31 @@ autoload edit-command-line
 zle -N edit-command-line
 bindkey '^X^E' edit-command-line
 
-# Use google for translation
-alias trans="python2.6 ~/.scripts/translate"
-alias enfr="python2.6 ~/.scripts/translate -s en -d fr"
-alias fren="python2.6 ~/.scripts/translate -s fr -d en"
-
-search() {
-  [[ -z "$BROWSER" ]] && return 1
-  local term="${*:-$(xclip -o)}"
-  $BROWSER "http://www.google.com/search?q=${term// /+}" &>/dev/null &
+chrome () {
+    [[ `uname` == 'Darwin' ]] && /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome $* 2>&1 &
 }
 
-define() {
-  local lang charset tmp
-
-  lang="${LANG%%_*}"
-  charset="${LANG##*.}"
-  tmp='/tmp/define'
-
-  lynx -accept_all_cookies \
-  -dump \
-  -hiddenlinks=ignore \
-  -nonumbers \
-  -assume_charset="$charset" \
-  -display_charset="$charset" \
-  "http://www.google.com/search?hl=$lang&q=define%3A+$1&btnG=Google+Search" | grep -m 5 -C 2 -A 5 -w "*" > "$tmp"
-
-  if [[ ! -s "$tmp" ]]; then
-    echo -e "No definition found.\n"
-  else
-    echo -e "$(grep -v Search "$tmp" | sed "s/$1/\\\e[1;32m&\\\e[0m/g")\n"
-  fi
-
-  rm -f "$tmp"
-}
-
-# PATH
+### PATH
 export PATH=/usr/local/bin:/usr/sbin:/sbin:/usr/bin:/bin:/usr/X11/bin:/Developer/usr/bin
 
-# Node
+### Node
 export NODE_PATH=/usr/local/lib/node
 export PATH=$PATH:/usr/local/share/npm/bin
 
-# Git
+### Git
 export PATH=$PATH:/usr/local/git/bin
 
-# GNU
+### GNU
 export PATH=$PATH:/opt/local/libexec/gnubin
 
-# Android tools
+### Android tools
 export PATH=$PATH:/Applications/eclipse/android-sdk-mac_86/tools/:/Applications/eclipse/android-sdk-mac_86/platform-tools/
 
-# Scala
+### Scala
 export PATH=$PATH:/usr/local/scala/bin
 
-# PHP
+### PHP
 export PATH=$PATH:/usr/local/php5/bin
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
