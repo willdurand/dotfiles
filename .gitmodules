@@ -51,7 +51,7 @@
 	url = git://github.com/veloce/vim-behat.git
 [submodule "vim/bundle/puppet"]
 	path = vim/bundle/puppet
-	url = git://github.com/willdurand/vim-puppet.git
+	url = git://github.com/rodjek/vim-puppet.git
 [submodule "vim/bundle/solarized"]
 	path = vim/bundle/solarized
 	url = git://github.com/altercation/vim-colors-solarized.git
