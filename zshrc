@@ -104,7 +104,8 @@ export PATH=$PATH:/Applications/eclipse/android-sdk-mac_86/tools/:/Applications/
 export PATH=$PATH:/usr/local/scala/bin
 
 ### PHP
-export PATH=$PATH:/usr/local/php5/bin
+export PATH=$PATH:~/.phpenv/bin
+eval "$(phpenv init -)"
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
