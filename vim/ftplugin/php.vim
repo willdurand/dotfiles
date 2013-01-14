@@ -21,7 +21,7 @@ nmap <buffer> <silent> <leader>doc :!elinks http://us.php.net/<C-R><C-W>\#functi
 nmap <buffer> <leader>cns "%PdF/r;:s#/#\\#<CR>Inamespace  <ESC>d/[A-Z]<CR><ESC>:let @/=""<CR>
 
 " PHP linter
-nmap <buffer> <C-l> :!/usr/bin/php -l %<CR>
+nmap <buffer> <C-l> :!php -l %<CR>
 
 let g:pdv_cfg_Author        = "William DURAND <william.durand1@gmail.com>"
 let g:pdv_cfg_License       = "MIT {@link http://opensource.org/licenses/mit-license.html}"
