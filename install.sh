@@ -6,7 +6,7 @@ INSTALL_VIM=true
 CONFIG_ONLY=false
 
 # Parsing options
-if [ $# > 0 ] ; then
+if [ $# -gt 0 ] ; then
     for arg in $@ ; do
         if [ $arg = '--no-zsh' ] ; then
             INSTALL_ZSH=false
