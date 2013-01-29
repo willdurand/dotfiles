@@ -23,13 +23,6 @@ nmap <buffer> <leader>cns "%PdF/r;:s#/#\\#<CR>Inamespace  <ESC>d/[A-Z]<CR><ESC>:
 " PHP linter
 nmap <buffer> <C-l> :!php -l %<CR>
 
-let g:pdv_cfg_Author        = "William DURAND <william.durand1@gmail.com>"
-let g:pdv_cfg_License       = "MIT {@link http://opensource.org/licenses/mit-license.html}"
-let g:pdv_cfg_php4always    = 0
-let g:pdv_cfg_Uses          = 0
-let g:pdv_cfg_php4always    = 0
-let g:pdv_cfg_php4guess     = 0
-
 " Completion
 set complete=.,w,b,u,t,i,k~/.vim/syntax/php.api
 au FileType php set omnifunc=phpcomplete#CompletePHP
