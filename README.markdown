@@ -9,7 +9,8 @@ even without my configuration.
 Installation
 ------------
 
-Just run: `./install.sh`
+    git clone git://github.com/willdurand/vim-config.git
+    cd vim-config && ./install.sh
 
 
 Commands
@@ -67,18 +68,6 @@ To enable the Xdebug mapping, use `F9`.
 
 **Note:** This mapping only works with the _php_ filetype.
 
-### Markdown
-
-* `F5`      will render the active Markdown file in your browser.
-
-### reStructuredText
-
-* `F5`      will render the active reStructuredText file in your browser.
-
-### symfony 1.x
-
-* `C-F3`    will switch from the action to the view and from the view to the action.
-
 ### Symfony2
 
 * `,v`      in a controller, will switch to the view related to the current
@@ -95,14 +84,6 @@ Snippets
 --------
 
 **snipMate** adds a lot of snippets but I also wrote mine.
-
-### symfony 1.x
-
-Too many snippets, please read these files:
-
-* `vim/snippets/symfony.snippets`
-* `vim/snippets/sfform.snippets`
-* `vim/snippets/sftemplate.snippets`
 
 ### Symfony2
 
@@ -154,20 +135,3 @@ Helpers
 * `xdate`       will insert the current date.
 * `xsigp`       will insert the configured personal signature.
 * `xsigw`       will insert the configured work signature.
-
-
-Troubleshooting
----------------
-
-You may have to install `python-markdown` :
-
-  > wget http://pypi.python.org/packages/source/M/Markdown/Markdown-2.0.tar.gz
-
-  > tar xvzf Markdown-2.0.tar.gz
-
-  > cd Markdown-2.0/
-
-  > sudo python setup.py install
-
-
-Will
