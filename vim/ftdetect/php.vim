@@ -7,6 +7,3 @@ au BufRead,BufNewFile *schema.xml set ft=xml.propelxml
 " Propel
 au BufRead,BufNewFile */runtime/lib/*.php set ft=php.propel16
 au BufRead,BufNewFile */generator/lib/*.php set ft=php.propel16
-
-" symfony 1.4
-au BufRead,BufNewFile *.class.php set ft=php.symfony14
