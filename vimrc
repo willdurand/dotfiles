@@ -1,5 +1,5 @@
 " VIM Configuration
-" Original comes from Vincent Jousse
+" The original config comes from Vincent Jousse
 " Modified by William Durand <william.durand1@gmail.com>
 
 call pathogen#runtime_append_all_bundles()
@@ -11,29 +11,30 @@ set title
 " Global
 set hidden ruler wmnu               " Hide buffer instead of abandoning when unloading
 
-set wildmenu                        " Enhanced command line completion.
-set wildmode=list:longest           " Complete files like a shell.
-set wildignore=.svn,CVS,.git,.hg,*.o,*.a,*.class,*.mo,*.la,*.so,*.obj,*.swp,*.jpg,*.png,*.xpm,*.gif,*.pyc,*.pyo,*app/cache/**,*app/logs/**,*/zend/**,*/bootstrap.*.*" Ignore certain files
+set wildmenu                        " Enhanced command line completion
+set wildmode=list:longest           " Complete files like a shell
+set wildignore=.svn,CVS,.git,.hg,*.o,*.a,*.class,*.mo,*.la,*.so,*.obj,*.swp,*.jpg,*.png,*.xpm,*.gif,*.pyc,*.pyo,*app/cache/**,*app/logs/**,*/zend/**,*/bootstrap.*.* certain files
 
-set showcmd                         " Display incomplete commands.
-set showmode                        " Display the mode you're in.
+set showcmd                         " Display incomplete commands
+set showmode                        " Display the mode you're in
 
-set number                          " Show line numbers.
-set ruler                           " Show cursor position.
+set number                          " Show line numbers
+set ruler                           " Show cursor position
+
 "set cursorline                      " Highlight current line.
 
-set incsearch                       " Highlight matches as you type.
-set hlsearch                        " Highlight matches.
+set incsearch                       " Highlight matches as you type
+set hlsearch                        " Highlight matches
 set ignorecase                      " set case insensitivity
 set smartcase                       " unless there's a capital letter
-set wrap                            " Turn on line wrapping.
-set scrolloff=3                     " Show 3 lines of context around the cursor.
+set wrap                            " Turn on line wrapping
+set scrolloff=3                     " Show 3 lines of context around the cursor
 
-set visualbell                      " No beeping.
+set visualbell                      " No beeping
 set shortmess+=filmnrxoOtT          " abbrev. of messages (avoids 'hit enter')
 
-set nobackup                        " Don't make a backup before overwriting a file.
-set nowritebackup                   " And again.
+set nobackup                        " Don't make a backup before overwriting a file
+set nowritebackup                   " And again
 set noswapfile                      " Use an SCM instead of swap files
 
 set laststatus=2                    " Show the status line all the time
@@ -136,7 +137,7 @@ map <silent><leader><Up> <C-W>]
 au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
 set completeopt=menuone,menu,longest,preview
 
-" When editing a file, always jump to the last known cursor position.
+" When editing a file, always jump to the last known cursor position
 autocmd BufReadPost *
   \ if line("'\"") > 1 && line("'\"") <= line("$") |
   \   exe "normal! g`\"" |
@@ -183,7 +184,7 @@ function! StripTrailingWhitespace()
     endif
     normal `Z
 endfunction
-autocmd BufWritePre *.md,*.markdown,*.mkd,*.php,*.yml,*.xml,*.js,*.html,*.css,*.java,*.c,*.cpp,*.vim :call StripTrailingWhitespace()
+autocmd BufWritePre *.md,*.markdown,*.mkd,*.pp*.php,*.yml,*.xml,*.js,*.html,*.css,*.java,*.c,*.cpp,*.vim :call StripTrailingWhitespace()
 
 " tab mappings
 map <leader>tp :tabprevious<cr>
@@ -211,12 +212,6 @@ let g:gist_post_private     = 1
 " ctrlp
 let g:ctrlp_map                 = '<leader>t'
 let g:ctrlp_clear_cache_on_exit = 0
-
-" c++
-au BufNewFile,BufRead,BufEnter *.cpp,*.hpp set ft=cpp
-
-" reStructuredText
-au! BufRead,BufNewFile *.rst set filetype=rst
 
 " Twig
 au BufNewFile,BufRead *.twig set filetype=twig
