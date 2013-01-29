@@ -65,6 +65,13 @@ fi
 
 ln -s $CURRENT/tmux.conf ~/.tmux.conf
 
+# Ack
+if [ -f ~/.ackrc ] ; then
+    rm -f ~/.ackrc
+fi
+
+ln -s $CURRENT/ackrc ~/.ackrc
+
 # Vim/Zsh
 
 if $CONFIG_ONLY ; then
