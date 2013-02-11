@@ -109,3 +109,6 @@ eval "$(phpenv init -)"
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+
+### Java
+export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
