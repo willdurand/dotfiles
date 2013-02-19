@@ -32,6 +32,7 @@
 
 [diff "exif"]
     textconv = exiftool
+    excludesfile = /opt/boxen/config/git/gitignore
 
 [merge]
     tool = vimdiff
@@ -53,3 +54,9 @@
 
 [alias]
     lg = log --graph --pretty=format:'%Cred%h%Creset %C(yellow)%an%d%Creset %s %Cgreen(%cr)%Creset' --date=relative
+
+[hub]
+protocol = https
+
+[credential]
+helper = /opt/boxen/bin/boxen-git-credential
