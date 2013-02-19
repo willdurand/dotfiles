@@ -112,3 +112,6 @@ export PATH="/usr/local/heroku/bin:$PATH"
 
 ### Java
 export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
+
+### Boxen
+[ -f /opt/boxen/env.sh ] && source /opt/boxen/env.sh
