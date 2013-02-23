@@ -1,5 +1,5 @@
-export EDITOR='/Applications/MacVim.app/Contents/MacOS/Vim'
-export GIT_EDITOR='/Applications/MacVim.app/Contents/MacOS/Vim'
+export EDITOR='vim'
+export GIT_EDITOR='vim'
 
 export HISTSIZE=500000
 export HISTFILE="$HOME/.history"
@@ -69,9 +69,6 @@ alias dstat='dstat -dcgilmsy'
 
 # tmux
 alias tmux="TERM=screen-256color-bce tmux"
-
-# vim
-alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"
 
 # You can hit C-X C-E to open your $EDITOR
 # with the command typed in the buffer and
