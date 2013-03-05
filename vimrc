@@ -123,6 +123,9 @@ let g:solarized_termcolors=256
 set background=dark
 colorscheme solarized
 
+" See: https://github.com/airblade/vim-gitgutter#faq
+highlight clear SignColumn
+
 " Powerline
 let g:Powerline_symbols = 'fancy'
 
