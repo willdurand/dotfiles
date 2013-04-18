@@ -123,8 +123,13 @@ let g:solarized_termcolors=256
 set background=dark
 colorscheme solarized
 
+" GitGutter
+let g:gitgutter_sign_column_always = 1
 " See: https://github.com/airblade/vim-gitgutter#faq
 highlight clear SignColumn
+highlight GitGutterAdd      guifg=#009900 guibg=NONE ctermfg=2 ctermbg=235
+highlight GitGutterChange   guifg=#bbbb00 guibg=NONE ctermfg=3 ctermbg=235
+highlight GitGutterDelete   guifg=#ff2222 guibg=NONE ctermfg=1 ctermbg=235
 
 " Powerline
 let g:Powerline_symbols = 'fancy'
