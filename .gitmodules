@@ -24,7 +24,7 @@
 	url = git://github.com/docteurklein/vim-symfony.git
 [submodule "vim/bundle/powerline"]
 	path = vim/bundle/powerline
-	url = git://github.com/Lokaltog/vim-powerline.git
+	url = git://github.com/Lokaltog/powerline.git
 [submodule "vim/bundle/gist"]
 	path = vim/bundle/gist
 	url = git://github.com/mattn/gist-vim
