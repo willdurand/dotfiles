@@ -1,5 +1,6 @@
 export EDITOR='vim'
 export GIT_EDITOR='vim'
+export SHELL='/bin/zsh'
 
 export HISTSIZE=500000
 export HISTFILE="$HOME/.history"
