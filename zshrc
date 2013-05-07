@@ -85,10 +85,6 @@ chrome () {
 ### PATH
 export PATH=/usr/local/bin:/usr/sbin:/sbin:/usr/bin:/bin:/usr/X11/bin:/Developer/usr/bin
 
-### Node
-export NODE_PATH=/usr/local/lib/node
-export PATH=$PATH:/usr/local/share/npm/bin
-
 ### Git
 export PATH=$PATH:/usr/local/git/bin
 
@@ -113,3 +109,6 @@ export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 
 ### Boxen
 [ -f /opt/boxen/env.sh ] && source /opt/boxen/env.sh
+
+### NPM (should be loaded after Boxen)
+export PATH="$PATH:`/opt/boxen/bin/npm -g bin 2> /dev/null`"
