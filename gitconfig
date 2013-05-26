@@ -56,7 +56,7 @@
     lg = log --graph --pretty=format:'%Cred%h%Creset %C(yellow)%an%d%Creset %s %Cgreen(%cr)%Creset' --date=relative
 
 [hub]
-protocol = https
+    protocol = https
 
 [credential]
-helper = /opt/boxen/bin/boxen-git-credential
+    helper = /opt/boxen/bin/boxen-git-credential
