@@ -109,6 +109,3 @@ export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 
 ### Boxen
 [ -f /opt/boxen/env.sh ] && source /opt/boxen/env.sh
-
-### NPM (should be loaded after Boxen)
-export PATH="$PATH:`/opt/boxen/bin/npm -g bin 2> /dev/null`"
