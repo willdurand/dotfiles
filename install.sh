@@ -31,8 +31,17 @@ if [ -f ~/.gitattributes ] ; then
     echo "Existing .gitattributes   >>> gitattributes.backup"
 fi
 
+if [ -f ~/.gitignore_global ] ; then
+    cat ~/.gitignore_global > ~/gitignore_global.backup
+    rm -f ~/.gitignore_global
+    echo "Existing .gitignore_global   >>> gitignore_global.backup"
+fi
+
 ln -s $CURRENT/gitconfig ~/.gitconfig
 ln -s $CURRENT/gitattributes ~/.gitattributes
+ln -s $CURRENT/gitignore_global ~/.gitignore_global
+
+git config --global core.excludesfile ~/.gitignore_global
 
 # Mercurial config
 if [ -f ~/.hgrc ] ; then

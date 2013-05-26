@@ -29,10 +29,10 @@
     editor = vim
     autocrlf = false
     whitespace = trailing-space,space-before-tab
+    excludesfile = /opt/boxen/config/git/gitignore
 
 [diff "exif"]
     textconv = exiftool
-    excludesfile = /opt/boxen/config/git/gitignore
 
 [merge]
     tool = vimdiff
