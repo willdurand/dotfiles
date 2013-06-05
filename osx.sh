@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# Based on: https://github.com/mathiasbynens/dotfiles
 
 # Ask for the administrator password upfront
 sudo -v
