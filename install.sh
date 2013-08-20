@@ -37,9 +37,14 @@ if [ -f ~/.gitignore_global ] ; then
     echo "Existing .gitignore_global   >>> gitignore_global.backup"
 fi
 
+if [ -f ~/.git-completion.sh ] ; then
+    rm -f ~/.git-completion.sh
+fi
+
 ln -s $CURRENT/gitconfig ~/.gitconfig
 ln -s $CURRENT/gitattributes ~/.gitattributes
 ln -s $CURRENT/gitignore_global ~/.gitignore_global
+ln -s $CURRENT/git-completion.bash ~/.git-completion.sh
 
 git config --global core.excludesfile ~/.gitignore_global
 
