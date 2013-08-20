@@ -48,14 +48,8 @@ zstyle ':completion:*:descriptions' format '%U%F{yellow}%d%f%u'
 bindkey -e
 
 # Prompt
-setopt PROMPT_SUBST
-
-fpath=($fpath $HOME/.zsh/func)
-typeset  -U fpath
-
-autoload -U promptinit
-promptinit
-prompt wunjo
+. ~/.zsh/pure.zsh
+DEFAULT_USERNAME=william
 
 if [ "$TERM" != "dumb" ]; then
   export LS_OPTIONS='-G'
@@ -90,6 +84,9 @@ export PATH=/usr/local/bin:/usr/sbin:/sbin:/usr/bin:/bin:/usr/X11/bin:/Developer
 
 ### Git
 export PATH=$PATH:/usr/local/git/bin
+
+zstyle ':completion:*:*:git:*' script ~/.git-completion.sh
+fpath=(~/.zsh $fpath)
 
 ### GNU
 export PATH=$PATH:/opt/local/libexec/gnubin
