@@ -29,7 +29,7 @@
     editor = vim
     autocrlf = false
     whitespace = trailing-space,space-before-tab
-    excludesfile = /Users/william/.gitignore_global
+	excludesfile = /Users/william/.gitignore_global
 
 [diff "exif"]
     textconv = exiftool
