@@ -71,8 +71,8 @@ compinit
 bindkey -e
 
 # Prompt
+PURE_DEFAULT_USERNAME='william'
 . ~/.zsh/pure.zsh
-DEFAULT_USERNAME=william
 
 if [ "$TERM" != "dumb" ]; then
   export LS_OPTIONS='-G'
