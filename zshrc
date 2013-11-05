@@ -114,7 +114,7 @@ fpath=(~/.zsh $fpath)
 export PATH=$PATH:/opt/local/libexec/gnubin
 
 ### Android tools
-export PATH=$PATH:/Applications/eclipse/android-sdk-mac_86/tools/:/Applications/eclipse/android-sdk-mac_86/platform-tools/
+export PATH=$PATH:/Applications/eclipse/android-sdk-mac_86/tools:/Applications/eclipse/android-sdk-mac_86/platform-tools
 
 ### Scala
 export PATH=$PATH:/usr/local/scala/bin
@@ -134,3 +134,6 @@ export PATH="$PATH:./node_modules/.bin"
 
 ### Boxen
 [ -f /opt/boxen/env.sh ] && source /opt/boxen/env.sh
+
+### CLIPS
+alias clips="/Applications/CLIPS/CLIPS\ Console"
