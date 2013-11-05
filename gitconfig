@@ -29,7 +29,7 @@
     editor = vim
     autocrlf = false
     whitespace = trailing-space,space-before-tab
-	excludesfile = /Users/william/.gitignore_global
+	excludesfile = /opt/boxen/config/git/gitignore
 
 [diff "exif"]
     textconv = exiftool
@@ -58,5 +58,7 @@
 [hub]
     protocol = https
 
+
+
 [credential]
-    helper = /opt/boxen/bin/boxen-git-credential
+helper = /opt/boxen/bin/boxen-git-credential
