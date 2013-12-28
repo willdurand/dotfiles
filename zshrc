@@ -84,6 +84,7 @@ alias ll='ls $LS_OPTIONS -lAhF'
 alias cd..="cd .."
 alias ..="cd .."
 alias dstat='dstat -dcgilmsy'
+alias projects="cd ~/projects/"
 
 # convenient aliases
 alias grunt='nocorrect grunt'
