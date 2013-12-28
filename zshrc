@@ -63,16 +63,17 @@ zstyle ':completion:*' menu select=2
 zstyle ':completion:*' select-prompt '%SScrolling active: current selection at %p%s'
 zstyle ':completion:*:descriptions' format '%U%F{yellow}%d%f%u'
 
+# Functions Autoloading
+fpath=(~/.zsh $fpath)
+
 # Completion
-autoload -U compinit
-compinit
+autoload -U promptinit && promptinit
+
+# Prompt
+prompt pure
 
 # Reverse search
 bindkey -e
-
-# Prompt
-PURE_DEFAULT_USERNAME='william'
-. ~/.zsh/pure.zsh
 
 if [ "$TERM" != "dumb" ]; then
   export LS_OPTIONS='-G'
@@ -109,7 +110,6 @@ export PATH=/usr/local/bin:/usr/sbin:/sbin:/usr/bin:/bin:/usr/X11/bin:/Developer
 ### Git
 export PATH=$PATH:/usr/local/git/bin
 zstyle ':completion:*:*:git:*' script ~/.git-completion.sh
-fpath=(~/.zsh $fpath)
 
 ### GNU
 export PATH=$PATH:/opt/local/libexec/gnubin

@@ -16,11 +16,11 @@ if [ ! -d ~/.zsh ] ; then
     mkdir ~/.zsh
 fi
 
-if [ -L ~/.zsh/pure.zsh ] ; then
-    rm ~/.zsh/pure.zsh
+if [ -L ~/.zsh/prompt_pure_setup ] ; then
+    rm ~/.zsh/prompt_pure_setup
 fi
 
-ln -s "$CURRENT/pure/pure.zsh" ~/.zsh/pure.zsh
+ln -s "$CURRENT/pure/pure.zsh" ~/.zsh/prompt_pure_setup
 
 if [ -L ~/.zsh/_git ]; then
     rm ~/.zsh/_git
