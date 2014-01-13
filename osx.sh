@@ -96,3 +96,10 @@ defaults write com.apple.dock expose-group-by-app -bool false
 
 # Disable local Time Machine backups
 hash tmutil &> /dev/null && sudo tmutil disablelocal
+
+# Allow text selection in the Quick Look window
+defaults write com.apple.finder QLEnableTextSelection -bool true
+
+# Capture should speak English
+sudo cp osx/ScreenCapture.strings /System/Library/CoreServices/SystemUIServer.app/Contents/Resources/French.lproj/ScreenCapture.strings
+killall SystemUIServer
