@@ -135,6 +135,3 @@ export PATH="$PATH:./node_modules/.bin"
 
 ### Boxen
 [ -f /opt/boxen/env.sh ] && source /opt/boxen/env.sh
-
-### CLIPS
-alias clips="/Applications/CLIPS/CLIPS\ Console"
