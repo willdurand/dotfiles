@@ -58,9 +58,6 @@
 [submodule "vim/bundle/css"]
 	path = vim/bundle/css
 	url = git://github.com/ChrisYip/Better-CSS-Syntax-for-Vim.git
-[submodule "vim/bundle/golo"]
-	path = vim/bundle/golo
-	url = git://github.com/jponge/vim-golo.git
 [submodule "vim/bundle/gitgutter"]
 	path = vim/bundle/gitgutter
 	url = git://github.com/airblade/vim-gitgutter.git
