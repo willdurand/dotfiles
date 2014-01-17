@@ -68,6 +68,7 @@ fpath=(~/.zsh $fpath)
 
 # Completion
 autoload -U promptinit && promptinit
+autoload -U compinit compdef && compinit
 
 # Prompt
 prompt pure
