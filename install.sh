@@ -87,26 +87,25 @@ fi
 ln -s $CURRENT/ackrc ~/.ackrc
 
 # offlineimap
+if [ ! -d ~/.mail ] ; then
+    mkdir ~/.mail
+fi
+
+if [ ! -d ~/.mutt ] ; then
+    mkdir ~/.mutt
+fi
+
 if [ -f ~/.offlineimaprc ] ; then
     rm -f ~/.offlineimaprc
 fi
 
 ln -s $CURRENT/offlineimap/offlineimaprc ~/.offlineimaprc
 
-if [ ! -d ~/.mail ] ; then
-    mkdir ~/.mail
-fi
-
-if [ -f ~/.mail/offlineimap.py ] ; then
-    rm -f ~/.mail/offlineimap.py
+if [ -f ~/.mutt/offlineimap.py ] ; then
+    rm -f ~/.mutt/offlineimap.py
 fi
 
 ln -s $CURRENT/offlineimap/offlineimap.py ~/.mutt/offlineimap.py
-
-# mutt
-if [ ! -d ~/.mutt ] ; then
-    mkdir ~/.mutt
-fi
 
 # Vim/Zsh
 
