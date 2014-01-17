@@ -109,7 +109,9 @@ export PATH=/usr/local/bin:/usr/sbin:/sbin:/usr/bin:/bin:/usr/X11/bin:/Developer
 
 ### Git
 export PATH=$PATH:/usr/local/git/bin
-zstyle ':completion:*:*:git:*' script ~/.git-completion.sh
+autoload bashcompinit
+bashcompinit
+source ~/.git-completion.sh
 
 ### GNU
 export PATH=$PATH:/opt/local/libexec/gnubin
