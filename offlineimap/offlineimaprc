@@ -14,9 +14,10 @@ postsynchook        = notmuch new
 type            = Maildir
 localfolders    = ~/.mail/william
 nametrans       = lambda folder: {
+                    'inbox':   '[Gmail]/INBOX',
                     'drafts':  '[Gmail]/Drafts',
                     'sent':    '[Gmail]/Sent Mail',
-                    'flagged': '[Gmail]/Starred',
+                    'starred': '[Gmail]/Starred',
                     'trash':   '[Gmail]/Trash',
                     'archive': '[Gmail]/All Mail',
                 }.get(folder, folder)
@@ -29,9 +30,10 @@ remotepasseval  = get_keychain_pass(account="william.durand1@gmail.com", server=
 realdelete      = no
 cert_fingerprint = 89091347184d41768bfc0da9fad94bfe882dd358
 nametrans       = lambda folder: {
+                    '[Gmail]/INBOX':     'inbox',
                     '[Gmail]/Drafts':    'drafts',
                     '[Gmail]/Sent Mail': 'sent',
-                    '[Gmail]/Starred':   'flagged',
+                    '[Gmail]/Starred':   'starred',
                     '[Gmail]/Trash':     'trash',
                     '[Gmail]/All Mail':  'archive',
                 }.get(folder, folder)
