@@ -5,6 +5,18 @@
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
+syntax on
+
+filetype on
+filetype plugin on
+filetype indent on
+
+" Color scheme
+let &t_Co=256
+let g:solarized_termcolors=256
+set background=dark
+colorscheme solarized
+
 " Set title on X window
 set title
 
@@ -111,22 +123,10 @@ nmap <leader>a :Ack<space>
 " Clear search highlight
 map <silent> <leader>/ :let @/=""<CR>:echo "Cleared search register."<cr>
 
-syntax on
-
-filetype on
-filetype plugin on
-filetype indent on
-
-" Color scheme
-let &t_Co=256
-let g:solarized_termcolors=256
-set background=dark
-colorscheme solarized
-
 " GitGutter
 let g:gitgutter_sign_column_always = 1
-" See: https://github.com/airblade/vim-gitgutter#faq
-highlight clear SignColumn
+" see: https://github.com/airblade/vim-gitgutter#faq
+highlight SignColumn        ctermbg=235
 highlight GitGutterAdd      guifg=#009900 guibg=NONE ctermfg=2 ctermbg=235
 highlight GitGutterChange   guifg=#bbbb00 guibg=NONE ctermfg=3 ctermbg=235
 highlight GitGutterDelete   guifg=#ff2222 guibg=NONE ctermfg=1 ctermbg=235
@@ -177,11 +177,6 @@ autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
 autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
-
-" Does not work under version 7.1.6
-if version >= 716
-    autocmd BufWinLeave * call clearmatches()
-endif
 
 " automatically remove trailing whitespace before write
 function! StripTrailingWhitespace()
