@@ -107,6 +107,12 @@ fi
 
 ln -s $CURRENT/offlineimap/offlineimap.py ~/.mutt/offlineimap.py
 
+if [ -f ~/.muttrc ] ; then
+    rm -f ~/.muttrc
+fi
+
+ln -s $CURRENT/mutt/muttrc ~/.muttrc
+
 # Vim/Zsh
 
 if $CONFIG_ONLY ; then
