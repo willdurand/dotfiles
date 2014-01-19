@@ -9,13 +9,5 @@ This is my ZSH config. Here is a screenshot:
 Installation
 ------------
 
-Run the following command:
-
-    ./install.sh
-
-
-Credits
--------
-
-The Git integration is provided by:
-[https://github.com/jcorbin/zsh-git](https://github.com/jcorbin/zsh-git).
+    git clone git://github.com/willdurand/zsh-config.git
+    cd zsh-config && bin/install
