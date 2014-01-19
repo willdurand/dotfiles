@@ -110,3 +110,6 @@ else
         ./install.sh
     fi
 fi
+
+echo ''
+echo '  All installed!'
