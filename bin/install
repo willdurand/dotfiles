@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
-CURRENT=`pwd`
+CURRENT="`pwd`"
 
 set -u
 set -e
 
-# Scripts
+# scripts
 if [ -L ~/.scripts ] ; then
     rm ~/.scripts
 fi
@@ -29,4 +29,4 @@ fi
 
 ln -s "$CURRENT/zshrc" ~/.zshrc
 
-echo "zsh-config successfully installed"
+printf "\r\033[2K  [ \033[00;32mOK\033[0m ] zsh config installed\n"
