@@ -8,7 +8,6 @@ fsync       = False
 localrepository     = William-Local
 remoterepository    = William-Remote
 status_backend      = sqlite
-postsynchook        = notmuch new
 
 [Repository William-Local]
 type            = Maildir

@@ -92,7 +92,7 @@ if [ ! -d ~/.mail ] ; then
 fi
 
 if [ ! -d ~/.mutt ] ; then
-    mkdir ~/.mutt
+    mkdir -p ~/.mutt/{cache,tmp}
 fi
 
 if [ -f ~/.offlineimaprc ] ; then
@@ -106,6 +106,24 @@ if [ -f ~/.mutt/offlineimap.py ] ; then
 fi
 
 ln -s $CURRENT/offlineimap/offlineimap.py ~/.mutt/offlineimap.py
+
+if [ -f ~/.mutt/mailcap ] ; then
+    rm -f ~/.mutt/mailcap
+fi
+
+ln -s $CURRENT/mutt/mailcap ~/.mutt/mailcap
+
+if [ -f ~/.mutt/view_attachment.sh ] ; then
+    rm -f ~/.mutt/view_attachment.sh
+fi
+
+ln -s $CURRENT/mutt/view_attachment.sh ~/.mutt/view_attachment.sh
+
+if [ -f ~/.mutt/mutt-colors-solarized-dark-256.muttrc ] ; then
+    rm -f ~/.mutt/mutt-colors-solarized-dark-256.muttrc
+fi
+
+ln -s $CURRENT/mutt/mutt-colors-solarized-dark-256.muttrc ~/.mutt/mutt-colors-solarized-dark-256.muttrc
 
 if [ -f ~/.muttrc ] ; then
     rm -f ~/.muttrc
