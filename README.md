@@ -14,10 +14,9 @@ This repository contains:
 Installation
 ------------
 
-Clone the repository:
+    $ git clone https://github.com/willdurand/dotfiles.git --recursive
+    $ cd dotfiles && bin/install
 
-    git clone https://github.com/willdurand/dotfiles.git
+You can tweak OSX by running the following script:
 
-And run the following command:
-
-    cd dotfiles && ./install.sh
+    $ bin/setup_osx
