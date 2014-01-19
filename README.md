@@ -9,8 +9,8 @@ even without my configuration.
 Installation
 ------------
 
-    git clone git://github.com/willdurand/vim-config.git
-    cd vim-config && bin/install
+    $ git clone git://github.com/willdurand/vim-config.git --recursive
+    $ cd vim-config && bin/install
 
 
 Commands
