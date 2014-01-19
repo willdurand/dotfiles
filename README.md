@@ -10,7 +10,7 @@ Installation
 ------------
 
     git clone git://github.com/willdurand/vim-config.git
-    cd vim-config && ./install.sh
+    cd vim-config && bin/install
 
 
 Commands

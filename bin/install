@@ -2,6 +2,8 @@
 
 CURRENT=`pwd`
 
+set -e
+
 if [ -L ~/.vimrc ] ; then
     rm -rf ~/.vimrc
 fi
@@ -15,4 +17,4 @@ git submodule update --init
 ln -s $CURRENT/vim ~/.vim
 ln -s $CURRENT/vimrc ~/.vimrc
 
-echo "vim-config successfully installed"
+printf "\r\033[2K  [ \033[00;32mOK\033[0m ] vim config installed\n"
