@@ -22,12 +22,6 @@ fi
 
 ln -s "$CURRENT/pure/pure.zsh" ~/.zsh/prompt_pure_setup
 
-if [ -L ~/.zsh/_git ]; then
-    rm ~/.zsh/_git
-fi
-
-ln -s "$CURRENT/_git" ~/.zsh/_git
-
 # ZSH
 if [ -L ~/.zshrc ] ; then
     rm ~/.zshrc
