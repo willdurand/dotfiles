@@ -87,6 +87,11 @@ macro index o "<shell-escape>offlineimap -qf INBOX<enter>" "run offlineimap to s
 macro index C "<copy-message>?<toggle-mailboxes>" "copy a message to a mailbox"
 macro index M "<save-message>?<toggle-mailboxes>" "move a message to a mailbox"
 
+# Gmail shortcuts
+macro index gi "<change-folder>=william/INBOX<enter>" "go to inbox"
+macro index ga "<change-folder>=william/archive<enter>" "go to archive"
+macro index gs "<change-folder>=william/sent<enter>" "go to sent"
+
 # Pager View Options ---------------------------------
 set pager_index_lines = 10 # number of index lines to show
 set pager_context = 3      # number of context lines to show
@@ -112,6 +117,7 @@ bind attach <return> view-mailcap
 macro pager \Cu "|urlview<enter>" "call urlview to open links"
 
 # Compose View Options -------------------------------
+set from = "william.durand1@gmail.com"
 set realname = "William Durand"      # who am I?
 set envelope_from                    # which from?
 set sig_dashes                       # dashes before sig
@@ -137,3 +143,8 @@ bind index p recall-message
 # Searching Email
 bind index N search-opposite
 bind pager N search-opposite
+
+# Sidebar Navigation ---------------------------------
+bind index,pager <down>   sidebar-next
+bind index,pager <up>     sidebar-prev
+bind index,pager <right>  sidebar-open
