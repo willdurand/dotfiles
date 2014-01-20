@@ -121,6 +121,7 @@ set from = "william.durand1@gmail.com"
 set realname = "William Durand"      # who am I?
 set envelope_from                    # which from?
 set sig_dashes                       # dashes before sig
+set sig_on_top                       # signature will be included before any quoted or forwarded text
 set edit_headers                     # show headers when composing
 set fast_reply                       # skip to compose when replying
 set askcc                            # ask for CC:

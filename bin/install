@@ -72,6 +72,7 @@ link_files offlineimap/offlineimap.py ~/.offlineimap/offlineimap.py
 link_files mutt/mailcap ~/.mutt/mailcap
 link_files mutt/mutt-colors-solarized-dark-256.muttrc ~/.mutt/mutt-colors-solarized-dark-256.muttrc
 link_files mutt/muttrc ~/.muttrc
+link_files mutt/sig ~/.mutt/sig
 link_files mutt/view_attachment.sh ~/.mutt/view_attachment.sh
 
 # urlview
@@ -79,6 +80,9 @@ link_files urlview/urlview ~/.urlview
 
 # git
 setup_git
+
+# others
+link_files dir_colors ~/.dir_colors
 
 # Parsing options
 if [ $# -gt 0 ] ; then
