@@ -6,6 +6,9 @@ CURRENT="`pwd`"
 # Ask for the administrator password upfront
 sudo -v
 
+# Keep-alive: update existing `sudo` time stamp until `.osx` has finished
+while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+
 # Menu bar: disable transparency
 defaults write NSGlobalDomain AppleEnableMenuBarTransparency -bool false
 
@@ -31,6 +34,12 @@ defaults write com.apple.LaunchServices LSQuarantine -bool false
 # Reveal IP address, hostname, OS version, etc. when clicking the clock
 # in the login window
 sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName
+
+# Check for software updates daily, not just once per week
+defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
+
+# Disable Notification Center and remove the menu bar icon
+launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2> /dev/null
 
 # Restart automatically if the computer freezes
 systemsetup -setrestartfreeze on
@@ -105,3 +114,19 @@ defaults write com.apple.finder QLEnableTextSelection -bool true
 # Capture should speak English
 sudo cp $CURRENT/osx/ScreenCapture.strings /System/Library/CoreServices/SystemUIServer.app/Contents/Resources/French.lproj/ScreenCapture.strings
 killall SystemUIServer
+
+# Disable the sudden motion sensor as it’s not useful for SSDs
+sudo pmset -a sms 0
+
+# Disable the crash reporter
+defaults write com.apple.CrashReporter DialogType -string "none"
+
+# Stop iTunes from responding to the keyboard media keys
+launchctl unload -w /System/Library/LaunchAgents/com.apple.rcd.plist 2> /dev/null
+
+# Require password immediately after sleep or screen saver begins
+defaults write com.apple.screensaver askForPassword -int 1
+defaults write com.apple.screensaver askForPasswordDelay -int 0
+
+# Don’t display the annoying prompt when quitting iTerm
+defaults write com.googlecode.iterm2 PromptOnQuit -bool false
