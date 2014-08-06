@@ -14,6 +14,7 @@ filetype indent on
 " Color scheme
 let &t_Co=256
 let g:solarized_termcolors=256
+" ISIMA
 set background=dark
 colorscheme solarized
 
@@ -220,7 +221,7 @@ let g:ctrlp_clear_cache_on_exit = 0
 au BufNewFile,BufRead *.twig set filetype=twig
 autocmd BufEnter *.html.twig nmap <buffer><leader>c :bf<CR>
 
-" behat
+" Behat
 let feature_filetype='behat'
 
 " make
@@ -230,14 +231,14 @@ map <leader>m :make<cr>
 " ========================================
 "
 "   obviously, basically, simply, of course, clearly,
-"   just, everyone knows, However, So, easy
+"   just, everyone knows, However, So, easy, assuming
 "
 "   http://css-tricks.com/words-avoid-educational-writing/
 "   https://github.com/pengwynn/dotfiles/blob/12159ea233180344be4e25d57056ccd37061a153/vim/vimrc.symlink
 "
 highlight TechWordsToAvoid ctermbg=red ctermfg=white
-match TechWordsToAvoid /\cobviously\|basically\|simply\|of\scourse\|clearly\|just\|everyone\sknows\|however\|so,\|easy/
-autocmd BufWinEnter * match TechWordsToAvoid /\cobviously\|basically\|simply\|of\scourse\|clearly\|just\|everyone\sknows\|however,\|so,\|easy/
-autocmd InsertEnter * match TechWordsToAvoid /\cobviously\|basically\|simply\|of\scourse\|clearly\|just\|everyone\sknows\|however,\|so,\|easy/
-autocmd InsertLeave * match TechWordsToAvoid /\cobviously\|basically\|simply\|of\scourse\|clearly\|just\|everyone\sknows\|however,\|so,\|easy/
+match TechWordsToAvoid /\cobviously\|basically\|simply\|of course\|clearly\|just\|everyone knows\|however,\|so,\|easy\|assuming/
+autocmd BufWinEnter * match TechWordsToAvoid /\cobviously\|basically\|simply\|of course\|clearly\|just\|everyone knows\|however,\|so,\|easy\|assuming/
+autocmd InsertEnter * match TechWordsToAvoid /\cobviously\|basically\|simply\|of course\|clearly\|just\|everyone knows\|however,\|so,\|easy\|assuming/
+autocmd InsertLeave * match TechWordsToAvoid /\cobviously\|basically\|simply\|of course\|clearly\|just\|everyone knows\|however,\|so,\|easy\|assuming/
 autocmd BufWinLeave * call clearmatches()
