@@ -26,7 +26,13 @@ if [ -L ~/.zsh/_git ] ; then
     rm ~/.zsh/_git
 fi
 
-ln -s "$CURRENT/git/_git" ~/.zsh/_git
+ln -s "$CURRENT/git/_hub" ~/.zsh/_hub
+
+if [ -L ~/.zsh/_hub ] ; then
+    rm ~/.zsh/_hub
+fi
+
+ln -s "$CURRENT/git/_hub" ~/.zsh/_hub
 
 # ZSH
 if [ -L ~/.zshrc ] ; then
