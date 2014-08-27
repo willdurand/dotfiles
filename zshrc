@@ -63,9 +63,6 @@ zstyle ':completion:*' menu select=2
 zstyle ':completion:*' select-prompt '%SScrolling active: current selection at %p%s'
 zstyle ':completion:*:descriptions' format '%U%F{yellow}%d%f%u'
 
-# Functions Autoloading
-fpath=(~/.zsh $fpath)
-
 # Completion
 autoload -U promptinit && promptinit
 autoload -U compinit compdef && compinit
@@ -110,10 +107,7 @@ chrome () {
 export PATH=/usr/local/bin:/usr/sbin:/sbin:/usr/bin:/bin:/usr/X11/bin:/Developer/usr/bin
 
 ### Git
-export PATH=$PATH:/usr/local/git/bin
-autoload bashcompinit
-bashcompinit
-source ~/.git-completion.sh
+zstyle ':completion:*:*:git:*' script ~/.git-completion.sh
 
 ### GNU
 export PATH=$PATH:/opt/local/libexec/gnubin
@@ -136,6 +130,9 @@ export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 
 ### Node
 export PATH="$PATH:./node_modules/.bin"
+
+# Functions Autoloading
+fpath=(~/.zsh $fpath)
 
 ### Boxen
 [ -f /opt/boxen/env.sh ] && source /opt/boxen/env.sh
