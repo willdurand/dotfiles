@@ -1,5 +1,5 @@
 [user]
-    name = William DURAND
+    name = William Durand
     email = william.durand1@gmail.com
 
 [color]
@@ -58,7 +58,8 @@
 [hub]
     protocol = https
 
-
-
 [credential]
-helper = /opt/boxen/bin/boxen-git-credential
+    helper = /opt/boxen/bin/boxen-git-credential
+
+[push]
+	default = simple
