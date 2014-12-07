@@ -242,3 +242,6 @@ autocmd BufWinEnter * match TechWordsToAvoid /\cobviously\|basically\|simply\|of
 autocmd InsertEnter * match TechWordsToAvoid /\cobviously\|basically\|simply\|of course\|clearly\|just\|everyone knows\|however,\|so,\|easy\|assuming/
 autocmd InsertLeave * match TechWordsToAvoid /\cobviously\|basically\|simply\|of course\|clearly\|just\|everyone knows\|however,\|so,\|easy\|assuming/
 autocmd BufWinLeave * call clearmatches()
+
+" Clipboard
+set clipboard=unnamed
