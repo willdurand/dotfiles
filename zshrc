@@ -132,5 +132,13 @@ export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 ### Node
 export PATH="$PATH:./node_modules/.bin"
 
+### Packer
+export PATH="$PATH:/usr/local/packer"
+
+### Docker
+export DOCKER_HOST=tcp://192.168.59.103:2376
+export DOCKER_CERT_PATH=/Users/william/.boot2docker/certs/boot2docker-vm
+export DOCKER_TLS_VERIFY=1
+
 ### Boxen
 [ -f /opt/boxen/env.sh ] && source /opt/boxen/env.sh
