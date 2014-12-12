@@ -245,3 +245,7 @@ autocmd BufWinLeave * call clearmatches()
 
 " Clipboard
 set clipboard=unnamed
+
+" Read vim config defined in files
+set modeline
+set modelines=1
