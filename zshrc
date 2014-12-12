@@ -92,6 +92,7 @@ alias projects="cd ~/projects/"
 # convenient aliases
 alias grunt='nocorrect grunt'
 alias mutt='cd ~/Desktop && mutt'
+alias diff=icdiff
 
 # tmux
 alias tmux="TERM=screen-256color-bce tmux"
