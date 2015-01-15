@@ -3,6 +3,10 @@ export EDITOR='vim'
 export GIT_EDITOR='vim'
 export SHELL='/bin/zsh'
 
+# Fix Locale
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
 # History
 export HISTSIZE=500000
 export HISTFILE="$HOME/.history"
@@ -140,6 +144,11 @@ export PATH="$PATH:/usr/local/packer"
 export DOCKER_HOST=tcp://192.168.59.103:2376
 export DOCKER_CERT_PATH=/Users/william/.boot2docker/certs/boot2docker-vm
 export DOCKER_TLS_VERIFY=1
+
+### Python
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/projects
+source /usr/local/bin/virtualenvwrapper.sh
 
 ### Boxen
 [ -f /opt/boxen/env.sh ] && source /opt/boxen/env.sh
