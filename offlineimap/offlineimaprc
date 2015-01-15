@@ -4,14 +4,14 @@ accounts    = William
 pythonfile  =~/.offlineimap/offlineimap.py
 fsync       = False
 
-[Account William]
-localrepository     = William-Local
-remoterepository    = William-Remote
+[Account William-Gmail]
+localrepository     = William-Gmail-Local
+remoterepository    = William-Gmail-Remote
 status_backend      = sqlite
 
-[Repository William-Local]
+[Repository William-Gmail-Local]
 type            = Maildir
-localfolders    = ~/.mail/william
+localfolders    = ~/.mail/william-gmail
 nametrans       = lambda folder: {
                     'inbox':   '[Gmail]/INBOX',
                     'drafts':  '[Gmail]/Drafts',
@@ -21,13 +21,13 @@ nametrans       = lambda folder: {
                     'archive': '[Gmail]/All Mail',
                 }.get(folder, folder)
 
-[Repository William-Remote]
+[Repository William-Gmail-Remote]
 maxconnections  = 1
 type            = Gmail
 remoteuser      = william.durand1@gmail.com
 remotepasseval  = get_keychain_pass(account="william.durand1@gmail.com", server="imap.gmail.com")
 realdelete      = no
-cert_fingerprint = 2bab9dfeec44c80df7ad9d5c6281d1b9369ba232
+cert_fingerprint = cf79537f0a504c116ee3cfb854bd58a70089edc0
 nametrans       = lambda folder: {
                     '[Gmail]/INBOX':     'inbox',
                     '[Gmail]/Drafts':    'drafts',
@@ -40,4 +40,28 @@ folderfilter    = lambda folder: folder not in [
                     '[Gmail]/Trash',
                     '[Gmail]/Important',
                     '[Gmail]/Spam'
+                ]
+
+[Account William]
+localrepository     = William-Local
+remoterepository    = William-Remote
+status_backend      = sqlite
+
+[Repository William-Local]
+type            = Maildir
+localfolders    = ~/.mail/william
+
+[Repository William-Remote]
+type             = IMAP
+ssl              = yes
+remotehost       = mail.messagingengine.com
+remoteuser       = willdurand@fastmail.com
+remotepasseval   = get_keychain_pass(account = "willdurand@fastmail.com", server = "mail.messagingengine.com")
+realdelete       = no
+cert_fingerprint = 958b1601563aef92607a41eb5bad22e3cace8431
+folderfilter     = lambda folder: folder not in [
+                    'INBOX.Spam',
+                    'INBOX.Trash',
+                    'INBOX.Junk',
+                    'INBOX.migrated.Archive'
                 ]
