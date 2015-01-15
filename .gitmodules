@@ -67,3 +67,6 @@
 [submodule "vim/bundle/maven"]
 	path = vim/bundle/maven
 	url = git://github.com/mikelue/vim-maven-plugin.git
+[submodule "vim/bundle/php-getter-setter"]
+	path = vim/bundle/php-getter-setter
+	url = https://github.com/docteurklein/php-getter-setter.vim.git
