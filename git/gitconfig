@@ -1,6 +1,7 @@
 [user]
     name = William Durand
     email = will+git@drnd.me
+    signingkey = C1274F3B
 
 [color]
     ui = auto
@@ -63,3 +64,6 @@
 
 [push]
 	default = simple
+
+[commit]
+    gpgsign = 1
