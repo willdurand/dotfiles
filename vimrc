@@ -252,3 +252,9 @@ set modelines=1
 
 " Format JSON
 map <leader>j !python -m json.tool<CR>
+
+" flavored markdown
+augroup markdown
+    au!
+    au BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown
+augroup END

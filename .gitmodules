@@ -67,3 +67,6 @@
 [submodule "vim/bundle/php-getter-setter"]
 	path = vim/bundle/php-getter-setter
 	url = https://github.com/docteurklein/php-getter-setter.vim.git
+[submodule "vim/bundle/flavored-markdown"]
+	path = vim/bundle/flavored-markdown
+    url = git://github.com/jtratner/vim-flavored-markdown.git
