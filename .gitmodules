@@ -34,9 +34,6 @@
 [submodule "vim/bundle/ctrlp"]
 	path = vim/bundle/ctrlp
 	url = git://github.com/kien/ctrlp.vim.git
-[submodule "vim/bundle/puppet"]
-	path = vim/bundle/puppet
-    url = git://github.com/nvogel/vim-puppet.git
 [submodule "vim/bundle/solarized"]
 	path = vim/bundle/solarized
 	url = git://github.com/altercation/vim-colors-solarized.git
