@@ -67,3 +67,6 @@
 [submodule "vim/bundle/flavored-markdown"]
 	path = vim/bundle/flavored-markdown
     url = git://github.com/jtratner/vim-flavored-markdown.git
+[submodule "vim/bundle/arduino-syntax"]
+	path = vim/bundle/arduino-syntax
+	url = git://github.com/sudar/vim-arduino-syntax.git
