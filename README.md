@@ -31,16 +31,6 @@ Important: The **leader** key is `,`.
 * `,4`      will set a four-spaces indentation.
 * `,<Right>` is a shortcut for `C-]` (go to the declaration of a class, variable, ...).
 * `,<Left>` is a shortcut for `C-T` (go back).
-* `zz`      is a shortcut for `zjzo`.
-* `,te`     is a shortcut for `tabedit`.
-* `,tc`     will close the active tab.
-* `,to`     is a shortcut for `tabonly`.
-* `,tn`     will move to the next tab.
-* `,tp`     will move to the previous tab.
-* `,tf`     will move to the first tab.
-* `,tl`     will move to the last tab.
-* `,tm`     will move the active tab to the right.
-* `,tr`     will move the active tab to the left.
 
 ### PHP
 

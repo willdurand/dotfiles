@@ -1,6 +1,6 @@
 " VIM Configuration
 " The original config comes from Vincent Jousse
-" Modified by William Durand <william.durand1@gmail.com>
+" Modified by William Durand <will+git@drnd.me>
 
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
@@ -161,11 +161,11 @@ set nofoldenable
 " My information
 iab xdate <C-R>=strftime("%d/%m/%Y %H:%M:%S")
 iab xname <C-R> William Durand
-iab xsigp <C-R> William Durand <william.durand1@gmail.com>
-iab xsigw <C-R> William Durand <william.durand1@gmail.com>
+iab xsigp <C-R> William Durand <will+git@drnd.me>
+iab xsigw <C-R> William Durand <will+git@drnd.me>
 
 " snipMate
-let g:snips_author = 'William Durand <william.durand1@gmail.com>'
+let g:snips_author = 'William Durand <will+git@drnd.me>'
 
 " invisible character
 nmap <leader>l :set list!<CR>
@@ -189,13 +189,6 @@ function! StripTrailingWhitespace()
     normal `Z
 endfunction
 autocmd BufWritePre *.md,*.markdown,*.mkd,*.pp*.php,*.yml,*.xml,*.js,*.html,*.css,*.java,*.c,*.cpp,*.vim :call StripTrailingWhitespace()
-
-" tab mappings
-map <leader>tp :tabprevious<cr>
-map <leader>tf :tabfirst<cr>
-map <leader>tl :tablast<cr>
-map <leader>tm :tabmove<cr>
-map <leader>tr :tabrewind<cr>
 
 " create directory if not exists
 au BufWrite * :call <SID>MkdirsIfNotExists(expand('<afile>:h'))
@@ -258,3 +251,15 @@ augroup markdown
     au!
     au BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown
 augroup END
+
+function! VisualFindAndReplace()
+    :OverCommandLine%s/
+    :w
+endfunction
+function! VisualFindAndReplaceWithSelection() range
+    :'<,'>OverCommandLine s/
+    :w
+endfunction
+
+nnoremap <Leader>fr :call VisualFindAndReplace()<CR>
+xnoremap <Leader>fr :call VisualFindAndReplaceWithSelection()<CR>

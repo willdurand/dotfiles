@@ -1,3 +1,11 @@
 # $... = array (...)
 snippet array(
 	$${1:arrayName} = array('${2}' => ${3});${4}
+snippet tc
+	<?php
+
+	namespace ${3:`substitute(substitute(expand("%:h"), '\v^\w+\/(\u)', '\1', ''), '\/', '\\\', 'g')`};
+
+	class ${1}Test extends \PHPUnit_Framework_TestCase
+	{${2}
+	}

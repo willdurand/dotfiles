@@ -1,9 +1,6 @@
 snippet action
-	/**
-	 * ${1:name}Action action.
-	 */
-	public function ${2:$1}Action(${3:params})
-	{${4}
+	public function ${1}Action(${2:params})
+	{${3}
 	}
 snippet cl
 	<?php
@@ -13,7 +10,7 @@ snippet cl
 	/**
 	* ${4:Class documentation}
 	*
-	* @author     `g:snips_author`
+	* @author `g:snips_author`
 	*/
 	class ${2:`Filename('', 'myClass')`}
 	{
@@ -31,3 +28,5 @@ snippet set
 		${3} = ${4:$2};
 	}
 	${5}
+snippet render
+	$this->render('${1}.html.twig', [${2}]);
