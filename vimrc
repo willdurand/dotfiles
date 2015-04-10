@@ -1,7 +1,6 @@
 " VIM Configuration
 " The original config comes from Vincent Jousse
 " Modified by William Durand <will+git@drnd.me>
-
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
@@ -188,7 +187,7 @@ function! StripTrailingWhitespace()
     endif
     normal `Z
 endfunction
-autocmd BufWritePre *.md,*.markdown,*.mkd,*.pp*.php,*.yml,*.xml,*.js,*.html,*.css,*.java,*.c,*.cpp,*.vim :call StripTrailingWhitespace()
+autocmd BufWritePre *.md,*.markdown,*.mkd,*.pp,*.php,*.yml,*.xml,*.js,*.html,*.css,*.java,*.c,*.cpp,*.vim :call StripTrailingWhitespace()
 
 " create directory if not exists
 au BufWrite * :call <SID>MkdirsIfNotExists(expand('<afile>:h'))
