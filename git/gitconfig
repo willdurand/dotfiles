@@ -63,7 +63,7 @@
     helper = /opt/boxen/bin/boxen-git-credential
 
 [push]
-	default = simple
+	default = current
 
 [commit]
     gpgsign = 1
