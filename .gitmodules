@@ -10,9 +10,6 @@
 [submodule "vim/bundle/symfony"]
 	path = vim/bundle/symfony
 	url = git://github.com/docteurklein/vim-symfony.git
-[submodule "vim/bundle/powerline"]
-	path = vim/bundle/powerline
-	url = git://github.com/Lokaltog/powerline.git
 [submodule "vim/bundle/gist"]
 	path = vim/bundle/gist
 	url = git://github.com/mattn/gist-vim
@@ -70,3 +67,6 @@
 [submodule "vim/bundle/yaml"]
 	path = vim/bundle/yaml
 	url = git@github.com:stephpy/vim-yaml.git
+[submodule "vim/bundle/airline"]
+	path = vim/bundle/airline
+	url = git@github.com:bling/vim-airline.git

@@ -131,8 +131,11 @@ highlight GitGutterAdd      guifg=#009900 guibg=NONE ctermfg=2 ctermbg=235
 highlight GitGutterChange   guifg=#bbbb00 guibg=NONE ctermfg=3 ctermbg=235
 highlight GitGutterDelete   guifg=#ff2222 guibg=NONE ctermfg=1 ctermbg=235
 
-" Powerline
-set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim/
+" airline
+let g:airline_powerline_fonts = 1
+let g:airline_theme = 'solarized'
+let g:airline_solarized_bg = 'dark'
+set noshowmode
 
 " automatically open and close the popup menu / preview window
 au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
