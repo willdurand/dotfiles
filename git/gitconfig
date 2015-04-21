@@ -47,12 +47,6 @@
 [github]
     user = willdurand
 
-[sendemail]
-    smtpserver = smtp.gmail.com
-    smtpuser = william.durand1@gmail.com
-    smtpserverport = 587
-    smtpencryption = tls
-
 [alias]
     lg = log --graph --pretty=format:'%Cred%h%Creset %C(yellow)%an%d%Creset %s %Cgreen(%cr)%Creset' --date=relative
 
