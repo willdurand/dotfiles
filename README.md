@@ -24,9 +24,11 @@ Commands
 Mapping
 -------
 
+This list is not exhaustive.
+
 ### General
 
-Important: The **leader** key is `,`.
+Important: the **leader** key is `,`.
 
 * `,t`      will activate CtrlP to fast search files.
 * `,2`      will set a two-spaces indentation.
@@ -37,30 +39,11 @@ Important: The **leader** key is `,`.
 ### PHP
 
 * `,doc`    on a PHP function will open the [php.net](http://en.php.net) doc.
-* `F7`      will generate a _tags_ file using **ctags**.
 * `,cns`    will insert the current namespace based on the filename.
 * `<ctrl>l` will run the PHP linter to detect syntax errors.
 * `,m`      will run PHPUnit (actually it's mapped to `:make`)
 
-See also the **Xdebug** section above.
-
-### Xdebug
-
-To enable the Xdebug mapping, use `F9`.
-
-* `F1`      Resize the debugger window.
-* `F2`      Step into.
-* `F3`      Step over.
-* `F4`      Step out.
-* `,e`      Eval a variable.
-* `F5`      Run the debugger.
-* `F6`      Quit the debugger.
-* `F11`
-* `F12`
-
-**Note:** This mapping only works with the _php_ filetype.
-
-### Symfony2
+### Symfony
 
 * `,v`      in a controller, will switch to the view related to the current
 action.
@@ -77,9 +60,9 @@ Snippets
 
 **snipMate** adds a lot of snippets but I also wrote mine.
 
-### Symfony2
+### Symfony
 
-1. _sf2xml.snippets_
+1. _sfxml.snippets_
 
 * `services`    will add a complete XML structure to declare services in XML.
 * `serv`        will add a single _service_ declaration.
@@ -88,25 +71,9 @@ Snippets
 * `arg`         will add a scalar argument declaration.
 * `args`        will add a service type argument.
 
-2. _sf2class.snippets_
+2. _sfclass.snippets_
 
 * `action`      will add an action method.
-
-### Propel
-
-* `db`          will add a new _database_ block definition.
-* `table`       will add a new _table_ block definition.
-* `column`      will add a new _column_ declaration.
-* `fk`, `foreign-key`   will generate a new _foreign-key_ declaration.
-* `index`       will add a new _index_ block definition.
-* `i-col`       will add a new _column index_ declaration.
-* `unique`      will add a new _unique_ block definition.
-* `u-col`       will add a new _unique column_ declaration.
-* `behav`       will add a new _behavior_ declaration.
-
-### ExtJS
-
-See: `vim/snippets/extjs.snippets`.
 
 ### Markdown
 
