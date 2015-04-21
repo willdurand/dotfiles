@@ -1,15 +1,6 @@
-[submodule "vim/bundle/fugitive"]
-	path = vim/bundle/fugitive
-	url = git://github.com/tpope/vim-fugitive.git
 [submodule "vim/bundle/ack"]
 	path = vim/bundle/ack
 	url = git://github.com/mileszs/ack.vim.git
-[submodule "vim/bundle/gitv"]
-	path = vim/bundle/gitv
-	url = git://github.com/gregsexton/gitv.git
-[submodule "vim/bundle/php-namespace"]
-	path = vim/bundle/php-namespace
-	url = git://github.com/arnaud-lb/vim-php-namespace.git
 [submodule "vim/bundle/tabular"]
 	path = vim/bundle/tabular
 	url = git://github.com/godlygeek/tabular.git
@@ -49,9 +40,6 @@
 [submodule "vim/bundle/html5"]
 	path = vim/bundle/html5
 	url = git://github.com/othree/html5.vim.git
-[submodule "vim/bundle/css"]
-	path = vim/bundle/css
-	url = git://github.com/ChrisYip/Better-CSS-Syntax-for-Vim.git
 [submodule "vim/bundle/gitgutter"]
 	path = vim/bundle/gitgutter
 	url = git://github.com/airblade/vim-gitgutter.git
@@ -73,3 +61,12 @@
 [submodule "vim/bundle/over"]
 	path = vim/bundle/over
 	url = https://github.com/osyo-manga/vim-over
+[submodule "vim/bundle/vim-css3-syntax"]
+	path = vim/bundle/css3-synrax
+	url = git@github.com:hail2u/vim-css3-syntax.git
+[submodule "vim/bundle/twig"]
+	path = vim/bundle/twig
+	url = git@github.com:evidens/vim-twig.git
+[submodule "vim/bundle/yaml"]
+	path = vim/bundle/yaml
+	url = git@github.com:stephpy/vim-yaml.git

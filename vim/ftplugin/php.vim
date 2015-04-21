@@ -1,19 +1,3 @@
-nmap <buffer> <silent> <F9> :call DebugMode()<cr>
-func! DebugMode()
-    nmap <buffer> <F1> :python debugger_resize()<cr>
-    nmap <buffer> <F2> :python debugger_command('step_into')<cr>
-    nmap <buffer> <F3> :python debugger_command('step_over')<cr>
-    nmap <buffer> <F4> :python debugger_command('step_out')<cr>
-
-    nmap <buffer> <leader>e :python debugger_watch_input("eval")<cr>A<cr>
-
-    nmap <buffer> <F5> :python debugger_run()<cr>
-    nmap <buffer> <F6> :python debugger_quit()<cr>
-
-    nmap <buffer> <F11> :python debugger_context()<cr>
-    nmap <buffer> <F12> :python debugger_property()<cr>
-endfunc
-
 " open word under cursor with php.net
 nmap <buffer> <silent> <leader>doc :!links https://php.net/manual/en/function.<C-R>=substitute('<C-R><C-W>', '_', '-', 'g')<CR>.php\\#function.<C-R>=substitute('<C-R><C-W>', '_', '-', 'g')<CR><CR>
 
@@ -26,9 +10,6 @@ nmap <buffer> <C-l> :!php -l %<CR>
 " Completion
 set complete=.,w,b,u,t,i,k~/.vim/syntax/php.api
 au FileType php set omnifunc=phpcomplete#CompletePHP
-
-" PHP Namespace autocomplete
-nmap <buffer> <F5> :call PhpInsertUse()<CR>
 
 let php_htmlInStrings   = 1
 let php_sql_query       = 1
@@ -53,4 +34,11 @@ com! SfJumpToView call s:SfJumpToView()
 " create a mapping only in a Controller file
 autocmd BufEnter *Controller.php nmap <buffer><leader>v :SfJumpToView<CR>
 
+" export code snippet with syntax highlighting
 map <buffer> <C-c> :RTFHighlight php<cr>
+
+" insert getter/setter
+nmap <buffer> <leader>gs :InsertBothGetterSetter<cr>
+
+" symfony plugin
+let g:symfony_app_console_path="bin/console"

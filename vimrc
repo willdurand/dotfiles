@@ -1,6 +1,6 @@
 " VIM Configuration
 " The original config comes from Vincent Jousse
-" Modified by William Durand <will+git@drnd.me>
+" Heavily modified by William Durand <will+git@drnd.me>
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
@@ -13,7 +13,7 @@ filetype indent on
 " Color scheme
 let &t_Co=256
 let g:solarized_termcolors=256
-" ISIMA
+
 set background=dark
 colorscheme solarized
 
@@ -132,14 +132,7 @@ highlight GitGutterChange   guifg=#bbbb00 guibg=NONE ctermfg=3 ctermbg=235
 highlight GitGutterDelete   guifg=#ff2222 guibg=NONE ctermfg=1 ctermbg=235
 
 " Powerline
-set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
-
-" Ctags
-set nocp
-set tags=tags,vendor.tags
-map <silent><leader><Left> <C-T>
-map <silent><leader><Right> <C-]>
-map <silent><leader><Up> <C-W>]
+set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim/
 
 " automatically open and close the popup menu / preview window
 au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
@@ -187,7 +180,7 @@ function! StripTrailingWhitespace()
     endif
     normal `Z
 endfunction
-autocmd BufWritePre *.md,*.markdown,*.mkd,*.pp,*.php,*.yml,*.xml,*.js,*.html,*.css,*.java,*.c,*.cpp,*.vim :call StripTrailingWhitespace()
+autocmd BufWritePre *.* :call StripTrailingWhitespace()
 
 " create directory if not exists
 au BufWrite * :call <SID>MkdirsIfNotExists(expand('<afile>:h'))
@@ -201,20 +194,13 @@ endfunction
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 " Gist
-let g:gist_clip_command     = 'pbcopy'
-let g:gist_detect_filetype  = 1
-let g:gist_post_private     = 1
+let g:gist_clip_command    = 'pbcopy'
+let g:gist_detect_filetype = 1
+let g:gist_post_private    = 1
 
 " ctrlp
 let g:ctrlp_map                 = '<leader>t'
 let g:ctrlp_clear_cache_on_exit = 0
-
-" Twig
-au BufNewFile,BufRead *.twig set filetype=twig
-autocmd BufEnter *.html.twig nmap <buffer><leader>c :bf<CR>
-
-" Behat
-let feature_filetype='behat'
 
 " make
 map <leader>m :make<cr>
@@ -245,16 +231,11 @@ set modelines=1
 " Format JSON
 map <leader>j !python -m json.tool<CR>
 
-" flavored markdown
-augroup markdown
-    au!
-    au BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown
-augroup END
-
 function! VisualFindAndReplace()
     :OverCommandLine%s/
     :w
 endfunction
+
 function! VisualFindAndReplaceWithSelection() range
     :'<,'>OverCommandLine s/
     :w
@@ -262,3 +243,8 @@ endfunction
 
 nnoremap <Leader>fr :call VisualFindAndReplace()<CR>
 xnoremap <Leader>fr :call VisualFindAndReplaceWithSelection()<CR>
+
+" display vertical line
+if exists('&colorcolumn')
+    set colorcolumn=80
+endif
