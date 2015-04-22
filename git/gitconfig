@@ -54,7 +54,6 @@
 	protocol = git
 
 [credential]
-    helper = /opt/boxen/bin/boxen-git-credential
 
 [push]
 	default = current
