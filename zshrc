@@ -1,3 +1,13 @@
+# Functions Autoloading
+fpath=(~/.zsh $fpath)
+
+# Completion
+autoload -U promptinit && promptinit
+autoload -U compinit compdef && compinit
+
+# Prompt
+prompt pure
+
 # Common ENV variables
 export EDITOR='vim'
 export GIT_EDITOR='vim'
@@ -68,16 +78,6 @@ zstyle ':completion:*' select-prompt '%SScrolling active: current selection at %
 zstyle ':completion:*:descriptions' format '%U%F{yellow}%d%f%u'
 zstyle ':completion:*:*:git:*' script ~/.git-completion.sh
 
-# Functions Autoloading
-fpath=(~/.zsh $fpath)
-
-# Completion
-autoload -U promptinit && promptinit
-autoload -U compinit compdef && compinit
-
-# Prompt
-prompt pure
-
 # Reverse search
 bindkey -e
 
@@ -116,10 +116,7 @@ chrome () {
 export PATH=/usr/local/bin:/usr/sbin:/sbin:/usr/bin:/bin:/usr/X11/bin:/Developer/usr/bin
 
 ### GNU
-export PATH=$PATH:/opt/local/libexec/gnubin
-
-### Android tools
-export PATH=$PATH:/Applications/eclipse/android-sdk-mac_86/tools:/Applications/eclipse/android-sdk-mac_86/platform-tools
+PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 
 ### Scala
 export PATH=$PATH:/usr/local/scala/bin
@@ -150,5 +147,5 @@ export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/projects
 source /usr/local/bin/virtualenvwrapper.sh
 
-### Boxen
-[ -f /opt/boxen/env.sh ] && source /opt/boxen/env.sh
+### Go
+export PATH=$PATH:/usr/local/opt/go/libexec/bin
