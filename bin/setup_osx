@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 # Based on: https://github.com/mathiasbynens/dotfiles
 
-CURRENT="`pwd`"
+set -eo pipefail
+
+CURRENT=$(pwd)
 
 # Ask for the administrator password upfront
 sudo -v
@@ -112,7 +114,7 @@ hash tmutil &> /dev/null && sudo tmutil disablelocal
 defaults write com.apple.finder QLEnableTextSelection -bool true
 
 # Capture should speak English
-sudo cp $CURRENT/osx/ScreenCapture.strings /System/Library/CoreServices/SystemUIServer.app/Contents/Resources/French.lproj/ScreenCapture.strings
+sudo cp "$CURRENT/osx/ScreenCapture.strings" /System/Library/CoreServices/SystemUIServer.app/Contents/Resources/French.lproj/ScreenCapture.strings
 killall SystemUIServer
 
 # Disable the sudden motion sensor as it’s not useful for SSDs

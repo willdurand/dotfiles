@@ -1,22 +1,22 @@
 #!/usr/bin/env bash
 
-CURRENT="`pwd`"
+set -eo pipefail
+
+CURRENT=$(pwd)
 INSTALL_ZSH=true
 INSTALL_VIM=true
 CONFIG_ONLY=false
 
-set -e
-
 info () {
-    printf "  [ \033[00;34m..\033[0m ] $1"
+    printf "  [ \033[00;34m..\033[0m ] %s" "$1"
 }
 
 success () {
-    printf "\r\033[2K  [ \033[00;32mOK\033[0m ] $1\n"
+    printf "\r\033[2K  [ \033[00;32mOK\033[0m ] %s\n" "$1"
 }
 
 fail () {
-    printf "\r\033[2K  [\033[0;31mFAIL\033[0m] $1\n"
+    printf "\r\033[2K  [\033[0;31mFAIL\033[0m] %s\n" "$1"
     echo ''
     exit
 }
@@ -86,7 +86,7 @@ link_files dir_colors ~/.dir_colors
 
 # Parsing options
 if [ $# -gt 0 ] ; then
-    for arg in $@ ; do
+    for arg in "$@" ; do
         if [ $arg = '--no-zsh' ] ; then
             INSTALL_ZSH=false
         elif [ $arg = '--no-vim' ] ; then
@@ -105,12 +105,12 @@ else
     git submodule update --init
 
     if $INSTALL_VIM ; then
-        cd $CURRENT/vim-config
+        cd "$CURRENT/vim-config"
         bin/install
     fi
 
     if $INSTALL_ZSH ; then
-        cd $CURRENT/zsh-config
+        cd "$CURRENT/zsh-config"
         bin/install
     fi
 fi
