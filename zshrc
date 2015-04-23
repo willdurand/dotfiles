@@ -82,7 +82,7 @@ zstyle ':completion:*:*:git:*' script ~/.git-completion.sh
 bindkey -e
 
 if [ "$TERM" != "dumb" ]; then
-  export LS_OPTIONS='-G'
+  export LS_OPTIONS='-G --color=always'
 fi
 
 # alias
