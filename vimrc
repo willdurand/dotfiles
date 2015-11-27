@@ -27,6 +27,9 @@ set wildmenu                        " Enhanced command line completion
 set wildmode=list:longest           " Complete files like a shell
 set wildignore=.svn,CVS,.git,.hg,*.o,*.a,*.class,*.mo,*.la,*.so,*.obj,*.swp,*.jpg,*.png,*.xpm,*.gif,*.pyc,*.pyo,*app/cache/**,*app/logs/**,*/zend/**,*/bootstrap.*.*
 
+" http://vim.wikia.com/wiki/FileName_Completion_in_Shell_Scripts
+set isfname-==
+
 set showcmd                         " Display incomplete commands
 set showmode                        " Display the mode you're in
 
