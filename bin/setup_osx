@@ -41,10 +41,10 @@ sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo Hos
 defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
 
 # Disable Notification Center and remove the menu bar icon
-launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2> /dev/null
+# launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2> /dev/null
 
 # Restart automatically if the computer freezes
-systemsetup -setrestartfreeze on
+sudo systemsetup -setrestartfreeze on
 
 # Set a blazingly fast keyboard repeat rate
 defaults write NSGlobalDomain KeyRepeat -int 0
@@ -114,11 +114,11 @@ hash tmutil &> /dev/null && sudo tmutil disablelocal
 defaults write com.apple.finder QLEnableTextSelection -bool true
 
 # Capture should speak English
-sudo cp "$CURRENT/osx/ScreenCapture.strings" /System/Library/CoreServices/SystemUIServer.app/Contents/Resources/French.lproj/ScreenCapture.strings
-killall SystemUIServer
+#sudo cp "$CURRENT/osx/ScreenCapture.strings" /System/Library/CoreServices/SystemUIServer.app/Contents/Resources/French.lproj/ScreenCapture.strings
+#killall SystemUIServer
 
 # Disable the sudden motion sensor as it’s not useful for SSDs
-sudo pmset -a sms 0
+#sudo pmset -a sms 0
 
 # Disable the crash reporter
 defaults write com.apple.CrashReporter DialogType -string "none"
