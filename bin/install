@@ -22,11 +22,18 @@ fi
 
 ln -s "$CURRENT/pure/pure.zsh" ~/.zsh/prompt_pure_setup
 
+if [ -L ~/.zsh/async ] ; then
+    rm ~/.zsh/async
+fi
+
+ln -s "$CURRENT/pure/async.zsh" ~/.zsh/async
+
+
 if [ -L ~/.zsh/_git ] ; then
     rm ~/.zsh/_git
 fi
 
-ln -s "$CURRENT/git/_hub" ~/.zsh/_hub
+ln -s "$CURRENT/git/_git" ~/.zsh/_git
 
 if [ -L ~/.zsh/_hub ] ; then
     rm ~/.zsh/_hub
