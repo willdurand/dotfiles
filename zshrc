@@ -101,6 +101,9 @@ alias diff=icdiff
 # tmux
 alias tmux="TERM=screen-256color-bce tmux"
 
+# git + hub
+alias git=hub
+
 # You can hit C-X C-E to open your $EDITOR
 # with the command typed in the buffer and
 # quickly edit your error
@@ -128,9 +131,6 @@ eval "$(phpenv init -)"
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
-### Java
-export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
-
 ### Node
 export PATH="$PATH:./node_modules/.bin"
 
@@ -138,9 +138,7 @@ export PATH="$PATH:./node_modules/.bin"
 export PATH="$PATH:/usr/local/packer"
 
 ### Docker
-export DOCKER_HOST=tcp://192.168.59.103:2376
-export DOCKER_CERT_PATH=/Users/william/.boot2docker/certs/boot2docker-vm
-export DOCKER_TLS_VERIFY=1
+eval "$(docker-machine env default)"
 
 ### Python
 export WORKON_HOME=$HOME/.virtualenvs
@@ -149,3 +147,17 @@ source /usr/local/bin/virtualenvwrapper.sh
 
 ### Go
 export PATH=$PATH:/usr/local/opt/go/libexec/bin
+
+# Ruby
+eval "$(rbenv init -)"
+
+# added by travis gem
+[ -f /Users/william/.travis/travis.sh ] && source /Users/william/.travis/travis.sh
+export PATH="/usr/local/sbin:$PATH"
+
+# cpan/perl
+PATH="/Users/william/perl5/bin${PATH+:}${PATH}"; export PATH;
+PERL5LIB="/Users/william/perl5/lib/perl5${PERL5LIB+:}${PERL5LIB}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/Users/william/perl5${PERL_LOCAL_LIB_ROOT+:}${PERL_LOCAL_LIB_ROOT}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/Users/william/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/Users/william/perl5"; export PERL_MM_OPT;
