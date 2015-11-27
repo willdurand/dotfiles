@@ -17,6 +17,9 @@ let g:solarized_termcolors=256
 set background=dark
 colorscheme solarized
 
+" redifinition of map leader
+let mapleader = ","
+
 " Set title on X window
 set title
 
@@ -31,7 +34,6 @@ set wildignore=.svn,CVS,.git,.hg,*.o,*.a,*.class,*.mo,*.la,*.so,*.obj,*.swp,*.xp
 set isfname-==
 
 set showcmd                         " Display incomplete commands
-set showmode                        " Display the mode you're in
 
 set number                          " Show line numbers
 set ruler                           " Show cursor position
@@ -89,9 +91,6 @@ nnoremap ` '
 
 " command and search pattern history
 set history=10000
-
-" redifinition of map leader
-let mapleader = ","
 
 " make plugins smoother
 set lazyredraw
