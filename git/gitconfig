@@ -17,7 +17,7 @@
 [color "diff"]
     meta = yellow
     frag = magenta
- 	old = red
+    old = red
     new = green
 
 [color "status"]
@@ -30,7 +30,7 @@
     editor = vim
     autocrlf = false
     whitespace = trailing-space,space-before-tab
-	excludesfile = /Users/william/.gitignore_global
+    excludesfile = /Users/william/.gitignore_global
 
 [diff "exif"]
     textconv = exiftool
@@ -51,12 +51,20 @@
     lg = log --graph --pretty=format:'%Cred%h%Creset %C(yellow)%an%d%Creset %s %Cgreen(%cr)%Creset' --date=relative
 
 [hub]
-	protocol = git
-
-[credential]
+    protocol = git
 
 [push]
-	default = current
+    default = current
+
+[pull]
+	rebase = preserve
 
 [commit]
     gpgsign = 1
+
+[sendemail]
+	smtpencryption = tls
+	smtpserver = mail.messagingengine.com
+	smtpserverport = 587
+	suppresscc = self
+	smtpuser = willdurand@fastmail.com
