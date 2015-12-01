@@ -113,14 +113,14 @@ command W w !sudo tee % > /dev/null
 " pull word under cursor into LHS of a substitute (for quick search and replace)
 nmap <leader>zs :%s/<C-r>=expand("<cword>")<CR>/
 
-" pull word under cursor into Ack for a global search
-map <leader>za :Ack "<C-r>=expand("<cword>")<CR>"
+" pull word under cursor into ag for a global search
+map <leader>za :Ag "<C-r>=expand("<cword>")<CR>"
 
 " start a substitute
 map <leader>s :%s/
 
-" ack
-nmap <leader>a :Ack<space>
+" ag
+nmap <leader>a :Ag<space>
 
 " Clear search highlight
 map <silent> <leader>/ :let @/=""<CR>:echo "Cleared search register."<cr>
