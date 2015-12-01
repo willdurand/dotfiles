@@ -213,9 +213,6 @@ map <leader>m :make<cr>
 " Highlight words to avoid in tech writing
 " ========================================
 "
-"   obviously, basically, simply, of course, clearly,
-"   just, everyone knows, However, So, easy, assuming
-"
 "   http://css-tricks.com/words-avoid-educational-writing/
 "   https://github.com/pengwynn/dotfiles/blob/12159ea233180344be4e25d57056ccd37061a153/vim/vimrc.symlink
 "
