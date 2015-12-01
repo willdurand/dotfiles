@@ -250,3 +250,10 @@ xnoremap <Leader>fr :call VisualFindAndReplaceWithSelection()<CR>
 if exists('&colorcolumn')
     set colorcolumn=80
 endif
+
+" Highlight cursor line
+" https://github.com/chanmix51/vim-config/blob/master/vimrc
+autocmd insertEnter * set cursorline
+autocmd insertLeave * set nocursorline
+autocmd insertEnter *.yml set cursorcolumn
+autocmd insertLeave *.yml set nocursorcolumn
