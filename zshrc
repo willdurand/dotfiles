@@ -104,6 +104,9 @@ alias tmux="TERM=screen-256color-bce tmux"
 # git + hub
 alias git=hub
 
+# ag, faster than ack
+alias ack=ag
+
 # You can hit C-X C-E to open your $EDITOR
 # with the command typed in the buffer and
 # quickly edit your error
