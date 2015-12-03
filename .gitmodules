@@ -22,9 +22,11 @@
 [submodule "vim/bundle/snipmate"]
 	path = vim/bundle/snipmate
 	url = git://github.com/msanders/snipmate.vim.git
+    ignore = untracked
 [submodule "vim/bundle/jshint"]
 	path = vim/bundle/jshint
 	url = git://github.com/walm/jshint.vim.git
+    ignore = untracked
 [submodule "vim/bundle/javascript"]
 	path = vim/bundle/javascript
 	url = git://github.com/pangloss/vim-javascript.git
