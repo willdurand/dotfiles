@@ -1,5 +1,5 @@
 " open word under cursor with php.net
-nmap <buffer> <silent> <leader>doc :!links https://php.net/manual/en/function.<C-R>=substitute('<C-R><C-W>', '_', '-', 'g')<CR>.php\\#function.<C-R>=substitute('<C-R><C-W>', '_', '-', 'g')<CR><CR>
+nmap <buffer> <silent> <leader>doc :!elinks https://php.net/manual/en/function.<C-R>=substitute('<C-R><C-W>', '_', '-', 'g')<CR>.php\\#function.<C-R>=substitute('<C-R><C-W>', '_', '-', 'g')<CR><CR>
 
 " insert current namespace (based on ornicar work: http://github.com/ornicar)
 nmap <buffer> <leader>cns "%PdF/r;:s#/#\\#<CR>Inamespace  <ESC>d/[A-Z]<CR><ESC>:let @/=""<CR>
