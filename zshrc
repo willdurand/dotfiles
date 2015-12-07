@@ -94,8 +94,6 @@ alias dstat='dstat -dcgilmsy'
 alias projects="cd ~/projects/"
 
 # convenient aliases
-alias grunt='nocorrect grunt'
-alias mutt='cd ~/Desktop && mutt'
 alias diff=icdiff
 
 # tmux
@@ -125,14 +123,16 @@ export PATH=/usr/local/bin:/usr/sbin:/sbin:/usr/bin:/bin:/usr/X11/bin:/Developer
 PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 
 ### Scala
-export PATH=$PATH:/usr/local/scala/bin
+export PATH="$PATH:/usr/local/scala/bin"
 
 ### PHP
-export PATH=$PATH:~/.phpenv/bin
+export PATH="$PATH:$HOME/.phpenv/bin"
 eval "$(phpenv init -)"
 
+export PATH="$PATH:$HOME/.composer/vendor/bin:$HOME/.composer/vendor/willdurand/pman/bin"
+
 ### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
+export PATH="$PATH:/usr/local/heroku/bin"
 
 ### Node
 export PATH="$PATH:./node_modules/.bin"
@@ -144,12 +144,12 @@ export PATH="$PATH:/usr/local/packer"
 eval "$(docker-machine env default)"
 
 ### Python
-export WORKON_HOME=$HOME/.virtualenvs
-export PROJECT_HOME=$HOME/projects
+export WORKON_HOME="$HOME/.virtualenvs"
+export PROJECT_HOME="$HOME/projects"
 source /usr/local/bin/virtualenvwrapper.sh
 
 ### Go
-export PATH=$PATH:/usr/local/opt/go/libexec/bin
+export PATH="$PATH:/usr/local/opt/go/libexec/bin"
 
 # Ruby
 eval "$(rbenv init -)"
