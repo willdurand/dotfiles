@@ -38,7 +38,6 @@ Important: the **leader** key is `,`.
 
 ### PHP
 
-* `,doc`    on a PHP function will open the [php.net](http://en.php.net) doc.
 * `,cns`    will insert the current namespace based on the filename.
 * `<ctrl>l` will run the PHP linter to detect syntax errors.
 * `,m`      will run PHPUnit (actually it's mapped to `:make`)
