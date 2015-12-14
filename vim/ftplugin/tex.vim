@@ -5,7 +5,9 @@ if exists('&colorcolumn')
 endif
 
 highlight TexComments ctermfg=white
-autocmd BufWinEnter *.tex match TexComments /%.*/
-autocmd InsertEnter *.tex match TexComments /%.*/
-autocmd InsertLeave *.tex match TexComments /%.*/
-autocmd BufWinLeave *.tex call clearmatches()
+match TexComments /%.*/
+match TexComments /%.*/
+match TexComments /%.*/
+call clearmatches()
+
+call lexical#init()

@@ -78,3 +78,12 @@
 [submodule "vim/bundle/ag"]
 	path = vim/bundle/ag
 	url = https://github.com/rking/ag.vim
+[submodule "vim/bundle/wordy"]
+	path = vim/bundle/wordy
+	url = https://github.com/reedes/vim-wordy.git
+[submodule "vim/bundle/lexical"]
+	path = vim/bundle/lexical
+	url = https://github.com/reedes/vim-lexical.git
+[submodule "vim/bundle/litecorrect"]
+	path = vim/bundle/litecorrect
+	url = https://github.com/reedes/vim-litecorrect.git

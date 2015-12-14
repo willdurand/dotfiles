@@ -257,3 +257,10 @@ autocmd insertEnter * set cursorline
 autocmd insertLeave * set nocursorline
 autocmd insertEnter *.yml set cursorcolumn
 autocmd insertLeave *.yml set nocursorcolumn
+
+" https://github.com/reedes/vim-litecorrect
+let user_dict = {
+    \ 'if and only if': ['iff'],
+    \ }
+
+call litecorrect#init(user_dict)
