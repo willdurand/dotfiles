@@ -159,7 +159,6 @@ set nofoldenable
 iab xdate <C-R>=strftime("%d/%m/%Y %H:%M:%S")
 iab xname <C-R> William Durand
 iab xsigp <C-R> William Durand <will+git@drnd.me>
-iab xsigw <C-R> William Durand <will+git@drnd.me>
 
 " snipMate
 let g:snips_author = 'William Durand <will+git@drnd.me>'
@@ -261,6 +260,9 @@ autocmd insertLeave *.yml set nocursorcolumn
 " https://github.com/reedes/vim-litecorrect
 let user_dict = {
     \ 'if and only if': ['iff'],
+    \ 'do not': ['dont', 'don''t'],
+    \ 'cannot': ['can''t'],
     \ }
 
+set iskeyword+=' " so that it supports: don't => do not, etc.
 call litecorrect#init(user_dict)
