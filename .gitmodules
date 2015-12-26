@@ -13,9 +13,6 @@
 [submodule "vim/bundle/webapi"]
 	path = vim/bundle/webapi
 	url = git://github.com/mattn/webapi-vim
-[submodule "vim/bundle/ctrlp"]
-	path = vim/bundle/ctrlp
-	url = git://github.com/kien/ctrlp.vim.git
 [submodule "vim/bundle/solarized"]
 	path = vim/bundle/solarized
 	url = git://github.com/altercation/vim-colors-solarized.git
@@ -87,3 +84,6 @@
 [submodule "vim/bundle/litecorrect"]
 	path = vim/bundle/litecorrect
 	url = https://github.com/reedes/vim-litecorrect.git
+[submodule "vim/bundle/ctrlp"]
+	path = vim/bundle/ctrlp
+	url = https://github.com/ctrlpvim/ctrlp.vim.git
