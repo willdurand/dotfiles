@@ -261,6 +261,7 @@ autocmd insertLeave *.yml set nocursorcolumn
 let user_dict = {
     \ 'if and only if': ['iff'],
     \ 'do not': ['dont', 'don''t'],
+    \ 'does not': ['doesnt', 'doesn''t'],
     \ 'cannot': ['can''t'],
     \ }
 
