@@ -6,7 +6,7 @@
 	url = https://github.com/vim-scripts/matchit.zip.git
 [submodule "vim/bundle/symfony"]
 	path = vim/bundle/symfony
-	url = https://github.com/docteurklein/vim-symfony.git
+	url = https://github.com/willdurand/vim-symfony.git
 [submodule "vim/bundle/gist"]
 	path = vim/bundle/gist
 	url = https://github.com/mattn/gist-vim
@@ -38,7 +38,7 @@
 	url = https://github.com/terryma/vim-multiple-cursors.git
 [submodule "vim/bundle/php-getter-setter"]
 	path = vim/bundle/php-getter-setter
-	url = https://github.com/docteurklein/php-getter-setter.vim.git
+	url = https://github.com/willdurand/php-getter-setter.vim.git
 [submodule "vim/bundle/flavored-markdown"]
 	path = vim/bundle/flavored-markdown
     url = https://github.com/jtratner/vim-flavored-markdown.git
