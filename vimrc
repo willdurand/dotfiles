@@ -11,13 +11,19 @@ filetype plugin on
 filetype indent on
 
 " Color scheme
+set background=dark
 let &t_Co=256
 let g:solarized_termcolors=256
 
-set background=dark
+" airline
+let g:airline_powerline_fonts = 1
+let g:airline_theme = 'solarized'
+let g:airline_solarized_bg = 'dark'
+set noshowmode
 
 if $ITERM_PROFILE == 'Presentation Mode' || $ITERM_PROFILE == 'White'
     set background=light
+    let g:airline_solarized_bg = 'light'
 endif
 
 colorscheme solarized
@@ -137,12 +143,6 @@ highlight SignColumn        ctermbg=235
 highlight GitGutterAdd      guifg=#009900 guibg=NONE ctermfg=2 ctermbg=235
 highlight GitGutterChange   guifg=#bbbb00 guibg=NONE ctermfg=3 ctermbg=235
 highlight GitGutterDelete   guifg=#ff2222 guibg=NONE ctermfg=1 ctermbg=235
-
-" airline
-let g:airline_powerline_fonts = 1
-let g:airline_theme = 'solarized'
-let g:airline_solarized_bg = 'dark'
-set noshowmode
 
 " automatically open and close the popup menu / preview window
 au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
