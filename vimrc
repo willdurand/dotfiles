@@ -15,6 +15,11 @@ let &t_Co=256
 let g:solarized_termcolors=256
 
 set background=dark
+
+if $ITERM_PROFILE == 'Presentation Mode' || $ITERM_PROFILE == 'White'
+    set background=light
+endif
+
 colorscheme solarized
 
 " redifinition of map leader
