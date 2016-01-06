@@ -1,8 +1,7 @@
 " VIM Configuration
 " The original config comes from Vincent Jousse
 " Heavily modified by William Durand <will+git@drnd.me>
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
+execute pathogen#infect()
 
 syntax on
 
