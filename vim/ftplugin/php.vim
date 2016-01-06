@@ -7,12 +7,6 @@ nmap <buffer> <leader>cns "%PdF/r;:s#/#\\#<CR>Inamespace  <ESC>d/[A-Z]<CR><ESC>:
 " PHP linter
 nmap <buffer> <C-l> :!php -l %<CR>
 
-let php_htmlInStrings   = 1
-let php_sql_query       = 1
-
-" export code snippet with syntax highlighting
-map <buffer> <C-c> :RTFHighlight php<cr>
-
 " insert getter/setter
 nmap <buffer> <leader>gs :InsertBothGetterSetter<cr>
 
