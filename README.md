@@ -1,7 +1,7 @@
 My ZSH config
 =============
 
-This is my ZSH config. Here is a screenshot:
+This is my ZSH config.
 
 Installation
 ------------
