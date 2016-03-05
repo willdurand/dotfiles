@@ -20,10 +20,6 @@
 	path = vim/bundle/snipmate
 	url = https://github.com/msanders/snipmate.vim.git
     ignore = untracked
-[submodule "vim/bundle/jshint"]
-	path = vim/bundle/jshint
-	url = https://github.com/walm/jshint.vim.git
-    ignore = untracked
 [submodule "vim/bundle/javascript"]
 	path = vim/bundle/javascript
 	url = https://github.com/pangloss/vim-javascript.git
