@@ -167,3 +167,6 @@ PERL_MM_OPT="INSTALL_BASE=/Users/william/perl5"; export PERL_MM_OPT;
 
 # MacTex
 export PATH="$PATH:/Library/TeX/texbin"
+
+# Terraform
+export PATH="$PATH:/usr/local/terraform"
