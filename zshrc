@@ -85,6 +85,23 @@ if [ "$TERM" != "dumb" ]; then
   export LS_OPTIONS='-G --color=always'
 fi
 
+# Pager
+# Thanks François <3
+if [[ -x `which less` ]] ; then
+  export PAGER="less"
+  export LESS="--ignore-case --LONG-PROMPT --QUIET --chop-long-lines -Sm --RAW-CONTROL-CHARS --quit-if-one-screen --no-init"
+
+  #http://nion.modprobe.de/blog/archives/572-less-colors-for-man-pages.html
+  export LESS_TERMCAP_mb=$'\E[01;31m'
+  export LESS_TERMCAP_md=$'\E[01;31m'
+  export LESS_TERMCAP_me=$'\E[0m'
+  export LESS_TERMCAP_se=$'\E[0m'
+  export LESS_TERMCAP_so=$'\E[01;44;33m'
+  export LESS_TERMCAP_ue=$'\E[0m'
+  export LESS_TERMCAP_us=$'\E[00;32m'
+  export MANPAGES='/bin/less'
+fi
+
 # alias
 alias ls='ls $LS_OPTIONS -hF'
 alias ll='ls $LS_OPTIONS -lAhF'
