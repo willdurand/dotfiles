@@ -130,7 +130,7 @@ zle -N edit-command-line
 bindkey '^X^E' edit-command-line
 
 chrome () {
-    [[ `uname` == 'Darwin' ]] && /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome $* 2>&1 &
+  [[ `uname` == 'Darwin' ]] && /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome $* 2>&1 &
 }
 
 ### PATH
