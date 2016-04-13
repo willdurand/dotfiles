@@ -10,7 +10,7 @@ Installation
 ------------
 
 ```
-$ git clone git://github.com/willdurand/vim-config.git --recursive
+$ git clone https://github.com/willdurand/vim-config.git --recursive
 $ cd vim-config && bin/install
 ```
 
