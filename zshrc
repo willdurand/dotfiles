@@ -166,7 +166,8 @@ export PROJECT_HOME="$HOME/projects"
 source /usr/local/bin/virtualenvwrapper.sh
 
 ### Go
-export PATH="$PATH:/usr/local/opt/go/libexec/bin"
+export GOPATH="$HOME/projects/go"
+export PATH="$PATH:/usr/local/opt/go/libexec/bin:$GOPATH/bin"
 
 # Ruby
 eval "$(rbenv init -)"
