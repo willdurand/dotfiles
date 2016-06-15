@@ -68,3 +68,10 @@
 	smtpserverport = 587
 	suppresscc = self
 	smtpuser = willdurand@fastmail.com
+[pager]
+	diff = diff-highlight | less
+	log = diff-highlight | less
+	show = diff-highlight | less
+
+[diff]
+	compactionHeuristic = 1
