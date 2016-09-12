@@ -3,25 +3,22 @@
 set -eo pipefail
 
 CURRENT=$(pwd)
-INSTALL_ZSH=true
-INSTALL_VIM=true
-CONFIG_ONLY=false
 
-info () {
+info() {
     printf "  [ \033[00;34m..\033[0m ] %s" "$1"
 }
 
-success () {
+success() {
     printf "\r\033[2K  [ \033[00;32mOK\033[0m ] %s\n" "$1"
 }
 
-fail () {
+fail() {
     printf "\r\033[2K  [\033[0;31mFAIL\033[0m] %s\n" "$1"
     echo ''
     exit
 }
 
-link_files () {
+link_files() {
     if [ -L "$2" ] ; then
         rm -f "$2"
     fi
@@ -30,7 +27,7 @@ link_files () {
     success "linked $1 to $2"
 }
 
-ensure_dir () {
+ensure_dir() {
     if [ ! -d "$1" ] ; then
         mkdir -p "$1"
 
@@ -38,7 +35,7 @@ ensure_dir () {
     fi
 }
 
-setup_git () {
+setup_git() {
     link_files git/git-completion.bash ~/.git-completion.sh
     link_files git/gitattributes ~/.gitattributes
     link_files git/gitconfig ~/.gitconfig
@@ -48,6 +45,9 @@ setup_git () {
 
     git config --global core.excludesfile ~/.gitignore_global
 }
+
+# Update submodules first
+git submodule update --init
 
 # mercurial
 link_files mercurial/hgrc ~/.hgrc
@@ -68,36 +68,14 @@ link_files urlview/urlview ~/.urlview
 # git
 setup_git
 
-# Parsing options
-if [ $# -gt 0 ] ; then
-    for arg in "$@" ; do
-        if [ $arg = '--no-zsh' ] ; then
-            INSTALL_ZSH=false
-        elif [ $arg = '--no-vim' ] ; then
-            INSTALL_VIM=false
-        elif [ $arg = '--config-only' ] ; then
-            CONFIG_ONLY=true
-        fi
-    done
-fi
+# vim
+link_files vim ~/.vim
+link_files vim/vimrc ~/.vimrc
 
-# Vim/ZSH
-if $CONFIG_ONLY ; then
-    info "Skipped submodules installation"
-else
-    # Submodules
-    git submodule update --init
-
-    if $INSTALL_VIM ; then
-        cd "$CURRENT/vim"
-        bin/install
-    fi
-
-    if $INSTALL_ZSH ; then
-        cd "$CURRENT/zsh"
-        bin/install
-    fi
-fi
+# zsh
+link_files zsh/pure/pure.zsh ~/.zsh/prompt_pure_setup
+link_files zsh/pure/async.zsh ~/.zsh/async
+link_files zsh/zshrc ~/.zshrc
 
 echo ''
 echo '  All installed!'

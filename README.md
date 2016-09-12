@@ -16,4 +16,3 @@ You can tweak OSX by running the following script:
 
     $ bin/setup_osx
 
-
