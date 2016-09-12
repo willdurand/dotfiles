@@ -129,9 +129,11 @@ autoload edit-command-line
 zle -N edit-command-line
 bindkey '^X^E' edit-command-line
 
-chrome () {
-  [[ `uname` == 'Darwin' ]] && /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome $* 2>&1 &
+# Functions
+jsonapi() {
+    http "$@" Accept:application/vnd.api+json Content-Type:application/vnd.api+json
 }
+
 
 ### PATH
 export PATH=/usr/local/bin:/usr/sbin:/sbin:/usr/bin:/bin:/usr/X11/bin:/Developer/usr/bin
