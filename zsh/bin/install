@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+
+CURRENT="`pwd`"
+
+set -u
+set -e
+
+# scripts
+if [ -L ~/.scripts ] ; then
+    rm ~/.scripts
+fi
+
+ln -s "$CURRENT/scripts" ~/.scripts
+
+if [ ! -d ~/.zsh ] ; then
+    mkdir ~/.zsh
+fi
+
+if [ -L ~/.zsh/prompt_pure_setup ] ; then
+    rm ~/.zsh/prompt_pure_setup
+fi
+
+ln -s "$CURRENT/pure/pure.zsh" ~/.zsh/prompt_pure_setup
+
+if [ -L ~/.zsh/async ] ; then
+    rm ~/.zsh/async
+fi
+
+ln -s "$CURRENT/pure/async.zsh" ~/.zsh/async
+
+# ZSH
+if [ -L ~/.zshrc ] ; then
+    rm ~/.zshrc
+fi
+
+ln -s "$CURRENT/zshrc" ~/.zshrc
+
+printf "\r\033[2K  [ \033[00;32mOK\033[0m ] zsh config installed\n"

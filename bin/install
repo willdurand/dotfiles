@@ -92,8 +92,7 @@ else
     fi
 
     if $INSTALL_ZSH ; then
-        cd "$CURRENT/zsh-config"
-        bin/install
+        "$CURRENT/zsh/bin/install"
     fi
 fi
 

@@ -4,7 +4,7 @@ My dotfiles
 This repository contains:
 
 * My [vim config](http://github.com/willdurand/vim-config);
-* My [zsh config](http://github.com/willdurand/zsh-config);
+* My zsh config;
 * My Git config;
 * And some other useful _dotfiles_.
 
@@ -20,3 +20,4 @@ Installation
 You can tweak OSX by running the following script:
 
     $ bin/setup_osx
+
