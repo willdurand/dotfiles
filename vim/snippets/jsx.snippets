@@ -1,0 +1,62 @@
+snippet presenter
+	import React from 'react';
+
+
+	const ${1:Component} = (props) => (
+		${2}
+	);
+
+	${3:$1}.propTypes = {
+		${5}
+	};
+
+	export default ${4:$1};
+snippet test
+	import React from 'react';
+	import { shallow } from 'enzyme';
+	import { expect } from 'chai';
+
+	import ${1:Component} from '../../${2:$1/presenter}';
+
+	// see: https://github.com/mochajs/mocha/issues/1847
+	const { describe, it } = global;
+
+
+	describe('<${3:$1} />', () => {
+		it('renders itself', () => {
+			const wrapper = shallow(
+				<${4:$1} />
+			);
+
+			expect(wrapper.find(${5:$1})).to.have.length(1);
+		});
+	});
+snippet desc
+	describe('${1}', () => {
+		${2}
+	});
+snippet it
+	it('${1}', () => {
+		${2}
+	});
+snippet connect
+	import { connect } from 'react-redux';
+	import ${1:Component} from './presenter';
+
+	const mapStateToProps = (state) => {
+		return {};
+	};
+
+	const mapDispatchToProps = (dispatch) => ({
+	});
+
+	export default connect(mapStateToProps, mapDispatchToProps)(${2:$1});
+snippet mapd
+	const mapDispatchToProps = (dispatch) => ({
+		${1}
+	});
+snippet maps
+	const mapStateToProps = (state) => {
+		${1}
+		return {};
+	};

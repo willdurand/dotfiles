@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+set -eo pipefail
+
+CURRENT=$(pwd)
+
+if [ -L ~/.vimrc ] ; then
+    rm -rf ~/.vimrc
+fi
+
+if [ -L ~/.vim ] ; then
+    rm -rf ~/.vim
+fi
+
+git submodule update --init
+
+ln -s "$CURRENT/vim" ~/.vim
+ln -s "$CURRENT/vimrc" ~/.vimrc
+
+printf "\r\033[2K  [ \033[00;32mOK\033[0m ] vim config installed\n"

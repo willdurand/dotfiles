@@ -1,0 +1,20 @@
+snippet example
+	\begin{example}
+		${1}
+	\end{example}
+snippet fig
+	\begin{figure}[ht]
+		\begin{center}
+			\includegraphics[width=1.0\linewidth]{figures/${1:image}.png}
+		\end{center}
+
+		\caption{${2}}
+		\label{fig:${3:$1}}
+	\end{figure}
+snippet center
+	\begin{center}
+		${1}
+	\end{center}
+snippet def
+	\begin{definition}
+	\end{definition}

@@ -1,12 +1,7 @@
 My dotfiles
 ===========
 
-This repository contains:
-
-* My [vim config](http://github.com/willdurand/vim-config);
-* My zsh config;
-* My Git config;
-* And some other useful _dotfiles_.
+This repository contains my [vim|zsh|git] configs + other dotfiles.
 
 [![asciicast](https://asciinema.org/a/ei3d4g6jgvqrikner0gk02rc2.png)](https://asciinema.org/a/ei3d4g6jgvqrikner0gk02rc2)
 
@@ -20,4 +15,5 @@ Installation
 You can tweak OSX by running the following script:
 
     $ bin/setup_osx
+
 

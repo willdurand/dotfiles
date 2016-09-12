@@ -89,7 +89,7 @@ else
     git submodule update --init
 
     if $INSTALL_VIM ; then
-        cd "$CURRENT/vim-config"
+        cd "$CURRENT/vim"
         bin/install
     fi
 

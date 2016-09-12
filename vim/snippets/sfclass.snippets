@@ -1,0 +1,32 @@
+snippet action
+	public function ${1}Action(${2:params})
+	{${3}
+	}
+snippet cl
+	<?php
+
+	namespace ${3:`substitute(substitute(expand("%:h"), '\v^\w+\/(\u)', '\1', ''), '\/', '\\\', 'g')`};
+
+	/**
+	* ${4:Class documentation}
+	*
+	* @author `g:snips_author`
+	*/
+	class ${2:`Filename('', 'myClass')`}
+	{
+		${1}
+	}
+snippet get
+	public function get${1:Property}()
+	{
+		return ${2$this->};
+	}
+	${3}
+snippet set
+	public function set${1:Property}(${2})
+	{
+		${3} = ${4:$2};
+	}
+	${5}
+snippet render
+	$this->render('${1}.html.twig', [${2}]);
