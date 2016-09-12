@@ -5,13 +5,6 @@ CURRENT="`pwd`"
 set -u
 set -e
 
-# scripts
-if [ -L ~/.scripts ] ; then
-    rm ~/.scripts
-fi
-
-ln -s "$CURRENT/scripts" ~/.scripts
-
 if [ ! -d ~/.zsh ] ; then
     mkdir ~/.zsh
 fi

@@ -43,6 +43,8 @@ setup_git () {
     link_files git/gitattributes ~/.gitattributes
     link_files git/gitconfig ~/.gitconfig
     link_files git/gitignore_global ~/.gitignore_global
+    link_files git/_git ~/.zsh/_git
+    link_files git/_hub ~/.zsh/_hub
 
     git config --global core.excludesfile ~/.gitignore_global
 }
@@ -92,7 +94,8 @@ else
     fi
 
     if $INSTALL_ZSH ; then
-        "$CURRENT/zsh/bin/install"
+        cd "$CURRENT/zsh"
+        bin/install
     fi
 fi
 
