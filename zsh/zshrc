@@ -76,7 +76,7 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' menu select=2
 zstyle ':completion:*' select-prompt '%SScrolling active: current selection at %p%s'
 zstyle ':completion:*:descriptions' format '%U%F{yellow}%d%f%u'
-zstyle ':completion:*:*:git:*' script ~/.git-completion.sh
+zstyle ':completion:*:*:git:*' script ~/.git-completion.bash
 
 # Reverse search
 bindkey -e
@@ -117,7 +117,7 @@ alias diff=icdiff
 alias tmux="TERM=screen-256color-bce tmux"
 
 # git + hub
-alias git=hub
+eval "$(/usr/local/bin/hub alias -s)"
 
 # ag, faster than ack
 alias ack=ag

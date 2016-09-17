@@ -36,7 +36,7 @@ ensure_dir() {
 }
 
 setup_git() {
-    link_files git/git-completion.bash ~/.git-completion.sh
+    link_files git/git-completion.bash ~/.git-completion.bash
     link_files git/gitattributes ~/.gitattributes
     link_files git/gitconfig ~/.gitconfig
     link_files git/gitignore_global ~/.gitignore_global
