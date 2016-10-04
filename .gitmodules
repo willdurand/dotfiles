@@ -18,7 +18,7 @@
 	url = https://github.com/altercation/vim-colors-solarized.git
 [submodule "vim/bundle/snipmate"]
 	path = vim/bundle/snipmate
-	url = https://github.com/msanders/snipmate.vim.git
+	url = https://github.com/garbas/vim-snipmate.git
 	ignore = untracked
 [submodule "vim/bundle/javascript"]
 	path = vim/bundle/javascript
