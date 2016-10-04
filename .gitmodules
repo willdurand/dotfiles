@@ -92,3 +92,9 @@
 [submodule "vim/bundle/apiblueprint"]
 	path = vim/bundle/apiblueprint
 	url = https://github.com/kylef/apiblueprint.vim.git
+[submodule "vim/bundle/addon-mw-utils"]
+	path = vim/bundle/addon-mw-utils
+	url = https://github.com/MarcWeber/vim-addon-mw-utils.git
+[submodule "vim/bundle/tlib"]
+	path = vim/bundle/tlib
+	url = https://github.com/tomtom/tlib_vim.git
