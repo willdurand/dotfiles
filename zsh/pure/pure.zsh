@@ -130,8 +130,15 @@ prompt_pure_preprompt_render() {
 	local git_color=242
 	[[ -n ${prompt_pure_git_last_dirty_check_timestamp+x} ]] && git_color=red
 
-	# construct preprompt, beginning with path
-	local preprompt="%F{blue}%~%f"
+    local watson_status=""
+    [[ $(cat "$HOME/Library/Application Support/watson/state") != '{}' ]] && watson_status="%F{green}◉%f "
+
+    # construct preprompt
+    local preprompt=""
+    # watson
+    preprompt+=$watson_status
+    # path
+	preprompt+="%F{blue}%~%f"
 	# background jobs
     preprompt+="%F{green}%1(j. [%j].)%f"
 	# git info
