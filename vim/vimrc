@@ -260,3 +260,6 @@ autocmd insertEnter * set cursorline
 autocmd insertLeave * set nocursorline
 autocmd insertEnter *.yml set cursorcolumn
 autocmd insertLeave *.yml set nocursorcolumn
+
+" Always open files from quickfix window into new tab
+set switchbuf+=newtab
