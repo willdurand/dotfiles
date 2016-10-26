@@ -98,3 +98,6 @@
 [submodule "vim/bundle/tlib"]
 	path = vim/bundle/tlib
 	url = https://github.com/tomtom/tlib_vim.git
+[submodule "vim/bundle/flow"]
+	path = vim/bundle/flow
+	url = https://github.com/flowtype/vim-flow.git
