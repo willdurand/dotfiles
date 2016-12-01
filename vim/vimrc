@@ -262,4 +262,5 @@ autocmd insertEnter *.yml set cursorcolumn
 autocmd insertLeave *.yml set nocursorcolumn
 
 " Always open files from quickfix window into new tab
-set switchbuf+=newtab
+" http://stackoverflow.com/questions/6852763/vim-quickfix-list-launch-files-in-new-tab/6853779#6853779
+set switchbuf+=usetab,newtab

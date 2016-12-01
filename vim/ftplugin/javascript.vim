@@ -16,3 +16,4 @@ set softtabstop=4
 
 " Configure https://github.com/flowtype/vim-flow
 let g:flow#autoclose = 1
+let g:flow#omnifunc = 0

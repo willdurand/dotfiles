@@ -60,3 +60,16 @@ snippet maps
 		${1}
 		return {};
 	};
+snippet comp
+	/* @flow */
+	import React from 'react';
+
+	type Props = {
+		${3}
+	};
+
+	const ${1:Component} = ({${2}}: Props) => (
+		${4}
+	);
+
+	export default ${5:$1};
