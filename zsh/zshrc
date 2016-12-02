@@ -122,6 +122,9 @@ eval "$(/usr/local/bin/hub alias -s)"
 # ag, faster than ack
 alias ack=ag
 
+# no zsh, jest does exist now!
+alias jest='nocorrect jest'
+
 # You can hit C-X C-E to open your $EDITOR
 # with the command typed in the buffer and
 # quickly edit your error
