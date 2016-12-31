@@ -109,6 +109,7 @@ alias cd..="cd .."
 alias ..="cd .."
 alias dstat='dstat -dcgilmsy'
 alias projects="cd ~/projects/"
+alias champollion="cd ~/projects/go/src/github.com/TailorDev/champollion"
 
 # convenient aliases
 alias diff=icdiff
@@ -162,14 +163,6 @@ export PATH="$PATH:./node_modules/.bin"
 ### Packer
 export PATH="$PATH:/usr/local/packer"
 
-### Docker
-eval "$(docker-machine env default)"
-
-### Python
-export WORKON_HOME="$HOME/.virtualenvs"
-export PROJECT_HOME="$HOME/projects"
-source /usr/local/bin/virtualenvwrapper.sh
-
 ### Go
 export GOPATH="$HOME/projects/go"
 export PATH="$PATH:/usr/local/opt/go/libexec/bin:$GOPATH/bin"
@@ -193,3 +186,6 @@ export PATH="$PATH:/Library/TeX/texbin"
 
 # Terraform
 export PATH="$PATH:/usr/local/terraform"
+
+# Homebrew
+export HOMEBREW_NO_ANALYTICS=1

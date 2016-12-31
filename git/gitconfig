@@ -28,7 +28,7 @@
 [core]
     ui = true
     editor = vim
-    autocrlf = false
+    autocrlf = input
     whitespace = trailing-space,space-before-tab
     excludesfile = /Users/william/.gitignore_global
 

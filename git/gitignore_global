@@ -14,3 +14,5 @@ ehthumbs.db
 \#*\#
 
 .ropeproject/
+.idea/
+*.iml
