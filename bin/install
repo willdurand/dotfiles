@@ -57,9 +57,6 @@ link_files elinks/elinks.conf ~/.elinks/elinks.conf
 # tmux
 link_files tmux/tmux.conf ~/.tmux.conf
 
-# ack
-link_files ack-grep/ackrc ~/.ackrc
-
 # urlview
 link_files urlview/urlview ~/.urlview
 

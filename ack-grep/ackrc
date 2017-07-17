@@ -1,9 +1,0 @@
-# always sort the files
---sort-files
-
-# always color, even if piping to another program
---color
-
-# twig support
---type-set
-twig=.twig
