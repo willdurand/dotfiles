@@ -101,3 +101,6 @@
 [submodule "vim/bundle/flow"]
 	path = vim/bundle/flow
 	url = https://github.com/flowtype/vim-flow.git
+[submodule "vim/bundle/pug"]
+	path = vim/bundle/pug
+	url = https://github.com/digitaltoad/vim-pug.git
