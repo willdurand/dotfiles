@@ -121,7 +121,7 @@ alias tmux="TERM=screen-256color-bce tmux"
 eval "$(/usr/local/bin/hub alias -s)"
 
 # ag, faster than ack
-alias ack=ag
+alias ack=rg
 
 # no zsh, jest does exist now!
 alias jest='nocorrect jest'
