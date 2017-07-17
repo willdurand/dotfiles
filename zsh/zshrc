@@ -120,7 +120,7 @@ alias tmux="TERM=screen-256color-bce tmux"
 # git + hub
 eval "$(/usr/local/bin/hub alias -s)"
 
-# ag, faster than ack
+# rg, faster than ag, faster than ack
 alias ack=rg
 
 # no zsh, jest does exist now!
@@ -159,6 +159,7 @@ export PATH="$PATH:/usr/local/heroku/bin"
 
 ### Node
 export PATH="$PATH:./node_modules/.bin"
+export PATH="$PATH:$(yarn global bin)"
 
 ### Packer
 export PATH="$PATH:/usr/local/packer"
@@ -184,8 +185,15 @@ PERL_MM_OPT="INSTALL_BASE=/Users/william/perl5"; export PERL_MM_OPT;
 # MacTex
 export PATH="$PATH:/Library/TeX/texbin"
 
-# Terraform
-export PATH="$PATH:/usr/local/terraform"
-
 # Homebrew
 export HOMEBREW_NO_ANALYTICS=1
+
+# Android / React Native
+export ANDROID_HOME=${HOME}/Library/Android/sdk
+export PATH=${PATH}:${ANDROID_HOME}/emulator
+export PATH=${PATH}:${ANDROID_HOME}/tools
+export PATH=${PATH}:${ANDROID_HOME}/tools/bin
+export PATH=${PATH}:${ANDROID_HOME}/platform-tools
+
+# rust
+source $HOME/.cargo/env
