@@ -4,9 +4,6 @@
 [submodule "vim/bundle/matchit"]
 	path = vim/bundle/matchit
 	url = https://github.com/vim-scripts/matchit.zip.git
-[submodule "vim/bundle/symfony"]
-	path = vim/bundle/symfony
-	url = https://github.com/willdurand/vim-symfony.git
 [submodule "vim/bundle/gist"]
 	path = vim/bundle/gist
 	url = https://github.com/mattn/gist-vim
@@ -23,12 +20,6 @@
 [submodule "vim/bundle/gitgutter"]
 	path = vim/bundle/gitgutter
 	url = https://github.com/airblade/vim-gitgutter.git
-[submodule "vim/bundle/multiple-cursors"]
-	path = vim/bundle/multiple-cursors
-	url = https://github.com/terryma/vim-multiple-cursors.git
-[submodule "vim/bundle/php-getter-setter"]
-	path = vim/bundle/php-getter-setter
-	url = https://github.com/willdurand/php-getter-setter.vim.git
 [submodule "vim/bundle/over"]
 	path = vim/bundle/over
 	url = https://github.com/osyo-manga/vim-over
@@ -74,3 +65,6 @@
 [submodule "vim/bundle/polyglot"]
 	path = vim/bundle/polyglot
 	url = https://github.com/sheerun/vim-polyglot
+[submodule "vim/bundle/editorconfig"]
+	path = vim/bundle/editorconfig
+	url = https://github.com/editorconfig/editorconfig-vim.git
