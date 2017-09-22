@@ -6,9 +6,3 @@ nmap <buffer> <leader>cns "%PdF/r;:s#/#\\#<CR>Inamespace  <ESC>d/[A-Z]<CR><ESC>:
 
 " PHP linter
 nmap <buffer> <C-l> :!php -l %<CR>
-
-" insert getter/setter
-nmap <buffer> <leader>gs :InsertBothGetterSetter<cr>
-
-" symfony plugin
-let g:symfony_app_console_path="bin/console"
