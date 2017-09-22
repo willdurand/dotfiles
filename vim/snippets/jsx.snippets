@@ -2,9 +2,9 @@ snippet presenter
 	/* @flow */
 	import React from 'react';
 
-	type Props = {
+	type Props = {|
 		${2}
-	};
+	|};
 
 	const ${1:Component} = (props: Props) => (
 		${0}
@@ -97,3 +97,7 @@ snippet reducer
 				return state;
 		}
 	}
+snippet flowt
+	type ${0:Type} = {|
+		$1
+	|};

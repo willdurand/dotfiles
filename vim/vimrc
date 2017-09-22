@@ -209,6 +209,7 @@ let g:gist_post_private    = 1
 " ctrlp
 let g:ctrlp_map                 = '<leader>t'
 let g:ctrlp_clear_cache_on_exit = 0
+let g:ctrlp_user_command        = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 
 " make
 map <leader>m :make<cr>

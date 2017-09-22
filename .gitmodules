@@ -104,3 +104,9 @@
 [submodule "vim/bundle/pug"]
 	path = vim/bundle/pug
 	url = https://github.com/digitaltoad/vim-pug.git
+[submodule "vim/bundle/mjml"]
+	path = vim/bundle/mjml
+	url = https://github.com/amadeus/vim-mjml.git
+[submodule "vim/bundle/flow-plus"]
+	path = vim/bundle/flow-plus
+	url = https://github.com/carlosrocha/vim-flow-plus
