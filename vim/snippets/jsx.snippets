@@ -24,10 +24,8 @@ snippet connect
 	import { connect } from 'react-redux';
 	import ${1:Component} from './presenter';
 
-	const mapStateToProps = (state) => {
-		${0}
-		return {};
-	};
+	const mapStateToProps = ({ state }) => ({
+	});
 
 	const mapDispatchToProps = (dispatch: Dispatch<*>) => ({
 	});
@@ -38,10 +36,8 @@ snippet mapd
 		${1}
 	});
 snippet maps
-	const mapStateToProps = (state) => {
-		${1}
-		return {};
-	};
+	const mapStateToProps = ({ ${0:state} }) => ({
+	});
 snippet cl
 	/* @flow */
 	import React from 'react';
