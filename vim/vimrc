@@ -265,3 +265,16 @@ autocmd insertLeave *.yml set nocursorcolumn
 " Always open files from quickfix window into new tab
 " http://stackoverflow.com/questions/6852763/vim-quickfix-list-launch-files-in-new-tab/6853779#6853779
 set switchbuf+=usetab,newtab
+
+" https://blog.hellojs.org/configure-vim-from-scratch-efe5cbc1c563
+" absolute width of netrw window
+let g:netrw_winsize = -28
+
+" tree-view
+let g:netrw_liststyle = 3
+
+" sort is affecting only: directories on the top, files below
+let g:netrw_sort_sequence = '[\/]$,*'
+
+" open file in a new tab
+let g:netrw_browse_split = 3
