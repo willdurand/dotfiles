@@ -20,12 +20,6 @@
 	path = vim/bundle/snipmate
 	url = https://github.com/garbas/vim-snipmate.git
 	ignore = untracked
-[submodule "vim/bundle/javascript"]
-	path = vim/bundle/javascript
-	url = https://github.com/pangloss/vim-javascript.git
-[submodule "vim/bundle/html5"]
-	path = vim/bundle/html5
-	url = https://github.com/othree/html5.vim.git
 [submodule "vim/bundle/gitgutter"]
 	path = vim/bundle/gitgutter
 	url = https://github.com/airblade/vim-gitgutter.git
@@ -35,36 +29,15 @@
 [submodule "vim/bundle/php-getter-setter"]
 	path = vim/bundle/php-getter-setter
 	url = https://github.com/willdurand/php-getter-setter.vim.git
-[submodule "vim/bundle/flavored-markdown"]
-	path = vim/bundle/flavored-markdown
-    url = https://github.com/jtratner/vim-flavored-markdown.git
-[submodule "vim/bundle/arduino-syntax"]
-	path = vim/bundle/arduino-syntax
-	url = https://github.com/sudar/vim-arduino-syntax.git
 [submodule "vim/bundle/over"]
 	path = vim/bundle/over
 	url = https://github.com/osyo-manga/vim-over
-[submodule "vim/bundle/vim-css3-syntax"]
-	path = vim/bundle/css3-synrax
-	url = https://github.com/hail2u/vim-css3-syntax.git
-[submodule "vim/bundle/twig"]
-	path = vim/bundle/twig
-	url = https://github.com/evidens/vim-twig.git
-[submodule "vim/bundle/yaml"]
-	path = vim/bundle/yaml
-	url = https://github.com/stephpy/vim-yaml.git
 [submodule "vim/bundle/airline"]
 	path = vim/bundle/airline
 	url = https://github.com/bling/vim-airline.git
 [submodule "vim/bundle/fugitive"]
 	path = vim/bundle/fugitive
 	url = https://github.com/tpope/vim-fugitive.git
-[submodule "vim/bundle/go"]
-	path = vim/bundle/go
-	url = https://github.com/fatih/vim-go.git
-[submodule "vim/bundle/coffee-script"]
-	path = vim/bundle/coffee-script
-	url = https://github.com/kchmck/vim-coffee-script.git
 [submodule "vim/bundle/ag"]
 	path = vim/bundle/ag
 	url = https://github.com/rking/ag.vim
@@ -80,18 +53,9 @@
 [submodule "vim/bundle/ctrlp"]
 	path = vim/bundle/ctrlp
 	url = https://github.com/ctrlpvim/ctrlp.vim.git
-[submodule "vim/bundle/terraform"]
-	path = vim/bundle/terraform
-	url = https://github.com/hashivim/vim-terraform.git
-[submodule "vim/bundle/jsx"]
-	path = vim/bundle/jsx
-	url = https://github.com/mxw/vim-jsx.git
 [submodule "vim/bundle/vim-airline-themes"]
 	path = vim/bundle/vim-airline-themes
 	url = https://github.com/vim-airline/vim-airline-themes
-[submodule "vim/bundle/apiblueprint"]
-	path = vim/bundle/apiblueprint
-	url = https://github.com/kylef/apiblueprint.vim.git
 [submodule "vim/bundle/addon-mw-utils"]
 	path = vim/bundle/addon-mw-utils
 	url = https://github.com/MarcWeber/vim-addon-mw-utils.git
@@ -101,12 +65,12 @@
 [submodule "vim/bundle/flow"]
 	path = vim/bundle/flow
 	url = https://github.com/flowtype/vim-flow.git
-[submodule "vim/bundle/pug"]
-	path = vim/bundle/pug
-	url = https://github.com/digitaltoad/vim-pug.git
 [submodule "vim/bundle/mjml"]
 	path = vim/bundle/mjml
 	url = https://github.com/amadeus/vim-mjml.git
 [submodule "vim/bundle/flow-plus"]
 	path = vim/bundle/flow-plus
 	url = https://github.com/carlosrocha/vim-flow-plus
+[submodule "vim/bundle/polyglot"]
+	path = vim/bundle/polyglot
+	url = https://github.com/sheerun/vim-polyglot
