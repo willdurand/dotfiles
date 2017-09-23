@@ -136,7 +136,7 @@ nmap <leader>a :Ag<space>
 map <silent> <leader>/ :let @/=""<CR>:echo "Cleared search register."<cr>
 
 " GitGutter
-let g:gitgutter_sign_column_always = 1
+set signcolumn=yes
 " see: https://github.com/airblade/vim-gitgutter#faq
 highlight SignColumn        ctermbg=235
 highlight GitGutterAdd      guifg=#009900 guibg=NONE ctermfg=2 ctermbg=235

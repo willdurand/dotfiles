@@ -23,12 +23,6 @@
 [submodule "vim/bundle/over"]
 	path = vim/bundle/over
 	url = https://github.com/osyo-manga/vim-over
-[submodule "vim/bundle/airline"]
-	path = vim/bundle/airline
-	url = https://github.com/bling/vim-airline.git
-[submodule "vim/bundle/fugitive"]
-	path = vim/bundle/fugitive
-	url = https://github.com/tpope/vim-fugitive.git
 [submodule "vim/bundle/ag"]
 	path = vim/bundle/ag
 	url = https://github.com/rking/ag.vim
@@ -68,3 +62,9 @@
 [submodule "vim/bundle/editorconfig"]
 	path = vim/bundle/editorconfig
 	url = https://github.com/editorconfig/editorconfig-vim.git
+[submodule "vim/bundle/fugitive"]
+	path = vim/bundle/fugitive
+	url = https://github.com/tpope/vim-fugitive.git
+[submodule "vim/bundle/airline"]
+	path = vim/bundle/airline
+	url = https://github.com/bling/vim-airline.git
