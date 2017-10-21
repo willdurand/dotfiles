@@ -20,9 +20,6 @@
 [submodule "vim/bundle/gitgutter"]
 	path = vim/bundle/gitgutter
 	url = https://github.com/airblade/vim-gitgutter.git
-[submodule "vim/bundle/over"]
-	path = vim/bundle/over
-	url = https://github.com/osyo-manga/vim-over
 [submodule "vim/bundle/lexical"]
 	path = vim/bundle/lexical
 	url = https://github.com/reedes/vim-lexical.git
