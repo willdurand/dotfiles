@@ -23,9 +23,6 @@
 [submodule "vim/bundle/over"]
 	path = vim/bundle/over
 	url = https://github.com/osyo-manga/vim-over
-[submodule "vim/bundle/ag"]
-	path = vim/bundle/ag
-	url = https://github.com/rking/ag.vim
 [submodule "vim/bundle/wordy"]
 	path = vim/bundle/wordy
 	url = https://github.com/reedes/vim-wordy.git
