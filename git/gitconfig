@@ -58,27 +58,28 @@
     default = current
 
 [pull]
-	rebase = preserve
+    rebase = preserve
 
 [commit]
     gpgsign = 1
 
 [sendemail]
-	smtpencryption = tls
-	smtpserver = mail.messagingengine.com
-	smtpserverport = 587
-	suppresscc = self
+    smtpencryption = tls
+    smtpserver = smtp.fastmail.com
+    smtpserverport = 587
+    suppresscc = self
 	smtpuser = willdurand@fastmail.com
+
 [pager]
-	diff = diff-highlight | less
-	log = diff-highlight | less
-	show = diff-highlight | less
+    diff = diff-highlight | less
+    log = diff-highlight | less
+    show = diff-highlight | less
 
 [diff]
-	compactionHeuristic = 1
+    compactionHeuristic = 1
 
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
