@@ -9,7 +9,7 @@ filetype on
 filetype plugin on
 filetype indent on
 
-" Color scheme
+" color scheme
 set background=dark
 let &t_Co=256
 let g:solarized_termcolors=256
@@ -27,7 +27,7 @@ endif
 
 colorscheme solarized
 
-" redifinition of map leader
+" map leader
 let mapleader = ","
 
 " Set title on X window
@@ -47,8 +47,6 @@ set showcmd                         " Display incomplete commands
 
 set number                          " Show line numbers
 set ruler                           " Show cursor position
-
-"set cursorline                      " Highlight current line.
 
 set incsearch                       " Highlight matches as you type
 set hlsearch                        " Highlight matches
@@ -132,8 +130,10 @@ map <leader>s :%s/
 " ag
 nmap <leader>a :Ag<space>
 
-" Clear search highlight
-map <silent> <leader>/ :let @/=""<CR>:echo "Cleared search register."<cr>
+" clear search highlight
+if maparg('<C-L>', 'n') ==# ''
+  nnoremap <silent> <leader>/ :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
+endif
 
 " GitGutter
 set signcolumn=yes
@@ -146,6 +146,9 @@ highlight GitGutterDelete   guifg=#ff2222 guibg=NONE ctermfg=1 ctermbg=235
 " automatically open and close the popup menu / preview window
 au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
 set completeopt=menuone,menu,longest,preview
+" turn off that preview window that shows the issue body
+" see: https://github.com/tpope/vim-rhubarb
+set completeopt-=preview
 
 " When editing a file, always jump to the last known cursor position
 autocmd BufReadPost *
@@ -188,7 +191,7 @@ function! StripTrailingWhitespace()
     endif
     normal `Z
 endfunction
-autocmd BufWritePre *.* :call StripTrailingWhitespace()
+autocmd BufWritePre * :call StripTrailingWhitespace()
 
 " create directory if not exists
 au BufWrite * :call <SID>MkdirsIfNotExists(expand('<afile>:h'))
@@ -200,6 +203,10 @@ endfunction
 
 " do not auto insert comment chars on newline
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
+if v:version > 703 || v:version == 703 && has("patch541")
+  set formatoptions+=j " Delete comment character when joining commented lines
+endif
 
 " Gist
 let g:gist_clip_command    = 'pbcopy'
@@ -237,19 +244,6 @@ set modelines=1
 " Format JSON
 map <leader>j !python -m json.tool<CR>
 
-function! VisualFindAndReplace()
-    :OverCommandLine%s/
-    :w
-endfunction
-
-function! VisualFindAndReplaceWithSelection() range
-    :'<,'>OverCommandLine s/
-    :w
-endfunction
-
-nnoremap <Leader>fr :call VisualFindAndReplace()<CR>
-xnoremap <Leader>fr :call VisualFindAndReplaceWithSelection()<CR>
-
 " display vertical line
 if exists('&colorcolumn')
     set colorcolumn=80
@@ -278,3 +272,11 @@ let g:netrw_sort_sequence = '[\/]$,*'
 
 " open file in a new tab
 let g:netrw_browse_split = 3
+
+" autoreload files on change (`u` can undo this)
+set autoread
+
+" Load matchit.vim, but only if the user hasn't installed a newer version.
+if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
+  runtime! macros/matchit.vim
+endif
