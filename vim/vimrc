@@ -1,13 +1,10 @@
-" VIM Configuration
-" The original config comes from Vincent Jousse
-" Heavily modified by William Durand <will+git@drnd.me>
+" VIM configuration
+" The original config comes from Vincent Jousse,
+" 99% modified by William Durand <will+git@drnd.me>.
 execute pathogen#infect()
 
 syntax on
-
-filetype on
-filetype plugin on
-filetype indent on
+filetype plugin indent on
 
 " color scheme
 set background=dark
