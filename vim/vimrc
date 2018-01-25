@@ -277,3 +277,6 @@ set autoread
 if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
   runtime! macros/matchit.vim
 endif
+
+" polyglot
+let g:polyglot_disabled = ['go']
