@@ -1,5 +1,22 @@
+# Debug
+snippet log
+	console.log({${0:${VISUAL}}})
+
+# ES6/Next
+snippet cf
+	const ${1:function_name} = (${2}) => {
+		${0:${VISUAL}}
+	}
+
+# Flow
 snippet flow
 	/* @flow */
+snippet flowt
+	type ${0:Type} = {|
+		$1
+	|};
+
+# SinonJS
 snippet notcalled
 	sinon.assert.notCalled(${0});
 snippet called
@@ -8,3 +25,120 @@ snippet callcount
 	sinon.assert.callCount(${1}, ${2:1});
 snippet calledwith
 	sinon.assert.calledWith(${1}, ${0});
+
+# React
+snippet func
+	/* @flow */
+	import React from 'react';
+
+	type Props = {|
+		${2}
+	|};
+
+	const ${1:Component} = (props: Props) => (
+		${0}
+	);
+
+	export default ${4:$1};
+snippet cl
+	/* @flow */
+	import React from 'react';
+
+	class ${1:Component} extends React.Component {
+
+		render() {
+			return (
+				${0}
+			);
+		}
+	}
+
+	export default ${2:$1};
+snippet constr
+	constructor(props: Object) {
+		super(props);
+
+		${0}
+	}
+snippet bind
+	(this: any).${1:fn} = this.${2:$1}.bind(this);
+snippet cdm
+	componentDidMount() {
+		${1}
+	}
+snippet cdup
+	componentDidUpdate(prevProps: Props, prevState: Props) {
+		${1}
+	}
+snippet cwm
+	componentWillMount() {
+		${1}
+	}
+snippet cwr
+	componentWillReceiveProps(nextProps: Props) {
+		${1}
+	}
+snippet cwun
+	componentWillUnmount() {
+		${1}
+	}
+snippet cwu
+	componentWillUpdate(nextProps: Props, nextState: State) {
+		${1}
+	}
+snippet scu
+	shouldComponentUpdate(nextProps: Props, nextState: State) {
+		${1}
+	}
+
+# Jest/Mocha
+snippet desc
+	describe('${1}', () => {
+		${0}
+	});
+snippet it
+	it('${1}', () => {
+		${0}
+	});
+
+# Redux
+snippet mapd
+	const mapDispatchToProps = (dispatch: Dispatch<*>) => ({
+		${1}
+	});
+snippet maps
+	const mapStateToProps = ({ ${0:state} }) => ({
+	});
+snippet reducer
+	/* @flow */
+
+	// State
+	type State = {
+	  ${0}
+	};
+
+	const initialState: State = {
+	};
+
+	// Actions
+	const ${1:ACTION} = '${2}/${3}/${4:$1}';
+
+	// Action Creators
+	export const ${5} = (): Action => {
+		return { type: $1 };
+	};
+
+	// Reducer
+	export default function reducer(
+		state: State = initialState,
+		action: Action = {}
+	): State {
+		switch (action.type) {
+			case $1:
+				return {
+				};
+
+			default:
+				return state;
+		}
+	}
