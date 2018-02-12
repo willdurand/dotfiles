@@ -126,9 +126,11 @@ alias ack=rg
 # no zsh, jest does exist now!
 alias jest='nocorrect jest'
 
+# vi -> vim
+alias vi='vim'
+
 # You can hit C-X C-E to open your $EDITOR
-# with the command typed in the buffer and
-# quickly edit your error
+# with the command typed in the buffer and quickly edit your error
 autoload edit-command-line
 zle -N edit-command-line
 bindkey '^X^E' edit-command-line
@@ -137,7 +139,6 @@ bindkey '^X^E' edit-command-line
 jsonapi() {
     http "$@" Accept:application/vnd.api+json Content-Type:application/vnd.api+json
 }
-
 
 ### PATH
 export PATH=/usr/local/bin:/usr/sbin:/sbin:/usr/bin:/bin:/usr/X11/bin:/Developer/usr/bin
