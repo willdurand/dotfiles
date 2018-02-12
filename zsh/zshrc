@@ -151,7 +151,11 @@ export PATH="$PATH:/usr/local/scala/bin"
 
 ### PHP
 export PATH="$PATH:$HOME/.phpenv/bin"
-eval "$(phpenv init -)"
+# lazy load phpenv because I do not use it too often
+phpenv() {
+  eval "$(command phpenv init -)"
+  phpenv "$@"
+}
 
 export PATH="$PATH:$HOME/.composer/vendor/bin:$HOME/.composer/vendor/willdurand/pman/bin"
 
@@ -169,12 +173,11 @@ export PATH="$PATH:/usr/local/packer"
 export GOPATH="$HOME/projects/go"
 export PATH="$PATH:/usr/local/opt/go/libexec/bin:$GOPATH/bin"
 
-# Ruby
-eval "$(rbenv init -)"
-
-# added by travis gem
-[ -f ~/.travis/travis.sh ] && source ~/.travis/travis.sh
-export PATH="/usr/local/sbin:$PATH"
+# Ruby, lazy load rbenv because I do not use it too often
+rbenv() {
+  eval "$(command rbenv init -)"
+  rbenv "$@"
+}
 
 # cpan/perl
 PATH="~/perl5/bin${PATH+:}${PATH}"; export PATH;
