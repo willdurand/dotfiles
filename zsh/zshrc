@@ -144,7 +144,7 @@ jsonapi() {
 export PATH=/usr/local/bin:/usr/sbin:/sbin:/usr/bin:/bin:/usr/X11/bin:/Developer/usr/bin
 
 ### GNU
-PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 
 ### Scala
 export PATH="$PATH:/usr/local/scala/bin"
@@ -173,15 +173,15 @@ export PATH="$PATH:/usr/local/opt/go/libexec/bin:$GOPATH/bin"
 eval "$(rbenv init -)"
 
 # added by travis gem
-[ -f /Users/william/.travis/travis.sh ] && source /Users/william/.travis/travis.sh
+[ -f ~/.travis/travis.sh ] && source ~/.travis/travis.sh
 export PATH="/usr/local/sbin:$PATH"
 
 # cpan/perl
-PATH="/Users/william/perl5/bin${PATH+:}${PATH}"; export PATH;
-PERL5LIB="/Users/william/perl5/lib/perl5${PERL5LIB+:}${PERL5LIB}"; export PERL5LIB;
-PERL_LOCAL_LIB_ROOT="/Users/william/perl5${PERL_LOCAL_LIB_ROOT+:}${PERL_LOCAL_LIB_ROOT}"; export PERL_LOCAL_LIB_ROOT;
-PERL_MB_OPT="--install_base \"/Users/william/perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=/Users/william/perl5"; export PERL_MM_OPT;
+PATH="~/perl5/bin${PATH+:}${PATH}"; export PATH;
+PERL5LIB="~/perl5/lib/perl5${PERL5LIB+:}${PERL5LIB}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="~/perl5${PERL_LOCAL_LIB_ROOT+:}${PERL_LOCAL_LIB_ROOT}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"~/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=~/perl5"; export PERL_MM_OPT;
 
 # MacTex
 export PATH="$PATH:/Library/TeX/texbin"
@@ -201,3 +201,16 @@ export PATH="$HOME/.fastlane/bin:$PATH"
 
 # rust
 source $HOME/.cargo/env
+
+# tabtab source for yarn package
+# uninstall by removing these lines or running `tabtab uninstall yarn`
+[[ -f ~/.config/yarn/global/node_modules/tabtab/.completions/yarn.zsh ]] && . ~/.config/yarn/global/node_modules/tabtab/.completions/yarn.zsh
+
+# added by Miniconda3 installer
+export PATH="~/miniconda3/bin:$PATH"
+
+# direnv
+eval "$(direnv hook zsh)"
+
+# sensitive env vars
+[[ -f ~/.sensitive.sh ]] && source ~/.sensitive.sh
