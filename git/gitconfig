@@ -68,7 +68,7 @@
     smtpserver = smtp.fastmail.com
     smtpserverport = 587
     suppresscc = self
-	smtpuser = willdurand@fastmail.com
+    smtpuser = willdurand@fastmail.com
 
 [pager]
     diff = diff-highlight | less
@@ -83,3 +83,9 @@
     smudge = git-lfs smudge -- %f
     process = git-lfs filter-process
     required = true
+
+[instaweb]
+    local = true
+    httpd=webrick
+    port=4000
+    browser=open
