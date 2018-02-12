@@ -196,5 +196,8 @@ export PATH=${PATH}:${ANDROID_HOME}/tools
 export PATH=${PATH}:${ANDROID_HOME}/tools/bin
 export PATH=${PATH}:${ANDROID_HOME}/platform-tools
 
+# fastlane
+export PATH="$HOME/.fastlane/bin:$PATH"
+
 # rust
 source $HOME/.cargo/env
