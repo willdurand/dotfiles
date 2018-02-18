@@ -50,6 +50,9 @@
 [alias]
     lg = log --graph --pretty=format:'%Cred%h%Creset %C(yellow)%an%d%Creset %s %Cgreen(%cr)%Creset' --date=relative
     ci-status = ci-status -v
+    fixup = commit --fixup=HEAD
+    rebase-i = rebase -i --autosquash --autostash
+    cleanup = !git branch --merged | grep -v master | xargs git branch -d
 
 [hub]
     protocol = git
