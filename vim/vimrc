@@ -69,11 +69,13 @@ set shiftround                      " use multiple of shiftwidth when indenting 
 set showmatch                       " set show matching parenthesis
 set autoindent
 
-set undolevels=1000                 " use many levels of undo
-
-if version >= 730
-    set noundofile                  " Don't keep a persistent undofile
+" use persistent undo
+let s:undoDir = "/tmp/.undodir_" . $USER
+if !isdirectory(s:undoDir)
+    call mkdir(s:undoDir, "", 0700)
 endif
+let &undodir=s:undoDir
+set undofile
 
 " http://vim.wikia.com/wiki/Toggle_auto-indenting_for_code_paste
 " F2 = toggle paste mode
@@ -280,3 +282,6 @@ endif
 
 " polyglot
 let g:polyglot_disabled = ['go']
+
+" go
+let g:go_auto_type_info = 1
