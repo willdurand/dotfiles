@@ -131,7 +131,7 @@ prompt_pure_preprompt_render() {
 	[[ -n ${prompt_pure_git_last_dirty_check_timestamp+x} ]] && git_color=red
 
     local watson_status=""
-    [[ $(cat "$HOME/Library/Application Support/watson/state") != '{}' ]] && watson_status="%F{green}◉%f "
+    [[ $(cat "$HOME/Library/Application Support/watson/state") != '{}' ]] && watson_status="%F{green}►%f "
 
     # construct preprompt
     local preprompt=""
