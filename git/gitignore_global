@@ -15,3 +15,6 @@ ehthumbs.db
 .ropeproject/
 .idea/
 *.iml
+
+coverage/
+yarn-error.log
