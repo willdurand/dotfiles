@@ -1,6 +1,6 @@
 snippet . "selector { }"
 	${1} {
-		${0:${VISUAL}}
+		${0:{VISUAL}}
 	}
 snippet ! "!important"
 	 !important
@@ -33,7 +33,7 @@ snippet @i
 	@import url(${0});
 snippet @m "@media mediatype { }"
 	@media ${1:print} {
-		${0:${VISUAL}}
+		${0:{VISUAL}}
 	}
 snippet bg+
 	background: #${1:FFF} url(${2}) ${3:0} ${4:0} ${0:no-repeat};

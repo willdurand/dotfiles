@@ -13,10 +13,6 @@
 [submodule "vim/bundle/solarized"]
 	path = vim/bundle/solarized
 	url = https://github.com/altercation/vim-colors-solarized.git
-[submodule "vim/bundle/snipmate"]
-	path = vim/bundle/snipmate
-	url = https://github.com/garbas/vim-snipmate.git
-	ignore = untracked
 [submodule "vim/bundle/gitgutter"]
 	path = vim/bundle/gitgutter
 	url = https://github.com/airblade/vim-gitgutter.git
@@ -71,3 +67,9 @@
 [submodule "vim/bundle/flake8"]
 	path = vim/bundle/flake8
 	url = https://github.com/nvie/vim-flake8
+[submodule "vim/bundle/splitjoin"]
+	path = vim/bundle/splitjoin
+	url = https://github.com/AndrewRadev/splitjoin.vim
+[submodule "vim/bundle/snipmate"]
+	path = vim/bundle/snipmate
+	url = https://github.com/garbas/vim-snipmate.git
