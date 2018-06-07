@@ -285,3 +285,6 @@ let g:polyglot_disabled = ['go']
 
 " go
 let g:go_auto_type_info = 1
+
+" copy filename to clipboard
+nnoremap <leader>cf :let @*=expand("%:p") \| :echo 'copied!'<CR>
