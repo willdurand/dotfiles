@@ -2,26 +2,20 @@
 username = William DURAND <william.durand1@gmail.com>
 verbose = true
 interface = curses
+tweakdefaults = true
 [diff]
 git = true
 showfunc = true
 [extensions]
-color = 
-pager = 
-histedit = 
-rebase = 
-firefoxtree = /Users/william/.mozbuild/version-control-tools/hgext/firefoxtree
+histedit =
+rebase =
+shelve=
 [pager]
 pager = LESS=FRSXQ less
-attend-help = true
-attend-incoming = true
-attend-outgoing = true
-attend-status = true
-attend-wip = true
 [alias]
 wip = log --graph --rev=wip --template=wip
 [revsetalias]
-wip = (parents(not public()) or not public() or . or (head() and branch(default))) and (not obsolete() or unstable()^) and not closed() and not (fxheads() - date(-90))
+wip = (parents(not public()) or not public() or . or (head() and branch(default))) and (not obsolete() or orphan()^) and not closed() and not (fxheads() - date(-90))
 [templates]
 wip = '{label("wip.branch", if(branches,"{branches} "))}{label(ifeq(graphnode,"x","wip.obsolete","wip.{phase}"),"{rev}:{node|short}")}{label("wip.user", " {author|user}")}{label("wip.tags", if(tags," {tags}"))}{label("wip.tags", if(fxheads," {fxheads}"))}{if(bookmarks," ")}{label("wip.bookmarks", if(bookmarks,bookmarks))}{label(ifcontains(rev, revset("parents()"), "wip.here"), " {desc|firstline}")}'
 [color]
