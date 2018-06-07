@@ -1,6 +1,9 @@
 # Debug
 snippet log
-	console.log({${0:${VISUAL}}})
+	console.log({ ${0} });
+
+snippet debug
+	console.log(${0:root}.debug());
 
 # ES6/Next
 snippet cf
