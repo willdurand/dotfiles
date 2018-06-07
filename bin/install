@@ -50,15 +50,8 @@ git submodule update --init
 # mercurial
 link_files mercurial/hgrc ~/.hgrc
 
-# elinks
-ensure_dir ~/.elinks
-link_files elinks/elinks.conf ~/.elinks/elinks.conf
-
 # tmux
 link_files tmux/tmux.conf ~/.tmux.conf
-
-# urlview
-link_files urlview/urlview ~/.urlview
 
 # git
 ensure_dir ~/.zsh
