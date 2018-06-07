@@ -61,6 +61,7 @@ link_files tmux/tmux.conf ~/.tmux.conf
 link_files urlview/urlview ~/.urlview
 
 # git
+ensure_dir ~/.zsh
 setup_git
 
 # vim
