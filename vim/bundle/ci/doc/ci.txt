@@ -1,0 +1,3 @@
+*ci.txt* more git/hub utilities
+
+Author: William Durand
