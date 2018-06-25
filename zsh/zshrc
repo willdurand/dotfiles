@@ -109,7 +109,6 @@ alias cd..="cd .."
 alias ..="cd .."
 alias dstat='dstat -dcgilmsy'
 alias projects="cd ~/projects/"
-alias champollion="cd ~/projects/go/src/github.com/TailorDev/champollion"
 
 # convenient aliases
 alias diff=icdiff
