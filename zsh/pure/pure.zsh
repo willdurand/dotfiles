@@ -566,6 +566,10 @@ prompt_pure_setup() {
 	# prompt turns red if the previous command didn't exit with 0
 	PROMPT+='%(?.%F{magenta}.%F{red})${PURE_PROMPT_SYMBOL:-❯}%f '
 
+	# add number of jobs
+	# see: https://github.com/sindresorhus/pure/wiki#show-number-of-jobs-in-prompt
+	PROMPT='%(1j.[%j] .)%(?.%F{magenta}.%F{red})${PURE_PROMPT_SYMBOL:-❯}%f '
+
 	# Store prompt expansion symbols for in-place expansion via (%). For
 	# some reason it does not work without storing them in a variable first.
 	typeset -ga prompt_pure_debug_depth

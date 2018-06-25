@@ -191,6 +191,7 @@ export PATH="$PATH:/Library/TeX/texbin"
 
 # Homebrew
 export HOMEBREW_NO_ANALYTICS=1
+export PATH="/usr/local/sbin:$PATH"
 
 # Android / React Native
 export ANDROID_HOME=${HOME}/Library/Android/sdk
@@ -206,7 +207,7 @@ export PATH="$HOME/.fastlane/bin:$PATH"
 source $HOME/.cargo/env
 
 # added by Miniconda3 installer
-export PATH="~/miniconda3/bin:$PATH"
+[[ -f ~/miniconda3/etc/profile.d/conda.sh ]] && source ~/miniconda3/etc/profile.d/conda.sh
 
 # sensitive env vars
 [[ -f ~/.sensitive.sh ]] && source ~/.sensitive.sh
