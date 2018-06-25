@@ -9,9 +9,19 @@ let g:flow#timeout = 10
 
 "Use locally installed flow
 let local_flow = finddir('node_modules', '.;') . '/.bin/flow'
+
 if matchstr(local_flow, "^\/\\w") == ''
   let local_flow= getcwd() . "/" . local_flow
 endif
+
 if executable(local_flow)
   let g:flow#flowpath = local_flow
 endif
+
+" Prettier
+setlocal equalprg=$(npm\ bin)/prettier\
+      \ --stdin\
+      \ --parser\ babylon\
+      \ --single-quote\
+      \ --arrow-parens\ always\
+      \ --trailing-comma\ all
