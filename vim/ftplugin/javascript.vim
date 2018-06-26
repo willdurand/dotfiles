@@ -1,5 +1,5 @@
 " JavaScript linter
-nmap <buffer> <C-L> :!PATH="$(npm bin):$PATH" eslint --no-ignore --fix %<CR>
+nmap <buffer> <C-L> :!$(npm bin)/eslint --no-ignore --fix %<CR>
 
 " Configure https://github.com/flowtype/vim-flow
 let g:flow#enable = 1
@@ -19,9 +19,4 @@ if executable(local_flow)
 endif
 
 " Prettier
-setlocal equalprg=$(npm\ bin)/prettier\
-      \ --stdin\
-      \ --parser\ babylon\
-      \ --single-quote\
-      \ --arrow-parens\ always\
-      \ --trailing-comma\ all
+nmap <buffer> <leader>pp :!$(npm bin)/prettier --write %<CR>
