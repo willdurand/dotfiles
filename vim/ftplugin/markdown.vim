@@ -11,3 +11,6 @@ let user_dict = {
 set iskeyword+=' " so that it supports: don't => do not, etc.
 call litecorrect#init(user_dict)
 call lexical#init()
+
+" Prettier
+nmap <buffer> <leader>pp :!$(npm bin)/prettier --write %<CR>
