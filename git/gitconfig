@@ -53,7 +53,7 @@
     fixup = commit --fixup
     rebase-i = rebase -i --autosquash --autostash
     cleanup = !git branch --merged | grep -v master | xargs git branch -d
-    next = !git checkout master && hub sync && git cleanup
+    next = !git checkout master && hub sync && git cleanup && npx git-delete-squashed
 
 [hub]
     protocol = git
@@ -93,3 +93,5 @@
     httpd=webrick
     port=4000
     browser=open
+[rerere]
+    enabled = true
