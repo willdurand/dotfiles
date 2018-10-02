@@ -8,7 +8,7 @@ snippet debug
 # ES6/Next
 snippet cf
 	const ${1:function_name} = (${2}) => {
-		${0:${VISUAL}}
+	  ${0:${VISUAL}}
 	}
 
 # Flow
@@ -16,7 +16,18 @@ snippet flow
 	/* @flow */
 snippet flowt
 	type ${0:Type} = {|
-		$1
+	  $1
+	|};
+
+snippet Pr
+	type Props = {|
+		${0}
+	|};
+
+snippet IPr
+	type InternalProps = {|
+		...Props,
+		${0}
 	|};
 
 # SinonJS

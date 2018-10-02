@@ -129,6 +129,10 @@ alias jest='nocorrect jest'
 # vi -> vim
 alias vi='vim'
 
+# cat -> bat
+export BAT_STYLE='changes'
+alias cat='bat'
+
 # You can hit C-X C-E to open your $EDITOR
 # with the command typed in the buffer and quickly edit your error
 autoload edit-command-line
