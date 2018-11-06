@@ -54,6 +54,7 @@
     rebase-i = rebase -i --autosquash --autostash
     cleanup = !git branch --merged | grep -v master | xargs git branch -d
     next = !git checkout master && hub sync && git cleanup && npx git-delete-squashed
+    wip = !git commit -am "wip" && git next
 
 [hub]
     protocol = git
