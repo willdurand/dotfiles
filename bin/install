@@ -40,8 +40,9 @@ setup_git() {
     link_files git/gitattributes ~/.gitattributes
     link_files git/gitconfig ~/.gitconfig
     link_files git/gitignore_global ~/.gitignore_global
-    link_files git/_git ~/.zsh/_git
-    link_files git/_hub ~/.zsh/_hub
+    link_files zsh/_git ~/.zsh/_git
+    link_files zsh/_hub ~/.zsh/_hub
+    link_files zsh/_yarn ~/.zsh/_yarn
 }
 
 # Update submodules first
