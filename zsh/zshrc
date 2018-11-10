@@ -139,11 +139,6 @@ autoload edit-command-line
 zle -N edit-command-line
 bindkey '^X^E' edit-command-line
 
-# Functions
-jsonapi() {
-    http "$@" Accept:application/vnd.api+json Content-Type:application/vnd.api+json
-}
-
 ### PATH
 export PATH=/usr/local/bin:/usr/sbin:/sbin:/usr/bin:/bin:/usr/X11/bin:/Developer/usr/bin
 
@@ -212,6 +207,9 @@ source $HOME/.cargo/env
 
 # added by Miniconda3 installer
 [[ -f ~/miniconda3/etc/profile.d/conda.sh ]] && source ~/miniconda3/etc/profile.d/conda.sh
+
+# heroku autocomplete setup
+HEROKU_AC_ZSH_SETUP_PATH=~/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
 
 # sensitive env vars
 [[ -f ~/.sensitive.sh ]] && source ~/.sensitive.sh

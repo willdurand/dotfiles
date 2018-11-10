@@ -37,9 +37,6 @@
 [submodule "vim/bundle/flow"]
 	path = vim/bundle/flow
 	url = https://github.com/flowtype/vim-flow.git
-[submodule "vim/bundle/mjml"]
-	path = vim/bundle/mjml
-	url = https://github.com/amadeus/vim-mjml.git
 [submodule "vim/bundle/flow-plus"]
 	path = vim/bundle/flow-plus
 	url = https://github.com/carlosrocha/vim-flow-plus
