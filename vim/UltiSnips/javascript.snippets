@@ -165,19 +165,19 @@ export const ${1:ACTION}: '$1' = '$1';
 endsnippet
 
 snippet act "create action creator" b
-type `!p snip.rv = t[1][0].upper() + t[1][1:] + 'Params' if len(t[1]) else ''` = {|
-  `!p snip.rv = ',\n  '.join([p.strip() + ': any' for p in t[3].split(',')]) if t[3] else ''`
+type ${2:`!p snip.rv = t[1][0].upper() + t[1][1:] + 'Params' if len(t[1]) else 'Params'`} = {|
+  `!p snip.rv = ',\n  '.join([p.strip() + ': any' for p in t[5].split(',')]) if t[5] else ''`
 |};
 
-export type `!p snip.rv = t[1][0].upper() + t[1][1:] + 'Action' if len(t[1]) else ''` = {|
-  type: typeof $2,
-  payload: $1Params,
+export type ${3:`!p snip.rv = re.sub('Params$', '', t[2]) + 'Action'`} = {|
+  type: typeof ${4:`!p snip.rv = re.sub('([A-Z]+)', r'_\1', t[1]).upper()`},
+  payload: $2,
 |};
 
-export const ${1:fn} = ({ $3 }: $1Params): $1Action => {
+export const ${1:action} = ({ $5 }: $2): $3 => {
   return {
-    type: $2,
-    payload: { $3 },
+    type: $4,
+    payload: { $5 },
   };
 };
 endsnippet
