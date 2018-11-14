@@ -167,7 +167,9 @@ iab xname <C-R> William Durand
 iab xsigp <C-R> William Durand <will+git@drnd.me>
 
 " snipMate
-let g:snips_author = 'William Durand <will+git@drnd.me>'
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 " invisible character
 nmap <leader>l :set list!<CR>

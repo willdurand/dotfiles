@@ -1,0 +1,183 @@
+snippet inv "invariant" b
+invariant($1, '$1 `!p
+snip.rv = 'are' if t[1] and t[1][-1] == 's' else 'is'
+` required');
+endsnippet
+
+snippet log "console.log({ ... })" b
+console.log({ $0 });
+endsnippet
+
+snippet debug "console.log(root.debug())" b
+console.log(${0:root}.debug());
+endsnippet
+
+snippet req "const/require" b
+const `!p
+def formatVariableName(path):
+	lastPart = path.split('/')[-1]
+	return re.sub(r'[_\-]', '', lastPart.title())
+snip.rv = formatVariableName(t[1])
+` = require('${1}');
+endsnippet
+
+snippet imp "import/from" b
+import `!p
+def formatVariableName(path):
+	lastPart = path.split('/')[-1]
+	return re.sub(r'[_\-]', '', lastPart.title())
+snip.rv = formatVariableName(t[1])
+` from '${1}';
+endsnippet
+
+snippet cf "const fn = () => {};" b
+const ${1:fn} = ($2) => {
+  $0
+};
+endsnippet
+
+# Flow
+snippet flow "/* @flow */" b
+/* @flow */
+endsnippet
+
+snippet Pr "type Props" b
+type Props = {|
+  $0
+|};
+endsnippet
+
+snippet IPr "type InternalProps" b
+type InternalProps = {|
+  ...Props,
+  $0
+|};
+endsnippet
+
+snippet type "type X = {||};" b
+type $1 = {|
+  $0
+|};
+endsnippet
+
+# sinon.js
+snippet notc "notCalled" b
+sinon.assert.notCalled($0);
+endsnippet
+
+snippet call "called" b
+sinon.assert.called($1);
+endsnippet
+
+snippet callc "callCount" b
+sinon.assert.callCount($1, ${2:1});
+endsnippet
+
+snippet calledw "calledWith" b
+sinon.assert.calledWith($1, $2);
+endsnippet
+
+# React
+snippet fc "create functional component" b
+/* @flow */
+import * as React from 'react';
+
+type Props = {|
+  $2
+|};
+
+const ${1:`!p snip.rv = path.split('/').pop(-2)`} = (props: Props) => (
+  $0
+);
+
+export default ${3:$1};
+endsnippet
+
+snippet cl "create class component" b
+/* @flow */
+import * as React from 'react';
+
+type Props = {|
+  $2
+|};
+
+export class ${1:`!p
+snip.rv = path.split('/').pop(-2) + 'Base'
+`} extends React.Component<Props> {
+  render() {
+    ${4:return <div />;}
+  }
+}
+
+export default ${3:$1};
+endsnippet
+
+snippet constr "constructor()" b
+constructor(props: ${1:Props}) {
+  super(props);
+
+  $0
+}
+endsnippet
+
+# Jest/Mocha
+snippet fdesc "describe(__filename)" b
+describe(__filename, () => {
+  $0
+});
+endsnippet
+
+snippet desc "describe('...')" b
+describe('${1}', () => {
+  $0
+});
+endsnippet
+
+snippet it "it('...')" b
+it('${1}', () => {
+  $0
+});
+endsnippet
+
+snippet toL "expect().toHaveLength()" b
+expect($1).toHaveLength(${2:1});
+endsnippet
+
+snippet toP "expect().toHaveProp()" b
+expect(${1}).toHaveProp(${2});
+endsnippet
+
+snippet root "const root = render();" b:
+const root = render();
+endsnippet
+
+# AMO
+snippet impst "import './styles.scss';" b
+import './styles.scss';
+endsnippet
+
+snippet impi1 "import I18nType" b
+import type { I18nType } from 'core/types/i18n';
+endsnippet
+
+snippet ac "create action" b
+export const ${1:ACTION}: '$1' = '$1';
+endsnippet
+
+snippet act "create action creator" b
+type `!p snip.rv = t[1][0].upper() + t[1][1:] + 'Params' if len(t[1]) else ''` = {|
+  `!p snip.rv = ',\n  '.join([p.strip() + ': any' for p in t[3].split(',')]) if t[3] else ''`
+|};
+
+export type `!p snip.rv = t[1][0].upper() + t[1][1:] + 'Action' if len(t[1]) else ''` = {|
+  type: typeof $2,
+  payload: $1Params,
+|};
+
+export const ${1:fn} = ({ $3 }: $1Params): $1Action => {
+  return {
+    type: $2,
+    payload: { $3 },
+  };
+};
+endsnippet

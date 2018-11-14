@@ -28,3 +28,6 @@ function! AddFocusJestTestCase()
 endfunction
 
 nmap <leader>f :call AddFocusJestTestCase()<CR>
+
+" snippets completion
+setlocal completefunc=functions#ListSnippets
