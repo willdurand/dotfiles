@@ -15,24 +15,27 @@ endsnippet
 snippet req "const/require" b
 const `!p
 def formatVariableName(path):
-	lastPart = path.split('/')[-1]
-	return re.sub(r'[_\-]', '', lastPart.title())
+  lastPart = path.split('/')[-1]
+  return re.sub(r'[_\-]', '', lastPart)
 snip.rv = formatVariableName(t[1])
 ` = require('${1}');
 endsnippet
 
 snippet imp "import/from" b
-import `!p
+import ${2:`!p
 def formatVariableName(path):
-	lastPart = path.split('/')[-1]
-	return re.sub(r'[_\-]', '', lastPart.title())
+  lastPart = path.split('/')[-1]
+  if lastPart == 'react':
+    return '* as React'
+  else:
+    return re.sub(r'[_\-]', '', lastPart)
 snip.rv = formatVariableName(t[1])
-` from '${1}';
+`} from '${1}';
 endsnippet
 
 snippet cf "const fn = () => {};" b
 const ${1:fn} = ($2) => {
-  $0
+	$0
 };
 endsnippet
 
@@ -43,20 +46,20 @@ endsnippet
 
 snippet Pr "type Props" b
 type Props = {|
-  $0
+	$0
 |};
 endsnippet
 
 snippet IPr "type InternalProps" b
 type InternalProps = {|
-  ...Props,
-  $0
+	...Props,
+	$0
 |};
 endsnippet
 
 snippet type "type X = {||};" b
 type $1 = {|
-  $0
+	$0
 |};
 endsnippet
 
@@ -83,11 +86,11 @@ snippet fc "create functional component" b
 import * as React from 'react';
 
 type Props = {|
-  $2
+	$2
 |};
 
 const ${1:`!p snip.rv = path.split('/').pop(-2)`} = (props: Props) => (
-  $0
+	$0
 );
 
 export default ${3:$1};
@@ -114,28 +117,28 @@ endsnippet
 
 snippet constr "constructor()" b
 constructor(props: ${1:Props}) {
-  super(props);
+	super(props);
 
-  $0
+	$0
 }
 endsnippet
 
 # Jest/Mocha
 snippet fdesc "describe(__filename)" b
 describe(__filename, () => {
-  $0
+	${0:${VISUAL}}
 });
 endsnippet
 
 snippet desc "describe('...')" b
 describe('${1}', () => {
-  $0
+	${0:${VISUAL}}
 });
 endsnippet
 
 snippet it "it('...')" b
 it('${1}', () => {
-  $0
+	$0
 });
 endsnippet
 
@@ -145,6 +148,10 @@ endsnippet
 
 snippet toP "expect().toHaveProp()" b
 expect(${1}).toHaveProp(${2});
+endsnippet
+
+snippet rf "root.find()" i
+root.find($1)
 endsnippet
 
 snippet root "const root = render();" b:
@@ -166,18 +173,18 @@ endsnippet
 
 snippet act "create action creator" b
 type ${2:`!p snip.rv = t[1][0].upper() + t[1][1:] + 'Params' if len(t[1]) else 'Params'`} = {|
-  `!p snip.rv = ',\n  '.join([p.strip() + ': any' for p in t[5].split(',')]) if t[5] else ''`
+	`!p snip.rv = ',\n  '.join([p.strip() + ': any' for p in t[5].split(',')]) if t[5] else ''`
 |};
 
 export type ${3:`!p snip.rv = re.sub('Params$', '', t[2]) + 'Action'`} = {|
-  type: typeof ${4:`!p snip.rv = re.sub('([A-Z]+)', r'_\1', t[1]).upper()`},
-  payload: $2,
+	type: typeof ${4:`!p snip.rv = re.sub('([A-Z]+)', r'_\1', t[1]).upper()`},
+	payload: $2,
 |};
 
 export const ${1:action} = ({ $5 }: $2): $3 => {
-  return {
-    type: $4,
-    payload: { $5 },
-  };
+	return {
+		type: $4,
+		payload: { $5 },
+	};
 };
 endsnippet
