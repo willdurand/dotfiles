@@ -90,7 +90,7 @@ type Props = {|
 |};
 
 const ${1:`!p snip.rv = path.split('/').pop(-2)`} = (props: Props) => (
-	$0
+	v$0
 );
 
 export default ${3:$1};
@@ -101,15 +101,17 @@ snippet cl "create class component" b
 import * as React from 'react';
 
 type Props = {|
-  $2
+	$0
 |};
 
 export class ${1:`!p
-snip.rv = path.split('/').pop(-2) + 'Base'
+parts = path.split('/')
+component = parts.pop(-2) if len(parts) > 1 else 'Component'
+snip.rv = component + 'Base'
 `} extends React.Component<Props> {
-  render() {
-    ${4:return <div />;}
-  }
+	render() {
+		${4:return <div />;}
+	}
 }
 
 export default ${3:$1};
@@ -121,6 +123,10 @@ constructor(props: ${1:Props}) {
 
 	$0
 }
+endsnippet
+
+snippet ctp "const {} = this.props;" b
+const { $1 } = this.props;
 endsnippet
 
 # Jest/Mocha
