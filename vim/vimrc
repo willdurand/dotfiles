@@ -8,13 +8,11 @@ filetype plugin indent on
 
 " color scheme
 set background=dark
-let &t_Co=256
-let g:solarized_termcolors=256
 
 " airline
 let g:airline_powerline_fonts = 1
-let g:airline_theme = 'solarized'
-let g:airline_solarized_bg = 'dark'
+let g:airline_theme = 'minimalist'
+let g:airline_extensions = ['ctrlp', 'hunks', 'branch', 'whitespace']
 set noshowmode
 
 if $ITERM_PROFILE == 'Presentation Mode' || $ITERM_PROFILE == 'White'
@@ -22,7 +20,7 @@ if $ITERM_PROFILE == 'Presentation Mode' || $ITERM_PROFILE == 'White'
     let g:airline_solarized_bg = 'light'
 endif
 
-colorscheme solarized
+colorscheme solarized8
 
 " map leader
 let mapleader = ","
@@ -39,8 +37,6 @@ set wildignore=.svn,CVS,.git,.hg,*.o,*.a,*.class,*.mo,*.la,*.so,*.obj,*.swp,*.xp
 
 " http://vim.wikia.com/wiki/FileName_Completion_in_Shell_Scripts
 set isfname-==
-
-set showcmd                         " Display incomplete commands
 
 set number                          " Show line numbers
 set ruler                           " Show cursor position
@@ -125,9 +121,6 @@ map <leader>za :Ag "<C-r>=expand("<cword>")<CR>"
 
 " start a substitute
 map <leader>s :%s/
-
-" ag
-nmap <leader>a :Ag<space>
 
 " clear search highlight
 if maparg('<C-L>', 'n') ==# ''
@@ -290,3 +283,6 @@ let g:go_auto_type_info = 1
 
 " copy filename to clipboard
 nnoremap <leader>cf :let @*=expand("%:p") \| :echo 'copied!'<CR>
+
+set timeoutlen=1000
+set ttimeoutlen=10
