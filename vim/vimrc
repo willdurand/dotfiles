@@ -8,7 +8,7 @@ filetype plugin indent on
 set background=dark
 
 if $ITERM_PROFILE == 'Presentation Mode' || $ITERM_PROFILE == 'White'
-    set background=light
+  set background=light
 endif
 
 colorscheme solarized8
@@ -65,7 +65,7 @@ set autoindent
 " use persistent undo
 let s:undoDir = "/tmp/.undodir_" . $USER
 if !isdirectory(s:undoDir)
-    call mkdir(s:undoDir, "", 0700)
+  call mkdir(s:undoDir, "", 0700)
 endif
 let &undodir=s:undoDir
 set undofile
@@ -93,7 +93,7 @@ set history=10000
 set lazyredraw
 
 " always replace all occurences of a line
-set gdefault
+"set gdefault
 
 " Tabs and indentation
 set tabstop=4
@@ -130,9 +130,9 @@ set completeopt-=preview
 
 " When editing a file, always jump to the last known cursor position
 autocmd BufReadPost *
-  \ if line("'\"") > 1 && line("'\"") <= line("$") |
-  \   exe "normal! g`\"" |
-  \ endif
+      \ if line("'\"") > 1 && line("'\"") <= line("$") |
+      \   exe "normal! g`\"" |
+      \ endif
 
 " allow extended digraphs
 set encoding=utf-8
@@ -164,21 +164,21 @@ autocmd BufWinLeave * call clearmatches()
 
 " automatically remove trailing whitespace before write
 function! StripTrailingWhitespace()
-    normal mZ
-    %s/\s\+$//e
-    if line("'Z") != line(".")
-        echo "Stripped whitespace\n"
-    endif
-    normal `Z
+  normal mZ
+  %s/\s\+$//e
+  if line("'Z") != line(".")
+    echo "Stripped whitespace\n"
+  endif
+  normal `Z
 endfunction
 autocmd BufWritePre * :call StripTrailingWhitespace()
 
 " create directory if not exists
 au BufWrite * :call <SID>MkdirsIfNotExists(expand('<afile>:h'))
 function! <SID>MkdirsIfNotExists(directory)
-    if(!isdirectory(a:directory))
-        call system('mkdir -p '.shellescape(a:directory))
-    endif
+  if(!isdirectory(a:directory))
+    call system('mkdir -p '.shellescape(a:directory))
+  endif
 endfunction
 
 " do not auto insert comment chars on newline
@@ -223,7 +223,7 @@ map <leader>j !python -m json.tool<CR>
 
 " display vertical line
 if exists('&colorcolumn')
-    set colorcolumn=80
+  set colorcolumn=80
 endif
 
 " Highlight cursor line
