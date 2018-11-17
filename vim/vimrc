@@ -1,8 +1,6 @@
 " VIM configuration
-" The original config comes from Vincent Jousse,
-" 99% modified by William Durand <will+git@drnd.me>.
-execute pathogen#infect()
-
+" The original config comes from Vincent Jousse.
+" 99.99% modified by William Durand <will+git@drnd.me>
 syntax on
 filetype plugin indent on
 
