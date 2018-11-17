@@ -105,7 +105,7 @@ nmap <leader>2 :set tabstop=2<cr>:set shiftwidth=2<cr>:set softtabstop=2<cr>
 nmap <leader>4 :set tabstop=4<cr>:set shiftwidth=4<cr>:set softtabstop=4<cr>
 
 " sudo to write
-command W w !sudo tee % > /dev/null
+command! W w !sudo tee % > /dev/null
 
 " pull word under cursor into LHS of a substitute (for quick search and replace)
 nmap <leader>zs :%s/<C-r>=expand("<cword>")<CR>/
@@ -232,10 +232,6 @@ autocmd insertEnter * set cursorline
 autocmd insertLeave * set nocursorline
 autocmd insertEnter *.yml set cursorcolumn
 autocmd insertLeave *.yml set nocursorcolumn
-
-" Always open files from quickfix window into new tab
-" http://stackoverflow.com/questions/6852763/vim-quickfix-list-launch-files-in-new-tab/6853779#6853779
-set switchbuf+=usetab,newtab
 
 " https://blog.hellojs.org/configure-vim-from-scratch-efe5cbc1c563
 " absolute width of netrw window
