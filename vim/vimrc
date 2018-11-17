@@ -9,18 +9,17 @@ filetype plugin indent on
 " color scheme
 set background=dark
 
+if $ITERM_PROFILE == 'Presentation Mode' || $ITERM_PROFILE == 'White'
+    set background=light
+endif
+
+colorscheme solarized8
+
 " airline
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'minimalist'
 let g:airline_extensions = ['ctrlp', 'hunks', 'branch', 'whitespace']
 set noshowmode
-
-if $ITERM_PROFILE == 'Presentation Mode' || $ITERM_PROFILE == 'White'
-    set background=light
-    let g:airline_solarized_bg = 'light'
-endif
-
-colorscheme solarized8
 
 " map leader
 let mapleader = ","
@@ -116,9 +115,6 @@ command W w !sudo tee % > /dev/null
 " pull word under cursor into LHS of a substitute (for quick search and replace)
 nmap <leader>zs :%s/<C-r>=expand("<cword>")<CR>/
 
-" pull word under cursor into ag for a global search
-map <leader>za :Ag "<C-r>=expand("<cword>")<CR>"
-
 " start a substitute
 map <leader>s :%s/
 
@@ -129,11 +125,6 @@ endif
 
 " GitGutter
 set signcolumn=yes
-" see: https://github.com/airblade/vim-gitgutter#faq
-highlight SignColumn        ctermbg=235
-highlight GitGutterAdd      guifg=#009900 guibg=NONE ctermfg=2 ctermbg=235
-highlight GitGutterChange   guifg=#bbbb00 guibg=NONE ctermfg=3 ctermbg=235
-highlight GitGutterDelete   guifg=#ff2222 guibg=NONE ctermfg=1 ctermbg=235
 
 " automatically open and close the popup menu / preview window
 au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
@@ -283,6 +274,3 @@ let g:go_auto_type_info = 1
 
 " copy filename to clipboard
 nnoremap <leader>cf :let @*=expand("%:p") \| :echo 'copied!'<CR>
-
-set timeoutlen=1000
-set ttimeoutlen=10
