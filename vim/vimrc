@@ -120,6 +120,7 @@ endif
 
 " GitGutter
 set signcolumn=yes
+set updatetime=1000
 
 " automatically open and close the popup menu / preview window
 au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
