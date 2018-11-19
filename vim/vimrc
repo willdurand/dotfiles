@@ -120,6 +120,9 @@ set completeopt=menuone,menu,longest
 " see: https://github.com/tpope/vim-rhubarb
 set completeopt-=preview
 
+" auto-reload files when changed
+set autoread
+
 "" netrw config
 
 " see: https://blog.hellojs.org/configure-vim-from-scratch-efe5cbc1c563
