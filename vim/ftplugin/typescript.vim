@@ -1,6 +1,3 @@
-" QuickFix window will automatically appear if `:make` has any errors.
-autocmd QuickFixCmdPost [^l]* nested cwindow
-autocmd QuickFixCmdPost    l* nested lwindow
+runtime! ftplugin/javascript.vim
 
-" Run `:make` on save.
-autocmd BufWritePost <buffer> make
+let g:flow#enable = 0
