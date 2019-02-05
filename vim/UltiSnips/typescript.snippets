@@ -1,0 +1,120 @@
+snippet log "console.log({ ... })" b
+console.log({ $0 });
+endsnippet
+
+snippet debug "console.log(root.debug())" b
+console.log(${0:root}.debug());
+endsnippet
+
+snippet req "const/require" b
+const `!p
+def formatVariableName(path):
+  lastPart = path.split('/')[-1]
+  return re.sub(r'[_\-]', '', lastPart)
+snip.rv = formatVariableName(t[1])
+` = require('${1}');
+endsnippet
+
+snippet imp "import/from" b
+import ${2:`!p
+def formatVariableName(path):
+  lastPart = path.split('/')[-1]
+  if lastPart == 'react':
+    return '* as React'
+  else:
+    return re.sub(r'[_\-]', '', lastPart)
+snip.rv = formatVariableName(t[1])
+`} from '${1}';
+endsnippet
+
+snippet cf "const fn = () => {};" b
+const ${1:fn} = ($2) => {
+	$0
+};
+endsnippet
+
+# React
+snippet fc "create functional component" b
+/* @flow */
+import * as React from 'react';
+
+type Props = {|
+	$2
+|};
+
+const ${1:`!p snip.rv = path.split('/').pop(-2)`} = (props: Props) => (
+	$0
+);
+
+export default ${3:$1};
+endsnippet
+
+snippet cl "create class component" b
+/* @flow */
+import * as React from 'react';
+
+type Props = {|
+	$0
+|};
+
+export class ${1:`!p
+parts = path.split('/')
+component = parts.pop(-2) if len(parts) > 1 else 'Component'
+snip.rv = component + 'Base'
+`} extends React.Component<Props> {
+	render() {
+		${4:return <div />;}
+	}
+}
+
+export default ${3:$1};
+endsnippet
+
+snippet constr "constructor()" b
+constructor(props: ${1:Props}) {
+	super(props);
+
+	$0
+}
+endsnippet
+
+snippet ctp "const {} = this.props;" b
+const { $1 } = this.props;
+endsnippet
+
+# Jest/Mocha
+snippet fdesc "describe(__filename)" b
+describe(__filename, () => {
+	${0:${VISUAL}}
+});
+endsnippet
+
+snippet desc "describe('...')" b
+describe('${1}', () => {
+	${0:${VISUAL}}
+});
+endsnippet
+
+snippet it "it('...')" b
+it('${1}', () => {
+	$0
+});
+endsnippet
+
+snippet toL "expect().toHaveLength()" b
+expect($1).toHaveLength(${2:1});
+endsnippet
+
+snippet toP "expect().toHaveProp()" b
+expect(${1}).toHaveProp(${2});
+endsnippet
+
+snippet rf "root.find()" i
+root.find($1)
+endsnippet
+
+snippet root "const root = render();" b:
+const root = render();
+endsnippet
+
+
