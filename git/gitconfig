@@ -55,6 +55,16 @@
     cleanup = !git branch --merged | grep -v master | xargs git branch -d
     next = !git checkout master && hub sync && git cleanup && npx git-delete-squashed
     wip = !git commit -am "wip" && git next
+    rebase-on-top = ! \
+        CURRENT_BRANCH_TO_REBASE=$(git rev-parse --abbrev-ref HEAD) && \
+        BASE_BRANCH=$1 && shift && \
+        echo "==\\> Rebasing $CURRENT_BRANCH_TO_REBASE on top of $BASE_BRANCH" && \
+        git checkout -b "${CURRENT_BRANCH_TO_REBASE}-2" && \
+        git branch -D "$CURRENT_BRANCH_TO_REBASE" && \
+        git checkout -b "$CURRENT_BRANCH_TO_REBASE" "$BASE_BRANCH" && \
+        git cherry-pick "${CURRENT_BRANCH_TO_REBASE}-2" && \
+        git branch -D "${CURRENT_BRANCH_TO_REBASE}-2" && \
+        echo "==\\> done 🚀"
 
 [hub]
     protocol = git
