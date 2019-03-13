@@ -21,6 +21,10 @@ def formatVariableName(path):
   lastPart = path.split('/')[-1]
   if lastPart == 'react':
     return '* as React'
+  elif lastPart == 'enzyme':
+    return '{ shallow }'
+  elif lastPart == 'styles.module.scss':
+    return 'styles'
   else:
     return re.sub(r'[_\-]', '', lastPart)
 snip.rv = formatVariableName(t[1])
@@ -116,5 +120,3 @@ endsnippet
 snippet root "const root = render();" b:
 const root = render();
 endsnippet
-
-
