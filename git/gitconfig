@@ -59,11 +59,7 @@
         CURRENT_BRANCH_TO_REBASE=$(git rev-parse --abbrev-ref HEAD) && \
         BASE_BRANCH=$1 && shift && \
         echo "==\\> Rebasing $CURRENT_BRANCH_TO_REBASE on top of $BASE_BRANCH" && \
-        git checkout -b "${CURRENT_BRANCH_TO_REBASE}-2" && \
-        git branch -D "$CURRENT_BRANCH_TO_REBASE" && \
-        git checkout -b "$CURRENT_BRANCH_TO_REBASE" "$BASE_BRANCH" && \
-        git cherry-pick "${CURRENT_BRANCH_TO_REBASE}-2" && \
-        git branch -D "${CURRENT_BRANCH_TO_REBASE}-2" && \
+        git rebase --onto ${BASE_BRANCH} ${CURRENT_BRANCH_TO_REBASE}^ ${CURRENT_BRANCH_TO_REBASE} && \
         echo "==\\> done 🚀"
 
 [hub]
