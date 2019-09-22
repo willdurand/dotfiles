@@ -1,3 +1,7 @@
+global !p
+from js_helpers import *
+endglobal
+
 snippet log "console.log({ ... })" b
 console.log({ $0 });
 endsnippet
@@ -7,28 +11,11 @@ console.log(${0:root}.debug());
 endsnippet
 
 snippet req "const/require" b
-const `!p
-def formatVariableName(path):
-  lastPart = path.split('/')[-1]
-  return re.sub(r'[_\-]', '', lastPart)
-snip.rv = formatVariableName(t[1])
-` = require('${1}');
+const ${2:`!p snip.rv = fmt_imported_lib(t[1])`} = require('${1}');
 endsnippet
 
 snippet imp "import/from" b
-import ${2:`!p
-def formatVariableName(path):
-  lastPart = path.split('/')[-1]
-  if lastPart == 'react':
-    return '* as React'
-  elif lastPart == 'enzyme':
-    return '{ shallow }'
-  elif lastPart == 'styles.module.scss':
-    return 'styles'
-  else:
-    return re.sub(r'[_\-]', '', lastPart)
-snip.rv = formatVariableName(t[1])
-`} from '${1}';
+import ${2:`!p snip.rv = fmt_imported_lib(t[1])`} from '${1}';
 endsnippet
 
 snippet cf "const fn = () => {};" b
@@ -61,11 +48,7 @@ type Props = {|
 	$0
 |};
 
-export class ${1:`!p
-parts = path.split('/')
-component = parts.pop(-2) if len(parts) > 1 else 'Component'
-snip.rv = component + 'Base'
-`} extends React.Component<Props> {
+export class ${1:`!p snip.rv = fmt_component_name(path)`} extends React.Component<Props> {
 	render() {
 		${4:return <div />;}
 	}
