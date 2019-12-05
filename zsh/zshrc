@@ -218,8 +218,11 @@ source $HOME/.cargo/env
 # heroku autocomplete setup
 HEROKU_AC_ZSH_SETUP_PATH=~/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
 
+# fzf
+export FZF_DEFAULT_COMMAND='rg --files --hidden'
+
 # sensitive env vars
 [[ -f ~/.sensitive.sh ]] && source ~/.sensitive.sh
 
-# fzf
-export FZF_DEFAULT_COMMAND='rg --files --hidden'
+# local zshrc
+[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
