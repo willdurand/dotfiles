@@ -1,12 +1,16 @@
 # Functions Autoloading
 fpath=(~/.zsh $fpath)
 
-# Completion
-autoload -U promptinit && promptinit
-autoload -U compinit compdef && compinit
-
 # Prompt
+autoload -U promptinit && promptinit
 prompt pure
+
+autoload -Uz compinit
+if [ $(date +'%j') != $(stat -f '%Sm' -t '%j' ${ZDOTDIR:-$HOME}/.zcompdump) ]; then
+  compinit
+else
+  compinit -C
+fi
 
 # Common ENV variables
 export EDITOR='vim'
@@ -82,12 +86,7 @@ zstyle ':completion:*:*:git:*' script ~/.git-completion.bash
 # Reverse search
 bindkey -e
 
-if [ "$TERM" != "dumb" ]; then
-  export LS_OPTIONS='-G --color=always'
-fi
-
-# Pager
-# Thanks François <3
+# Pager, thanks François <3
 if [[ -x `which less` ]] ; then
   export PAGER="less"
   export LESS="--ignore-case --LONG-PROMPT --QUIET --chop-long-lines -Sm --RAW-CONTROL-CHARS --quit-if-one-screen --no-init"
@@ -104,28 +103,16 @@ if [[ -x `which less` ]] ; then
 fi
 
 # alias
-alias ls='ls $LS_OPTIONS -hF'
-alias ll='ls $LS_OPTIONS -lAhF'
-alias cd..="cd .."
-alias ..="cd .."
+alias ls='ls -hFG'
+alias ll='ls -lAhFG'
 alias dstat='dstat -dcgilmsy'
 alias projects="cd ~/projects/"
 
 # convenient aliases
 alias diff=icdiff
 
-# tmux
-alias tmux="TERM=screen-256color-bce tmux"
-
 # git + hub
 eval "$(/usr/local/bin/hub alias -s)"
-
-# rg, faster than ag, faster than ack
-alias ack=rg
-
-# no zsh, those tools exist now!
-alias jest='nocorrect jest'
-alias ncc='nocorrect ncc'
 
 # vi -> vim
 alias vi='vim'
@@ -134,50 +121,26 @@ alias vi='vim'
 export BAT_STYLE='changes'
 alias cat='bat'
 
-# You can hit C-X C-E to open your $EDITOR
-# with the command typed in the buffer and quickly edit your error
+# hit C-X C-E to open your $EDITOR with the command typed in the buffer
+# and quickly edit your error
 autoload edit-command-line
 zle -N edit-command-line
 bindkey '^X^E' edit-command-line
 
-# Automatically escape pasted URLs
-autoload -Uz bracketed-paste-magic
-zle -N bracketed-paste bracketed-paste-magic
-autoload -Uz url-quote-magic
-zle -N self-insert url-quote-magic
+# fzf
+export FZF_DEFAULT_COMMAND='rg --files --hidden'
 
-### PATH
-export PATH=/usr/local/bin:/usr/sbin:/sbin:/usr/bin:/bin:/usr/X11/bin:/Developer/usr/bin
-
-### GNU
+# Common PATH
+export PATH="/usr/local/bin:/usr/sbin:/sbin:/usr/bin:/bin:/usr/X11/bin:/Developer/usr/bin"
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 
-### Scala
-export PATH="$PATH:/usr/local/scala/bin"
+# Homebrew
+export HOMEBREW_NO_ANALYTICS=1
+export PATH="/usr/local/sbin:$PATH"
 
-### PHP
-export PATH="$PATH:$HOME/.phpenv/bin"
-# lazy load phpenv because I do not use it too often
-phpenv() {
-  eval "$(command phpenv init -)"
-  phpenv "$@"
-}
-
-export PATH="$PATH:$HOME/.composer/vendor/bin:$HOME/.composer/vendor/willdurand/pman/bin"
-
-### Added by the Heroku Toolbelt
-export PATH="$PATH:/usr/local/heroku/bin"
-
-### Node
+# Node
 export PATH="$PATH:./node_modules/.bin"
 export PATH="$PATH:$(yarn global bin)"
-
-### Packer
-export PATH="$PATH:/usr/local/packer"
-
-### Go
-export GOPATH="$HOME/projects/go"
-export PATH="$PATH:/usr/local/opt/go/libexec/bin:$GOPATH/bin"
 
 # Ruby, lazy load rbenv because I do not use it too often
 rbenv() {
@@ -185,44 +148,41 @@ rbenv() {
   rbenv "$@"
 }
 
-# cpan/perl
-PATH="~/perl5/bin${PATH+:}${PATH}"; export PATH;
-PERL5LIB="~/perl5/lib/perl5${PERL5LIB+:}${PERL5LIB}"; export PERL5LIB;
-PERL_LOCAL_LIB_ROOT="~/perl5${PERL_LOCAL_LIB_ROOT+:}${PERL_LOCAL_LIB_ROOT}"; export PERL_LOCAL_LIB_ROOT;
-PERL_MB_OPT="--install_base \"~/perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=~/perl5"; export PERL_MM_OPT;
+# PHP
+if [[ -d "$HOME/.phpenv" ]]; then
+  export PATH="$PATH:$HOME/.phpenv/bin:$HOME/.composer/vendor/bin"
 
-# MacTex
-export PATH="$PATH:/Library/TeX/texbin"
+  # lazy load phpenv because I do not use it too often
+  phpenv() {
+    eval "$(command phpenv init -)"
+    phpenv "$@"
+  }
+fi
 
-# Homebrew
-export HOMEBREW_NO_ANALYTICS=1
-export PATH="/usr/local/sbin:$PATH"
+# Added by the Heroku Toolbelt
+if [[ -d "/usr/local/heroku" ]]; then
+  export PATH="$PATH:/usr/local/heroku/bin"
+  # heroku autocomplete setup
+  HEROKU_AC_ZSH_SETUP_PATH=~/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH
+fi
 
-# Android / React Native
-export ANDROID_HOME=${HOME}/Library/Android/sdk
-export PATH=${PATH}:${ANDROID_HOME}/emulator
-export PATH=${PATH}:${ANDROID_HOME}/tools
-export PATH=${PATH}:${ANDROID_HOME}/tools/bin
-export PATH=${PATH}:${ANDROID_HOME}/platform-tools
-
-# fastlane
-export PATH="$HOME/.fastlane/bin:$PATH"
+# Go
+if [[ -d "$HOME/projects/go" ]]; then
+  export GOPATH="$HOME/projects/go"
+  export PATH="$PATH:/usr/local/opt/go/libexec/bin:$GOPATH/bin"
+fi
 
 # rust
-source $HOME/.cargo/env
-
-# added by Miniconda3 installer
-[[ -f ~/miniconda3/etc/profile.d/conda.sh ]] && source ~/miniconda3/etc/profile.d/conda.sh
-
-# heroku autocomplete setup
-HEROKU_AC_ZSH_SETUP_PATH=~/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
-
-# fzf
-export FZF_DEFAULT_COMMAND='rg --files --hidden'
+if [[ -d "$HOME/.cargo" ]]; then
+  source $HOME/.cargo/env
+fi
 
 # sensitive env vars
-[[ -f ~/.sensitive.sh ]] && source ~/.sensitive.sh
+if [[ -f ~/.sensitive.sh ]]; then
+  source ~/.sensitive.sh
+fi
 
 # local zshrc
-[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
+if [[ -f ~/.zshrc.local ]]; then
+  source ~/.zshrc.local
+fi
