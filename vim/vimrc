@@ -25,12 +25,6 @@ set title
 " Hide buffer instead of abandoning when unloading
 set hidden
 
-" Enhanced command line completion
-set wildmenu
-" Complete files like a shell
-set wildmode=list:longest
-set wildignore=.svn,CVS,.git,.hg,*.o,*.a,*.class,*.mo,*.la,*.so,*.obj,*.swp,*.xpm,*.pyc,*.pyo,*.log
-
 " http://vim.wikia.com/wiki/FileName_Completion_in_Shell_Scripts
 set isfname-==
 
@@ -94,9 +88,9 @@ set lazyredraw
 set gdefault
 
 " Tabs and indentation
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
 
 " use persistent undo
 let s:undoDir = "/tmp/.undodir_" . $USER
@@ -278,7 +272,7 @@ nnoremap <leader>j !python -m json.tool<CR>
 " airline
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'minimalist'
-let g:airline_extensions = ['ctrlp', 'hunks', 'branch', 'whitespace']
+let g:airline_extensions = ['hunks', 'branch', 'whitespace']
 set noshowmode
 
 " GitGutter
@@ -290,10 +284,24 @@ let g:gist_clip_command    = 'pbcopy'
 let g:gist_detect_filetype = 1
 let g:gist_post_private    = 1
 
-" ctrlp
-let g:ctrlp_map                 = '<leader>t'
-let g:ctrlp_clear_cache_on_exit = 0
-let g:ctrlp_user_command        = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+" fzf
+set rtp+=/usr/local/opt/fzf
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
+nnoremap <leader>t :Files<Cr>
+nnoremap <leader>r :Rg<Cr>
 
 " polyglot
 let g:polyglot_disabled = ['go', 'rust']

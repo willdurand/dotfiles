@@ -67,5 +67,8 @@ link_files zsh/pure/pure.zsh ~/.zsh/prompt_pure_setup
 link_files zsh/pure/async.zsh ~/.zsh/async
 link_files zsh/zshrc ~/.zshrc
 
+# rg
+link_files ripgrep/rgignore ~/.rgignore
+
 echo ''
 echo '  All installed!'

@@ -219,3 +219,6 @@ HEROKU_AC_ZSH_SETUP_PATH=~/Library/Caches/heroku/autocomplete/zsh_setup && test 
 
 # sensitive env vars
 [[ -f ~/.sensitive.sh ]] && source ~/.sensitive.sh
+
+# fzf
+export FZF_DEFAULT_COMMAND='rg --files --hidden'
