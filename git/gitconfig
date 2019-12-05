@@ -101,7 +101,9 @@
     httpd=webrick
     port=4000
     browser=open
+
 [rerere]
     enabled = true
+
 [credential]
 	helper = osxkeychain
