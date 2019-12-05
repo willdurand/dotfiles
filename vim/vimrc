@@ -278,6 +278,9 @@ set noshowmode
 " GitGutter
 set signcolumn=yes
 set updatetime=1000
+let g:gitgutter_map_keys = 0
+" ignore whitespaces
+let g:gitgutter_diff_args = '-w'
 
 " Gist
 let g:gist_clip_command    = 'pbcopy'
