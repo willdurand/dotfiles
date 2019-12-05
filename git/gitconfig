@@ -103,3 +103,5 @@
     browser=open
 [rerere]
     enabled = true
+[credential]
+	helper = osxkeychain
