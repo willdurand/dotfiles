@@ -123,8 +123,9 @@ eval "$(/usr/local/bin/hub alias -s)"
 # rg, faster than ag, faster than ack
 alias ack=rg
 
-# no zsh, jest does exist now!
+# no zsh, those tools exist now!
 alias jest='nocorrect jest'
+alias ncc='nocorrect ncc'
 
 # vi -> vim
 alias vi='vim'
