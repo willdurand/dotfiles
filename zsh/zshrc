@@ -81,7 +81,6 @@ zstyle ':completion:*' menu select=2
 zstyle ':completion:*' select-prompt '%SScrolling active: current selection at %p%s'
 zstyle ':completion:*' ignored-patterns 'package-lock.json'
 zstyle ':completion:*:descriptions' format '%U%F{yellow}%d%f%u'
-zstyle ':completion:*:*:git:*' script ~/.git-completion.bash
 
 # Reverse search
 bindkey -e
