@@ -1,5 +1,5 @@
 [ui]
-username = William DURAND <william.durand1@gmail.com>
+username = William Durand <will+git@drnd.me>
 verbose = true
 interface = curses
 tweakdefaults = true
