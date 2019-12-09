@@ -4,6 +4,8 @@ fpath=(~/.zsh $fpath)
 # Prompt
 autoload -U promptinit && promptinit
 prompt pure
+# See: https://github.com/sindresorhus/pure/wiki/Customizations,-hacks-and-tweaks#show-number-of-jobs-in-prompt
+PROMPT='%(1j.[%j] .)%(?.%F{magenta}.%F{red})${PURE_PROMPT_SYMBOL:-❯}%f '
 
 autoload -Uz compinit
 if [ $(date +'%j') != $(stat -f '%Sm' -t '%j' ${ZDOTDIR:-$HOME}/.zcompdump) ]; then
