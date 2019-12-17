@@ -307,7 +307,7 @@ nnoremap <leader>t :Files<Cr>
 nnoremap <leader>r :Rg<Cr>
 
 " polyglot
-let g:polyglot_disabled = ['go', 'rust']
+let g:polyglot_disabled = ['go', 'rust', 'typescript']
 
 " go
 let g:go_auto_type_info = 1
