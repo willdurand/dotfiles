@@ -68,5 +68,8 @@ link_files zsh/zshrc ~/.zshrc
 # rg
 link_files ripgrep/rgignore ~/.rgignore
 
+# tmux
+link_files tmux/tmux.conf ~/.tmux.conf
+
 echo ''
 echo '  All installed!'
