@@ -323,3 +323,8 @@ let g:black_skip_string_normalization=1
 
 " enable doxygen highlighting
 let g:load_doxygen_syntax = 1
+
+" Hex read
+nmap <Leader>hr :%!xxd<CR> :set filetype=xxd<CR>
+" Hex write
+nmap <Leader>hw :%!xxd -r<CR> :set binary<CR> :set filetype=plain<CR>
