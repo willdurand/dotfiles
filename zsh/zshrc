@@ -112,6 +112,7 @@ alias projects="cd ~/projects/"
 
 # convenient aliases
 alias diff=icdiff
+alias fixprompt=prompt_pure_async_init=0; async_stop_worker prompt_pure
 
 # git + hub
 eval "$(/usr/local/bin/hub alias -s)"
