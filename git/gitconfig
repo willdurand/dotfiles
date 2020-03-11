@@ -71,7 +71,7 @@
     default = current
 
 [pull]
-    rebase = preserve
+    rebase = merges
 
 [commit]
     gpgsign = 1
