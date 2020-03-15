@@ -92,6 +92,9 @@ set tabstop=2
 set shiftwidth=2
 set softtabstop=2
 
+" display all matching files when we tab complete
+set wildmenu
+
 " use persistent undo
 let s:undoDir = "/tmp/.undodir_" . $USER
 if !isdirectory(s:undoDir)
