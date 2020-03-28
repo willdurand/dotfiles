@@ -46,9 +46,6 @@ setup_git() {
 # Update submodules first
 git submodule update --init
 
-# mercurial
-link_files mercurial/hgrc ~/.hgrc
-
 # tmux
 link_files tmux/tmux.conf ~/.tmux.conf
 
