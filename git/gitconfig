@@ -63,6 +63,7 @@
         echo "==\\> done 🚀"
     gist = !rm -f /tmp/git.diff && git diff | vim - +'w /tmp/git.diff'
     todo = grep -A 1 -i --heading "TODO:"
+    status = status --no-ahead-behind
 
 [hub]
     protocol = git
@@ -108,3 +109,6 @@
 
 [credential]
     helper = osxkeychain
+
+[cinnabar]
+	helper = /usr/local/Cellar/git-cinnabar/0.5.4/libexec/git-cinnabar-helper
