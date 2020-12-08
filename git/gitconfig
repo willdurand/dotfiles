@@ -61,7 +61,7 @@
         echo "==\\> Rebasing $CURRENT_BRANCH_TO_REBASE on top of $BASE_BRANCH" && \
         git rebase --onto ${BASE_BRANCH} ${CURRENT_BRANCH_TO_REBASE}^ ${CURRENT_BRANCH_TO_REBASE} && \
         echo "==\\> done 🚀"
-    gist = !rm -f /tmp/git.diff && git diff | vim - +'w /tmp/git.diff'
+    share = !rm -f /tmp/git.diff && git diff | vim - +'w /tmp/git.diff'
     todo = grep -A 1 -i --heading "TODO:"
     status = status --no-ahead-behind
 
