@@ -320,6 +320,9 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
+" Black
+let g:black_skip_string_normalization = 1
+
 " enable doxygen highlighting
 let g:load_doxygen_syntax = 1
 
