@@ -1,7 +1,7 @@
 [user]
     name = William Durand
     email = will+git@drnd.me
-    signingkey = C1274F3B
+	signingkey = 4487A558086115CC!
 
 [color]
     ui = auto
