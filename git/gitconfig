@@ -112,3 +112,6 @@
 
 [cinnabar]
 	helper = /usr/local/Cellar/git-cinnabar/0.5.4/libexec/git-cinnabar-helper
+
+[init]
+	defaultBranch = main
