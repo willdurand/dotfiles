@@ -41,6 +41,7 @@ setup_git() {
     link_files git/gitconfig ~/.gitconfig
     link_files git/gitignore_global ~/.gitignore_global
     link_files zsh/_yarn ~/.zsh/_yarn
+    link_files git/commands/npm-release /usr/local/bin/git-npm-release
 }
 
 # Update submodules first

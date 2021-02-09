@@ -1,0 +1,86 @@
+#!/usr/bin/env bash
+#
+# This script allows (me) to automate releases of npm libraries with GitHub. It
+# relies on `hub` (https://hub.github.com/) and `npm version` commands.
+
+set -e -o pipefail
+
+NAME='npm-release'
+USAGE='[help|major|minor|patch]'
+LONG_USAGE="git $NAME help
+        print this help message.
+git $NAME major
+        create a major version.
+git $NAME minor
+        create a minor version.
+git $NAME patch
+        create a patch version.
+"
+
+source "$(git --exec-path)/git-sh-setup"
+
+REMOTE='origin'
+BRANCH=$(git symbolic-ref --short -q HEAD)
+
+npm_release() {
+  local type="$1"
+  local old_version
+  local new_version
+  local message
+
+  if [[ ! -f "package.json" ]]; then
+    die "Aborted: this script only works with JS and Node projects."
+  fi
+
+  require_clean_work_tree rebase "Please commit or stash them."
+
+  old_version=$(node -pe "require('./package.json').version")
+  echo "--> found current npm version: $old_version"
+
+  new_version=$(npm --no-git-tag-version version "$type")
+  git checkout -- package.json package-lock.json
+  echo "--> new $type version will be: $new_version"
+
+  read -p "Continue? " -n 1 -r
+  echo
+  if [[ ! "$REPLY" =~ ^[Yy]$ ]]; then
+    die "Aborted: user didn't confirm."
+  fi
+
+  new_version=$(npm version "$type")
+  echo "--> created new npm version: $new_version"
+
+  git push --quiet "$REMOTE" "$BRANCH" --tag
+  echo "--> pushed changes to GitHub"
+
+  message=$(cat <<EOF
+$new_version $(date +'(%Y-%m-%d)')
+
+# git log: $old_version...$new_version^
+$(git log --format="- %s" "$old_version"..."$new_version"^)
+
+EOF
+)
+
+  hub release create --edit --message "$message" "$new_version"
+}
+
+if [[ "$#" -eq 0 ]]; then
+  usage
+fi
+
+for arg in "$@"
+do
+  case "$arg" in
+    help)
+      git "$NAME" -h ;;
+    patch)
+      npm_release "patch" ;;
+    minor)
+      npm_release "minor" ;;
+    major)
+      npm_release "major" ;;
+    *)
+      ;;
+  esac
+done
