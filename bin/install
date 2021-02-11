@@ -69,5 +69,10 @@ link_files ripgrep/rgignore ~/.rgignore
 # tmux
 link_files tmux/tmux.conf ~/.tmux.conf
 
+# scripts
+for script in $(ls scripts/); do
+    link_files "scripts/$script" "/usr/local/bin/$script"
+done
+
 echo ''
 echo '  All installed!'

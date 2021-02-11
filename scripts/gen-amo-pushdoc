@@ -1,0 +1,165 @@
+#!/usr/bin/env node
+const https = require("https");
+
+const MY_GH_USERNAME = "willdurand";
+const ONE_DAY = 60 * 60 * 24 * 1000;
+
+const config = {
+  username: MY_GH_USERNAME,
+  heroes: ["willdurand", "eviljeff", "diox", "bsilverberg"],
+  template: `# AMO Release %DATE%
+
+This week's push hero is [%HERO_USERNAME%](https://github.com/%HERO_USERNAME%)
+
+## Notable things shipping:
+
+## Blockers:
+
+## Cherry-picks:
+
+## Pushing:
+
+- https://github.com/mozilla/addons-server/compare/%SERVER_RANGE%
+- https://github.com/mozilla/addons-frontend/compare/%FRONTEND_RANGE%
+- https://github.com/mozilla/addons-code-manager/compare/%CODE_MANAGER_RANGE%
+
+## Before we start:
+
+## Before we promote:
+
+## After we're done:`,
+};
+
+// From: httpss://github.com/mozilla/addons-pm
+function getNextMilestone({ dayOfWeek = 4, startDate = new Date() } = {}) {
+  if (startDate.getDay() === dayOfWeek) {
+    return startDate;
+  }
+  const resultDate = new Date(startDate.getTime());
+  resultDate.setDate(
+    startDate.getDate() + ((7 + dayOfWeek - startDate.getDay() - 1) % 7) + 1
+  );
+  return resultDate;
+}
+
+function formatDateToMilestone(date, separator = ".") {
+  return [
+    date.getFullYear(),
+    (date.getMonth() + 1).toString().padStart(2, "0"),
+    date.getDate().toString().padStart(2, "0"),
+  ].join(separator);
+}
+
+function getNextHero() {
+  const index =
+    config.heroes.findIndex((username) => username === config.username) + 1;
+
+  if (index > config.heroes.length) {
+    index = 0;
+  }
+
+  return config.heroes[index];
+}
+
+function makeRange(base, head) {
+  return `${base}...${head}`;
+}
+
+function nth(d) {
+  if (d > 3 && d < 21) {
+    return "th";
+  }
+
+  switch (d % 10) {
+    case 1:
+      return "st";
+    case 2:
+      return "nd";
+    case 3:
+      return "rd";
+    default:
+  }
+
+  return "th";
+}
+
+function formatDay(day) {
+  return `${day}${nth(day)}`;
+}
+
+const milestone = getNextMilestone();
+
+new Promise((res, rej) => {
+  https.get(
+    `https://raw.githubusercontent.com/mozilla/addons/main/releases/${formatDateToMilestone(
+      milestone,
+      "/"
+    )}.md`,
+    (response) => {
+      let content = "";
+      response.on("data", (chunk) => (content += chunk));
+      response.on("end", () => res(content));
+    }
+  );
+}).then((content) => {
+  const compareUrls = content
+    .split("\n")
+    .filter(
+      (line) => line.trim().startsWith("-") && line.includes(`/compare/`)
+    );
+
+  const rangesByProject = {};
+  for (const url of compareUrls) {
+    const parts = url.replace("- https://github.com/mozilla/", "").split("/");
+    const range = parts[2];
+    const [base, head] = range.split("...");
+
+    rangesByProject[parts[0]] = {
+      raw: range,
+      base,
+      head,
+    };
+  }
+
+  const nextMilestone = getNextMilestone({
+    startDate: new Date(milestone.getTime() + ONE_DAY),
+  });
+
+  const pushDoc = config.template
+    // Thursday 11th February 2021
+    .replace(
+      "%DATE%",
+      [
+        nextMilestone.toLocaleDateString("en-US", { weekday: "long" }),
+        formatDay(
+          nextMilestone.toLocaleDateString("en-US", { day: "numeric" })
+        ),
+        nextMilestone.toLocaleDateString("en-US", { month: "long" }),
+        nextMilestone.toLocaleDateString("en-US", { year: "numeric" }),
+      ].join(" ")
+    )
+    .replaceAll("%HERO_USERNAME%", getNextHero())
+    .replace(
+      "%SERVER_RANGE%",
+      makeRange(
+        rangesByProject["addons-server"].head,
+        formatDateToMilestone(nextMilestone, ".")
+      )
+    )
+    .replace(
+      "%FRONTEND_RANGE%",
+      makeRange(
+        rangesByProject["addons-frontend"].head,
+        formatDateToMilestone(nextMilestone, ".")
+      )
+    )
+    .replace(
+      "%CODE_MANAGER_RANGE%",
+      makeRange(
+        rangesByProject["addons-code-manager"].head,
+        formatDateToMilestone(nextMilestone, ".")
+      )
+    );
+
+  console.log(pushDoc);
+});
