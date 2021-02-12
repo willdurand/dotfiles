@@ -83,6 +83,7 @@
     smtpserverport = 587
     suppresscc = self
     smtpuser = willdurand@fastmail.com
+    annotate = yes
 
 [pager]
     diff = diff-highlight | less
@@ -115,3 +116,5 @@
 
 [init]
 	defaultBranch = main
+[format]
+	signOff = yes
