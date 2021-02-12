@@ -118,14 +118,19 @@ alias diff=icdiff
 alias fixprompt=prompt_pure_async_init=0; async_stop_worker prompt_pure
 
 # git + hub
-eval "$(/usr/local/bin/hub alias -s)"
+HUB=$(which hub)
+if [[ -x "$HUB" ]]; then
+  eval "$($HUB alias -s)"
+fi
 
 # vi -> vim
 alias vi='vim'
 
 # cat -> bat
-export BAT_STYLE='changes'
-alias cat='bat'
+if [[ -x `which bat` ]]; then
+  export BAT_STYLE='changes'
+  alias cat='bat'
+fi
 
 # hit C-X C-E to open your $EDITOR with the command typed in the buffer
 # and quickly edit your error
@@ -145,8 +150,9 @@ export HOMEBREW_NO_ANALYTICS=1
 export PATH="/usr/local/sbin:$PATH"
 
 # Node
-export PATH="$PATH:./node_modules/.bin"
-export PATH="$PATH:$(yarn global bin)"
+if [[ -x `which yarn` ]] ; then
+  export PATH="$PATH:./node_modules/.bin:$(yarn global bin)"
+fi
 
 # Ruby, lazy load rbenv because I do not use it too often
 rbenv() {
