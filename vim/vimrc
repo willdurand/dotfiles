@@ -167,6 +167,7 @@ nnoremap ` '
 " convenient mapping to swith tab/indent settings
 nnoremap <leader>2 :set tabstop=2<cr>:set shiftwidth=2<cr>:set softtabstop=2<cr>
 nnoremap <leader>4 :set tabstop=4<cr>:set shiftwidth=4<cr>:set softtabstop=4<cr>
+nnoremap <leader>8 :set tabstop=8<cr>:set shiftwidth=8<cr>:set softtabstop=8<cr>:set noexpandtab<cr>
 
 " pull word under cursor into LHS of a substitute (for quick search and replace)
 nnoremap <leader>zs :%s/<C-r>=expand("<cword>")<cr>/
