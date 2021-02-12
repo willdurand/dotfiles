@@ -8,7 +8,7 @@ prompt pure
 PROMPT='%(1j.[%j] .)%(?.%F{magenta}.%F{red})${PURE_PROMPT_SYMBOL:-❯}%f '
 
 autoload -Uz compinit
-if [ $(date +'%j') != $(stat -f '%Sm' -t '%j' ${ZDOTDIR:-$HOME}/.zcompdump) ]; then
+if [[ "$(uname)" == "Darwin" ]] && [ $(date +'%j') != $(stat -f '%Sm' -t '%j' "${ZDOTDIR:-$HOME}"/.zcompdump) ]; then
   compinit
 else
   compinit -C
@@ -92,7 +92,7 @@ zstyle ':completion:*:*:git:*' script ~/.git-completion.bash
 bindkey -e
 
 # Pager, thanks François <3
-if [[ -x `which less` ]] ; then
+if [[ -x $(which less) ]] ; then
   export PAGER="less"
   export LESS="--ignore-case --LONG-PROMPT --QUIET --chop-long-lines -Sm --RAW-CONTROL-CHARS --quit-if-one-screen --no-init"
 
@@ -123,11 +123,15 @@ if [[ -x "$HUB" ]]; then
   eval "$($HUB alias -s)"
 fi
 
+if [ -f '/usr/share/doc/git/contrib/diff-highlight' ]; then
+  export PATH="$PATH:/usr/share/doc/git/contrib/diff-highlight"
+fi
+
 # vi -> vim
 alias vi='vim'
 
 # cat -> bat
-if [[ -x `which bat` ]]; then
+if [[ -x $(which bat) ]]; then
   export BAT_STYLE='changes'
   alias cat='bat'
 fi
@@ -150,7 +154,7 @@ export HOMEBREW_NO_ANALYTICS=1
 export PATH="/usr/local/sbin:$PATH"
 
 # Node
-if [[ -x `which yarn` ]] ; then
+if [[ -x $(which yarn) ]] ; then
   export PATH="$PATH:./node_modules/.bin:$(yarn global bin)"
 fi
 
