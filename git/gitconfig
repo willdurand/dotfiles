@@ -1,115 +1,115 @@
 [user]
-    name = William Durand
-    email = will+git@drnd.me
+	name = William Durand
+	email = will+git@drnd.me
 	signingkey = 4487A558086115CC!
 
 [color]
-    ui = auto
-    branch = auto
-    diff = auto
-    status = auto
+	ui = auto
+	branch = auto
+	diff = auto
+	status = auto
 
 [color "branch"]
-    current = yellow reverse
-    local = yellow
-    remote = green
+	current = yellow reverse
+	local = yellow
+	remote = green
 
 [color "diff"]
-    meta = yellow
-    frag = magenta
-    old = red
-    new = green
+	meta = yellow
+	frag = magenta
+	old = red
+	new = green
 
 [color "status"]
-    added = green
-    changed = yellow
-    untracked = red
+	added = green
+	changed = yellow
+	untracked = red
 
 [core]
-    ui = true
-    editor = vim
-    autocrlf = input
-    whitespace = trailing-space,space-before-tab
-    excludesfile = ~/.gitignore_global
+	ui = true
+	editor = vim
+	autocrlf = input
+	whitespace = trailing-space,space-before-tab
+	excludesfile = ~/.gitignore_global
 
 [diff "exif"]
-    textconv = exiftool
+	textconv = exiftool
 
 [merge]
-    tool = vimdiff
+	tool = vimdiff
 
 [help]
-    autocorrect = 1
+	autocorrect = 1
 
 [apply]
-    whitespace = fix
+	whitespace = fix
 
 [github]
-    user = willdurand
+	user = willdurand
 
 [alias]
-    ci = ci-status -v
-    lg = log --graph --pretty=format:'%Cred%h%Creset %C(yellow)%an%d%Creset %s %Cgreen(%cr)%Creset' --date=relative
-    fixup = commit --fixup
-    rebase-i = rebase -i --autosquash --autostash
-    cleanup = !git branch --merged | grep -v master | xargs git branch -d
-    next = !git checkout master && hub sync && git cleanup && npx git-delete-squashed
-    wip = !git commit -am "wip" && git next
-    rebase-on-top = ! \
-        CURRENT_BRANCH_TO_REBASE=$(git rev-parse --abbrev-ref HEAD) && \
-        BASE_BRANCH=$1 && shift && \
-        echo "==\\> Rebasing $CURRENT_BRANCH_TO_REBASE on top of $BASE_BRANCH" && \
-        git rebase --onto ${BASE_BRANCH} ${CURRENT_BRANCH_TO_REBASE}^ ${CURRENT_BRANCH_TO_REBASE} && \
-        echo "==\\> done 🚀"
-    share = !rm -f /tmp/git.diff && git diff | vim - +'w /tmp/git.diff'
-    todo = grep -A 1 -i --heading "TODO:"
-    status = status --no-ahead-behind
+	ci = ci-status -v
+	lg = log --graph --pretty=format:'%Cred%h%Creset %C(yellow)%an%d%Creset %s %Cgreen(%cr)%Creset' --date=relative
+	fixup = commit --fixup
+	rebase-i = rebase -i --autosquash --autostash
+	cleanup = !git branch --merged | grep -v master | xargs git branch -d
+	next = !git checkout master && hub sync && git cleanup && npx git-delete-squashed
+	wip = !git commit -am "wip" && git next
+	rebase-on-top = ! \
+		CURRENT_BRANCH_TO_REBASE=$(git rev-parse --abbrev-ref HEAD) && \
+		BASE_BRANCH=$1 && shift && \
+		echo "==\\> Rebasing $CURRENT_BRANCH_TO_REBASE on top of $BASE_BRANCH" && \
+		git rebase --onto ${BASE_BRANCH} ${CURRENT_BRANCH_TO_REBASE}^ ${CURRENT_BRANCH_TO_REBASE} && \
+		echo "==\\> done 🚀"
+	share = !rm -f /tmp/git.diff && git diff | vim - +'w /tmp/git.diff'
+	todo = grep -A 1 -i --heading "TODO:"
+	status = status --no-ahead-behind
 
 [hub]
-    protocol = git
+	protocol = git
 
 [push]
-    default = current
+	default = current
 
 [pull]
-    rebase = merges
+	rebase = merges
 
 [commit]
-    gpgsign = 1
+	gpgsign = 1
 
 [sendemail]
-    smtpencryption = tls
-    smtpserver = smtp.fastmail.com
-    smtpserverport = 587
-    suppresscc = self
-    smtpuser = willdurand@fastmail.com
-    annotate = yes
+	smtpencryption = tls
+	smtpserver = smtp.fastmail.com
+	smtpserverport = 587
+	suppresscc = self
+	smtpuser = willdurand@fastmail.com
+	annotate = yes
 
 [pager]
-    diff = diff-highlight | less
-    log = diff-highlight | less
-    show = diff-highlight | less
+	diff = diff-highlight | less
+	log = diff-highlight | less
+	show = diff-highlight | less
 
 [diff]
-    compactionHeuristic = 1
+	compactionHeuristic = 1
 
 [filter "lfs"]
-    clean = git-lfs clean -- %f
-    smudge = git-lfs smudge -- %f
-    process = git-lfs filter-process
-    required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
 
 [instaweb]
-    local = true
-    httpd=webrick
-    port=4000
-    browser=open
+	local = true
+	httpd=webrick
+	port=4000
+	browser=open
 
 [rerere]
-    enabled = true
+	enabled = true
 
 [credential]
-    helper = osxkeychain
+	helper = osxkeychain
 
 [cinnabar]
 	helper = /usr/local/Cellar/git-cinnabar/0.5.5/libexec/git-cinnabar-helper
