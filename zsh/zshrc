@@ -18,6 +18,8 @@ fi
 export EDITOR='vim'
 export GIT_EDITOR='vim'
 export SHELL='/bin/zsh'
+# Disable husky
+export HUSKY_SKIP_HOOKS=1
 
 # Fix Locale
 export LC_ALL=en_US.UTF-8
@@ -27,9 +29,6 @@ export LANG=en_US.UTF-8
 export HISTSIZE=100000
 export HISTFILE="$HOME/.history"
 export SAVEHIST="$HISTSIZE"
-
-# Disable husky
-export HUSKY_SKIP_HOOKS=1
 
 # Remove superfluous blanks from each command line being added to the history
 # list
@@ -88,8 +87,9 @@ zstyle ':completion:*' ignored-patterns 'package-lock.json'
 zstyle ':completion:*:descriptions' format '%U%F{yellow}%d%f%u'
 zstyle ':completion:*:*:git:*' script ~/.git-completion.bash
 
-# Reverse search
-bindkey -e
+bindkey '^A' beginning-of-line
+bindkey '^E' end-of-line
+bindkey '^R' history-incremental-search-backward
 
 # Pager, thanks François <3
 if [[ -x $(which less) ]] ; then
@@ -111,13 +111,12 @@ fi
 alias ls='ls -hFG'
 alias ll='ls -lAhFG'
 alias dstat='dstat -dcgilmsy'
-alias projects="cd ~/projects/"
 
 # convenient aliases
 alias diff=icdiff
 alias fixprompt=prompt_pure_async_init=0; async_stop_worker prompt_pure
 
-# git + hub
+# git/hub
 HUB=$(which hub)
 if [[ -x "$HUB" ]]; then
   eval "$($HUB alias -s)"
@@ -137,7 +136,7 @@ if [[ -x $(which bat) ]]; then
 fi
 
 # hit C-X C-E to open your $EDITOR with the command typed in the buffer
-# and quickly edit your error
+# and quickly edit your error.
 autoload edit-command-line
 zle -N edit-command-line
 bindkey '^X^E' edit-command-line
@@ -148,10 +147,10 @@ export FZF_DEFAULT_COMMAND='rg --files --hidden'
 # Common PATH
 export PATH="/usr/local/bin:/usr/sbin:/sbin:/usr/bin:/bin:/usr/X11/bin:/Developer/usr/bin"
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+export PATH="/usr/local/sbin:$PATH"
 
 # Homebrew
 export HOMEBREW_NO_ANALYTICS=1
-export PATH="/usr/local/sbin:$PATH"
 
 # Node
 if [[ -x $(which yarn) ]] ; then
@@ -160,6 +159,7 @@ fi
 
 # Ruby, lazy load rbenv because I do not use it too often
 rbenv() {
+  unset -f rbenv
   eval "$(command rbenv init -)"
   rbenv "$@"
 }
@@ -170,6 +170,7 @@ if [[ -d "$HOME/.phpenv" ]]; then
 
   # lazy load phpenv because I do not use it too often
   phpenv() {
+    unset -f -f phpenv
     eval "$(command phpenv init -)"
     phpenv "$@"
   }
