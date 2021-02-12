@@ -57,7 +57,7 @@ prompt_pure_set_title() {
 	setopt localoptions noshwordsplit
 
 	# Emacs terminal does not support settings the title.
-	(( ${+EMACS} )) && return
+	(( ${+EMACS} || ${+INSIDE_EMACS} )) && return
 
 	case $TTY in
 		# Don't set title over serial console.
@@ -121,6 +121,8 @@ prompt_pure_set_colors() {
 prompt_pure_preprompt_render() {
 	setopt localoptions noshwordsplit
 
+	unset prompt_pure_async_render_requested
+
 	# Set color for Git branch/dirty status and change color if dirty checking has been delayed.
 	local git_color=$prompt_pure_colors[git:branch]
 	local git_dirty_color=$prompt_pure_colors[git:dirty]
@@ -129,25 +131,30 @@ prompt_pure_preprompt_render() {
 	# Initialize the preprompt array.
 	local -a preprompt_parts
 
+	# Username and machine, if applicable.
+	[[ -n $prompt_pure_state[username] ]] && preprompt_parts+=($prompt_pure_state[username])
+
 	# Set the path.
 	preprompt_parts+=('%F{${prompt_pure_colors[path]}}%~%f')
 
-	# Add Git branch and dirty status info.
+	# Git branch and dirty status info.
 	typeset -gA prompt_pure_vcs_info
 	if [[ -n $prompt_pure_vcs_info[branch] ]]; then
-		local branch="%F{$git_color}"'${prompt_pure_vcs_info[branch]}'
-		if [[ -n $prompt_pure_vcs_info[action] ]]; then
-			branch+="|%F{$prompt_pure_colors[git:action]}"'$prompt_pure_vcs_info[action]'"%F{$git_color}"
-		fi
-		preprompt_parts+=("$branch""%F{$git_dirty_color}"'${prompt_pure_git_dirty}%f')
+		preprompt_parts+=("%F{$git_color}"'${prompt_pure_vcs_info[branch]}'"%F{$git_dirty_color}"'${prompt_pure_git_dirty}%f')
+	fi
+	# Git action (for example, merge).
+	if [[ -n $prompt_pure_vcs_info[action] ]]; then
+		preprompt_parts+=("%F{$prompt_pure_colors[git:action]}"'$prompt_pure_vcs_info[action]%f')
 	fi
 	# Git pull/push arrows.
 	if [[ -n $prompt_pure_git_arrows ]]; then
 		preprompt_parts+=('%F{$prompt_pure_colors[git:arrow]}${prompt_pure_git_arrows}%f')
 	fi
+	# Git stash symbol (if opted in).
+	if [[ -n $prompt_pure_git_stash ]]; then
+		preprompt_parts+=('%F{$prompt_pure_colors[git:stash]}${PURE_GIT_STASH_SYMBOL:-≡}%f')
+	fi
 
-	# Username and machine, if applicable.
-	[[ -n $prompt_pure_state[username] ]] && preprompt_parts+=($prompt_pure_state[username])
 	# Execution time.
 	[[ -n $prompt_pure_cmd_exec_time ]] && preprompt_parts+=('%F{$prompt_pure_colors[execution_time]}${prompt_pure_cmd_exec_time}%f')
 
@@ -186,6 +193,8 @@ prompt_pure_preprompt_render() {
 }
 
 prompt_pure_precmd() {
+	setopt localoptions noshwordsplit
+
 	# Check execution time and store it in a variable.
 	prompt_pure_check_cmd_exec_time
 	unset prompt_pure_cmd_timestamp
@@ -253,18 +262,18 @@ prompt_pure_async_vcs_info() {
 	# to be used or configured as the user pleases.
 	zstyle ':vcs_info:*' enable git
 	zstyle ':vcs_info:*' use-simple true
-	# Only export three message variables from `vcs_info`.
+	# Only export four message variables from `vcs_info`.
 	zstyle ':vcs_info:*' max-exports 3
-	# Export branch (%b), Git toplevel (%R), and action (rebase/cherry-pick) (%a).
-	zstyle ':vcs_info:git*' formats '%b' '%R'
+	# Export branch (%b), Git toplevel (%R), action (rebase/cherry-pick) (%a)
+	zstyle ':vcs_info:git*' formats '%b' '%R' '%a'
 	zstyle ':vcs_info:git*' actionformats '%b' '%R' '%a'
 
 	vcs_info
 
 	local -A info
 	info[pwd]=$PWD
-	info[top]=$vcs_info_msg_1_
 	info[branch]=$vcs_info_msg_0_
+	info[top]=$vcs_info_msg_1_
 	info[action]=$vcs_info_msg_2_
 
 	print -r - ${(@kvq)info}
@@ -274,11 +283,15 @@ prompt_pure_async_vcs_info() {
 prompt_pure_async_git_dirty() {
 	setopt localoptions noshwordsplit
 	local untracked_dirty=$1
+	local untracked_git_mode=$(command git config --get status.showUntrackedFiles)
+	if [[ "$untracked_git_mode" != 'no' ]]; then
+		untracked_git_mode='normal'
+	fi
 
 	if [[ $untracked_dirty = 0 ]]; then
 		command git diff --no-ext-diff --quiet --exit-code
 	else
-		test -z "$(command git status --porcelain --ignore-submodules -unormal)"
+		test -z "$(GIT_OPTIONAL_LOCKS=0 command git status --porcelain --ignore-submodules -u${untracked_git_mode})"
 	fi
 
 	return $?
@@ -287,10 +300,24 @@ prompt_pure_async_git_dirty() {
 prompt_pure_async_git_fetch() {
 	setopt localoptions noshwordsplit
 
+	local only_upstream=${1:-0}
+
 	# Sets `GIT_TERMINAL_PROMPT=0` to disable authentication prompt for Git fetch (Git 2.3+).
 	export GIT_TERMINAL_PROMPT=0
 	# Set SSH `BachMode` to disable all interactive SSH password prompting.
 	export GIT_SSH_COMMAND="${GIT_SSH_COMMAND:-"ssh"} -o BatchMode=yes"
+
+	local -a remote
+	if ((only_upstream)); then
+		local ref
+		ref=$(command git symbolic-ref -q HEAD)
+		# Set remote to only fetch information for the current branch.
+		remote=($(command git for-each-ref --format='%(upstream:remotename) %(refname)' $ref))
+		if [[ -z $remote[1] ]]; then
+			# No remote specified for this branch, skip fetch.
+			return 97
+		fi
+	fi
 
 	# Default return code, which indicates Git fetch failure.
 	local fail_code=99
@@ -317,7 +344,13 @@ prompt_pure_async_git_fetch() {
 		fi
 	' CHLD
 
-	command git -c gc.auto=0 fetch >/dev/null &
+	# Do git fetch and avoid fetching tags or
+	# submodules to speed up the process.
+	command git -c gc.auto=0 fetch \
+		--quiet \
+		--no-tags \
+		--recurse-submodules=no \
+		$remote &>/dev/null &
 	wait $! || return $fail_code
 
 	unsetopt monitor
@@ -331,15 +364,40 @@ prompt_pure_async_git_arrows() {
 	command git rev-list --left-right --count HEAD...@'{u}'
 }
 
+prompt_pure_async_git_stash() {
+	git rev-list --walk-reflogs --count refs/stash
+}
+
+# Try to lower the priority of the worker so that disk heavy operations
+# like `git status` has less impact on the system responsivity.
+prompt_pure_async_renice() {
+	setopt localoptions noshwordsplit
+
+	if command -v renice >/dev/null; then
+		command renice +15 -p $$
+	fi
+
+	if command -v ionice >/dev/null; then
+		command ionice -c 3 -p $$
+	fi
+}
+
+prompt_pure_async_init() {
+	typeset -g prompt_pure_async_inited
+	if ((${prompt_pure_async_inited:-0})); then
+		return
+	fi
+	prompt_pure_async_inited=1
+	async_start_worker "prompt_pure" -u -n
+	async_register_callback "prompt_pure" prompt_pure_async_callback
+	async_worker_eval "prompt_pure" prompt_pure_async_renice
+}
+
 prompt_pure_async_tasks() {
 	setopt localoptions noshwordsplit
 
 	# Initialize the async worker.
-	((!${prompt_pure_async_init:-0})) && {
-		async_start_worker "prompt_pure" -u -n
-		async_register_callback "prompt_pure" prompt_pure_async_callback
-		typeset -g prompt_pure_async_init=1
-	}
+	prompt_pure_async_init
 
 	# Update the current working directory of the async worker.
 	async_worker_eval "prompt_pure" builtin cd -q $PWD
@@ -355,6 +413,7 @@ prompt_pure_async_tasks() {
 		unset prompt_pure_git_dirty
 		unset prompt_pure_git_last_dirty_check_timestamp
 		unset prompt_pure_git_arrows
+		unset prompt_pure_git_stash
 		unset prompt_pure_git_fetch_pattern
 		prompt_pure_vcs_info[branch]=
 		prompt_pure_vcs_info[top]=
@@ -374,17 +433,18 @@ prompt_pure_async_refresh() {
 
 	if [[ -z $prompt_pure_git_fetch_pattern ]]; then
 		# We set the pattern here to avoid redoing the pattern check until the
-		# working three has changed. Pull and fetch are always valid patterns.
+		# working tree has changed. Pull and fetch are always valid patterns.
 		typeset -g prompt_pure_git_fetch_pattern="pull|fetch"
 		async_job "prompt_pure" prompt_pure_async_git_aliases
 	fi
 
 	async_job "prompt_pure" prompt_pure_async_git_arrows
 
-	# Do not preform `git fetch` if it is disabled or in home folder.
+	# Do not perform `git fetch` if it is disabled or in home folder.
 	if (( ${PURE_GIT_PULL:-1} )) && [[ $prompt_pure_vcs_info[top] != $HOME ]]; then
-		# Tell the async worker to do a `git fetch`.
-		async_job "prompt_pure" prompt_pure_async_git_fetch
+		zstyle -t :prompt:pure:git:fetch only_upstream
+		local only_upstream=$((? == 0))
+		async_job "prompt_pure" prompt_pure_async_git_fetch $only_upstream
 	fi
 
 	# If dirty checking is sufficiently fast,
@@ -394,6 +454,13 @@ prompt_pure_async_refresh() {
 		unset prompt_pure_git_last_dirty_check_timestamp
 		# Check check if there is anything to pull.
 		async_job "prompt_pure" prompt_pure_async_git_dirty ${PURE_GIT_UNTRACKED_DIRTY:-1}
+	fi
+
+	# If stash is enabled, tell async worker to count stashes
+	if zstyle -t ":prompt:pure:git:stash" show; then
+		async_job "prompt_pure" prompt_pure_async_git_stash
+	else
+		unset prompt_pure_git_stash
 	fi
 }
 
@@ -415,10 +482,27 @@ prompt_pure_async_callback() {
 
 	case $job in
 		\[async])
-			# Code is 1 for corrupted worker output and 2 for dead worker.
-			if [[ $code -eq 2 ]]; then
-				# Our worker died unexpectedly.
-				typeset -g prompt_pure_async_init=0
+			# Handle all the errors that could indicate a crashed
+			# async worker. See zsh-async documentation for the
+			# definition of the exit codes.
+			if (( code == 2 )) || (( code == 3 )) || (( code == 130 )); then
+				# Our worker died unexpectedly, try to recover immediately.
+				# TODO(mafredri): Do we need to handle next_pending
+				#                 and defer the restart?
+				typeset -g prompt_pure_async_inited=0
+				async_stop_worker prompt_pure
+				prompt_pure_async_init   # Reinit the worker.
+				prompt_pure_async_tasks  # Restart all tasks.
+
+				# Reset render state due to restart.
+				unset prompt_pure_async_render_requested
+			fi
+			;;
+		\[async/eval])
+			if (( code )); then
+				# Looks like async_worker_eval failed,
+				# rerun async tasks just in case.
+				prompt_pure_async_tasks
 			fi
 			;;
 		prompt_pure_async_vcs_info)
@@ -449,7 +533,7 @@ prompt_pure_async_callback() {
 			# Git directory. Run the async refresh tasks.
 			[[ -n $info[top] ]] && [[ -z $prompt_pure_vcs_info[top] ]] && prompt_pure_async_refresh
 
-			# Always update branch and top-level.
+			# Always update branch, top-level and stash.
 			prompt_pure_vcs_info[branch]=$info[branch]
 			prompt_pure_vcs_info[top]=$info[top]
 			prompt_pure_vcs_info[action]=$info[action]
@@ -490,6 +574,13 @@ prompt_pure_async_callback() {
 						do_render=1
 					fi
 					;;
+				97)
+					# No remote available, make sure to clear git arrows if set.
+					if [[ -n $prompt_pure_git_arrows ]]; then
+						typeset -g prompt_pure_git_arrows=
+						do_render=1
+					fi
+					;;
 				99|98)
 					# Git fetch failed.
 					;;
@@ -502,6 +593,11 @@ prompt_pure_async_callback() {
 					fi
 					;;
 			esac
+			;;
+		prompt_pure_async_git_stash)
+			local prev_stash=$prompt_pure_git_stash
+			typeset -g prompt_pure_git_stash=$output
+			[[ $prev_stash != $prompt_pure_git_stash ]] && do_render=1
 			;;
 	esac
 
@@ -589,25 +685,39 @@ prompt_pure_state_setup() {
 	# Show `username@host` if logged in through SSH.
 	[[ -n $ssh_connection ]] && username='%F{$prompt_pure_colors[user]}%n%f'"$hostname"
 
+	# Show `username@host` if inside a container.
+	prompt_pure_is_inside_container && username='%F{$prompt_pure_colors[user]}%n%f'"$hostname"
+
 	# Show `username@host` if root, with username in default color.
 	[[ $UID -eq 0 ]] && username='%F{$prompt_pure_colors[user:root]}%n%f'"$hostname"
 
 	typeset -gA prompt_pure_state
-	prompt_pure_state[version]="1.11.0"
+	prompt_pure_state[version]="1.13.0"
 	prompt_pure_state+=(
 		username "$username"
 		prompt	 "${PURE_PROMPT_SYMBOL:-❯}"
 	)
 }
 
+# Return true if executing inside a Docker or LXC container.
+prompt_pure_is_inside_container() {
+	local -r cgroup_file='/proc/1/cgroup'
+	[[ -r "$cgroup_file" && "$(< $cgroup_file)" = *(lxc|docker)* ]] \
+		|| [[ "$container" == "lxc" ]]
+}
+
 prompt_pure_system_report() {
 	setopt localoptions noshwordsplit
 
-	print - "- Zsh: $($SHELL --version) ($SHELL)"
+	local shell=$SHELL
+	if [[ -z $shell ]]; then
+		shell=$commands[zsh]
+	fi
+	print - "- Zsh: $($shell --version) ($shell)"
 	print -n - "- Operating system: "
 	case "$(uname -s)" in
 		Darwin)	print "$(sw_vers -productName) $(sw_vers -productVersion) ($(sw_vers -buildVersion))";;
-		*)	print "$(uname -s) ($(uname -v))";;
+		*)	print "$(uname -s) ($(uname -r) $(uname -v) $(uname -m) $(uname -o))";;
 	esac
 	print - "- Terminal program: ${TERM_PROGRAM:-unknown} (${TERM_PROGRAM_VERSION:-unknown})"
 	print -n - "- Tmux: "
@@ -619,10 +729,12 @@ prompt_pure_system_report() {
 
 	print - "- Pure state:"
 	for k v in "${(@kv)prompt_pure_state}"; do
-		print - "    - $k: \`${(q)v}\`"
+		print - "    - $k: \`${(q-)v}\`"
 	done
+	print - "- zsh-async version: \`${ASYNC_VERSION}\`"
 	print - "- PROMPT: \`$(typeset -p PROMPT)\`"
 	print - "- Colors: \`$(typeset -p prompt_pure_colors)\`"
+	print - "- TERM: \`$(typeset -p TERM)\`"
 	print - "- Virtualenv: \`$(typeset -p VIRTUAL_ENV_DISABLE_PROMPT)\`"
 	print - "- Conda: \`$(typeset -p CONDA_CHANGEPS1)\`"
 
@@ -681,14 +793,16 @@ prompt_pure_setup() {
 	prompt_pure_colors_default=(
 		execution_time       yellow
 		git:arrow            cyan
+		git:stash            cyan
 		git:branch           242
 		git:branch:cached    red
-		git:action           242
+		git:action           yellow
 		git:dirty            218
 		host                 242
 		path                 blue
 		prompt:error         red
 		prompt:success       magenta
+		prompt:continuation  242
 		user                 242
 		user:root            default
 		virtualenv           242
@@ -712,10 +826,11 @@ prompt_pure_setup() {
 	PROMPT='%(12V.%F{$prompt_pure_colors[virtualenv]}%12v%f .)'
 
 	# Prompt turns red if the previous command didn't exit with 0.
-	PROMPT+='%(?.%F{$prompt_pure_colors[prompt:success]}.%F{$prompt_pure_colors[prompt:error]})${prompt_pure_state[prompt]}%f '
+	local prompt_indicator='%(?.%F{$prompt_pure_colors[prompt:success]}.%F{$prompt_pure_colors[prompt:error]})${prompt_pure_state[prompt]}%f '
+	PROMPT+=$prompt_indicator
 
 	# Indicate continuation prompt by … and use a darker color for it.
-	PROMPT2='%F{242}%_… %f%(?.%F{magenta}.%F{red})${prompt_pure_state[prompt]}%f '
+	PROMPT2='%F{$prompt_pure_colors[prompt:continuation]}… %(1_.%_ .%_)%f'$prompt_indicator
 
 	# Store prompt expansion symbols for in-place expansion via (%). For
 	# some reason it does not work without storing them in a variable first.
