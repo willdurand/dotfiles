@@ -123,7 +123,7 @@ if [[ -x "$HUB" ]]; then
   eval "$($HUB alias -s)"
 fi
 
-if [ -f '/usr/share/doc/git/contrib/diff-highlight' ]; then
+if [ -d '/usr/share/doc/git/contrib/diff-highlight' ]; then
   export PATH="$PATH:/usr/share/doc/git/contrib/diff-highlight"
 fi
 
