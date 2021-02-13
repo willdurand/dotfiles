@@ -65,17 +65,11 @@
 	todo = grep -A 1 -i --heading "TODO:"
 	status = status --no-ahead-behind
 
-[hub]
-	protocol = git
-
 [push]
 	default = current
 
 [pull]
 	rebase = merges
-
-[commit]
-	gpgsign = 1
 
 [sendemail]
 	smtpencryption = tls
@@ -108,13 +102,11 @@
 [rerere]
 	enabled = true
 
-[credential]
-	helper = osxkeychain
-
-[cinnabar]
-	helper = /usr/local/Cellar/git-cinnabar/0.5.5/libexec/git-cinnabar-helper
-
 [init]
 	defaultBranch = main
+
 [format]
 	signOff = yes
+
+[include]
+	path = ~/.gitlocal
