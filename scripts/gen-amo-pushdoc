@@ -1,11 +1,13 @@
 #!/usr/bin/env node
+// Usage: $0 [date]
+//
+// There is no need to tweak this script. It should automatically discover the
+// right values and generate a valid pushdoc content.
 const https = require("https");
 
-const MY_GH_USERNAME = "willdurand";
 const ONE_DAY = 60 * 60 * 24 * 1000;
 
-const config = {
-  username: MY_GH_USERNAME,
+const CONFIG = {
   heroes: ["willdurand", "eviljeff", "diox", "bsilverberg"],
   template: `# AMO Release %DATE%
 
@@ -31,7 +33,7 @@ This week's push hero is [%HERO_USERNAME%](https://github.com/%HERO_USERNAME%)
 };
 
 // From: httpss://github.com/mozilla/addons-pm
-function getNextMilestone({ dayOfWeek = 4, startDate = new Date() } = {}) {
+const getMilestone = ({ dayOfWeek = 4, startDate = new Date() } = {}) => {
   if (startDate.getDay() === dayOfWeek) {
     return startDate;
   }
@@ -40,32 +42,31 @@ function getNextMilestone({ dayOfWeek = 4, startDate = new Date() } = {}) {
     startDate.getDate() + ((7 + dayOfWeek - startDate.getDay() - 1) % 7) + 1
   );
   return resultDate;
-}
+};
 
-function formatDateToMilestone(date, separator = ".") {
+const formatDateToMilestone = (date, separator = ".") => {
   return [
     date.getFullYear(),
     (date.getMonth() + 1).toString().padStart(2, "0"),
     date.getDate().toString().padStart(2, "0"),
   ].join(separator);
-}
+};
 
-function getNextHero() {
-  const index =
-    config.heroes.findIndex((username) => username === config.username) + 1;
+const getNextHero = (currentHero, heroes) => {
+  const index = heroes.findIndex((username) => username === currentHero) + 1;
 
-  if (index > config.heroes.length) {
+  if (index > heroes.length) {
     index = 0;
   }
 
-  return config.heroes[index];
-}
+  return heroes[index];
+};
 
-function makeRange(base, head) {
+const makeRange = (base, head) => {
   return `${base}...${head}`;
-}
+};
 
-function nth(d) {
+const nth = (d) => {
   if (d > 3 && d < 21) {
     return "th";
   }
@@ -81,32 +82,42 @@ function nth(d) {
   }
 
   return "th";
-}
+};
 
-function formatDay(day) {
+const formatDay = (day) => {
   return `${day}${nth(day)}`;
-}
+};
 
-const milestone = getNextMilestone();
+const printPushDoc = async ({ startDate, config = CONFIG } = {}) => {
+  const milestone = getMilestone({ startDate });
 
-new Promise((res, rej) => {
-  https.get(
-    `https://raw.githubusercontent.com/mozilla/addons/main/releases/${formatDateToMilestone(
-      milestone,
-      "/"
-    )}.md`,
-    (response) => {
-      let content = "";
-      response.on("data", (chunk) => (content += chunk));
-      response.on("end", () => res(content));
-    }
-  );
-}).then((content) => {
-  const compareUrls = content
-    .split("\n")
-    .filter(
-      (line) => line.trim().startsWith("-") && line.includes(`/compare/`)
+  const content = await new Promise((res, rej) => {
+    https.get(
+      `https://raw.githubusercontent.com/mozilla/addons/main/releases/${formatDateToMilestone(
+        milestone,
+        "/"
+      )}.md`,
+      (response) => {
+        let content = "";
+        response.on("data", (chunk) => (content += chunk));
+        response.on("end", () => res(content));
+      }
     );
+  });
+
+  const lines = content.split("\n");
+
+  const currentHeroLine = lines.filter((line) =>
+    line.includes("push hero is")
+  )[0];
+  const currentHero = currentHeroLine.substring(
+    currentHeroLine.lastIndexOf("[") + 1,
+    currentHeroLine.lastIndexOf("]")
+  );
+
+  const compareUrls = lines.filter(
+    (line) => line.trim().startsWith("-") && line.includes(`/compare/`)
+  );
 
   const rangesByProject = {};
   for (const url of compareUrls) {
@@ -121,7 +132,7 @@ new Promise((res, rej) => {
     };
   }
 
-  const nextMilestone = getNextMilestone({
+  const nextMilestone = getMilestone({
     startDate: new Date(milestone.getTime() + ONE_DAY),
   });
 
@@ -138,7 +149,7 @@ new Promise((res, rej) => {
         nextMilestone.toLocaleDateString("en-US", { year: "numeric" }),
       ].join(" ")
     )
-    .replaceAll("%HERO_USERNAME%", getNextHero())
+    .replaceAll("%HERO_USERNAME%", getNextHero(currentHero, config.heroes))
     .replace(
       "%SERVER_RANGE%",
       makeRange(
@@ -162,4 +173,18 @@ new Promise((res, rej) => {
     );
 
   console.log(pushDoc);
-});
+};
+
+const args = process.argv.splice(2);
+let startDate = new Date();
+
+if (args.length === 1) {
+  try {
+    startDate = new Date(new Date(args[0]).getTime() - 7 * ONE_DAY);
+  } catch (e) {
+    console.error(e.message);
+    process.exit(1);
+  }
+}
+
+printPushDoc({ startDate });
