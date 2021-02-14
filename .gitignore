@@ -1,5 +1,6 @@
 /vim/*/doc/
 /vim/.netrwhist
 /vim/black/
+/vim/pack/willdurand/**/doc/tags
 /vim/view/
 __pycache__/
