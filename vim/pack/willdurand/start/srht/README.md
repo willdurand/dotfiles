@@ -7,7 +7,7 @@ In doubt, run `:help srht`.
 This plugin provides the following features per service:
 
 - `git.sr.ht`: if [vim-fugitive](https://github.com/tpope/vim-fugitive) is
-  installed, this plugin will allow `:Gbrowse` to open sourcehut URLs
+  installed, this plugin will allow `:GBrowse` to open sourcehut URLs
 - `paste.sr.ht`: create and retrieve pastes (requires `curl` and the
   [webapi-vim](https://github.com/mattn/webapi-vim) plugin)
 

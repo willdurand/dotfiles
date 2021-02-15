@@ -42,7 +42,7 @@ Get the paste identified by `<sha>`: >
 ========================================================================
 FUGITIVE                                                 *srht-fugitive*
 
-Use Fugitive's |:Gbrowse| to browse to the sourcehut URL for the current
+Use Fugitive's |:GBrowse| to browse to the sourcehut URL for the current
 buffer.
 
 ========================================================================
