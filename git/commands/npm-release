@@ -26,7 +26,9 @@ npm_release() {
   local type="$1"
   local old_version
   local new_version
-  local message
+  local tmp_release_notes
+
+  cd_to_toplevel
 
   if [[ ! -f "package.json" ]]; then
     die "Aborted: this script only works with JS and Node projects."
@@ -38,7 +40,11 @@ npm_release() {
   echo "--> found current npm version: $old_version"
 
   new_version=$(npm --no-git-tag-version version "$type")
-  git checkout -- package.json package-lock.json
+  git checkout -- package.json
+  # `npm version` also updates the lockfile (if any).
+  if [[ -f 'package-lock.json' ]]; then
+    git checkout -- package-lock.json
+  fi
   echo "--> new $type version will be: $new_version"
 
   read -p "Continue? " -n 1 -r
@@ -50,19 +56,25 @@ npm_release() {
   new_version=$(npm version "$type")
   echo "--> created new npm version: $new_version"
 
-  git push --quiet "$REMOTE" "$BRANCH" --tag
-  echo "--> pushed changes to GitHub"
-
-  message=$(cat <<EOF
+  tmp_release_notes=$(mktemp)
+  cat <<EOF > "$tmp_release_notes"
 $new_version $(date +'(%Y-%m-%d)')
 
 # git log: $old_version...$new_version^
 $(git log --format="- %s" "$old_version"..."$new_version"^)
 
 EOF
-)
+  # We could pass the message above to `hub release` but sometimes writing good
+  # release notes takes time. Let's push and publish the release once we have
+  # the notes (we have to push before creating the release, otherwise GitHub
+  # will make a tag and we don't want that).
+  git_editor "$tmp_release_notes"
 
-  hub release create --edit --message "$message" "$new_version"
+  git push --quiet "$REMOTE" "$BRANCH" --tag
+  echo "--> pushed changes to GitHub"
+
+  hub release create --edit -F "$tmp_release_notes" "$new_version"
+  rm -f "$tmp_release_notes"
 }
 
 if [[ "$#" -eq 0 ]]; then
