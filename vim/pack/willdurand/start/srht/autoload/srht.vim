@@ -26,26 +26,23 @@ else
   call webapi#json#true()
 endif
 
-" Configuration: authentication
-let s:srht_token_file = expand(get(g:, 'srht_token_file', '~/.srht-vim'))
-
 " Configuration: paste
 if !exists('g:srht_paste_default_visibility')
   let g:srht_paste_default_visibility = 'unlisted'
 endif
 
-if !exists('g:srht_paste_url')
-  let g:srht_paste_url = 'https://paste.sr.ht/'
-endif
-
-if g:srht_paste_url !~# '/$'
-  let g:srht_paste_url .= '/'
+if !exists('g:srht_paste_domain')
+  let g:srht_paste_domain = 'paste.sr.ht'
 endif
 
 " Configuration: git
 if !exists('g:srht_git_domain')
   let g:srht_git_domain = 'git.sr.ht'
 endif
+
+" Internal variables
+let s:srht_token_file = expand(get(g:, 'srht_token_file', '~/.srht-vim'))
+let s:srht_paste_url = 'https://'.g:srht_paste_domain.'/'
 
 " Helper functions
 function! s:print_error(msg) abort
@@ -122,17 +119,18 @@ function! s:srht_post_paste(visibility) abort
   \ 'Content-Type': 'application/json',
   \ 'Authorization': 'token '.token,
   \}
-  let res = webapi#http#post(g:srht_paste_url.'api/pastes', webapi#json#encode(paste), headers)
+  let post_url = s:srht_paste_url.'api/pastes'
+  let res = webapi#http#post(post_url, webapi#json#encode(paste), headers)
   let data = webapi#json#decode(res.content)
 
   redraw
+  let url = ''
 
   if res.status =~# '^2'
     " Build URL
-    let url = g:srht_paste_url.data.user.canonical_name.'/'.data.sha
+    let url = s:srht_paste_url.data.user.canonical_name.'/'.data.sha
     echomsg 'Done: '.url
   else
-    let url = ''
     for error in data.errors
       call s:print_error('Error: '.error.reason)
     endfor
@@ -157,7 +155,7 @@ function! s:srht_get_paste(sha) abort
   redraw
   echon 'Getting paste... '
 
-  let res = webapi#http#get(g:srht_paste_url.'api/pastes/'.a:sha, '', headers)
+  let res = webapi#http#get(s:srht_paste_url.'api/pastes/'.a:sha, '', headers)
 
   if res.status !~# '^2'
     redraw
@@ -175,7 +173,7 @@ function! s:srht_get_paste(sha) abort
   unlet res
   unlet data
 
-  let res = webapi#http#get(g:srht_paste_url.'api/blobs/'.blob_id, '', headers)
+  let res = webapi#http#get(s:srht_paste_url.'api/blobs/'.blob_id, '', headers)
 
   if res.status !~# '^2'
     redraw
@@ -262,13 +260,13 @@ function! srht#FugitiveHandler(opts, ...)
     let commit = a:opts.commit
   endif
 
-  let path = get(a:opts, 'path', '')
+  let url = project_url.commit
 
-  if get(a:opts, 'type', '') ==# 'tree' || path =~# '/$'
-    let url = substitute(project_url.commit.'/item/'.path, '/$', '', '')
-  elseif get(a:opts, 'type', '') ==# 'blob' || path =~# '[^/]$'
-    let url = project_url.commit.'/item/'.path
+  if !empty(path)
+    let url = url.'/item/'.path
+  endif
 
+  if get(a:opts, 'type', '') ==# 'blob' || path =~# '[^/]$'
     " We add `?view-source` because some files are rendered instead of showing
     " the source code. It's not so much a problem when we browse an entire
     " file but when we specify a line or range, we should end up on the source
@@ -279,8 +277,6 @@ function! srht#FugitiveHandler(opts, ...)
     elseif line2
       let url .= '?view-source#L'.line1.'-'.line2
     endif
-  else
-    let url = project_url.commit
   endif
 
   return url

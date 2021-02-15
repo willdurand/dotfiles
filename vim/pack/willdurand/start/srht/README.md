@@ -18,8 +18,8 @@ This plugin provides the following features per service:
    interact with the sourcehut APIs)
 - `g:srht_paste_default_visibility` (default: `unlisted`): default paste
    visibility
-- `g:srht_paste_url` (default: `https://paste.sr.ht/`): base URL of the paste
-   hosting service
+- `g:srht_paste_domain` (default: `paste.sr.ht`): domain of the paste hosting
+   service
 - `g:srht_git_domain` (default: `git.sr.ht`): domain of the git hosting service
 
 ## Installation
