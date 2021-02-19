@@ -36,12 +36,23 @@ ensure_dir() {
 }
 
 setup_git() {
-    link_files git/git-completion.bash ~/.git-completion.bash
     link_files git/gitattributes ~/.gitattributes
     link_files git/gitconfig ~/.gitconfig
     link_files git/gitignore_global ~/.gitignore_global
-    link_files zsh/_yarn ~/.zsh/_yarn
+    link_files git/git-completion.bash ~/.git-completion.bash
     link_files git/commands/npm-release /usr/local/bin/git-npm-release
+}
+
+setup_zsh() {
+    ensure_dir ~/.zsh
+
+    link_files zsh/pure/pure.zsh ~/.zsh/prompt_pure_setup
+    link_files zsh/pure/async.zsh ~/.zsh/async
+    link_files zsh/zshrc ~/.zshrc
+
+    for fn in zsh/_*; do
+        link_files "$fn" ~/.zsh/$(basename $fn)
+    done
 }
 
 # Update submodules first
@@ -51,7 +62,6 @@ git submodule update --init
 link_files tmux/tmux.conf ~/.tmux.conf
 
 # git
-ensure_dir ~/.zsh
 setup_git
 
 # vim
@@ -59,9 +69,7 @@ link_files vim ~/.vim
 link_files vim/vimrc ~/.vimrc
 
 # zsh
-link_files zsh/pure/pure.zsh ~/.zsh/prompt_pure_setup
-link_files zsh/pure/async.zsh ~/.zsh/async
-link_files zsh/zshrc ~/.zshrc
+setup_zsh
 
 # rg
 link_files ripgrep/rgignore ~/.rgignore

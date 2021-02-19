@@ -1,5 +1,5 @@
 # Functions Autoloading
-fpath+=(~/.zsh $fpath)
+fpath=(~/.zsh $fpath)
 
 # Prompt
 autoload -U promptinit; promptinit
@@ -70,6 +70,8 @@ setopt nolisttypes
 setopt alwaystoend
 # Try to correct the spelling of commands
 setopt correct
+# Make auto-completion work with aliases (like `git`)
+setopt completealiases
 
 # case-insensitive (uppercase from lowercase) completion
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
