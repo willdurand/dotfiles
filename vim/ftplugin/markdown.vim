@@ -3,8 +3,6 @@ set tw=80
 " https://github.com/reedes/vim-litecorrect
 let user_dict = {
     \ 'if and only if': ['iff'],
-    \ 'do not': ['dont', 'don''t'],
-    \ 'does not': ['doesnt', 'doesn''t'],
     \ 'cannot': ['can''t'],
     \ }
 
