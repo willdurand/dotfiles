@@ -48,11 +48,8 @@
 	user = willdurand
 
 [alias]
-	ci = ci-status -v
 	lg = log --graph --pretty=format:'%Cred%h%Creset %C(yellow)%an%d%Creset %s %Cgreen(%cr)%Creset' --date=relative
-	fixup = commit --fixup
-	rebase-i = rebase -i --autosquash --autostash
-	cleanup = !git branch --merged | grep -v master | xargs git branch -d
+	cleanup = !git branch --merged | grep -v master | grep -v main | xargs git branch -d
 	next = !git checkout master && hub sync && git cleanup && npx git-delete-squashed
 	wip = !git commit -am "wip" && git next
 	rebase-on-top = ! \
