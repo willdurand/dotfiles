@@ -267,8 +267,10 @@ augroup END
 " sudo to write
 command! W w !sudo tee % > /dev/null
 
-" copy filename to clipboard
-nnoremap <leader>cf :let @*=expand("%:p") \| :echo 'copied!'<cr>
+" copy (relative) filename to clipboard
+nnoremap <leader>cf :let @*=expand("%") \| :echo 'copied!'<cr>
+" copy absolute filename to clipboard
+nnoremap <leader>caf :let @*=expand("%:p") \| :echo 'copied!'<cr>
 
 " Format JSON
 nnoremap <leader>j :%!jq '.'<cr>
