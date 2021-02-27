@@ -182,6 +182,11 @@ set listchars=nbsp:¤,tab:>-,trail:¤,extends:>,precedes:<,eol:¬,trail:·
 " make
 nnoremap <leader>m :make<cr>
 
+" Hex read
+nnoremap <Leader>hr :%!xxd<CR> :set filetype=xxd<CR>
+" Hex write
+nnoremap <Leader>hw :%!xxd -r<CR> :set binary<CR> :set filetype=plain<CR>
+
 " Autogroups
 
 augroup cursors
@@ -263,10 +268,14 @@ command! W w !sudo tee % > /dev/null
 " copy (relative) filename to clipboard
 nnoremap <leader>cf :let @*=expand("%") \| :echo 'copied!'<cr>
 " copy absolute filename to clipboard
-nnoremap <leader>caf :let @*=expand("%:p") \| :echo 'copied!'<cr>
+nnoremap <leader>caf :let @*=expand("%:p") \| :echo 'copied! (absolute)'<cr>
 
 " Format JSON
-nnoremap <leader>j :%!jq '.'<cr>
+if executable('jq')
+  nnoremap <leader>j :%!jq '.'<cr>
+else
+  echo 'jq is not installed\n'
+endif
 
 "" Plugins
 
@@ -323,8 +332,3 @@ let g:black_skip_string_normalization = 1
 
 " enable doxygen highlighting
 let g:load_doxygen_syntax = 1
-
-" Hex read
-nmap <Leader>hr :%!xxd<CR> :set filetype=xxd<CR>
-" Hex write
-nmap <Leader>hw :%!xxd -r<CR> :set binary<CR> :set filetype=plain<CR>
