@@ -22,9 +22,6 @@
 [submodule "vim/bundle/vim-airline-themes"]
 	path = vim/pack/airline/start/airline-themes
 	url = https://github.com/vim-airline/vim-airline-themes
-[submodule "vim/bundle/flow"]
-	path = vim/pack/languages/start/flow
-	url = https://github.com/flowtype/vim-flow.git
 [submodule "vim/bundle/flow-plus"]
 	path = vim/bundle/flow-plus
 	url = https://github.com/carlosrocha/vim-flow-plus
