@@ -87,11 +87,6 @@ set lazyredraw
 " always replace all occurences of a line
 set gdefault
 
-" Tabs and indentation
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
-
 " display all matching files when we tab complete
 set wildmenu
 
