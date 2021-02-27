@@ -52,9 +52,6 @@
 [submodule "vim/bundle/flake8"]
 	path = vim/pack/languages/start/flake8
 	url = https://github.com/nvie/vim-flake8
-[submodule "vim/bundle/splitjoin"]
-	path = vim/pack/base/start/splitjoin
-	url = https://github.com/AndrewRadev/splitjoin.vim
 [submodule "vim/bundle/ultisnips"]
 	path = vim/pack/base/start/ultisnips
 	url = https://github.com/SirVer/ultisnips.git
