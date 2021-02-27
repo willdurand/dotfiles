@@ -162,10 +162,6 @@ nnoremap <C-p> 3<C-p>
 nnoremap <C-w>< 5<C-w><
 nnoremap <C-w>> 5<C-w>>
 
-" remap the marker char
-nnoremap ' `
-nnoremap ` '
-
 " convenient mapping to swith tab/indent settings
 nnoremap <leader>2 :set tabstop=2<cr>:set shiftwidth=2<cr>:set softtabstop=2<cr>
 nnoremap <leader>4 :set tabstop=4<cr>:set shiftwidth=4<cr>:set softtabstop=4<cr>
@@ -173,9 +169,6 @@ nnoremap <leader>8 :set tabstop=8<cr>:set shiftwidth=8<cr>:set softtabstop=8<cr>
 
 " pull word under cursor into LHS of a substitute (for quick search and replace)
 nnoremap <leader>zs :%s/<C-r>=expand("<cword>")<cr>/
-
-" start a substitute
-nnoremap <leader>s :%s/
 
 " clear search highlight
 if maparg('<C-L>', 'n') ==# ''
