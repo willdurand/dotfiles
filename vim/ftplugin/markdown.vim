@@ -1,13 +1,6 @@
 set tw=80
 
-" https://github.com/reedes/vim-litecorrect
-let user_dict = {
-    \ 'if and only if': ['iff'],
-    \ 'cannot': ['can''t'],
-    \ }
-
-set iskeyword+=' " so that it supports: don't => do not, etc.
-call litecorrect#init(user_dict)
+call litecorrect#init()
 call lexical#init()
 
 " Prettier
