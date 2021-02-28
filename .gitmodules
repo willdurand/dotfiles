@@ -40,9 +40,6 @@
 [submodule "vim/bundle/rhubarb"]
 	path = vim/pack/tpope/start/rhubarb
 	url = https://github.com/tpope/vim-rhubarb.git
-[submodule "vim/bundle/sleuth"]
-	path = vim/pack/tpope/start/sleuth
-	url = https://github.com/tpope/vim-sleuth.git
 [submodule "vim/bundle/go"]
 	path = vim/pack/languages/start/vim-go
 	url = https://github.com/fatih/vim-go.git
