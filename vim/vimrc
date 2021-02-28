@@ -64,8 +64,6 @@ set laststatus=2
 " http://vim.wikia.com/wiki/Backspace_and_delete_problems
 set backspace=indent,eol,start
 
-set expandtab
-
 set autoindent
 " copy the previous indentation on autoindenting
 set copyindent
