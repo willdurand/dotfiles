@@ -22,6 +22,14 @@ source "$(git --exec-path)/git-sh-setup"
 REMOTE='origin'
 BRANCH=$(git symbolic-ref --short -q HEAD)
 
+require_user_confirmation() {
+  read -p "Continue? [y/N] " -n 1 -r
+  echo
+  if [[ ! "$REPLY" =~ ^[Yy]$ ]]; then
+    die "Aborted: user didn't confirm."
+  fi
+}
+
 npm_release() {
   local type="$1"
   local old_version
@@ -36,6 +44,11 @@ npm_release() {
 
   require_clean_work_tree rebase "Please commit or stash them."
 
+  if [[ -f "CHANGELOG.md" ]]; then
+    echo "Warning: this project contains a CHANGELOG."
+    require_user_confirmation
+  fi
+
   old_version=$(node -pe "require('./package.json').version")
   echo "--> found current npm version: $old_version"
 
@@ -47,11 +60,7 @@ npm_release() {
   fi
   echo "--> new $type version will be: $new_version"
 
-  read -p "Continue? [y/N] " -n 1 -r
-  echo
-  if [[ ! "$REPLY" =~ ^[Yy]$ ]]; then
-    die "Aborted: user didn't confirm."
-  fi
+  require_user_confirmation
 
   new_version=$(npm version "$type")
   echo "--> created new npm version: $new_version"
