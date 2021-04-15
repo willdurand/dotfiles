@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+source "$(git --exec-path)/git-sh-setup"
+
+MAIN_BRANCH=master
+
+if ! git show-ref --verify --quiet "refs/heads/$MAIN_BRANCH"; then
+	MAIN_BRANCH=main
+fi
+
+cd_to_toplevel
+
+git checkout -q "$MAIN_BRANCH"
+
+hub sync
+
+git branch --merged | grep -v "$MAIN_BRANCH" | xargs git branch -d
+
+git for-each-ref refs/heads/ "--format=%(refname:short)" | while read branch; do
+mergeBase=$(git merge-base "$MAIN_BRANCH" "$branch") && [[ $(git cherry "$MAIN_BRANCH" $(git commit-tree $(git rev-parse "$branch"\^{tree}) -p "$mergeBase" -m _)) == "-"* ]] && git branch -D "$branch"
+done

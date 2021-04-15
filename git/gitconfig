@@ -49,8 +49,6 @@
 
 [alias]
 	lg = log --graph --pretty=format:'%Cred%h%Creset %C(yellow)%an%d%Creset %s %Cgreen(%cr)%Creset' --date=relative
-	cleanup = !git branch --merged | grep -v master | grep -v main | xargs git branch -d
-	next = !git checkout master && hub sync && git cleanup && npx git-delete-squashed
 	wip = !git commit -am "wip" && git next
 	rebase-on-top = ! \
 		CURRENT_BRANCH_TO_REBASE=$(git rev-parse --abbrev-ref HEAD) && \
