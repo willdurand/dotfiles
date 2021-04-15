@@ -19,7 +19,7 @@ export EDITOR='vim'
 export GIT_EDITOR='vim'
 export SHELL='/bin/zsh'
 # Disable husky
-export HUSKY_SKIP_HOOKS=1
+export HUSKY=0
 
 # Fix Locale
 export LC_ALL=en_US.UTF-8
