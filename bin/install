@@ -40,8 +40,12 @@ setup_git() {
     link_files git/gitconfig ~/.gitconfig
     link_files git/gitignore_global ~/.gitignore_global
     link_files git/git-completion.bash ~/.git-completion.bash
-    link_files git/commands/npm-release /usr/local/bin/git-npm-release
+
+    for command in $(ls git/commands/); do
+        link_files "git/commands/$command" "/usr/local/bin/git-$command"
+    done
 }
+
 
 setup_zsh() {
     ensure_dir ~/.zsh
