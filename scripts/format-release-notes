@@ -1,0 +1,90 @@
+#!/usr/bin/env node
+/// Usage: $0 content [/path/to/package.json]
+///
+const fs = require('fs');
+
+const UPDATE_PATTERN = /[U|u]pdate dependency (.+?) to (.+)/;
+
+const printSelfUsage = () => {
+  const linePrefix = '/// ';
+  const content = fs
+    .readFileSync(__filename, 'utf-8')
+    .split('\n')
+    .filter((line) => line.startsWith(linePrefix))
+    .map((line) => line.replace(linePrefix, ''))
+    .join('\n')
+    .replace('$0', process.argv[1]);
+
+  console.log(content);
+  process.exit(1);
+};
+
+const formatDepUpdateLine = (line) => {
+  if (UPDATE_PATTERN.test(line)) {
+    // `version` contains the version and the PR number: (#123)
+    const [_, name, version] = line.match(UPDATE_PATTERN);
+
+    return `- Updated: dependency \`${name}\` to ${version}`;
+  }
+
+  return line;
+};
+
+const formatReleaseNotes = (args) => {
+  const content = args[0];
+  const lines = content.split('\n');
+
+  if (args[1] && args[1].endsWith('package.json')) {
+    const packageJson = JSON.parse(fs.readFileSync(args[1]));
+    const deps = Object.keys(packageJson.dependencies);
+    const devDeps = Object.keys(packageJson.devDependencies);
+
+    const output = {
+      deps: [],
+      devDeps: [],
+      others: [],
+    };
+
+    for (const line of lines) {
+      const matches = line.match(UPDATE_PATTERN);
+
+      if (matches) {
+        const [_, name] = matches;
+        const formattedLine = formatDepUpdateLine(line);
+
+        if (deps.includes(name)) {
+          output.deps.push(formattedLine);
+        } else if (devDeps.includes(name)) {
+          output.devDeps.push(formattedLine);
+        } else {
+          output.others.push(formattedLine);
+        }
+      } else {
+        output.others.push(`- ${line}`);
+      }
+    }
+
+    return `## dependencies
+
+${output.deps.join('\n')}
+
+## dev dependencies
+
+${output.devDeps.join('\n')}
+
+## others
+
+${output.others.join('\n')}`;
+  }
+
+  // No processing when there is no `package.json` (for the moment).
+  return content;
+};
+
+const args = process.argv.splice(2);
+
+if (args.length < 1) {
+  printSelfUsage();
+}
+
+console.log(formatReleaseNotes(args));
