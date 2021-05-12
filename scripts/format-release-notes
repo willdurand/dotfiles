@@ -64,7 +64,9 @@ const formatReleaseNotes = (args) => {
       }
     }
 
-    return `## dependencies
+    return `## Main changes
+
+## dependencies
 
 ${output.deps.join('\n')}
 
