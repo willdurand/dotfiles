@@ -36,8 +36,8 @@ const formatReleaseNotes = (args) => {
 
   if (args[1] && args[1].endsWith('package.json')) {
     const packageJson = JSON.parse(fs.readFileSync(args[1]));
-    const deps = Object.keys(packageJson.dependencies);
-    const devDeps = Object.keys(packageJson.devDependencies);
+    const deps = Object.keys(packageJson.dependencies || {});
+    const devDeps = Object.keys(packageJson.devDependencies || {});
 
     const output = {
       deps: [],
