@@ -64,9 +64,6 @@
 [submodule "vim/pack/base/start/fzf"]
 	path = vim/pack/base/start/fzf
 	url = https://github.com/junegunn/fzf.vim.git
-[submodule "vim/pack/languages/start/searchfox"]
-	path = vim/pack/languages/start/searchfox
-	url = https://github.com/kashav/vim-searchfox.git
 [submodule "vim/pack/willdurand/start/srht.vim"]
 	path = vim/pack/willdurand/start/srht.vim
 	url = https://git.sr.ht/~willdurand/srht.vim
