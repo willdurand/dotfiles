@@ -325,3 +325,6 @@ let g:black_skip_string_normalization = 1
 
 " enable doxygen highlighting
 let g:load_doxygen_syntax = 1
+
+" revert hub ftdetect because it breaks vim-rhubarb
+autocmd BufNewFile,BufRead PULLREQ_EDITMSG set filetype=gitcommit
