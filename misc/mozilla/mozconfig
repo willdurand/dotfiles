@@ -1,0 +1,14 @@
+# Enable debug versions of the pre-built binary artifacts:
+ac_add_options --enable-debug
+
+# Automatically download and use compiled C++ components:
+#ac_add_options --enable-artifact-builds
+
+# Use sccache
+#ac_add_options --with-ccache=sccache
+
+# Write build artifacts to:
+mk_add_options MOZ_OBJDIR=./objdir-frontend-debug-artifact
+
+# See: https://bugzilla.mozilla.org/show_bug.cgi?id=1514965
+#ac_add_options --disable-hardening
