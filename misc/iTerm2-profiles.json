@@ -1,7 +1,7 @@
 {
   "Profiles": [
     {
-      "Set Local Environment Vars": true,
+      "Custom Directory": "Recycle",
       "Working Directory": "/Users/william",
       "Prompt Before Closing 2": 0,
       "Selected Text Color": {
@@ -81,7 +81,7 @@
         "Red Component": "1"
       },
       "Unlimited Scrollback": true,
-      "Custom Command": "Yes",
+      "Custom Command": "No",
       "Smart Selection Rules": [
         {
           "notes": "Word bounded by whitespace",
@@ -140,9 +140,9 @@
         }
       ],
       "Keyboard Map": {
-        "0x9-0x40000": {
-          "Text": "9",
-          "Action": 11
+        "0xf702-0x240000": {
+          "Text": "[1;5D",
+          "Action": 10
         },
         "0xf700-0x260000": {
           "Text": "[1;6A",
@@ -296,9 +296,9 @@
           "Text": "[19;2~",
           "Action": 10
         },
-        "0xf702-0x240000": {
-          "Text": "[1;5D",
-          "Action": 10
+        "0x9-0x40000": {
+          "Text": "9",
+          "Action": 11
         },
         "0xf704-0x20000": {
           "Text": "[1;2P",
@@ -341,21 +341,21 @@
         "Blue Component": "0",
         "Red Component": "0"
       },
-      "Default Bookmark": "No",
-      "Cursor Color": {
-        "Green Component": "1",
-        "Blue Component": "1",
-        "Red Component": "1"
-      },
-      "Disable Smcup Rmcup": false,
-      "Name": "Default",
-      "Blinking Cursor": false,
-      "Guid": "A65A9311-43C9-40F4-9C1C-F010AAB32554",
       "Ansi 1 Color": {
         "Green Component": "0",
         "Blue Component": "0",
         "Red Component": "0.8"
       },
+      "Default Bookmark": "No",
+      "Disable Smcup Rmcup": false,
+      "Name": "Default",
+      "Blinking Cursor": false,
+      "Cursor Color": {
+        "Green Component": "1",
+        "Blue Component": "1",
+        "Red Component": "1"
+      },
+      "Guid": "DFAE7BFE-54D7-4BA5-86BF-9EAE5DCE5897",
       "Ansi 8 Color": {
         "Green Component": "0.3411765",
         "Blue Component": "0.3254902",
@@ -378,8 +378,8 @@
       "Smart Cursor Color": true,
       "Semantic History": {
         "editor": "com.sublimetext.3",
-        "action": "best editor",
-        "text": ""
+        "text": "",
+        "action": "best editor"
       },
       "Ambiguous Double Width": false,
       "Blur Radius": 2,
@@ -431,15 +431,15 @@
       "Columns": 80,
       "Visual Bell": false,
       "ASCII Ligatures": true,
-      "Custom Directory": "Recycle",
       "Ansi 5 Color": {
         "Green Component": "0.3137255",
         "Blue Component": "0.4823529",
         "Red Component": "0.4588235"
-      }
+      },
+      "Set Local Environment Vars": true
     },
     {
-      "Set Local Environment Vars": true,
+      "Custom Directory": "Recycle",
       "Working Directory": "/Users/william",
       "Prompt Before Closing 2": 0,
       "Selected Text Color": {
@@ -504,7 +504,7 @@
         "Red Component": 1
       },
       "Unlimited Scrollback": true,
-      "Custom Command": "Yes",
+      "Custom Command": "No",
       "Smart Selection Rules": [
         {
           "notes": "Word bounded by whitespace",
@@ -563,9 +563,9 @@
         }
       ],
       "Keyboard Map": {
-        "0x9-0x40000": {
-          "Text": "9",
-          "Action": 11
+        "0xf702-0x240000": {
+          "Text": "[1;5D",
+          "Action": 10
         },
         "0xf700-0x260000": {
           "Text": "[1;6A",
@@ -719,9 +719,9 @@
           "Text": "[19;2~",
           "Action": 10
         },
-        "0xf702-0x240000": {
-          "Text": "[1;5D",
-          "Action": 10
+        "0x9-0x40000": {
+          "Text": "9",
+          "Action": 11
         },
         "0xf704-0x20000": {
           "Text": "[1;2P",
@@ -773,29 +773,29 @@
       "Disable Smcup Rmcup": false,
       "Name": "Presentation Mode",
       "Blinking Cursor": false,
-      "Guid": "08F4181D-BEDB-4366-81FC-2DDD80790565",
+      "Guid": "F27A8B4C-01C0-444E-841F-D5976B23485A",
       "Ansi 1 Color": {
         "Green Component": 0,
         "Blue Component": 0,
         "Red Component": 0.800000011920929
-      },
-      "Idle Code": 0,
-      "Ansi 10 Color": {
-        "Green Component": 0.886274516582489,
-        "Blue Component": 0.2039216011762619,
-        "Red Component": 0.5411764979362488
       },
       "Ansi 8 Color": {
         "Green Component": 0.34117650985717773,
         "Blue Component": 0.32549020648002625,
         "Red Component": 0.3333333134651184
       },
+      "Ansi 10 Color": {
+        "Green Component": 0.886274516582489,
+        "Blue Component": 0.2039216011762619,
+        "Red Component": 0.5411764979362488
+      },
+      "Idle Code": 0,
       "Automatically Log": false,
       "Smart Cursor Color": true,
       "Semantic History": {
         "editor": "com.sublimetext.3",
-        "action": "best editor",
-        "text": ""
+        "text": "",
+        "action": "best editor"
       },
       "Ambiguous Double Width": false,
       "Blur Radius": 2,
@@ -849,15 +849,15 @@
       "Columns": 80,
       "Visual Bell": false,
       "ASCII Ligatures": true,
-      "Custom Directory": "Recycle",
       "Ansi 5 Color": {
         "Green Component": 0.3137255012989044,
         "Blue Component": 0.4823529124259949,
         "Red Component": 0.4588235020637512
-      }
+      },
+      "Set Local Environment Vars": true
     },
     {
-      "Set Local Environment Vars": true,
+      "Custom Directory": "Recycle",
       "Working Directory": "/Users/william",
       "Prompt Before Closing 2": 0,
       "Selected Text Color": {
@@ -922,7 +922,7 @@
         "Red Component": 1
       },
       "Unlimited Scrollback": true,
-      "Custom Command": "Yes",
+      "Custom Command": "No",
       "Smart Selection Rules": [
         {
           "notes": "Word bounded by whitespace",
@@ -981,9 +981,9 @@
         }
       ],
       "Keyboard Map": {
-        "0x9-0x40000": {
-          "Text": "9",
-          "Action": 11
+        "0xf702-0x240000": {
+          "Text": "[1;5D",
+          "Action": 10
         },
         "0xf700-0x260000": {
           "Text": "[1;6A",
@@ -1137,9 +1137,9 @@
           "Text": "[19;2~",
           "Action": 10
         },
-        "0xf702-0x240000": {
-          "Text": "[1;5D",
-          "Action": 10
+        "0x9-0x40000": {
+          "Text": "9",
+          "Action": 11
         },
         "0xf704-0x20000": {
           "Text": "[1;2P",
@@ -1191,29 +1191,29 @@
       "Disable Smcup Rmcup": false,
       "Name": "Presentation Mode Black",
       "Blinking Cursor": false,
-      "Guid": "50D496D4-C4C5-4AD1-8BB4-975C09A396F7",
+      "Guid": "3D2911E7-55BE-403C-962E-8864110AFE2D",
       "Ansi 1 Color": {
         "Green Component": 0,
         "Blue Component": 0,
         "Red Component": 0.800000011920929
-      },
-      "Idle Code": 0,
-      "Ansi 10 Color": {
-        "Green Component": 0.886274516582489,
-        "Blue Component": 0.2039216011762619,
-        "Red Component": 0.5411764979362488
       },
       "Ansi 8 Color": {
         "Green Component": 0.34117650985717773,
         "Blue Component": 0.32549020648002625,
         "Red Component": 0.3333333134651184
       },
+      "Ansi 10 Color": {
+        "Green Component": 0.886274516582489,
+        "Blue Component": 0.2039216011762619,
+        "Red Component": 0.5411764979362488
+      },
+      "Idle Code": 0,
       "Automatically Log": false,
       "Smart Cursor Color": true,
       "Semantic History": {
         "editor": "com.sublimetext.2",
-        "action": "best editor",
-        "text": ""
+        "text": "",
+        "action": "best editor"
       },
       "Ambiguous Double Width": false,
       "Blur Radius": 2,
@@ -1265,12 +1265,12 @@
       "Columns": 80,
       "Visual Bell": false,
       "ASCII Ligatures": true,
-      "Custom Directory": "Recycle",
       "Ansi 5 Color": {
         "Green Component": 0.3137255012989044,
         "Blue Component": 0.4823529124259949,
         "Red Component": 0.4588235020637512
-      }
+      },
+      "Set Local Environment Vars": true
     }
   ]
 }
