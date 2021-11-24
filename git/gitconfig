@@ -31,6 +31,7 @@
 	autocrlf = input
 	whitespace = trailing-space,space-before-tab
 	excludesfile = ~/.gitignore_global
+	pager = `brew --prefix git`/share/git-core/contrib/diff-highlight/diff-highlight | less
 
 [diff "exif"]
 	textconv = exiftool
@@ -73,11 +74,6 @@
 	suppresscc = self
 	smtpuser = willdurand@fastmail.com
 	annotate = yes
-
-[pager]
-	diff = diff-highlight | less
-	log = diff-highlight | less
-	show = diff-highlight | less
 
 [diff]
 	compactionHeuristic = 1
