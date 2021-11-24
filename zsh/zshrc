@@ -146,7 +146,7 @@ export FZF_DEFAULT_COMMAND='rg --files --hidden'
 export HOMEBREW_NO_ANALYTICS=1
 
 # Common PATH
-export PATH="/usr/local/bin:/usr/sbin:/sbin:/usr/bin:/bin:/usr/X11/bin:/Developer/usr/bin"
+export PATH="/opt/homebrew/bin:/usr/local/bin:/usr/sbin:/sbin:/usr/bin:/bin:/usr/X11/bin:/Developer/usr/bin"
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
 
