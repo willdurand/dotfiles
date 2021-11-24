@@ -25,6 +25,6 @@ is `git/gitlocal.default` but it's not installed by default.
   template file in the `misc/` folder)
 - Install iTerm2
 - Install Homebrew
-- Install the following packages with `brew`: vim, hub, jq, git
+- Install the following packages with `brew`: vim, hub, jq, git, fzf
 - Install the FiraCode font: https://github.com/tonsky/FiraCode/wiki/Installing
 - Manually import the profiles using the file in the `misc/` folder
