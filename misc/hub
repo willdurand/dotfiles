@@ -1,0 +1,4 @@
+github.com:
+- user: willdurand
+  oauth_token: <TOKEN>
+  protocol: https
