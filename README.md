@@ -25,6 +25,15 @@ is `git/gitlocal.default` but it's not installed by default.
   template file in the `misc/` folder)
 - Install iTerm2
 - Install Homebrew
-- Install the following packages with `brew`: vim, hub, jq, git, fzf, ripgrep
+- Install these essential packages with `brew`:
+
+      brew install vim hub jq git fzf ripgrep
+
+- Install Amethyst (tiling window manager), then change the _Floating_ settings
+  to "automatically float all applications except those listed". The list should
+  contain main apps like Firefox and iTerm2.
+
+      brew install --cask amethyst
+
 - Install the FiraCode font: https://github.com/tonsky/FiraCode/wiki/Installing
 - Manually import the profiles using the file in the `misc/` folder
