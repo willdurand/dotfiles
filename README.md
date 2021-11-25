@@ -27,13 +27,25 @@ is `git/gitlocal.default` but it's not installed by default.
 - Install Homebrew
 - Install these essential packages with `brew`:
 
-      brew install vim hub jq git fzf ripgrep
+      brew install vim hub jq git fzf ripgrep gpg
 
 - Install Amethyst (tiling window manager), then change the _Floating_ settings
   to "automatically float all applications except those listed". The list should
   contain main apps like Firefox and iTerm2.
 
       brew install --cask amethyst
+
+- Import the GPG private keys from the old machine by following [these
+  instructions](./gpg/README.md) or create new subkeys. Then, tell `git` about
+  signing by creating a `~/.gitlocal` file:
+
+      ```
+      [commit]
+        gpgsign = 1
+
+      [credentials]
+        helper = osxkeychain
+      ```
 
 - Install the FiraCode font: https://github.com/tonsky/FiraCode/wiki/Installing
 - Manually import the profiles using the file in the `misc/` folder
