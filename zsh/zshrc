@@ -18,6 +18,8 @@ fi
 export EDITOR='vim'
 export GIT_EDITOR='vim'
 export SHELL='/bin/zsh'
+export GPG_TTY=$TTY
+
 # Disable husky
 export HUSKY=0
 
