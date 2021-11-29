@@ -24,6 +24,8 @@ is `git/gitlocal.default` but it's not installed by default.
 - Create a personal access token for hub and store it in `~/.config/hub` (see
   template file in the `misc/` folder)
 - Install iTerm2
+- Configure iTerm2: go to "Preferences > General > Selection" and check
+  "Applications in terminal may access clipboard"
 - Install Homebrew
 - Install these essential packages with `brew`:
 
