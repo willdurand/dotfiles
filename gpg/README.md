@@ -285,6 +285,10 @@ A few remarks regarding this method:
     OK closing connection
     $ rm -rf gpgtmp
 
+As of 2022 (well, 2021 but I likely forgot), I should have a primary key with 4
+sub-keys: 1 signing sub-key per machine, 1 old signing sub-key that I am not
+using anymore but is still valid (for GitHub, mainly), and 1 encryption key.
+
 ## Change primary
 
 When editing the keyring `~/.gnupg/pubring.kbx`:
