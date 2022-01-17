@@ -44,13 +44,8 @@ is `git/gitlocal.default` but it's not installed by default.
   instructions](./gpg/README.md) or create new subkeys. Then, tell `git` about
   signing by creating a `~/.gitlocal` file:
 
-      ```
       [commit]
         gpgsign = 1
-
-      [credentials]
-        helper = osxkeychain
-      ```
 
 - Install the FiraCode font: https://github.com/tonsky/FiraCode/wiki/Installing
 - Manually import the profiles using the file in the `misc/` folder
