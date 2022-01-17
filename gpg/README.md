@@ -303,6 +303,8 @@ On main computer:
     ```
     $ gpg --list-secret-keys <email>
     $ gpg --export-secret-keys <key id> > private.key
+    # OR:
+    $ gpg --export-secret-subkeys '<subkey id>!' > private-subkey.key
     ```
 
 2. Encrypt and transfer `private.key` to the other machine.
