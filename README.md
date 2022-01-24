@@ -40,6 +40,10 @@ is `git/gitlocal.default` but it's not installed by default.
 
       brew install --cask amethyst
 
+- Install [KeepingYouAwake][]:
+
+      brew install --cask keepingyouawake
+
 - Import the GPG private keys from the old machine by following [these
   instructions](./gpg/README.md) or create new subkeys. Then, tell `git` about
   signing by creating a `~/.gitlocal` file:
@@ -48,4 +52,11 @@ is `git/gitlocal.default` but it's not installed by default.
         gpgsign = 1
 
 - Install the FiraCode font: https://github.com/tonsky/FiraCode/wiki/Installing
+
+      brew tap homebrew/cask-fonts
+      brew install --cask font-fira-code
+
 - Manually import the profiles using the file in the `misc/` folder
+
+
+[KeepingYouAwake]: https://github.com/newmarcel/KeepingYouAwake
