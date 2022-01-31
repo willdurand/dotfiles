@@ -1,0 +1,11 @@
+# Build GeckoView/Firefox for Android Artifact Mode:
+ac_add_options --enable-application=mobile/android
+ac_add_options --enable-artifact-builds
+
+ac_add_options --target=aarch64
+
+# https://bugzilla.mozilla.org/show_bug.cgi?id=1728226
+ac_add_options --enable-crashreporter
+
+# Write build artifacts to:
+mk_add_options MOZ_OBJDIR=./objdir-frontend-android

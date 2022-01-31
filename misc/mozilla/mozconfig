@@ -2,7 +2,7 @@
 ac_add_options --enable-debug
 
 # Automatically download and use compiled C++ components:
-#ac_add_options --enable-artifact-builds
+ac_add_options --enable-artifact-builds
 
 # Use sccache
 #ac_add_options --with-ccache=sccache
