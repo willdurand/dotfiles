@@ -168,18 +168,6 @@ rbenv() {
   rbenv "$@"
 }
 
-# PHP
-if [[ -d "$HOME/.phpenv" ]]; then
-  export PATH="$PATH:$HOME/.phpenv/bin:$HOME/.composer/vendor/bin"
-
-  # lazy load phpenv because I do not use it too often
-  phpenv() {
-    unset -f -f phpenv
-    eval "$(command phpenv init -)"
-    phpenv "$@"
-  }
-fi
-
 # Added by the Heroku Toolbelt
 if [[ -d "/usr/local/heroku" ]]; then
   export PATH="$PATH:/usr/local/heroku/bin"
