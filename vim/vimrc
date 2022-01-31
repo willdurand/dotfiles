@@ -276,6 +276,9 @@ endif
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'minimalist'
 let g:airline_extensions = ['hunks', 'branch', 'whitespace']
+" We need to update the `colnr` symbol because of this issue:
+" https://github.com/vim-airline/vim-airline/issues/2381
+let g:airline_symbols.colnr = "\u33c7"
 set noshowmode
 
 " GitGutter
