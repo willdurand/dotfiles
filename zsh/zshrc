@@ -161,12 +161,8 @@ if [[ -x $(which yarn) ]] ; then
   export PATH="$PATH:./node_modules/.bin:$(yarn global bin)"
 fi
 
-# Ruby, lazy load rbenv because I do not use it too often
-rbenv() {
-  unset -f rbenv
-  eval "$(command rbenv init -)"
-  rbenv "$@"
-}
+# Ruby
+export PATH="/usr/local/opt/ruby/bin:$PATH"
 
 # Added by the Heroku Toolbelt
 if [[ -d "/usr/local/heroku" ]]; then
