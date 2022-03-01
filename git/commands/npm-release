@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 #
-# This script allows (me) to automate releases of npm libraries with GitHub. It
-# relies on `hub` (https://hub.github.com/) and `npm version` commands.
+# This script allows (me) to automate releases of npm libraries with GitHub.
+# It relies on `hub` (https://hub.github.com/), `npm version`, and the
+# `format-release-notes` script (see `scripts/format-release-notes` in this
+# repository).
 
 set -e -o pipefail
 
