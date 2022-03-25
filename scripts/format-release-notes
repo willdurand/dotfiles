@@ -3,7 +3,7 @@
 ///
 const fs = require('fs');
 
-const UPDATE_PATTERN = /[U|u]pdate dependency (.+?) to (.+)/;
+const UPDATE_PATTERN = /[U|u]pdate (?:dependency )?(.+?)(?: monorepo)? to (.+)/;
 
 const printSelfUsage = () => {
   const linePrefix = '/// ';
