@@ -342,3 +342,28 @@ autocmd BufNewFile,BufRead PULLREQ_EDITMSG set filetype=gitcommit
 " termdebug
 let g:termdebug_wide = 1
 packadd! termdebug
+
+" searchfox
+function! OpenSearchFox()
+  let current_file = expand('%')
+  if current_file ==# ''
+    return
+  endif
+
+  let url = 'https://searchfox.org/mozilla-central/source/'.current_file.'#'.line('.')
+
+  if has('mac') || has('macunix') || has('gui_macvim')
+    exe 'silent !open "'.escape(url, '#').'"'
+    redraw!
+  endif
+
+  if has('clipboard')
+    let @+ = url
+  else
+    let @" = url
+  endif
+
+  echomsg 'searchfox link copied'
+endfunction
+
+command! sfopen :call OpenSearchFox()
