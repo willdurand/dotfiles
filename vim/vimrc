@@ -336,3 +336,4 @@ autocmd BufNewFile,BufRead PULLREQ_EDITMSG set filetype=gitcommit
 
 " termdebug
 let g:termdebug_wide = 1
+packadd! termdebug
