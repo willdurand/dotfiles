@@ -242,12 +242,17 @@ augroup utils
   "   http://css-tricks.com/words-avoid-educational-writing/
   "   https://github.com/pengwynn/dotfiles/blob/12159ea233180344be4e25d57056ccd37061a153/vim/vimrc.symlink
   "
-  highlight TechWordsToAvoid ctermbg=red ctermfg=white
-  match TechWordsToAvoid /\cobviously\|basically\|simply\|of course\|clearly\|just\|everyone knows\|however,\|so,\|easy\|assuming\|intuitively\|however/
-  autocmd BufWinEnter * match TechWordsToAvoid /\cobviously\|basically\|simply\|of course\|clearly\|just\|everyone knows\|however,\|so,\|easy\|assuming\|intuitively\|however/
-  autocmd InsertEnter * match TechWordsToAvoid /\cobviously\|basically\|simply\|of course\|clearly\|just\|everyone knows\|however,\|so,\|easy\|assuming\|intuitively\|however/
-  autocmd InsertLeave * match TechWordsToAvoid /\cobviously\|basically\|simply\|of course\|clearly\|just\|everyone knows\|however,\|so,\|easy\|assuming\|intuitively\|however/
-  autocmd BufWinLeave * call clearmatches()
+  highlight TechWordsToAvoid cterm=undercurl
+
+  function MatchTechWordsToAvoid()
+    match TechWordsToAvoid /\<\(obviously\|basically\|simply\|of course\|clearly\|just\|everyone knows\|so\|easy\|assuming\|intuitively\|however\|in order to\|in the end\|able to\|occur\|happen\|is\|are\|was\|were\|that\|really\)\>/
+  endfunction
+
+  autocmd FileType markdown call MatchTechWordsToAvoid()
+  autocmd BufWinEnter *.md call MatchTechWordsToAvoid()
+  autocmd InsertEnter *.md call MatchTechWordsToAvoid()
+  autocmd InsertLeave *.md call MatchTechWordsToAvoid()
+  autocmd BufWinLeave *.md call clearmatches()
 
   " do not auto insert comment chars on newline
   autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
