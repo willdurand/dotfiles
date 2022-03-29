@@ -366,4 +366,5 @@ function! OpenSearchFox()
   echomsg 'searchfox link copied'
 endfunction
 
-command! sfopen :call OpenSearchFox()
+command! SFOpen :call OpenSearchFox()
+nnoremap <leader>sf :SFOpen<cr>
