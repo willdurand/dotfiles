@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+CURRENT=$(pwd)
+
+set -eo pipefail
+
+if [[ -z "${GITPOD_REPO_ROOT}" ]]; then
+	echo "WARNING: This script should be executed in a Gitpod environment."
+	echo "         Please run 'bin/install' on regular systems instead :-)"
+	exit 1
+fi
+
+link_files() {
+	if [ -L "$2" ] ; then
+		rm -f "$2"
+	fi
+
+	ln -s "$CURRENT/$1" "$2"
+	echo "linked $1 to $2"
+}
+
+# Update submodules first
+git submodule update --init
+
+link_files vim ~/.vim
+link_files vim/vimrc ~/.vimrc
