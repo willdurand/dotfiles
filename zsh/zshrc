@@ -1,5 +1,5 @@
 # Functions Autoloading
-fpath=(~/.zsh $fpath)
+fpath=(~/.zsh /opt/homebrew/share/zsh/site-functions $fpath)
 
 # Prompt
 autoload -U promptinit; promptinit
