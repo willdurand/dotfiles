@@ -281,7 +281,7 @@ A few remarks regarding this method:
     [...]
 
     gpg> save
-    $ /usr/local/MacGPG2/bin/gpg-connect-agent --homedir ~/gpgtmp KILLAGENT /bye
+    $ /opt/homebrew/bin/gpg-connect-agent --homedir ~/gpgtmp KILLAGENT /bye
     OK closing connection
     $ rm -rf gpgtmp
 
