@@ -1,7 +1,7 @@
 " JavaScript linter
-nmap <buffer> <C-L> :!$(npm bin)/eslint --no-ignore --fix %<CR>
+nmap <buffer> <C-L> :!npm exec -- eslint --no-ignore --fix %<CR>
 " Prettier
-nmap <buffer> <leader>pp :!$(npm bin)/prettier --write %<CR>
+nmap <buffer> <leader>pp :!npm exec -- prettier --write %<CR>
 
 function! AddFocusJestTestCase()
   ?^\s*\(it\|describe\)(
