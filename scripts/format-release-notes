@@ -3,7 +3,11 @@
 ///
 const fs = require('fs');
 
-const UPDATE_PATTERN = /[U|u]pdate (?:dependency )?(.+?)(?: monorepo)? to (.+)/;
+
+const UPDATE_PATTERNS = [
+  /[U|u]pdate (?:dependency )?(.+?)(?: monorepo)? to (.+)/,
+  /chore\(deps(?:-dev)?\): bump (.+?) from .+? to (.+)/,
+];
 
 const printSelfUsage = () => {
   const linePrefix = '/// ';
@@ -19,10 +23,21 @@ const printSelfUsage = () => {
   process.exit(1);
 };
 
+const getDependencyUpdateMatches = (line) => {
+  for (const updatePattern of UPDATE_PATTERNS) {
+    if (updatePattern.test(line)) {
+      return line.match(updatePattern);
+    }
+  }
+
+  return null;
+};
+
 const formatDepUpdateLine = (line) => {
-  if (UPDATE_PATTERN.test(line)) {
+  const matches = getDependencyUpdateMatches(line);
+  if (matches) {
     // `version` contains the version and the PR number: (#123)
-    const [_, name, version] = line.match(UPDATE_PATTERN);
+    const [_, name, version] = matches;
 
     return `- Updated: dependency \`${name}\` to ${version}`;
   }
@@ -31,7 +46,7 @@ const formatDepUpdateLine = (line) => {
 };
 
 const formatReleaseNotes = (args) => {
-  const content = args[0];
+  const content = args[0] === '-' ? fs.readFileSync(0, 'utf-8') : args[0];
   const lines = content.split('\n');
 
   if (args[1] && args[1].endsWith('package.json')) {
@@ -46,7 +61,7 @@ const formatReleaseNotes = (args) => {
     };
 
     for (const line of lines) {
-      const matches = line.match(UPDATE_PATTERN);
+      const matches = getDependencyUpdateMatches(line);
 
       if (matches) {
         const [_, name] = matches;
