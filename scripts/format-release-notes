@@ -7,6 +7,7 @@ const fs = require('fs');
 const UPDATE_PATTERNS = [
   /[U|u]pdate (?:dependency )?(.+?)(?: monorepo)? to (.+)/,
   /chore\(deps(?:-dev)?\): bump (.+?) from .+? to (.+)/,
+  /Bump (.+?) from .+? to (.+)/,
 ];
 
 const printSelfUsage = () => {
