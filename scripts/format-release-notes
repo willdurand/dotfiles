@@ -5,9 +5,9 @@ const fs = require('fs');
 
 
 const UPDATE_PATTERNS = [
-  /[U|u]pdate (?:dependency )?(.+?)(?: monorepo)? to (.+)/,
-  /chore\(deps(?:-dev)?\): bump (.+?) from .+? to (.+)/,
-  /Bump (.+?) from .+? to (.+)/,
+  /[U|u]pdate (?:dependency )?(.+?)(?: monorepo)? to v?(.+)/,
+  /chore\(deps(?:-dev)?\): bump (.+?) from .+? to v?(.+)/,
+  /Bump (.+?) from .+? to v?(.+)/,
 ];
 
 const printSelfUsage = () => {
@@ -80,7 +80,7 @@ const formatReleaseNotes = (args) => {
       }
     }
 
-    return `## Main changes
+    return `## main changes
 
 ## dependencies
 
