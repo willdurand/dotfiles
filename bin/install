@@ -63,6 +63,7 @@ setup_zsh() {
 git submodule update --init
 
 # tmux
+link_files tmux ~/.tmux
 link_files tmux/tmux.conf ~/.tmux.conf
 
 # git
