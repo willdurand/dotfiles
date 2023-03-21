@@ -147,22 +147,11 @@ export FZF_DEFAULT_COMMAND='rg --files --hidden'
 # Homebrew
 export HOMEBREW_NO_ANALYTICS=1
 
-# Common PATH
-export PATH="/opt/homebrew/bin:/usr/local/bin:/usr/sbin:/sbin:/usr/bin:/bin:/usr/X11/bin:/Developer/usr/bin"
-export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
-export PATH="/usr/local/sbin:$PATH"
-
-if [ -d '/usr/share/doc/git/contrib/diff-highlight' ]; then
-  export PATH="$PATH:/usr/share/doc/git/contrib/diff-highlight"
-fi
+# Base PATH
+export PATH="/opt/homebrew/bin:/usr/local/bin:/usr/sbin:/sbin:/usr/bin:/bin"
 
 # Node
-if [[ -x $(which yarn) ]] ; then
-  export PATH="$PATH:./node_modules/.bin:$(yarn global bin)"
-fi
-
-# Ruby
-export PATH="/usr/local/opt/ruby/bin:$PATH"
+export PATH="./node_modules/.bin:$PATH"
 
 # Added by the Heroku Toolbelt
 if [[ -d "/usr/local/heroku" ]]; then
@@ -171,15 +160,9 @@ if [[ -d "/usr/local/heroku" ]]; then
   HEROKU_AC_ZSH_SETUP_PATH=~/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH
 fi
 
-# Go
-if [[ -d "$HOME/projects/go" ]]; then
-  export GOPATH="$HOME/projects/go"
-  export PATH="$PATH:/usr/local/opt/go/libexec/bin:$GOPATH/bin"
-fi
-
 # rust
 if [[ -d "$HOME/.cargo" ]]; then
-  source $HOME/.cargo/env
+  source "$HOME/.cargo/env"
 fi
 
 # sensitive env vars
