@@ -53,10 +53,6 @@ setup_zsh() {
     link_files zsh/pure/pure.zsh ~/.zsh/prompt_pure_setup
     link_files zsh/pure/async.zsh ~/.zsh/async
     link_files zsh/zshrc ~/.zshrc
-
-    for fn in zsh/_*; do
-        link_files "$fn" ~/.zsh/$(basename $fn)
-    done
 }
 
 # Update submodules first
