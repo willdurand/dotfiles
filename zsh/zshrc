@@ -4,8 +4,23 @@ fpath=(~/.zsh /opt/homebrew/share/zsh/site-functions $fpath)
 # Prompt
 autoload -U promptinit; promptinit
 prompt pure
+
 # See: https://github.com/sindresorhus/pure/wiki/Customizations,-hacks-and-tweaks#show-number-of-jobs-in-prompt
 PROMPT='%(1j.[%j] .)%(?.%F{magenta}.%F{red})${PURE_PROMPT_SYMBOL:-❯}%f '
+
+function parse_mozconfig() {
+  if [[ ! -f ./mozconfig ]] ; then
+    return
+  fi
+
+  if [[ $(cat ./mozconfig | grep -e '^ac_add_options --enable-artifact-builds$') ]] ; then
+    return
+  fi
+
+  echo "[full build]"
+}
+
+RPROMPT='%F{242}$(parse_mozconfig)%f'
 
 autoload -Uz compinit
 if [[ "$(uname)" == "Darwin" ]] && [ $(date +'%j') != $(stat -f '%Sm' -t '%j' "${ZDOTDIR:-$HOME}"/.zcompdump) ]; then
