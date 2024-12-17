@@ -168,13 +168,6 @@ export PATH="/opt/homebrew/bin:/usr/local/bin:/usr/sbin:/sbin:/usr/bin:/bin"
 # Node
 export PATH="./node_modules/.bin:$PATH"
 
-# Added by the Heroku Toolbelt
-if [[ -d "/usr/local/heroku" ]]; then
-  export PATH="$PATH:/usr/local/heroku/bin"
-  # heroku autocomplete setup
-  HEROKU_AC_ZSH_SETUP_PATH=~/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH
-fi
-
 # rust
 if [[ -d "$HOME/.cargo" ]]; then
   source "$HOME/.cargo/env"
