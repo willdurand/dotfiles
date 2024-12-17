@@ -189,3 +189,7 @@ fi
 if [[ -f ~/.zshrc.local ]]; then
   source ~/.zshrc.local
 fi
+
+if [[ -x $(which jj) ]]; then
+  source <(jj util completion zsh)
+fi
