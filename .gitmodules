@@ -73,3 +73,6 @@
 [submodule "tmux/plugins/resurrect"]
 	path = tmux/plugins/resurrect
 	url = https://github.com/tmux-plugins/tmux-resurrect
+[submodule "vim/pack/base/start/jjdescription"]
+	path = vim/pack/base/start/jjdescription
+	url = https://github.com/avm99963/vim-jjdescription
