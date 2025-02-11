@@ -133,7 +133,7 @@ prompt_pure_preprompt_render() {
 
 	# Suspended jobs in background.
 	if ((${(M)#jobstates:#suspended:*} != 0)); then
-		preprompt_parts+='%F{$prompt_pure_colors[suspended_jobs]}✦'
+		preprompt_parts+='%F{$prompt_pure_colors[suspended_jobs]}[%j]'
 	fi
 
 	# Username and machine, if applicable.
@@ -830,7 +830,7 @@ prompt_pure_setup() {
 		prompt:error         red
 		prompt:success       magenta
 		prompt:continuation  242
-		suspended_jobs       red
+		suspended_jobs       242
 		user                 242
 		user:root            default
 		virtualenv           242

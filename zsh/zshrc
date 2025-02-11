@@ -5,9 +5,6 @@ fpath=(~/.zsh /opt/homebrew/share/zsh/site-functions $fpath)
 autoload -U promptinit; promptinit
 prompt pure
 
-# See: https://github.com/sindresorhus/pure/wiki/Customizations,-hacks-and-tweaks#show-number-of-jobs-in-prompt
-PROMPT='%(1j.[%j] .)%(?.%F{magenta}.%F{red})${PURE_PROMPT_SYMBOL:-❯}%f '
-
 function parse_mozconfig() {
   if [[ ! -f ./mozconfig ]] ; then
     return
