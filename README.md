@@ -53,7 +53,6 @@ is `git/gitlocal.default` but it's not installed by default.
 
 - Install the FiraCode font: https://github.com/tonsky/FiraCode/wiki/Installing
 
-      brew tap homebrew/cask-fonts
       brew install --cask font-fira-code
 
 - Manually import the profiles using the file in the `misc/` folder
