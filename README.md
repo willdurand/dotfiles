@@ -32,7 +32,7 @@ is `git/gitlocal.default` but it's not installed by default.
 - Install Homebrew
 - Install these essential packages with `brew`:
 
-      brew install vim hub jq git fzf ripgrep gpg magic-wormhole
+      brew install vim hub jq git fzf ripgrep gpg magic-wormhole tmux
 
 - Install Amethyst (tiling window manager), then change the _Floating_ settings
   to "automatically float all applications except those listed". The list should
