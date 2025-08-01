@@ -17,9 +17,6 @@ sudo nvram SystemAudioVolume=" "
 # Disable the “Are you sure you want to open this application?” dialog
 defaults write com.apple.LaunchServices LSQuarantine -bool false
 
-# Restart automatically if the computer freezes
-sudo systemsetup -setrestartfreeze on
-
 # Set a blazingly fast keyboard repeat rate
 defaults write NSGlobalDomain KeyRepeat -int 1
 defaults write NSGlobalDomain InitialKeyRepeat -int 10
