@@ -160,7 +160,7 @@ export FZF_DEFAULT_COMMAND='rg --files --hidden'
 export HOMEBREW_NO_ANALYTICS=1
 
 # Base PATH
-export PATH="/opt/homebrew/bin:/usr/local/bin:/usr/sbin:/sbin:/usr/bin:/bin"
+export PATH="/opt/homebrew/bin:/usr/local/bin:/usr/sbin:/sbin:/usr/bin:/bin:$HOME/.local/bin"
 
 # Node
 export PATH="./node_modules/.bin:$PATH"
