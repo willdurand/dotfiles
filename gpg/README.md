@@ -249,7 +249,7 @@ A few remarks regarding this method:
     $ mkdir ~/gpgtmp
     $ chmod 0700 ~/gpgtmp
     $ gpg --homedir ~/gpgtmp --import /path/to/master-key/C1274F3B.private.gpg-key
-    $ gpg --no-default-keyring --homedir ~/gpgtmp --keyring ~/.gnupg/pubring.kbx --edit-key will@drnd.me
+    $ gpg --no-default-keyring --homedir ~/gpgtmp --edit-key will@drnd.me
     gpg (GnuPG/MacGPG2) 2.2.24; Copyright (C) 2020 Free Software Foundation,
     Inc.
     This is free software: you are free to change and redistribute it.
@@ -264,29 +264,32 @@ A few remarks regarding this method:
 
     gpg> key 1
     [...]
-
-    gpg> expire  # use 1y
-    [...]
-
+    
     gpg> key 2
-    [...]
-
-    gpg> expire  # use 1y
     [...]
 
     gpg> key 3
     [...]
+    
+    gpg> key 4
+    [...]
 
+    gpg> key 9  # the last one, might not be 9
+    [...]
+    
     gpg> expire  # use 1y
     [...]
 
     gpg> save
+
+Make sure to export the secret keys and public keys, then:
+
     $ /opt/homebrew/bin/gpg-connect-agent --homedir ~/gpgtmp KILLAGENT /bye
     OK closing connection
     $ rm -rf gpgtmp
 
-As of 2024, I should have a primary key with 4 sub-keys: 1 signing sub-key per
-machine, and 1 encryption key.
+As of Dec. 2025, I should have a primary key with 5 sub-keys: 1 signing sub-key
+per machine, and 1 encryption key.
 
 ## Change primary
 
