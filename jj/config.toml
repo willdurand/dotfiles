@@ -1,0 +1,15 @@
+#:schema https://docs.jj-vcs.dev/latest/config-schema.json
+
+[user]
+name = "William Durand"
+email = "will@drnd.me"
+
+[signing]
+behavior = "own"
+backend = "gpg"
+
+[ui]
+diff-formatter = ":git"
+
+[colors]
+"diff token" = { underline = false }

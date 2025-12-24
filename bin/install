@@ -55,6 +55,12 @@ setup_zsh() {
     link_files zsh/zshrc ~/.zshrc
 }
 
+setup_jj() {
+    ensure_dir ~/.config/jj
+
+    link_files jj/config.toml ~/.config/jj/config.toml
+}
+
 # Update submodules first
 git submodule update --init
 
@@ -64,6 +70,9 @@ link_files tmux/tmux.conf ~/.tmux.conf
 
 # git
 setup_git
+
+# jj
+setup_jj
 
 # vim
 link_files vim ~/.vim
