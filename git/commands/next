@@ -2,11 +2,7 @@
 
 source "$(git --exec-path)/git-sh-setup"
 
-MAIN_BRANCH=master
-
-if ! git show-ref --verify --quiet "refs/heads/$MAIN_BRANCH"; then
-	MAIN_BRANCH=main
-fi
+MAIN_BRANCH=$(git rev-parse --abbrev-ref origin/HEAD | sed 's@^origin/@@')
 
 cd_to_toplevel
 
