@@ -1,0 +1,158 @@
+#!/usr/bin/env bash
+#
+# This script allows (me) to automate releases of npm libraries with GitHub.
+# It relies on `hub` (https://hub.github.com/), `npm version`, and the
+# `format-release-notes` script (see `scripts/format-release-notes` in this
+# repository).
+
+set -e -o pipefail
+
+NAME='prepare-npm-release'
+USAGE='[help|major|minor|patch]'
+LONG_USAGE="git $NAME help
+        print this help message.
+git $NAME major
+        create a major version.
+git $NAME minor
+        create a minor version.
+git $NAME patch
+        create a patch version.
+"
+
+source "$(git --exec-path)/git-sh-setup"
+
+BRANCH=$(git symbolic-ref --short -q HEAD) || die "Aborted: detached HEAD."
+TMP_RELEASE_NOTES=''
+RELEASE_BRANCH=''
+
+# Installed once the work tree is known to be clean (see `npm_release`).
+cleanup() {
+  local commits
+
+  if [[ -n "$TMP_RELEASE_NOTES" ]]; then
+    rm -f "$TMP_RELEASE_NOTES"
+  fi
+
+  # Discard the version bump if it wasn't committed.
+  git checkout --quiet -- ':(glob)package*.json' 2> /dev/null || true
+
+  if [[ "$(git symbolic-ref --short -q HEAD)" != "$BRANCH" ]]; then
+    git checkout --quiet "$BRANCH" || echo "Warning: could not switch back to '$BRANCH'."
+  fi
+
+  # Delete the release branch when it holds no commit, so that a later attempt
+  # doesn't trip on the branch-already-exists check.
+  if [[ -n "$RELEASE_BRANCH" ]] && [[ "$(git symbolic-ref --short -q HEAD)" == "$BRANCH" ]]; then
+    commits=$(git rev-list --count "$BRANCH..$RELEASE_BRANCH" 2> /dev/null || echo 1)
+
+    if [[ "$commits" -eq 0 ]]; then
+      git branch --quiet -D "$RELEASE_BRANCH"
+    fi
+  fi
+}
+
+require_user_confirmation() {
+  read -p "Continue? [y/N] " -n 1 -r
+  echo
+  if [[ ! "$REPLY" =~ ^[Yy]$ ]]; then
+    die "Aborted: user didn't confirm."
+  fi
+}
+
+npm_release() {
+  local type="$1"
+  local old_version
+  local new_version
+  local git_log
+  local release_branch
+  local lockfile
+  local version_files=('package.json')
+
+  cd_to_toplevel
+
+  if [[ ! -f "package.json" ]]; then
+    die "Aborted: this script only works with JS and Node projects."
+  fi
+
+  require_clean_work_tree rebase "Please commit or stash them."
+
+  trap cleanup EXIT
+
+  # `npm version` also updates the lockfile (if any).
+  for lockfile in 'package-lock.json' 'npm-shrinkwrap.json'; do
+    if [[ -f "$lockfile" ]]; then
+      version_files+=("$lockfile")
+    fi
+  done
+
+  if [[ -f "CHANGELOG.md" ]]; then
+    echo "Warning: this project contains a CHANGELOG."
+    require_user_confirmation
+  fi
+
+  old_version=$(node -pe "require('./package.json').version")
+  echo "--> found current npm version: $old_version"
+
+  # The tag is created when the release is published, not here.
+  if ! git rev-parse --verify --quiet "$old_version^{commit}" > /dev/null; then
+    die "Aborted: no tag '$old_version' found, cannot compute the release notes."
+  fi
+
+  # `--ignore-scripts` because this bump only computes the next version.
+  new_version=$(npm --no-git-tag-version --ignore-scripts version "$type")
+  git checkout -- "${version_files[@]}"
+  echo "--> new $type version will be: $new_version"
+
+  release_branch="releases/$new_version"
+  if git rev-parse --verify --quiet "refs/heads/$release_branch" > /dev/null; then
+    die "Aborted: branch '$release_branch' already exists."
+  fi
+
+  require_user_confirmation
+
+  git checkout --quiet -b "$release_branch"
+  # `cleanup` deletes this branch when the release isn't committed.
+  RELEASE_BRANCH="$release_branch"
+
+  # The output isn't captured because the `version` scripts write to stdout too.
+  npm --no-git-tag-version version "$type" > /dev/null
+  echo "--> created new npm version: $new_version"
+
+  TMP_RELEASE_NOTES=$(mktemp)
+  git_log=$(git log --format="%s" "$old_version"..HEAD)
+  git_log=$(format-release-notes "$git_log" "./package.json")
+  cat <<EOF > "$TMP_RELEASE_NOTES"
+$new_version
+
+<!-- git log: $old_version..$new_version -->
+$git_log
+
+EOF
+  # The notes become the commit message, which `hub pull-request --no-edit`
+  # reuses as the title and body of the pull request.
+  git_editor "$TMP_RELEASE_NOTES"
+
+  git commit --quiet "${version_files[@]}" -F "$TMP_RELEASE_NOTES"
+
+  hub pull-request --no-edit --push
+}
+
+if [[ "$#" -eq 0 ]]; then
+  usage
+fi
+
+for arg in "$@"
+do
+  case "$arg" in
+    help)
+      git "$NAME" -h ;;
+    patch)
+      npm_release "patch" ;;
+    minor)
+      npm_release "minor" ;;
+    major)
+      npm_release "major" ;;
+    *)
+      usage ;;
+  esac
+done
