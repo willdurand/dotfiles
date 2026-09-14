@@ -18,3 +18,5 @@ ehthumbs.db
 
 coverage/
 yarn-error.log
+
+.claude/
